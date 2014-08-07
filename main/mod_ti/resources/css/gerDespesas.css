@@ -1,0 +1,119 @@
+/* Sobrescreve layout */
+#conteudoInner{
+	margin-top: 10px !important;
+	margin-left: 10px !important;
+	margin-right: -15px !important;
+}
+
+.formInner {
+	width: 100% !important;
+	overflow:auto;
+}
+
+.fakeRow{
+	height:20px;
+}
+
+/* Tabela */
+.dataTable tr td{
+	width:140px;
+	max-width:140px;
+	min-width:140px;
+}
+
+ .dataTabletable tr td:nth-child(1){
+	width:230px;
+	max-width:230px;
+	min-width:230px;
+}
+
+.overflow{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.addRow{
+    height:30px;
+}
+
+.expand{
+	width: 21px;
+	height: 21px;
+	float: left;
+}
+
+#subItensTable tr td:nth-child(1){
+	padding-left: 40px;
+}
+
+/* Conta Contabil */
+#cadContaContabilForm input{
+	width:60%;
+}
+
+#addContaContabilBtn{
+	width:100% !important;
+	border-top:0;
+	border-left:0;
+	border-right:0;
+	border-bottom: solid 1px;
+	margin-top:10px;
+}
+
+/* Tabela para adicionar despesa */
+.despesaNome{
+	width: 100px !important;
+	max-width: 100px !important;
+	min-width: 100px !important;
+}
+
+#cadDespesaForm  table tr td select{
+	width:160px;
+}
+
+#qtdeItens{
+	width:60px;
+}
+
+#dataAquisicao{
+	width:100px;
+}
+
+#fornecedor{
+	width:260px;
+}
+
+#nf{
+	width:100px;
+}
+
+#selectContaContabil{
+	width:380px !important;
+}
+
+/* Painel */
+.painel{
+    height:auto;
+    width:100%;
+    margin:5px;
+    float:left;
+}
+
+.add img{
+    height:21px;
+    width:21px;
+    float:left;
+}
+
+ul li{
+	float:left;
+	margin-right:15px;
+	text-align:left;
+}
+
+ul{
+	float: left;
+	margin-left: 0;
+	padding-left: 0;
+}

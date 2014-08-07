@@ -1,0 +1,27 @@
+#loginWrapper{
+	margin:0 auto;
+	width:300px;
+	padding: 10px 20px 10px 10px;	
+}
+.loginForm{
+	border:solid 1px #000;
+}
+.loginForm input{
+	width:100%;
+	border: 1px solid #000;
+}
+.loginForm label{
+	width:100%;
+}
+#loginBtn{
+	width:101%;
+}
+.loginMsg{
+	padding: 5px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 14px;
+}
+.paddingForm{
+	padding: 10px 20px 10px 10px;	
+}

@@ -1,0 +1,59 @@
+/** FTP Area **/
+.fileArea{
+    width:1024px;
+    min-height: 250px;
+    float:left;
+}
+.icon img{
+    width: 21px;
+    height: 21px;
+    margin-right: 10px;
+    float:left;
+}
+.open{
+    float:left;
+}
+.fake{
+    float:left;
+    width:100%;
+    height:5px;
+}
+
+.checkboxFile{
+    float:left;
+    width:21px;
+    height:21px;
+}
+
+#theFile{
+    margin: 10px 0 10px 0;
+    width: 100%;
+}
+
+#uploadFileSubmit{
+    width:100%;
+}
+
+.successUpload{
+    color: green;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/** Painel **/
+.painel{
+    width:100%;	
+    float:left;
+    margin-bottom:20px;
+}
+
+.painel div{
+    float:left;
+    margin-right:20px;
+}
+
+.addFolderBtn img, .btnUploadFile img{
+    height:21px;
+    cursor:pointer;
+}

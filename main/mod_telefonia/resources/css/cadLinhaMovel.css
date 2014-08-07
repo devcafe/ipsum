@@ -1,0 +1,40 @@
+/* Form */
+label{
+	margin-left: 5px !important;
+}
+
+input:hover{
+	outline-offset: -0px;
+	outline: -webkit-focus-ring-color auto 0px;
+}
+
+#cadLinha:hover{
+	background: #ADC4DC !important;
+}
+
+#usuariosOK, #empresasOK, #aparelhosOK{
+	width:100%;
+}
+
+#usuariosOK:hover{
+	background: #ADC4DC !important;
+}
+
+.fullInput{
+	float:left;
+	width:100%;
+	margin-top:10px;
+}
+
+/* CSS para resolução de 1024 x 768 */
+@media screen and (max-width: 1024px) {
+	input[name="plano"] {
+		width: 135px;
+	}
+
+	.formInner{
+		margin: 0 auto;
+		width: 900px;
+	}
+
+}

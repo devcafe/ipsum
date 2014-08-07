@@ -1,0 +1,9 @@
+/* Form */
+input:hover{
+	outline-offset: -0px;
+	outline: -webkit-focus-ring-color auto 0px;
+}
+
+#cadChamado:hover{
+	background: #ADC4DC !important;
+}

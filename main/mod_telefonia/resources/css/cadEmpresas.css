@@ -1,0 +1,33 @@
+/* Form */
+label{
+	margin-left: 5px !important;
+}
+
+input:hover{
+	outline-offset: -0px;
+	outline: -webkit-focus-ring-color auto 0px;
+}
+
+#cadEmpresa:hover{
+	background: #ADC4DC !important;
+}
+
+/* CSS para resolução de 1024 x 768 */
+@media screen and (max-width: 1024px) {
+	.formInner{
+		margin: 0 auto;
+		width: 900px;
+	}
+
+	#nomeEmpresa{
+		margin-bottom: 30px;
+	}
+
+	#razaoSocial{
+		width: 200px;
+	}
+
+	#endereco{
+		width: 250px;
+	}
+}

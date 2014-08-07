@@ -1,0 +1,168 @@
+/* Breadcrumb */
+.breadcrumb{
+	height:80px;
+}
+
+.breadcrumb li{
+	height: 60px;
+	float: left;
+	width: 210px;
+}
+
+.breadcrumb>li+li:before{
+	content: "" !important;
+}
+
+.dadosPessoais{
+	background: url('../../../resources/images/RH/etapas/etapa1.png') no-repeat 0 -75px;
+}
+
+.dadosPessoais_on{
+	background: url('../../../resources/images/RH/etapas/etapa1.png') no-repeat 0 0;
+}
+
+.dadosPessoais_old{
+	background: url('../../../resources/images/RH/etapas/etapa1.png') no-repeat 0 -147px;	
+}
+
+.documentos{
+	background: url('../../../resources/images/RH/etapas/etapa2.png') no-repeat 0 -75px;
+}
+
+.documentos_on{
+	background: url('../../../resources/images/RH/etapas/etapa2.png') no-repeat 0 0;
+}
+.infosGerais{
+	background: url('../../../resources/images/RH/etapas/etapa3.png') no-repeat 0 -75px;
+}
+
+.caracteristicas{
+	background: url('../../../resources/images/RH/etapas/etapa4.png') no-repeat 0 -75px;
+}
+
+.dadosBancarios{
+	background: url('../../../resources/images/RH/etapas/etapa5.png') no-repeat 0 -75px;
+}
+
+/* Botoes */
+.proximaEtapaTD{
+	width: 140px;
+}
+
+.proximaEtapaTD a:link{
+	color:#fff !important;
+	background: url('../../../resources/images/RH/bgbutton.png') repeat-x top left;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.proximaEtapaTD a:visited{
+	color:#fff !important;
+}
+
+.proximaEtapaTD a:hover{
+	text-decoration: none;
+}
+
+.voltarTD a:link{
+	color:#fff !important;
+	background: url('../../../resources/images/RH/voltarBG.png') repeat-x top left;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.voltarTD{
+	float: right;
+	margin-right: 30px;
+}
+
+
+
+/* Form */
+
+.formPadding{
+	padding-right: 150px;
+}
+
+.fakeRow{
+	height:30px;
+}
+
+label{
+	margin:0 !important;
+	font-weight: normal;
+}
+
+span.red{
+	color:red;
+}
+
+.cepTD{
+	width: 250px;
+	padding-right: 50px;
+}
+
+#cep{
+	width:250px;
+}
+
+#regiao{
+	width:200px;
+}
+
+.enderecoTD{
+	padding-right: 30px;
+}
+
+.numero{
+	width:100px;
+	padding-right:30px;
+}
+
+.bairroTD{
+	padding-right:30px;
+}
+
+.cidadeTD{
+	padding-right: 30px;
+}
+
+.ufTD{
+	width: 100px;
+}
+
+.telResidencialTD{
+	width: 250px;
+	padding-right: 30px;
+}
+
+#telRecado{
+	width: 250px;
+}
+
+.telCelularTD{
+	width: 250px;
+	padding-right: 30px;
+}
+
+#telComercial{
+	width:250px;
+}
+
+#email{
+	width:400px;
+}
+
+.proximaEtapaTD{
+	text-align: right;
+}
+
+#proximaEtapa_2{
+	width: 180px;
+}
+
+@media screen and (max-width: 1024px) {
+	.breadcrumb li {
+		width: 190px;
+	}
+}

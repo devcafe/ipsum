@@ -1,0 +1,21 @@
+/* Form */
+input:hover{
+	outline-offset: -0px;
+	outline: -webkit-focus-ring-color auto 0px;
+}
+
+#cadAparelho:hover{
+	background: #ADC4DC !important;
+}
+
+/* CSS para resolução de 1024 x 768 */
+@media screen and (max-width: 1024px) {
+	.formInner{
+		margin: 0 auto;
+		width: 900px;
+	}
+
+	#acessorios, #observacoes{
+		width: 250px;
+	}
+}

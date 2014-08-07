@@ -1,0 +1,118 @@
+/* Tabela lista linhas moveis */
+table{
+	border: 1px solid #e7e7e7;
+	width:100%;
+}
+
+table tr:first-child{
+	background: #ADC4DC !important;
+	color: #000;
+	font-weight: bold;
+	font-size:12px;
+	line-height: 20px;
+}
+
+table tr{
+	border-bottom: solid 1px #e7e7e7;
+	line-height: 20px;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+table tr td{
+	max-width: 100px;
+	min-width: 100px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.par{
+	background: #E8E8E8;
+}
+
+.impar{
+	background: #FFF;
+}
+
+.selected{
+	background:#CCC !important;
+}
+
+.formInner{
+	margin-bottom: 50px;
+}
+
+table tr:not(:first-child):hover{
+	background:#CCC;
+}
+
+/* Painel */
+.painel{
+	height:auto;
+	width:100%;
+	margin:5px;
+	float:left;
+}
+
+#alterarItemModal{
+	overflow-x: hidden;
+}
+
+.btnFiltrar{
+	margin-left:15px;
+}
+
+.delete, .btnFiltrar{
+	float:left;
+}
+
+.filtro{
+	float: left;
+	height: 100%;
+	width: 100%;
+	margin-top:15px;
+	margin-bottom:5px;
+	text-align: center;
+}
+
+#statusFiltro, #operadoraFiltro{
+	width: 155px;
+	height: 27px;
+}
+
+.filtro02{
+	margin-top:5px;
+}
+
+input[name="razaoFiltro"]{
+	margin-left: -477px;
+}
+
+/* Formulário do modal */
+#alterarItemModal form label, #alterarItemModal form input, #alterarItemModal form select, #alterarItemModal form textarea	{
+	width:50%;
+	margin-top:10px !important;
+	float:left;
+	margin:0;
+}
+
+#gravar{
+	width:100% !important;
+	border-top:0;
+	border-left:0;
+	border-right:0;
+	border-bottom: solid 1px;
+}
+
+#gravar:hover{
+	background: #ADC4DC !important;
+}
+
+#showUsuario, #showEmpresaAcao, #showAparelho{
+	width: 100% !important;
+}

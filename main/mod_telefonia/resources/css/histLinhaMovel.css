@@ -1,0 +1,131 @@
+/* Geral */
+#listaHistorico{
+	overflow: auto;
+}
+
+/* Linhas */
+.linha{
+	width:100%;
+	float: left;
+	margin-bottom: 10px;
+}
+.listaFirstChild{
+	background: #ADC4DC !important;
+	color: #000;
+	font-weight: bold;
+	font-size:12px;
+	line-height: 20px;
+	width: 100%;
+}
+
+.plus{
+	width:26px;
+	height:18px;
+	float:left;
+	background: url('../../../resources/images/plus.png') no-repeat center center;
+}
+.minus{
+	width:26px;
+	height:18px;
+	float:left;	
+	background: url('../../../resources/images/minus.png') no-repeat center center;
+}
+
+/* Sub01 */
+.sub01{
+	float: left;
+	width: 100%;
+}
+.sub01 > div{
+	float:left;
+	margin-left:30px;
+	width:160px;
+	height: 20px;
+}
+.headerItem{
+	float:left;
+	margin-left:30px;
+	width:160px;
+	font-weight:bold;
+}
+.subContainner{
+	float:left;
+	display:none;
+	width: 100%;
+}
+.par{
+	background: #E8E8E8;
+}
+
+.impar{
+	background: #FFF;
+}
+.sub01Usuario{
+	max-width:190px;
+	min-width:190px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.sub01Linha{
+	width:115px !important;
+	min-width: 115px;
+	max-width: 115px;
+}
+.subHeader div:nth-child(1){
+	width:115px;
+}
+.subHeader div:nth-child(2){
+	width:190px;
+}
+
+/* CSS para resolução de 1024 x 768 */
+@media screen and (max-width: 1024px) {
+	/* Sub01 */
+	.sub01{
+		float: left;
+		width: 100%;
+	}
+	.sub01 > div{
+		float:left;
+		width:130px;
+		height: 20px;
+		margin-left:0 !important;
+	}
+	.headerItem{
+		float:left;
+		width:130px;
+		font-weight:bold;
+		margin-left:0 !important;
+	}
+	.subContainner{
+		float:left;
+		display:none;
+		width: 100%;
+	}
+	.par{
+		background: #E8E8E8;
+	}
+
+	.impar{
+		background: #FFF;
+	}
+	.sub01Usuario{
+		max-width:130px;
+		min-width:130px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.sub01Linha{
+		width:130px !important;
+		min-width: 130px;
+		max-width: 130px;
+	}
+	.subHeader div:nth-child(1){
+		width:130px;
+	}
+	.subHeader div:nth-child(2){
+		width:130px;
+	}
+}

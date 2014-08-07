@@ -1,0 +1,126 @@
+/* Form */
+.formInner{
+	margin: 0 auto;
+	width: 1120px;
+}
+
+label{
+	margin-left: 5px !important;
+}
+
+label[for="departamento"]{
+padding-right: 4px;
+}
+
+label[for="empresa"]{
+padding-right: 20px;
+}
+input[name="email"]{
+	width: 300px;
+}
+input[name="primeiroNome"]{
+	width: 200px;
+}
+input[name="sobrenome"]{
+	width: 200px;
+}
+input[name="departamento"]{
+	width:200px;
+}
+input[name="empresa"]{
+	width:200px;
+}
+input[name="cnpj"]{
+	width:200px;
+}
+input[name="usuario"]{
+	width:200px;
+	font-weight:bolder;
+}
+input[name="senha"]{
+	width:200px;
+}
+
+input[name="confirmarSenha"]{
+	width:200px;
+}
+input:hover{
+	outline-offset: -0px;
+	outline: -webkit-focus-ring-color auto 0px;
+}
+
+#definirAcessos{
+	margin-left: 7px;
+}
+
+#cadUsuario:hover{
+	background: #ADC4DC !important;
+}
+
+.area04{
+	text-align: center !important;
+}
+
+.area03{
+	margin-left: 100px;
+}
+
+table tr td{
+	padding-bottom: 20px;
+	text-align: left;
+}
+
+#acessoPrimario, #acessoSecundario{
+	float: left;
+	width: 350px;
+	margin-bottom: 50px;
+	height: 200px;
+	padding-left: 0;
+	border: solid 1px #CCC;
+}
+
+#acessoSecundario{
+	margin-left: 20px;
+}
+
+#acessoPrimario li:hover{
+	background-color: #C3C3C3;
+}
+
+#acessoSecundario li:hover{
+	background-color: #C3C3C3;
+}
+
+.selected{
+	background-color: #C3C3C3;	
+}
+
+#addListaFinal{
+	width:100px;
+	height: 200px;
+	margin-left: 20px;
+}
+
+#cadUsuario {
+	width: 100%;
+}
+
+#itensSelecionados {
+	margin-left:20px;
+}
+.area03, .area04, .area05{
+	width:100%;
+	margin-top:50px;
+	text-align: left;
+}
+
+.confirmarSenhaNotificacao{
+	width:200px;
+	height:45px;
+	background:white;
+	position:absolute;
+	z-index:100;
+	top:375px;
+	border: 1px solid;
+	text-align: center;
+}
