@@ -162,7 +162,11 @@
 					<td> <input  type = "text" name = "dataFechamento" id = "dataFechamento"> </td>
 				</tr>
 
-				<tr class = "fakeRow"> </tr>
+				<tr style = "height:50px"> </tr>
+
+				<tr>
+					<td colspan = "12"> <input type = "button" name = "cadLojaBtn" id = "cadLojaBtn" value = "Cadastrar loja"> </td>
+				</tr>
 			</table>
 		</div>
 

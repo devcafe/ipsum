@@ -117,6 +117,11 @@ $(document).ready(function(){
 		conteudo.load( "mod_operacional/listLojas.php" );
 	});
 
+	//Abre página para gerenciar lojas
+	$('#gerLojaOpe').click(function(){
+		conteudo.load( "mod_operacional/gerLojas.php" );
+	});
+
 
 
 })

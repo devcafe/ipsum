@@ -94,3 +94,7 @@ label{
 #cnpj, #bandeira, #nome, #estabReceitaRazaoSocial, #estabReceitaNF{
 	width: 400px;
 }
+
+#cadLojaBtn:hover{
+	background: #ADC4DC !important;
+}
