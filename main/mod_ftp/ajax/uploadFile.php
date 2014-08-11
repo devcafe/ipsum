@@ -1,6 +1,6 @@
 <?php
 	//Formatos aceitos
-	$file_formats = array("jpg", "png", "gif", "bmp", "xls", "xlsx", "doc", "docx", "txt");
+	$file_formats = array("jpg", "png", "gif", "bmp", "xls", "xlsx", "doc", "docx", "txt", "avi", "mp3");
 
  	//Verifica a plataforma
     if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
