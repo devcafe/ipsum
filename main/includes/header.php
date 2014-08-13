@@ -100,52 +100,29 @@
 			<?php if (acessosModulos(5)) { ?>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Operacional <b class="caret"></b></a>
-					<ul class="dropdown-menu bigMenu">
-						<div class="onLeft">
+					<ul class="dropdown-menu"> <!-- acrescentar classe BigMenu -->
+						<!--<div class="onLeft">-->
 							<?php if(acessos(21) == true or acessos(22) == true or acessos(23) == true){echo'<li role="presentation" class="dropdown-header"><u> Lojas </u></li>';} ?>
 								<?php if(acessos(21) == true){echo'<li><a href="#" id="cadLojaOpe"> Cadastrar loja </a></li>';} ?>
 								<?php if(acessos(22) == true){echo'<li><a href="#" id="gerLojaOpe"> Gerenciar lojas </a></li>	';} ?>
 								<?php if(acessos(23) == true){echo'<li><a href="#" id="listLojas"> Consultar lojas </a></li>	';} ?>											
 								
-							<li class="divider"></li>
-							<li role="presentation" class="dropdown-header"><u> Lorem Ipsum </u></li>								
+							<!--<li class="divider"></li>-->
+							<!--<li role="presentation" class="dropdown-header"><u> Lorem Ipsum </u></li>								
 							<li><a href="#" id=""> Lorem Ipsum </a></li>
 							<li><a href="#" id=""> Lorem Ipsum </a></li>
-							<li><a href="#" id=""> Lorem Ipsum </a></li>
-						</div>
-						<div class="onRight">
+							<li><a href="#" id=""> Lorem Ipsum </a></li>-->
+						<!--</div>-->
+						<!--<div class="onRight">
 							<li role="presentation" class="dropdown-header"><u> Vagas </u></li>								
 							<li><a href="#" id=""> Lorem Ipsum </a></li>
 							<li><a href="#" id=""> Lorem Ipsum </a></li>
 							<li><a href="#" id=""> Lorem Ipsum </a></li>
-						</div>
+						</div>-->
 					</ul>
 				</li>
 			<?php	} ?>
 
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Operacional <b class="caret"></b></a>
-				<ul class="dropdown-menu">
-					<!--<div class="onLeft">-->
-						<li role="presentation" class="dropdown-header"><u> Lojas </u></li>
-						<li><a href="#" id="cadLojaOpe"> Cadastrar loja </a></li>
-						<li><a href="#" id="gerLojaOpe"> Gerenciar lojas </a></li>						
-						<li><a href="#" id="listLojas"> Consultar lojas </a></li>		
-						<!--<li class="divider"></li>-->
-						<!--<li role="presentation" class="dropdown-header"><u> Lorem Ipsum </u></li>								
-						<li><a href="#" id=""> Lorem Ipsum </a></li>
-						<li><a href="#" id=""> Lorem Ipsum </a></li>
-						<li><a href="#" id=""> Lorem Ipsum </a></li>-->
-					<!--</div>-->
-					<!--<div class="onRight">
-						<li role="presentation" class="dropdown-header"><u> Vagas </u></li>								
-						<li><a href="#" id=""> Lorem Ipsum </a></li>
-						<li><a href="#" id=""> Lorem Ipsum </a></li>
-						<li><a href="#" id=""> Lorem Ipsum </a></li>
-					</div>-->
-				</ul>
-			</li>
-			
 			<!-- Modulo gerencial -->
 			<?php if (acessosModulos(6)) { ?>
 				<li class="dropdown">
