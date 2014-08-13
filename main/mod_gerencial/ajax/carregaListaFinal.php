@@ -39,7 +39,7 @@
 	
 	$lista = '<ul class ='.'m_' . $res->idModulo . '>';
 
-		$lista .= '<li>' . $res->nomeModulo;
+		$lista .= '<li><b>' . $res->nomeModulo . '</b>'; 
 			$lista .= '<ul id = "l_'. $res->idModulo.'">';
 				while($res = $sql01->fetch(PDO::FETCH_OBJ)){
 					$lista .= '	<li class = "moduloSelecionadoFinal" id = i_'. $res->idModulo . '_' .$res->idModuloItem .'>	

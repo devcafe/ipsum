@@ -10,6 +10,9 @@ $(document).ready(function(){
 	//ao carregar a tela esconde o elemento o 
 	$('#screen').css("display", "none");
 
+	// acesso de admin taxando 0, assim a pessoa não tem acesso nada.
+	var adminAcessos = 0;
+
 
 	/****************** ./Escopo global ******************/
 
@@ -24,6 +27,42 @@ $(document).ready(function(){
 	        $('#usuario').val(usuario);
 
 	})
+
+ 	//Mostra o cnpj de acordo com o select selecionado	
+	
+	$("#empresa").change(function(){
+        
+        var cnpjId = $('#empresa option:selected').attr('id');
+        
+        $("#cnpj").val(cnpjId);
+
+    });
+
+
+
+	// Cadastrar usuário Administrador
+	$('#admin').on('click', function(){
+		admin();
+	})
+
+	function admin(){
+		var validarAdmin = '';
+		//pega o valo do proximo emento
+		$(this).next().html();
+		//verifica se o elemento está sendo checkado
+		if($("#admin").is(":checked")){			
+			$('#definirAcessos').css("display", "none");
+			$('#screen').css("display", "none");
+				validarAdmin = true;	
+				return(validarAdmin);			
+		}else{			
+			$('#definirAcessos').css("display", "block");
+				validarAdmin = false;
+				return(validarAdmin);
+		}
+	}
+
+
 	// Ocultar elemnto
 	var cont = 0;
 
@@ -190,11 +229,24 @@ $(document).ready(function(){
 			$('.confirmarSenhaNotificacao').css("display", "block");						
 		} else {			
 			$('.confirmarSenhaNotificacao').css("display", "none");
-	
+		}
+	})
+	/*$('#confirmarSenha').on('focusout','keyup', function(){
+		var senha = $('#senha').val();
+		var confirmarSenha = $('#confirmarSenha').val();	
+		
+		if(senha != confirmarSenha){
+			$('.confirmarSenhaNotificacao').css("display", "block");						
+		} else {			
+			$('.confirmarSenhaNotificacao').css("display", "none");
+		}
+	})
+*/
+
 
 			//Cadastra usuário no sistema
 			$('.area04').on('click','#cadUsuario', function(){
-
+				
 				// trata os modulos selecionados 
 				var cont = 0;
 				var modulos = [];
@@ -211,10 +263,14 @@ $(document).ready(function(){
 					var departamento 	= $('#departamento').val();
 					var empresa 		= $('#empresa').val();
 					var cnpj 			= $('#cnpj').val();
-					var usuario 		= $('#usuario').val();		
+					var usuario 		= $('#usuario').val();
+					var senha 			= $('#senha').val();		
 					var acessos 		= modulos.toString();
 					
-
+					if(admin() == true){
+						acessos = 99;						
+					} 
+					
 					//Envia dados via ajax para cadastrar usuário
 					$.ajax({
 						type: 'POST',
@@ -231,11 +287,9 @@ $(document).ready(function(){
 							acessos: acessos
 						},
 						success: function(data){
-							confirm(data);
+							confirm(data);							
 						}
 					})
 			});
-		}
-	})	
 
 })

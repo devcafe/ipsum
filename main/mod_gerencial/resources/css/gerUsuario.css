@@ -3,3 +3,15 @@
 	margin: 0 auto;
 	width: 1120px;
 }
+
+.selected{
+	background:#CCC !important;
+}
+
+.par{
+	background: #E8E8E8;
+}
+
+.impar{
+	background: #FFF;
+}

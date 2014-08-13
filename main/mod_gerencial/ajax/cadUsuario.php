@@ -1,8 +1,6 @@
 <?php
 	include("../../../conf/conn.php");
 
-	
-
 	//Pega data atual
 	$dataAtual = date('d/m/Y');
 	$dataCadastro = $dataAtual;
@@ -15,8 +13,6 @@
 		$cont++;
 	}
 
-	//print_r($dados);
-
 	$check = $pdo->prepare ("SELECT `usuario`,`email` FROM `ipsum_usuarios` WHERE  `usuario` = ? or `email` = ? ");
 
 	$check->execute(array($dados[6], $dados[2]));
@@ -27,22 +23,22 @@
 		$msg = "Favor informe o seu nome.";
 	} 
 		else if ($dados [1] == "") {
-			$msg = "Favor informe o seu sobrenome.";
+			$msg = "Favor informe um sobrenome.";
 	 		}
 			else if ($dados [2] == "") {
 				$msg = "Favor informe o seu email.";
 			}
 			else if ($dados [3] == "") {
-				$msg = "Informe o seu departamento.";
+				$msg = "Informe um departamento.";
 			}
 			else if ($dados [4] == "") {
 				$msg = "Favor informe a sua empresa.";
 			}
 			else if ($dados [5] == "") {
-				$msg = "Preencha corretamente o CPF.";
+				$msg = "Preencha corretamente o CNPJ.";
 			}
 			else if ($dados [6] == "") {
-				$msg = "O usuário está errado.";
+				$msg = "O usuário já existe ou está incorreto.";
 			}
 			else if ($dados [7] == "") {
 				$msg = "Você esqueceu de colocar uma senha!";
@@ -71,5 +67,4 @@
 
 		
 	echo $msg;
-
 ?>

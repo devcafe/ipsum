@@ -1,6 +1,8 @@
 <?php 
 	require("../../conf/conn.php");
 	include("../../actions/security.php"); 
+	$sql = $pdo->prepare("select * From ipsum_empresas");
+	$sql->execute();	
 ?>
 
 <!-- Javascript -->
@@ -15,40 +17,58 @@
 		<table>
 			<tr>
 				<td> <label for = "primeiroNome"> Primeiro nome: </label> </td> 
-				<td> <input type = "text" name = "primeiroNome" id = "primeiroNome"></td> 
+				<td> <input type = "text" name = "primeiroNome" id = "primeiroNome" maxlength="20"></td> 
 
 				<td> <label for = "sobrenome"> Sobrenome: </label></td> 
-				<td> <input type = "text" name = "sobrenome" id = "sobrenome"></td> 
+				<td> <input type = "text" name = "sobrenome" id = "sobrenome" maxlength="20"></td> 
 
 				<td> <label for = "email"> Email: </label></td> 
-				<td> <input type = "text" name = "email" id = "email"></td> 
+				<td> <input type = "text" name = "email" id = "email" maxlength="50" value = "@cafecomunicacao.com.br"></td> 
 			</tr>
 
 			<tr>
 				<td> <label for = "departamento"> Departamento: </label></td>
-				<td> <input type = "text" name = "departamento" id = "departamento"></td>
+				<td> <input type = "text" name = "departamento" id = "departamento" maxlength="20"></td>
+				<!--<td> 
+					<select name = "departamento" id = "departamento" >
+						<option value="administrativo">Administrativo</option>
+						<option value="atendimento">Atendimento</option>
+						<option value="Back Office">Back Office</option>
+						<option value="Relatórios">Relatórios</option>
+						<option value="Coordenação">Coordenação</option>
+						<option value="Coordenação">Coordenação</option>
+					</select>
+				</td>-->
 
 				<td> <label for = "empresa"> Empresa: </label></td>
-				<td> <input type = "text" name = "empresa" id = "empresa"></td>
+				<!--<td> <input type = "text" name = "empresa" id = "empresa" maxlength="30" value="CAFÉ EXPRESSO"></td>-->
+				<td> <select name ="empresa" id = "empresa">
+					<option value"">Selecione uma empresa</option>
+				<?php
+				while ($empresa = $sql->fetch(PDO::FETCH_OBJ)){
+					echo '<option value="' . $empresa->nomeEmpresa . '" id = "' . $empresa->cnpj .'">' . $empresa->nomeEmpresa . '</option>';}
 
+				?>
+				</td>
+				
 				<td> <label for = "cnpj"> CNPJ: </label></td>
-				<td> <input type = "text" name = "cnpj" id = "cnpj"></td>
+				<td> <input type = "text" name = "cnpj" id = "cnpj" ></td>
 
 			</tr>
 
 			<tr> 
-				<td> <label for = "usuario"> Usuário: </label></td>
-				<td> <input type = "text" name = "usuario" id = "usuario" ></td>
+				<td> <label for = "usuario" > Usuário: </label></td>
+				<td> <input type = "text" name = "usuario" id = "usuario" maxlength="20"></td>
 
 				<td> <label for = "senha"> Senha: </label></td>
 				<td> 
-					<input type = "password" name = "senha" id = "senha" >					
+					<input type = "password" name = "senha" id = "senha" MAXLENGTH="16">					
 				</td>
 
 				<td> <label for = "confirmarSenha"></label></td>
 				<td> 
-					<input type = "password" name = "confirmarSenha" id = "confirmarSenha" placeholder = "Confirme a senha"> 
-					<div class ="confirmarSenhaNotificacao"> A senha não bate com a primeira digitada.</div>
+					<input type = "password" name = "confirmarSenha" id = "confirmarSenha" placeholder = "Confirme a senha" MAXLENGTH="16"> 
+					<div class ="confirmarSenhaNotificacao"> As senhas não conferem.</div>
 				</td>
 
 			</tr>
@@ -57,9 +77,9 @@
 		</table>
 
 		<div class = "area02">
+			<input type = "checkbox" id="admin" name = "admin"> <span>Administrador </span><br>
 			<a href = "#" name = "definirAcessos" id = "definirAcessos"> Definir Acessos </a>
-		</div>
-
+		</div>	
 
 		<div class = "area03" id = "screen">
 			<!-- Acesso primario -->
