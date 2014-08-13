@@ -19,6 +19,15 @@ $(document).ready(function(){
 		$('#uf').val('');
 	}
 
+
+	//Função para limpar campos antes da consulta do CEP (dados receita)
+	function cleanFieldsReceita(){
+		$('#estabReceitaEndereco').val('');
+		$('#estabReceitaBairro').val('');
+		$('#estabReceitaCidade').val('');
+		$('#estabReceitaUF').val('');
+	}
+
 	/* Executa a requisição quando o campo CEP perder o foco */
 	$('#cep').focusout(function(){
 
@@ -47,7 +56,7 @@ $(document).ready(function(){
 	/* Executa a requisição quando o campo CEP da receita perder o foco */
 	$('#estabReceitaCEP').focusout(function(){
 
-		cleanFields();
+		cleanFieldsReceita();
 
 		$.ajax({
 			url: 'mod_operacional/ajax/carregaDadosCEP.php',

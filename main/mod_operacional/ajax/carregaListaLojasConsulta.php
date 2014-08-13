@@ -19,7 +19,7 @@
 		$inicio = $inicio * $total_reg;
 
 		//Busca limitada
-		$limite = $pdo->prepare("Select * From ipsum_operacionallojas LIMIT $inicio,$total_reg");
+		$limite = $pdo->prepare("Select * From ipsum_operacionallojas a Inner Join ipsum_operacionalbandeiras b On (a.idEstabBandeira = b.idBandeira) LIMIT $inicio,$total_reg");
 		$limite->execute();
 
 		$todos = $pdo->prepare("Select * From ipsum_operacionallojas");
@@ -53,18 +53,19 @@
 		//Consulta para retornar lojas de acordo com o filtro
 		$limite = $pdo->prepare("
 			Select * 
-			From ipsum_operacionallojas
+			From ipsum_operacionallojas a
+			Inner Join ipsum_operacionalbandeiras b On (a.idEstabBandeira = b.idBandeira)
 			Where 
-				cnpj like :cnpj
-			And estabReceitaRazaoSocial like :razaoSocial
-			And estabReceitaNF like :nomeFantasia
-			And bairro like :bairro
-			And rua like :rua
-			And bandeira like :bandeira
-			And cep like :cep
-			And cidade like :cidade
-			And uf like :uf
-			And numero like :numero
+				a.cnpj like :cnpj 
+			And a.estabReceitaRazaoSocial like :razaoSocial
+			And a.estabReceitaNF like :nomeFantasia
+			And a.bairro like :bairro
+			And a.rua like :rua
+			And b.bandeira like :bandeira
+			And a.cep like :cep
+			And a.cidade like :cidade
+			And a.uf like :uf
+			And a.numero like :numero
 			Limit 
 				$inicio,$total_reg
 		");
@@ -73,18 +74,19 @@
 
 		$todos = $pdo->prepare("
 			Select * 
-			From ipsum_operacionallojas
+			From ipsum_operacionallojas a
+			Inner Join ipsum_operacionalbandeiras b On (a.idEstabBandeira = b.idBandeira)
 			Where 
-				cnpj like :cnpj
-			And estabReceitaRazaoSocial like :razaoSocial
-			And estabReceitaNF like :nomeFantasia
-			And bairro like :bairro
-			And rua like :rua
-			And bandeira like :bandeira
-			And cep like :cep
-			And cidade like :cidade
-			And uf like :uf
-			And numero like :numero
+				a.cnpj like :cnpj 
+			And a.estabReceitaRazaoSocial like :razaoSocial
+			And a.estabReceitaNF like :nomeFantasia
+			And a.bairro like :bairro
+			And a.rua like :rua
+			And b.bandeira like :bandeira
+			And a.cep like :cep
+			And a.cidade like :cidade
+			And a.uf like :uf
+			And a.numero like :numero
 		");
 		$todos->execute(array(":cnpj" => "%" . $cnpj . "%", ":razaoSocial" => "%" . $razaoSocial . "%", ":nomeFantasia" => "%" . $nomeFantasia . "%", ":bairro" => "%" . $bairro . "%", ":rua" => "%" . $rua . "%", ":bandeira" => "%" . $bandeira . "%", ":cep" => "%" . $cep . "%", ":cidade" => "%" . $cidade . "%", ":uf" => "%" . $uf . "%", ":numero" => "%" . $numero . "%"));
 

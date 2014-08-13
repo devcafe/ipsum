@@ -28,7 +28,7 @@
 			<div id = "conteudo"> 
 				<div id = "conteudoInner">
 
-					<table class="aniversariantesTable"> 
+					<!--<table class="aniversariantesTable"> 
 						<tbody>
 							<tr>
 								<td colspan = "3" class = "tableTitle"> <h6> <b> Aniversariantes do mês </b> </h6> </td>
@@ -39,7 +39,7 @@
 								<td> Data </td>
 							</tr>
 						</tbody>
-					</table>
+					</table>-->
 
 				</div>
 			</div>

@@ -4,6 +4,7 @@ $(document).ready(function(){
 
 	//Esconde filtro
 	$('.filtro').hide();
+	$('.chooseFields').hide();
 
 	//Esconde modal
 	$('#lojasModal').hide();
@@ -208,6 +209,57 @@ $(document).ready(function(){
 				numeroList.val(json.numero);
 				cidadeList.val(json.cidade);
 				ufList.val(json.uf);
+			}
+		})
+	})
+
+	$('#btnSelFields').on('click', function(){
+		//Exibe seleção de campos
+		$('.chooseFields').toggle();
+	})
+
+	//Traz apenas campos selecionados
+	$('#sendFields').on('click', function(){
+		var itens = [];
+		var i = 0;
+
+		var pag = $('#pagina').val();
+
+		$( ".checkBox:checked" ).each(function() {
+		  itens[i] = $(this).val();
+		  
+		  i++;
+		});
+
+		//Envia id da loja para retornar formulario preenchido
+		$.ajax({
+			type: 'POST',
+			data:{
+				op: 'withFields',
+				itens: itens,
+				pag: pag
+			},
+			url: 'mod_operacional/ajax/carregaListaLojasGerencial.php',
+			success: function (data){
+				$('#listaLojas').empty();
+
+				//Carrega lista em div
+				$('#listaLojas').append(data);
+
+				//console.log(data);
+			}
+		})
+
+	})
+
+	//Gera CSV
+	$('.btnToCSV').on('click', function(){
+		$.ajax({
+			type: 'POST',
+			url: 'mod_operacional/ajax/geraCSVLojas.php',
+			success: function (data){
+				//console.log(data);
+				window.location = "mod_operacional/ajax/geraCSVLojas.php";
 			}
 		})
 	})
