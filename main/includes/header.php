@@ -97,7 +97,6 @@
 				<?php	} ?>
 
 			<!-- Modulo Operacional -->
-<<<<<<< HEAD
 			<?php if (acessosModulos(5)) { ?>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Operacional <b class="caret"></b></a>
@@ -123,7 +122,7 @@
 					</ul>
 				</li>
 			<?php	} ?>
-=======
+
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Operacional <b class="caret"></b></a>
 				<ul class="dropdown-menu">
@@ -146,8 +145,7 @@
 					</div>-->
 				</ul>
 			</li>
->>>>>>> origin/master
-
+			
 			<!-- Modulo gerencial -->
 			<?php if (acessosModulos(6)) { ?>
 				<li class="dropdown">
