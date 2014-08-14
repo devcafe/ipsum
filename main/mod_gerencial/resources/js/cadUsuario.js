@@ -25,6 +25,7 @@ $(document).ready(function(){
 	        sobrenome = sobrenome.split(" ");
 	        var usuario = primeiroNome[0].toLowerCase() + sobrenome[0].toLowerCase()
 	        $('#usuario').val(usuario);
+	        $('#email').val(usuario + '@cafecomunicacao.com.br')
 
 	})
 
@@ -264,7 +265,8 @@ $(document).ready(function(){
 					var empresa 		= $('#empresa').val();
 					var cnpj 			= $('#cnpj').val();
 					var usuario 		= $('#usuario').val();
-					var senha 			= $('#senha').val();		
+					var senha 			= $('#senha').val();
+					var confirmarSenha 	= $('#confirmarSenha').val();		
 					var acessos 		= modulos.toString();
 					
 					if(admin() == true){
@@ -284,10 +286,24 @@ $(document).ready(function(){
 							cnpj: cnpj,
 							usuario: usuario,
 							senha: senha,
+							confirmarSenha: confirmarSenha,
 							acessos: acessos
 						},
-						success: function(data){
-							confirm(data);							
+						success: function(data){																
+							alert(data);
+							if(data == 'Usuário Cadastrado com sucesso.'){
+								$('#primeiroNome').val('');
+								$('#sobrenome').val('');
+								$('#email').val('');
+								$('#departamento').val('');
+								$('#empresa').val('');
+								$('#cnpj').val('');
+								$('#usuario').val('');
+								$('#senha').val('');
+								$('#confirmarSenha').val('');								
+							}
+
+
 						}
 					})
 			});

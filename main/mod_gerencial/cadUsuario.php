@@ -23,7 +23,7 @@
 				<td> <input type = "text" name = "sobrenome" id = "sobrenome" maxlength="20"></td> 
 
 				<td> <label for = "email"> Email: </label></td> 
-				<td> <input type = "text" name = "email" id = "email" maxlength="50" value = "@cafecomunicacao.com.br"></td> 
+				<td> <input type = "text" name = "email" id = "email" maxlength="50"></td> 
 			</tr>
 
 			<tr>

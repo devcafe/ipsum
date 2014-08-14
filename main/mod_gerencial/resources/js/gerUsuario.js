@@ -14,7 +14,8 @@ $(document).ready(function(){
 		$.ajax({
 			type: 'POST',			
 			url: 'mod_gerencial/ajax/carregaUsuarios.php',
-			success: function (data){				
+			success: function (data){	
+				$('#listaUsuarios').empty();			
 				$('#listaUsuarios').append(data);
 
 			}

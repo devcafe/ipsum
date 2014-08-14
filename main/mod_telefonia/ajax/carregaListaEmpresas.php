@@ -61,7 +61,7 @@
 					$lista .= '<td>'. $empresas->telContatoResponsavel .'</td>';
 					$lista .= '<td>'. $empresas->emailContatoResponsavel .'</td>';
 					$lista .= '<td>'. $empresas->cnpj .'</td>';
-					$lista .= '<td>'. $empresas->razaoSocial .'</td>';
+					$lista .= '<td>'. $empresas->razaoFiltroSocial .'</td>';
 					$lista .= '<td>'. $empresas->endereco .'</td>';
 					$lista .= '<td>'. $empresas->observacoes .'</td>';
 				$lista .= '</tr>';
