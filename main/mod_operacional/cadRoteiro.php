@@ -20,7 +20,7 @@
 				$sql->execute();
 
 				while($res = $sql->fetch(PDO::FETCH_OBJ)){
-					echo "OK";
+					echo $res->RA_NOME. ' </br>';
 				}
 			?>
 		</div>
