@@ -100,8 +100,8 @@
 			<?php if (acessosModulos(5)) { ?>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Operacional <b class="caret"></b></a>
-					<ul class="dropdown-menu"> <!-- acrescentar classe BigMenu -->
-						<!--<div class="onLeft">-->
+					<ul class="dropdown-menu bigMenu">
+						<div class="onLeft">
 							<?php if(acessos(21) == true or acessos(22) == true or acessos(23) == true){echo'<li role="presentation" class="dropdown-header"><u> Lojas </u></li>';} ?>
 								<?php if(acessos(21) == true){echo'<li><a href="#" id="cadLojaOpe"> Cadastrar loja </a></li>';} ?>
 								<?php if(acessos(22) == true){echo'<li><a href="#" id="gerLojaOpe"> Gerenciar lojas </a></li>	';} ?>
@@ -112,13 +112,12 @@
 							<li><a href="#" id=""> Lorem Ipsum </a></li>
 							<li><a href="#" id=""> Lorem Ipsum </a></li>
 							<li><a href="#" id=""> Lorem Ipsum </a></li>-->
-						<!--</div>-->
-						<!--<div class="onRight">
-							<li role="presentation" class="dropdown-header"><u> Vagas </u></li>								
-							<li><a href="#" id=""> Lorem Ipsum </a></li>
-							<li><a href="#" id=""> Lorem Ipsum </a></li>
-							<li><a href="#" id=""> Lorem Ipsum </a></li>
-						</div>-->
+						</div>
+						<div class="onRight">
+							<li role="presentation" class="dropdown-header"><u> Cartas de apresentação </u></li>								
+							<li><a href="#" id=""> Gerenciar modelos de cartas </a></li>
+							<li><a href="#" id="cadRoteiroOpe"> Criar roteiro </a></li>
+						</div>
 					</ul>
 				</li>
 			<?php	} ?>
