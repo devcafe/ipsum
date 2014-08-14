@@ -1,0 +1,47 @@
+/* Modal de colaboradores */
+.ui-dialog{
+	height: 600px !important;
+	width: 900px !important;	
+}
+
+.listaColaboradores{
+	margin: 50px 0 0 28px;
+}
+
+/* Tabela de colaboradores */
+.checkboxTD {
+	width: 15px;
+}
+
+.optionTD{
+	width: 15px;
+}
+
+.optionLabelTD{
+	width: 68px;
+}
+
+#consultarColaborador{
+	margin-left: 50px;
+}
+
+#toSearch{
+	width: 330px;
+	margin-right: 30px;
+}
+
+.par{
+	background: #E8E8E8;
+}
+
+.impar{
+	background: #FFF;
+}
+
+table tr:first-child {
+	background: #ADC4DC !important;
+	color: #000;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 20px;
+}

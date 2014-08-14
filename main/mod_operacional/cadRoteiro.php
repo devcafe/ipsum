@@ -14,7 +14,7 @@
 		</div>-->
 		<div id = "cadRoteiro">
 			<div id = "selLoja">
-				<a href = "#" id = "selectFuncBtn"> + Colaborador </a>
+				<a href = "#" id = "selectColaBtn"> + Colaborador </a>
 			</div>
 
 		</div>
@@ -23,15 +23,15 @@
 
 <!-- Modals -->
 <!-- Visualizar dados da loja -->
-<div id = "lojasModal" title = "Lojas">
+<div id = "colaboradorModal" class = "modalColaboradores" title = "Colaboradores">
+	<form method = "post" id = "colaboradoresForm">
+		<label for = "toSearch"> Buscar: </label> <input type = "text" name = "toSearch" id = "toSearch">
+		<input type="radio" name="buscaCampo" value="matricula" checked="checked">Matricula
+		<input type="radio" name="buscaCampo" value="nome">Nome
+		<input type = "button" name = "consultarColaborador" id = "consultarColaborador" value = "Pesquisar colaborador">
+	</form>
+	<div class = "listaColaboradores">
 
+	</div>
 </div>
-
-<?php
-	/*$sql = $protheus->prepare("Select top 10 * From SRA010 ");
-	$sql->execute();
-
-	while($res = $sql->fetch(PDO::FETCH_OBJ)){
-		echo $res->RA_NOME. ' </br>';
-	}*/
-?>
+<!--<input type = "hidden" id = "pagina" value = "1">-->
