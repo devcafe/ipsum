@@ -21,7 +21,9 @@ $(document).ready(function(){
 			},
 			success: function (data){
 				alert(data);
-				$('$formCadChamado').val('');
+				$('#breveDescricaoChamado').val('');
+				$('#departamento').val('');
+				$('#descricaoChamado').val('');
 			}
 		})
 	});	

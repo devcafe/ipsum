@@ -123,3 +123,9 @@ table tr:not(:first-child):hover{
 #usuariosOK, #empresasOK, #aparelhosOK{
 	width:100%;
 }
+@-moz-document url-prefix() { 
+  #listaLinhasMoveis {
+     width:100%;
+     float: left;
+  }
+}

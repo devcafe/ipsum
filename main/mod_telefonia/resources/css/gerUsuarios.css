@@ -136,3 +136,10 @@ input[name="enderecoFiltro"]{
 #showEmpresaAcao{
 	width:100% !important;
 }
+
+@-moz-document url-prefix() { 
+  #listaUsuarios {
+     width:100%;
+     float: left;
+  }
+}
