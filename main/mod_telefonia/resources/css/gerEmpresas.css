@@ -116,3 +116,11 @@ input[name="razaoFiltro"]{
 #showUsuario, #showEmpresaAcao, #showAparelho{
 	width: 100% !important;
 }
+
+
+@-moz-document url-prefix() { 
+  #listaEmpresas {
+     width:100%;
+     float: left;
+  }
+}

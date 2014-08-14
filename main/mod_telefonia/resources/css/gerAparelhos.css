@@ -113,3 +113,10 @@ select[name="statusFiltro"]{
 #gravar:hover{
 	background: #ADC4DC !important;
 }
+
+@-moz-document url-prefix() { 
+  #listaAparelhos {
+     width:100%;
+     float: left;
+  }
+}

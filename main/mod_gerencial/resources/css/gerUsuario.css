@@ -15,3 +15,24 @@
 .impar{
 	background: #FFF;
 }
+
+table tr:not(:first-child):hover{
+	background:#CCC;
+}
+
+.painel{
+	height:auto;
+	width:100%;
+	margin:5px;	
+}
+
+#alterarItemModal{
+	overflow-x: hidden;
+}
+
+#alterarItemModal form label, #alterarItemModal form input, #alterarItemModal form select, #alterarItemModal form textarea	{
+	width:25%;
+	margin-top:10px !important;
+	float:left;
+	margin:0;
+}

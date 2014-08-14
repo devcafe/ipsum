@@ -23,7 +23,6 @@ $(document).ready(function(){
 	}
 
 	carregaUsuarios();
-
 	
 
 	//Marca campos como selecionados ao clicar em uma linha
@@ -74,4 +73,61 @@ $(document).ready(function(){
 			})
 		}
 	})
+
+
+	// Carrega dados para editar
+
+		//Carrega dados para editar item
+	$('#listaUsuarios').on('dblclick', 'table tr:not(:first-child)', function(){
+
+		var id = $(this).attr('id');
+
+		//Campos que receberão dados
+		var primeiroNome = $('#primeiroNome');
+		var sobrenome = $('#sobrenome');
+		var email = $('#email');
+		var departamento = $('#departamento');
+		var empresa = $('#empresa');
+		var cnpj = $('#cnpj');
+		var usuario = $('#usuario');
+		var senha = $('#senha');
+		var acessos = $('#acessos');
+
+		//Carrega dados da linha para edição
+		$.ajax({
+			type: 'POST',
+			url: 'mod_gerencial/ajax/carregaDadosEdicaoUsuarios.php',
+			data: {
+				id: id
+			},
+			success: function(data){
+				var json = $.parseJSON(data);
+				
+				//Popula campos
+				$('#id').val(id);
+
+				primeiroNome.val(json.nome);
+				sobrenome.val(json.sobrenome);
+				email.val(json.email);
+				departamento.val(json.departamento);
+				empresa.val(json.empresa);
+				cnpj.val(json.cnpj);
+				usuario.val(json.usuario);
+				senha.val(json.senha);
+				acessos.val(json.acessos);				
+				
+			}
+		});
+
+	//Abre modal com dados do item a ser editado
+		$( "#alterarItemModal" ).dialog({
+			width: 800,
+			show: {
+		        effect: "blind",
+		        duration: 500
+	     	}
+		});
+	});
+
+	
 });
