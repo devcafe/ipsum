@@ -25,6 +25,7 @@ $(document).ready(function(){
 	        sobrenome = sobrenome.split(" ");
 	        var usuario = primeiroNome[0].toLowerCase() + sobrenome[0].toLowerCase()
 	        $('#usuario').val(usuario);
+	        $('#email').val(usuario + '@cafecomunicacao.com.br')
 
 	})
 
