@@ -45,3 +45,11 @@ table tr:first-child {
 	font-size: 12px;
 	line-height: 20px;
 }
+
+#addToList{
+	margin-top:15px;
+}
+
+#addToList:hover{
+	background: #ADC4DC !important;
+}

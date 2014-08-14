@@ -51,6 +51,10 @@
 
 			$i++;
 		}
+
+		$lista .= '<tr>';
+			$lista .= '<td colspan = "12"> <input type = "button" name = "addToList" id = "addToList" value = "Adicionar"> </td>'; 
+		$lista .= '</tr>';
 	$lista .= '</table>';
 
 	echo $lista;
