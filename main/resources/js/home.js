@@ -122,6 +122,9 @@ $(document).ready(function(){
 		conteudo.load( "mod_operacional/gerLojas.php" );
 	});
 
-
+	//Abre página para criar roteiro
+	$('#cadRoteiroOpe').click(function(){
+		conteudo.load( "mod_operacional/cadRoteiro.php" );
+	});
 
 })
