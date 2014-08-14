@@ -9,7 +9,7 @@
 	if($op == ''){
 		
 		//Total de registros por pagina
-		$total_reg = "5";	
+		$total_reg = "25";	
 
 		//Página atual
 		$pc = $_POST['pag'];
@@ -29,7 +29,7 @@
 		$tp = $tr / $total_reg;
 	} elseif($op == 'withFields') {
 		//Total de registros por pagina
-		$total_reg = "5";	
+		$total_reg = "25";	
 
 		//Página atual
 		$pc = $_POST['pag'];
@@ -49,7 +49,7 @@
 		$tp = $tr / $total_reg;
 	} else {
 		//Total de registros por pagina
-		$total_reg = "5";	
+		$total_reg = "25";	
 
 		//Página atual
 		$pc = $_POST['pag'];
