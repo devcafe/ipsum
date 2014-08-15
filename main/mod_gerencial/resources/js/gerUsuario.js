@@ -75,9 +75,8 @@ $(document).ready(function(){
 	})
 
 
-	// Carrega dados para editar
 
-		//Carrega dados para editar item
+	//Carrega dados para editar item
 	$('#listaUsuarios').on('dblclick', 'table tr:not(:first-child)', function(){
 
 		var id = $(this).attr('id');
@@ -92,6 +91,8 @@ $(document).ready(function(){
 		var usuario = $('#usuario');
 		var senha = $('#senha');
 		var acessos = $('#acessos');
+
+		console.log(departamento)
 
 		//Carrega dados da linha para edição
 		$.ajax({
@@ -128,6 +129,51 @@ $(document).ready(function(){
 	     	}
 		});
 	});
+
+	$('#gravar').on('click', function(){
+
+		//pega os valores
+		var id 				= $('#id').val();
+		var nome 			= $('#primeiroNome').val();
+		var sobrenome		= $('#sobrenome').val();
+		var email 			= $('#email').val();
+		var departamento 	= $('#departamento').val;
+		var empresa 		= $('#empresa').val();
+		var cnpj 			= $('#cnpj').val();
+		var usuario 		= $('#usuario').val();
+		var senha 			= $('#senha').val();
+		var acessos 		= $('#acessos').val();
+
+		$.ajax({
+			type: 'POST',
+			url: 'mod_gerencial/ajax/alteraUsuario.php',
+			data:{
+				id: id,
+				nome: nome,
+				sobrenome: sobrenome,
+				email: email,
+				departamento: departamento,
+				empresa: empresa,
+				cnpj: cnpj,
+				usuario: usuario,
+				senha: senha,
+				acessos: acessos
+
+			},
+			success: function(data){
+				//recarrega lista para atualizar dados
+				carregaUsuarios();
+				//fecha o dialogo
+
+				$('#alterarItemModal').dialog('destroy');
+				console.log(data);
+			}
+		})
+
+
+
+	})
+	
 
 	
 });

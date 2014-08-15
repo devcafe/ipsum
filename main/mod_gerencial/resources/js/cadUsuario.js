@@ -48,7 +48,7 @@ $(document).ready(function(){
 
 	function admin(){
 		var validarAdmin = '';
-		//pega o valo do proximo emento
+		//pega o valor do proximo elemento
 		$(this).next().html();
 		//verifica se o elemento está sendo checkado
 		if($("#admin").is(":checked")){			
@@ -232,19 +232,7 @@ $(document).ready(function(){
 			$('.confirmarSenhaNotificacao').css("display", "none");
 		}
 	})
-	/*$('#confirmarSenha').on('focusout','keyup', function(){
-		var senha = $('#senha').val();
-		var confirmarSenha = $('#confirmarSenha').val();	
-		
-		if(senha != confirmarSenha){
-			$('.confirmarSenhaNotificacao').css("display", "block");						
-		} else {			
-			$('.confirmarSenhaNotificacao').css("display", "none");
-		}
-	})
-*/
-
-
+	
 			//Cadastra usuário no sistema
 			$('.area04').on('click','#cadUsuario', function(){
 				
@@ -257,6 +245,8 @@ $(document).ready(function(){
 						cont++;			
 					})
 
+
+
 					//Guarda dados dos campos
 					var nome			= $('#primeiroNome').val();
 					var sobrenome 		= $('#sobrenome').val();
@@ -268,7 +258,7 @@ $(document).ready(function(){
 					var senha 			= $('#senha').val();
 					var confirmarSenha 	= $('#confirmarSenha').val();		
 					var acessos 		= modulos.toString();
-					
+							
 					if(admin() == true){
 						acessos = 99;						
 					} 
