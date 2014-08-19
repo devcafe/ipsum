@@ -91,7 +91,7 @@
 
 <!-- Modals -->
 <!-- Visualizar dados da loja -->
-<div id = "lojasModal" title = "Dados da loja">
+<div id = "lojasModalGer" title = "Dados da loja">
 	<table>	
 		<tr>
 			<td> <label for = "cnpjList"> CNPJ: </label> </td>

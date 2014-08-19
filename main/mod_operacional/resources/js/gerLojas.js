@@ -7,7 +7,7 @@ $(document).ready(function(){
 	$('.chooseFields').hide();
 
 	//Esconde modal
-	$('#lojasModal').hide();
+	$('#lojasModalGer').hide();
 
 	//Lista lojas
 	function carregaLojas(){
@@ -217,7 +217,7 @@ $(document).ready(function(){
 		var ufList = $('#ufList');
 
 		//Abre modal com dados da loja
-		$( "#lojasModal" ).dialog({
+		$( "#lojasModalGer" ).dialog({
 			width: 600,
 			show: {
 		        effect: "blind",
