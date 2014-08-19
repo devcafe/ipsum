@@ -2,6 +2,8 @@ $(document).ready(function(){
 
 	carregaLojas();
 
+	$('#lojaDadosReceita').hide();
+
 	//Esconde filtro
 	$('.filtro').hide();
 	$('.chooseFields').hide();
@@ -207,7 +209,7 @@ $(document).ready(function(){
 		//Campos a serem populados
 		var cnpjList = $('#cnpjList');
 		var bandeiraList = $('#bandeiraList');
-		var razaoSocialList = $('#razaoSocialList');
+		var nomeList = $('#nomeList');
 		var nomeFantasiaList = $('#nomeFantasiaList');
 		var cepList = $('#cepList');
 		var ruaList = $('#ruaList');
@@ -240,7 +242,7 @@ $(document).ready(function(){
 				//Popula campos
 				cnpjList.val(json.cnpj);
 				bandeiraList.val(json.bandeira);
-				razaoSocialList.val(json.estabReceitaRazaoSocial);
+				nomeList.val(json.nomeList);
 				nomeFantasiaList.val(json.estabReceitaNF);
 				cepList.val(json.cep);
 				ruaList.val(json.rua);
@@ -248,8 +250,58 @@ $(document).ready(function(){
 				numeroList.val(json.numero);
 				cidadeList.val(json.cidade);
 				ufList.val(json.uf);
+
+				$('#dadosVisualizar').removeClass();
+				$('#dadosVisualizar').addClass(json.idLoja);
 			}
 		})
+	})
+
+	var k = 0;
+	//Exibe dados da receita
+	$('#dadosVisualizar').on('click', function(){
+		
+
+		if(k == 0){
+			$('.showText').html('<- Dados da loja');
+			$('#lojaDadosReceita').show();
+			$('#lojaDados').hide();
+
+			k++;
+		} else {
+			$('.showText').html('Dados da receita ->');
+			$('#lojaDadosReceita').hide();
+			$('#lojaDados').show();
+
+			k--;
+		}
+
+		var id = $(this).attr('class');
+
+		//Envia id da loja para retornar formulario preenchido
+		$.ajax({
+			type: 'POST',
+			data:{
+				id: id
+			},
+			url: 'mod_operacional/ajax/carregaDadosLojaReceita.php',
+			success: function (data){
+				var json = $.parseJSON(data);
+
+				$('#estabReceitaRazaoSocial').val(json.estabReceitaRazaoSocial);
+				$('#estabReceitaNF').val(json.estabReceitaNF);
+				$('#estabReceitaEndereco').val(json.estabReceitaEndereco);
+				$('#estabReceitaCEP').val(json.estabReceitaCEP);
+				$('#estabReceitaComplemento').val(json.estabReceitaComplemento);
+				$('#estabReceitaBairro').val(json.estabReceitaBairro);
+				$('#estabReceitaNumero').val(json.estabReceitaNumero);
+				$('#estabReceitaCidade').val(json.estabReceitaCidade);
+				$('#estabReceitaUF').val(json.estabReceitaUF);
+				$('#estabReceitaSituacao').val(json.estabReceitaSituacao);
+				$('#estabReceitaSituacaoData').val(json.estabReceitaSituacaoData);
+			}
+		});
+
 	})
 
 	$('#btnSelFields').on('click', function(){

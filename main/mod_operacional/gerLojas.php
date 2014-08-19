@@ -92,85 +92,189 @@
 <!-- Modals -->
 <!-- Visualizar dados da loja -->
 <div id = "lojasModalGer" title = "Dados da loja">
-	<table>	
+	<table>
 		<tr>
-			<td> <label for = "cnpjList"> CNPJ: </label> </td>
-		</tr>
-		<tr>
-			<td> <input disabled type = "text" name = "cnpjList" id = "cnpjList"> </td>
+			<td> <a href = "#" id = "dadosVisualizar" name = "dadosVisualizar"> <span class = "showText"> Dados da receita -> </span></a></td>
 		</tr>
 	</table>
 
-	<table>	
-		<tr>
-			<td> <label for = "bandeiraList"> Bandeira: </label> </td>
-		</tr>
-		<tr>
-			<td> <input disabled type = "text" name = "bandeiraList" id = "bandeiraList"> </td>
-		</tr>
-	</table>
+	<div id = "lojaDados">
+		<table>	
+			<tr>
+				<td> <label for = "cnpjList"> CNPJ: </label> </td>
+			</tr>
+			<tr>
+				<td> <input disabled type = "text" name = "cnpjList" id = "cnpjList"> </td>
+			</tr>
+		</table>
 
-	<table>	
-		<tr>
-			<td> <label for = "razaoSocialList"> Razão Social: </label> </td>
-		</tr>
-		<tr>
-			<td> <input disabled type = "text" name = "razaoSocialList" id = "razaoSocialList"> </td>
-		</tr>
-	</table>
+		<table>	
+			<tr>
+				<td> <label for = "bandeiraList"> Bandeira: </label> </td>
+			</tr>
+			<tr>
+				<td> <input disabled type = "text" name = "bandeiraList" id = "bandeiraList"> </td>
+			</tr>
+		</table>
 
-	<table>	
-		<tr>
-			<td> <label for = "nomeFantasiaList"> Nome Fantasia: </label> </td>
-		</tr>
-		<tr>
-			<td> <input disabled type = "text" name = "nomeFantasiaList" id = "nomeFantasiaList"> </td>
-		</tr>
-	</table>
+		<table>	
+			<tr>
+				<td> <label for = "nomeList"> Nome: </label> </td>
+			</tr>
+			<tr>
+				<td> <input disabled type = "text" name = "nomeList" id = "nomeList"> </td>
+			</tr>
+		</table>
 
-	<table>	
-		<tr>
-			<td> <label for = "cepList"> CEP: </label> </td>
-		</tr>
-		<tr>
-			<td> <input disabled type = "text" name = "cepList" id = "cepList"> </td>
-		</tr>
-	</table>
+		<!--<table>	
+			<tr>
+				<td> <label for = "nomeFantasiaList"> Nome Fantasia: </label> </td>
+			</tr>
+			<tr>
+				<td> <input disabled type = "text" name = "nomeFantasiaList" id = "nomeFantasiaList"> </td>
+			</tr>
+		</table>-->
 
-	<table>	
-		<tr>
-			<td> <label for = "ruaList"> Rua: </label> </td>
-		</tr>
-		<tr>
-			<td> <input disabled type = "text" name = "ruaList" id = "ruaList"> </td>
-		</tr>
-	</table>
+		<table>	
+			<tr>
+				<td> <label for = "cepList"> CEP: </label> </td>
+			</tr>
+			<tr>
+				<td> <input disabled type = "text" name = "cepList" id = "cepList"> </td>
+			</tr>
+		</table>
 
-	<table>	
-		<tr>
-			<td> <label for = "bairroList"> Bairro: </label> </td>
-			<td> <label for = "numeroList"> Nº: </label> </td>
-		</tr>
-		<tr>
-			<td> <input disabled type = "text" name = "bairroList" id = "bairroList"> </td>
-			<td> <input disabled type = "text" name = "numeroList" id = "numeroList"> </td>
-		</tr>
-	</table>
+		<table>	
+			<tr>
+				<td> <label for = "ruaList"> Rua: </label> </td>
+			</tr>
+			<tr>
+				<td> <input disabled type = "text" name = "ruaList" id = "ruaList"> </td>
+			</tr>
+		</table>
 
-	<table>	
-		<tr>
-			<td> <label for = "cidadeList"> Cidade: </label> </td>
-			<td> <label for = "ufList"> UF: </label> </td>
-		</tr>
-		<tr>
-			<td> <input disabled type = "text" name = "cidadeList" id = "cidadeList"> </td>
-			<td> <input disabled type = "text" name = "ufList" id = "ufList"> </td>
-		</tr>
+		<table>	
+			<tr>
+				<td> <label for = "bairroList"> Bairro: </label> </td>
+				<td> <label for = "numeroList"> Nº: </label> </td>
+			</tr>
+			<tr>
+				<td> <input disabled type = "text" name = "bairroList" id = "bairroList"> </td>
+				<td> <input disabled type = "text" name = "numeroList" id = "numeroList"> </td>
+			</tr>
+		</table>
 
-		<tr class = "fakeRow"> </tr>
+		<table>	
+			<tr>
+				<td> <label for = "cidadeList"> Cidade: </label> </td>
+				<td> <label for = "ufList"> UF: </label> </td>
+			</tr>
+			<tr>
+				<td> <input disabled type = "text" name = "cidadeList" id = "cidadeList"> </td>
+				<td> <input disabled type = "text" name = "ufList" id = "ufList"> </td>
+			</tr>
 
-		<tr>
-			<td colspan = "12"> <input  id = "alteraLojaBtn" name = "alteraLojaBtn" type = "button" value = "Alterar loja"> </td>
-		</tr>
-	</table>
+			<tr class = "fakeRow"> </tr>
+
+			<tr>
+				<!--<td colspan = "12"> <input  id = "alteraLojaBtn" name = "alteraLojaBtn" type = "button" value = "Alterar loja"> </td>-->
+			</tr>
+		</table>
+	</div>
+
+		<div id = "lojaDadosReceita">
+		<table>	
+			
+			<tr>
+				<td> <label for = "estabReceitaRazaoSocial"> Razão Social: </label> </td>
+			</tr>
+			<tr>
+				<td> <input disabled type = "text" name = "estabReceitaRazaoSocial" id = "estabReceitaRazaoSocial"> </td>
+			</tr>
+		</table>
+
+		<table>	
+			<tr>
+				<td> <label for = "estabReceitaNF"> Nome Fantasia: </label> </td>
+			</tr>
+			<tr>
+				<td> <input disabled type = "text" name = "estabReceitaNF" id = "estabReceitaNF"> </td>
+			</tr>
+		</table>
+
+		<table>	
+			<tr>
+				<td> <label for = "estabReceitaEndereco"> Endereço: </label> </td>
+			</tr>
+			<tr>
+				<td> <input disabled type = "text" name = "estabReceitaEndereco" id = "estabReceitaEndereco"> </td>
+			</tr>
+		</table>
+
+		<table>	
+			<tr>
+				<td> <label for = "estabReceitaCEP"> CEP: </label> </td>
+			</tr>
+			<tr>
+				<td> <input disabled type = "text" name = "estabReceitaCEP" id = "estabReceitaCEP"> </td>
+			</tr>
+		</table>
+
+		<table>	
+			<tr>
+				<td> <label for = "estabReceitaComplemento"> Complemento: </label> </td>
+			</tr>
+			<tr>
+				<td> <input disabled type = "text" name = "estabReceitaComplemento" id = "estabReceitaComplemento"> </td>
+			</tr>
+		</table>
+
+		<!--<table>	
+			<tr>
+				<td> <label for = "ruaList"> Rua: </label> </td>
+			</tr>
+			<tr>
+				<td> <input disabled type = "text" name = "ruaList" id = "ruaList"> </td>
+			</tr>
+		</table>-->
+
+		<table>	
+			<tr>
+				<td> <label for = "estabReceitaBairro"> Bairro: </label> </td>
+				<td> <label for = "estabReceitaNumero"> Nº: </label> </td>
+			</tr>
+			<tr>
+				<td> <input disabled type = "text" name = "estabReceitaBairro" id = "estabReceitaBairro"> </td>
+				<td> <input disabled type = "text" name = "estabReceitaNumero" id = "estabReceitaNumero"> </td>
+			</tr>
+		</table>
+
+		<table>	
+			<tr>
+				<td> <label for = "estabReceitaCidade"> Cidade: </label> </td>
+				<td> <label for = "estabReceitaUF"> UF: </label> </td>
+			</tr>
+			<tr>
+				<td> <input disabled type = "text" name = "estabReceitaCidade" id = "estabReceitaCidade"> </td>
+				<td> <input disabled type = "text" name = "estabReceitaUF" id = "estabReceitaUF"> </td>
+			</tr>
+
+			<table>	
+				<tr>
+					<td> <label for = "estabReceitaSituacao"> Situacao: </label> </td>
+					<td> <label for = "estabReceitaSituacaoData"> Situacao data: </label> </td>
+				</tr>
+				<tr>
+					<td> <input disabled type = "text" name = "estabReceitaSituacao" id = "estabReceitaSituacao"> </td>
+					<td> <input disabled type = "text" name = "estabReceitaSituacaoData" id = "estabReceitaSituacaoData"> </td>
+				</tr>
+			</table>
+
+			<tr class = "fakeRow"> </tr>
+
+			<tr>
+				<!--<td colspan = "12"> <input  id = "alteraLojaBtn" name = "alteraLojaBtn" type = "button" value = "Alterar loja"> </td>-->
+			</tr>
+		</table>
+	</div>
 </div>
