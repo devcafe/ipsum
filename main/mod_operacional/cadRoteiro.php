@@ -14,9 +14,20 @@
 		</div>-->
 		<div id = "cadRoteiro">
 			<div id = "selLoja">
-				<a href = "#" id = "selectColaBtn"> + Colaborador </a>
+				<a href = "#" id = "selectColaBtn"> <img src = "../main/resources/images/addUser.png" width = "20" > </a>
+				<a href = "#" id = "selectLojasBtn">  <img src = "../main/resources/images/operacional/addStores.png" width = "20" >  </a>
 			</div>
+			<div id = "colaboradorData">
+				<table class = "theFirst">
+					<tr>
+						<td class = "matriculaTD"> Matricula </td>
+						<td> Nome </td>
+					</tr>
+					<table id = "addDataUser">
 
+					</table>
+				</table>
+			</div>
 		</div>
 	</form>
 </div>
@@ -33,5 +44,6 @@
 	<div class = "listaColaboradores">
 
 	</div>
+	
 </div>
 <!--<input type = "hidden" id = "pagina" value = "1">-->

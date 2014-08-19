@@ -28,21 +28,21 @@
 
 	$i = 0;
 
-	$lista .= '<table>';
-		$lista .= '<tr>';
+	$lista .= '<table class = "userToAddList">';
+		$lista .= '<tr class = "theFirst">';
 			$lista .= '<td> </td>';
-			$lista .= '<td> <b> Matricula </b></td>';
+			$lista .= '<td class = "matTD"> <b> Matricula </b></td>';
 			$lista .= '<td> <b> Nome completo </b></td>';
 		$lista .= '</tr>';
 		while($res = $sql->fetch(PDO::FETCH_OBJ)){
 			if($i % 2 == 0){
-				$lista .= '<tr class = "par">';
+				$lista .= '<tr class = "par" id = "'. $res->RA_MAT .'">';
 					$lista .= '<td class = "checkboxTD"> <input type = "checkbox" name = "userCheck" value = "'. $res->RA_MAT .'" id = "userCheck"> </td>';
 					$lista .= '<td>' . $res->RA_MAT .'</td>';
 					$lista .= '<td>' . $res->RA_NOMECMP .'</td>';
 				$lista .= '</tr>';
 			} else {
-				$lista .= '<tr class = "impar">';
+				$lista .= '<tr class = "impar" id = "'. $res->RA_MAT .'">';
 					$lista .= '<td class = "checkboxTD"> <input type = "checkbox" name = "userCheck" value = "'. $res->RA_MAT .'" id = "userCheck"> </td>';
 					$lista .= '<td>' . $res->RA_MAT .'</td>';
 					$lista .= '<td>' . $res->RA_NOMECMP .'</td>';

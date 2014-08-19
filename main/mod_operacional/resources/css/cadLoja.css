@@ -63,6 +63,9 @@ label{
 .tel01TD{
 	width: 250px;
 }
+.bandeiraTD{
+	width: 500px;
+}
 
 #estabTel01{
 	width: 250px;
@@ -97,4 +100,20 @@ label{
 
 #cadLojaBtn:hover{
 	background: #ADC4DC !important;
+}
+
+.par{
+	background: #E8E8E8;
+}
+
+.impar{
+	background: #FFF;
+}
+
+.selected{
+	background: #CCC;
+}
+
+input[type=radio]{
+	width:15px;
 }

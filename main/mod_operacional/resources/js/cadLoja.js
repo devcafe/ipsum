@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+	//Esconde modal
+	$('#bandeirasModal').hide();
+	$('#cadBandeirasModal').hide();
+
 	//Mascara campos
 	$("#cnpj").mask("999.999.99/9999-99");
 	$("#cep").mask("99999-999");
@@ -27,6 +31,7 @@ $(document).ready(function(){
 		$('#estabReceitaCidade').val('');
 		$('#estabReceitaUF').val('');
 	}
+
 
 	/* Executa a requisição quando o campo CEP perder o foco */
 	$('#cep').focusout(function(){
@@ -77,5 +82,104 @@ $(document).ready(function(){
 		return false;    
 	})
 
+
+	//Cadastrar loja
+	$('#cadLojaBtn').on('click', function(){
+		//Dados do formulário
+		var dados = $('#formCadLoja').serialize();
+
+		$('#formCadLoja input').each( function() {
+			dados = dados + '&' + $(this).attr('name') + '=' + $(this).val();
+		});
+
+		//Envia formulário
+		$.ajax({
+			type: 'POST',
+			url: 'mod_operacional/ajax/cadLoja.php',
+			data: {
+				dados: dados
+			},
+			success: function (data){
+				console.log(data);
+			}
+		})
+	})
+
+
+	//Abre modal para selecionar bandeira
+	$('#selectBandeira').on('click', function(){
+		//Abre modal com dados da loja
+		$( "#bandeirasModal" ).dialog({
+			width: 600,
+			show: {
+		        effect: "blind",
+		        duration: 500
+	     	}
+		});
+	})
+
+	//Abre modal para adicionar bandeira
+	$('#addBandeira').on('click', function(){
+		//Abre modal com dados da loja
+		$( "#cadBandeirasModal" ).dialog({
+			width: 600,
+			show: {
+		        effect: "blind",
+		        duration: 500
+	     	}
+		});
+	})
+
+	//Consulta bandeira
+	$('#searchBandeiraBtn').on('click', function(){
+		carregaBandeiras();
+	})
+
+
+
+	function carregaBandeiras(){
+		$('#searchBandeiraResults').empty();
+
+		var searchVal = $('#bandeiraSearch').val();
+		var pag = $('#pagina').val();
+
+		//Envia formulário
+		$.ajax({
+			type: 'POST',
+			url: 'mod_operacional/ajax/carregaListaBandeiras.php',
+			data: {
+				searchVal: searchVal,
+				pag: pag
+			},
+			success: function (data){
+				$('#searchBandeiraResults').append(data);
+			}
+		})
+	}
+
+	//Muda de página
+	$('#searchBandeiraResults').on('click', '.toPage', function(){
+
+		//Verifica o novo id
+		var newPage = $(this).attr('id');
+
+		//Passa o novo id a um elemento hidden
+		$('#pagina').val(newPage);
+
+		//Chama a função para carregar proxima pagina
+		carregaBandeiras();
+
+	})
+
+	$('#searchBandeiraResults').on('click', '#addBandeiraToList', function(){
+		var selectedBandeiraId = $('input[name=estaBandeira]:checked', '#bandeirasForm').val();
+		var selectedBandeiraNome = $('input[name=estaBandeira]:checked', '#bandeirasForm').next('label').html()
+
+		$('#bandeira').val(selectedBandeiraNome);
+		$('#idBandeiraHidden').val(selectedBandeiraId);
+
+		//Destroy modal
+      	$('#bandeirasModal').dialog("destroy");
+	})
 
 })

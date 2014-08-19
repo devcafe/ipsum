@@ -1,3 +1,13 @@
+/* Painel */
+#selectLojasBtn{
+	margin-left:15px;
+}
+
+#selLoja{
+	margin-bottom:10px;
+}
+
+
 /* Modal de colaboradores */
 .ui-dialog{
 	height: 600px !important;
@@ -15,6 +25,14 @@
 
 .optionTD{
 	width: 15px;
+}
+
+.matriculaTD{
+	width: 159px;
+}
+
+#addDataUser tr td:nth-child(1){
+	width: 159px;	
 }
 
 .optionLabelTD{
@@ -38,12 +56,21 @@
 	background: #FFF;
 }
 
-table tr:first-child {
+.theFirst {
 	background: #ADC4DC !important;
 	color: #000;
 	font-weight: bold;
 	font-size: 12px;
 	line-height: 20px;
+	text-align: left;
+}
+
+.matTD{
+	width: 208px;
+}
+
+.userToAddList tr:not(:first-child):hover{
+	background:#CCC;
 }
 
 #addToList{
@@ -52,4 +79,12 @@ table tr:first-child {
 
 #addToList:hover{
 	background: #ADC4DC !important;
+}
+
+#addDataUser tr:hover{
+	background:#CCC;
+}
+
+.selected{
+	background: #CCC;
 }

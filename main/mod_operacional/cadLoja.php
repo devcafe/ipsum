@@ -10,7 +10,7 @@
 <link rel="stylesheet" href = "mod_operacional/resources/css/cadLoja.css">
 
 <div class = "formInner">
-	<form method = "post">
+	<form method = "post" id = "formCadLoja">
 		<legend> Cadastrar Loja </legend>
 
 		<table>	
@@ -29,7 +29,10 @@
 				<td> <label for = "bandeira"> Bandeira: </label> </td>
 			</tr>
 			<tr>
-				<td> <input  type = "text" name = "bandeira" id = "bandeira"> </td>
+				<td class = "bandeiraTD"> <input  type = "text" name = "bandeira" id = "bandeira" disabled> </td>
+				<td> <a href = "#" id = "selectBandeira"> Selecionar bandeira </a> </td>
+				<!--<td> <a href = "#" id = "addBandeira"> Cadastrar bandeira </a> </td>-->
+				<input type = "hidden" name = "idBandeiraHidden" id = "idBandeiraHidden">
 			</tr>
 
 			<tr class = "fakeRow"> </tr>
@@ -171,5 +174,39 @@
 		</div>
 
 		<input id = "userAdd" name = "userAdd" type = "hidden" value = "<?php echo $_SESSION['idUsuario']; ?>">
+	</form>
+</div>
+
+<!-- Modals -->
+<!-- Buscar bandeira -->
+<div id = "bandeirasModal" title = "Bandeiras">
+	<form method="post" id="bandeirasForm">
+		<table>
+			<tr>
+				<td> <label for = "bandeira"> Bandeira: </label> </td>
+				<td> <input type = "text" id = "bandeiraSearch" name = "bandeiraSearch"> </td>
+
+				<td> <input type = "button" name = "searchBandeiraBtn" id = "searchBandeiraBtn" value = "Pesquisar"> </td>
+			</tr>
+		</table>
+		<input type = "hidden" id = "pagina" value = "1">
+
+		<id id = "searchBandeiraResults">
+
+		</div>
+	</form>
+</div>
+
+<!-- Cadastrar bandeira -->
+<div id = "cadBandeirasModal" title = "Cadastrar bandeiras">
+	<form method="post" id="cadBandeirasForm">
+		<table>
+			<tr>
+				<td> <label for = "bandeira"> Bandeira: </label> </td>
+				<td> <input type = "text" id = "cadBandeiraNome" name = "cadBandeiraNome"> </td>
+
+				<td> <input type = "button" name = "cadBandeiraBtn" id = "cadBandeiraBtn" value = "Cadastrar"> </td>
+			</tr>
+		</table>
 	</form>
 </div>
