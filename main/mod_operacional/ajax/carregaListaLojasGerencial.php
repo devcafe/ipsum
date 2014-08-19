@@ -47,7 +47,72 @@
 
 		$tr = $todos->rowCount();
 		$tp = $tr / $total_reg;
-	} else {
+	} elseif($op == 'withFieldsFiltro'){ 
+		//Total de registros por pagina
+		$total_reg = "25";	
+
+		//Página atual
+		$pc = $_POST['pag'];
+
+		//Valor inicial da busca
+		$inicio = $pc - 1; 
+		$inicio = $inicio * $total_reg;
+
+		//Recebe dados para filtrar
+		$cnpj = $_POST['cnpj'];
+		$razaoSocial = $_POST['razaoSocial'];
+		$nomeFantasia = $_POST['nomeFantasia'];
+		$bairro = $_POST['bairro'];
+		$rua = $_POST['rua'];
+		$bandeira = $_POST['bandeira'];
+		$cep = $_POST['cep'];
+		$cidade = $_POST['cidade'];
+		$uf = $_POST['uf'];
+		$numero = $_POST['numero'];
+
+		//Consulta para retornar lojas de acordo com o filtro
+		$limite = $pdo->prepare("
+			Select * 
+			From ipsum_operacionallojas a
+		 	Inner Join ipsum_operacionalbandeiras b On (a.idEstabBandeira = b.idBandeira) 
+			Where 
+				a.cnpj like :cnpj
+			And a.estabReceitaRazaoSocial like :razaoSocial
+			And a.estabReceitaNF like :nomeFantasia
+			And a.bairro like :bairro
+			And a.rua like :rua
+			And b.bandeira like :bandeira
+			And a.cep like :cep
+			And a.cidade like :cidade
+			And a.uf like :uf
+			And a.numero like :numero
+			Limit 
+				$inicio,$total_reg
+		");
+
+		$limite->execute(array(":cnpj" => "%" . $cnpj . "%", ":razaoSocial" => "%" . $razaoSocial . "%", ":nomeFantasia" => "%" . $nomeFantasia . "%", ":bairro" => "%" . $bairro . "%", ":rua" => "%" . $rua . "%", ":bandeira" => "%" . $bandeira . "%", ":cep" => "%" . $cep . "%", ":cidade" => "%" . $cidade . "%", ":uf" => "%" . $uf . "%", ":numero" => "%" . $numero . "%"));
+
+		$todos = $pdo->prepare("
+			Select * 
+			From ipsum_operacionallojas a
+			Inner Join ipsum_operacionalbandeiras b On (a.idEstabBandeira = b.idBandeira) 
+			Where 
+				a.cnpj like :cnpj
+			And a.estabReceitaRazaoSocial like :razaoSocial
+			And a.estabReceitaNF like :nomeFantasia
+			And a.bairro like :bairro
+			And a.rua like :rua
+			And b.bandeira like :bandeira
+			And a.cep like :cep
+			And a.cidade like :cidade
+			And a.uf like :uf
+			And a.numero like :numero
+		");
+		$todos->execute(array(":cnpj" => "%" . $cnpj . "%", ":razaoSocial" => "%" . $razaoSocial . "%", ":nomeFantasia" => "%" . $nomeFantasia . "%", ":bairro" => "%" . $bairro . "%", ":rua" => "%" . $rua . "%", ":bandeira" => "%" . $bandeira . "%", ":cep" => "%" . $cep . "%", ":cidade" => "%" . $cidade . "%", ":uf" => "%" . $uf . "%", ":numero" => "%" . $numero . "%"));
+
+		$tr = $todos->rowCount();
+		$tp = $tr / $total_reg;
+	}else {
 		//Total de registros por pagina
 		$total_reg = "25";	
 
@@ -114,7 +179,7 @@
 		$tp = $tr / $total_reg;
 	}
 
-	if($op != "withFields"){
+	if($op != "withFields" && $op != 'withFieldsFiltro'){
 
 		$lista = '';
 		$lista .= '<div class = "totalReg"> <b> Total de registros: </b> <span class = "blue">'. $tr .'</span></div>';
@@ -213,7 +278,7 @@
 				$i++;	
 			}
 		$lista .= '</table>';
-	} else {
+	} elseif ($op == 'withFields') {
 
 		$lista = '';
 		$lista .= '<div class = "totalReg"> <b> Total de registros: </b> <span class = "blue">'. $tr .'</span></div>';
@@ -328,8 +393,124 @@
 				$i++;	
 			}
 		$lista .= '</table>';
-	}
+	} elseif($op == 'withFieldsFiltro') {
 
+		$lista = '';
+		$lista .= '<div class = "totalReg"> <b> Total de registros: </b> <span class = "blue">'. $tr .'</span></div>';
+
+		$i = 0;	
+
+		$lista .= '<table id = "lojasTable">';
+			$lista .= '<tr>';
+			foreach($_POST['itens2'] as $res){
+
+				switch($res){
+					case 1: $lista .= '<td> ID </td>';break;
+					case 2: $lista .= '<td> CNPJ </td>';break;
+					case 3: $lista .= '<td> Bandeira </td>';break;
+					case 4: $lista .= '<td> Nome </td>';break;
+					case 5: $lista .= '<td> CEP </td>';break;
+					case 6: $lista .= '<td> Bairro </td>';break;
+					case 7: $lista .= '<td> Rua </td>';break;
+					case 8: $lista .= '<td> Numero </td>';break;
+					case 9: $lista .= '<td> Complemento </td>';break;
+					case 10: $lista .= '<td> Cidade </td>';break;
+					case 11: $lista .= '<td> UF </td>';break;
+					case 12: $lista .= '<td> Receita - Data abertura </td>';break;
+					case 13: $lista .= '<td> Receita - Razão social </td>';break;
+					case 14: $lista .= '<td> Receita - Nome fantasia </td>';break;
+					case 15: $lista .= '<td> Receita - Endereço </td>';break;
+					case 16: $lista .= '<td> Receita - Número </td>';break;
+					case 17: $lista .= '<td> Receita - Complemento </td>';break;
+					case 18: $lista .= '<td> Receita - Bairro </td>';break;
+					case 19: $lista .= '<td> Receita - Cidade </td>';break;
+					case 20: $lista .= '<td> Receita - UF </td>';break;
+					case 21: $lista .= '<td> Receita - CEP </td>';break;
+					case 22: $lista .= '<td> Receita - Situação </td>';break;
+					case 23: $lista .= '<td> Receita - Situação data </td>';break;
+					case 24: $lista .= '<td> Receita - Tel 01 </td>';break;
+					case 25: $lista .= '<td> Receita - Tel 02 </td>';break;
+					case 26: $lista .= '<td> Receita - Data fechamento </td>';break;
+				}
+			}
+			$lista .= '</tr>';
+			while($res = $limite->fetch(PDO::FETCH_OBJ)){
+				if($i % 2 == 0){
+					$lista .= '<tr class = "par" id = "'. $res->idLoja .'">';
+					foreach($_POST['itens2'] as $data){
+						switch($data){
+							case 1: $lista .= '<td>'. $res->idLoja .'</td>';break;
+							case 2: $lista .= '<td>'. $res->cnpj .'</td>';break;
+							case 3: $lista .= '<td>'. $res->bandeira .'</td>';;break;
+							case 4: $lista .= '<td>'. $res->nome .'</td>';break;
+							case 5: $lista .= '<td>'. $res->cep .'</td>';break;
+							case 6: $lista .= '<td>'. $res->bairro .'</td>';break;
+							case 7: $lista .= '<td>'. $res->rua .'</td>';break;
+							case 8: $lista .= '<td>'. $res->numero .'</td>';break;
+							case 9: $lista .= '<td>'. $res->complemento .'</td>';break;
+							case 10: $lista .= '<td>'. $res->cidade .'</td>';break;
+							case 11: $lista .= '<td>'. $res->uf .'</td>';break;
+							case 12: $lista .= '<td>'. $res->estabReceitaAberturaData .'</td>';break;
+							case 13: $lista .= '<td>'. $res->estabReceitaRazaoSocial .'</td>';break;
+							case 14: $lista .= '<td>'. $res->estabReceitaNF .'</td>';break;
+							case 15: $lista .= '<td>'. $res->estabReceitaEndereco .'</td>';break;
+							case 16: $lista .= '<td>'. $res->estabReceitaNumero .'</td>';break;
+							case 17: $lista .= '<td>'. $res->estabReceitaComplemento .'</td>';break;
+							case 18: $lista .= '<td>'. $res->estabReceitaBairro .'</td>';break;
+							case 19: $lista .= '<td>'. $res->estabReceitaCidade .'</td>';break;
+							case 20: $lista .= '<td>'. $res->estabReceitaUF .'</td>';break;
+							case 21: $lista .= '<td>'. $res->estabReceitaCEP .'</td>';break;
+							case 22: $lista .= '<td>'. $res->estabReceitaSituacao .'</td>';break;
+							case 23: $lista .= '<td>'. $res->estabReceitaSituacaoData .'</td>';break;
+							case 24: $lista .= '<td>'. $res->estabTel01 .'</td>';break;
+							case 25: $lista .= '<td>'. $res->estabTel02 .'</td>';break;
+							case 26: $lista .= '<td>'. $res->dataFechamento .'</td>';break;
+						}
+					}
+
+
+					$lista .= '</tr>';	
+				} else {
+					$lista .= '<tr class = "par" id = "'. $res->idLoja .'">';
+					foreach($_POST['itens2'] as $data){
+						switch($data){
+							case 1: $lista .= '<td>'. $res->idLoja .'</td>';break;
+							case 2: $lista .= '<td>'. $res->cnpj .'</td>';break;
+							case 3: $lista .= '<td>'. $res->bandeira .'</td>';;break;
+							case 4: $lista .= '<td>'. $res->nome .'</td>';break;
+							case 5: $lista .= '<td>'. $res->cep .'</td>';break;
+							case 6: $lista .= '<td>'. $res->bairro .'</td>';break;
+							case 7: $lista .= '<td>'. $res->rua .'</td>';break;
+							case 8: $lista .= '<td>'. $res->numero .'</td>';break;
+							case 9: $lista .= '<td>'. $res->complemento .'</td>';break;
+							case 10: $lista .= '<td>'. $res->cidade .'</td>';break;
+							case 11: $lista .= '<td>'. $res->uf .'</td>';break;
+							case 12: $lista .= '<td>'. $res->estabReceitaAberturaData .'</td>';break;
+							case 13: $lista .= '<td>'. $res->estabReceitaRazaoSocial .'</td>';break;
+							case 14: $lista .= '<td>'. $res->estabReceitaNF .'</td>';break;
+							case 15: $lista .= '<td>'. $res->estabReceitaEndereco .'</td>';break;
+							case 16: $lista .= '<td>'. $res->estabReceitaNumero .'</td>';break;
+							case 17: $lista .= '<td>'. $res->estabReceitaComplemento .'</td>';break;
+							case 18: $lista .= '<td>'. $res->estabReceitaBairro .'</td>';break;
+							case 19: $lista .= '<td>'. $res->estabReceitaCidade .'</td>';break;
+							case 20: $lista .= '<td>'. $res->estabReceitaUF .'</td>';break;
+							case 21: $lista .= '<td>'. $res->estabReceitaCEP .'</td>';break;
+							case 22: $lista .= '<td>'. $res->estabReceitaSituacao .'</td>';break;
+							case 23: $lista .= '<td>'. $res->estabReceitaSituacaoData .'</td>';break;
+							case 24: $lista .= '<td>'. $res->estabTel01 .'</td>';break;
+							case 25: $lista .= '<td>'. $res->estabTel02 .'</td>';break;
+							case 26: $lista .= '<td>'. $res->dataFechamento .'</td>';break;
+						}
+					}
+
+
+					$lista .= '</tr>';	
+				}	
+				$i++;	
+			}
+		$lista .= '</table>';
+	}
+ 
 	
 	
 	$anterior = $pc -1; 

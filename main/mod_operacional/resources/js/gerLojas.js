@@ -56,34 +56,73 @@ $(document).ready(function(){
 		var uf = $('#uf').val();
 		var numero = $('#numero').val();
 
-		$.ajax({
-			type: 'POST',
-			data:{
-				filtro: filtro,
-				pag: pag,
-				op: 'filtro',
-				cnpj: cnpj,
-				razaoSocial: razaoSocial,
-				nomeFantasia: nomeFantasia,
-				bairro: bairro,
-				rua: rua,
-				bandeira: bandeira,
-				cep: cep,
-				cidade: cidade,
-				uf: uf,
-				numero: numero
-			},
-			url: 'mod_operacional/ajax/carregaListaLojasGerencial.php',
-			success: function (data){
-				$('#listaLojas').empty();
+		var itens2 = [];
+		var j = 0;
 
-				//Carrega lista em div
-				$('#listaLojas').append(data);
-			}
-		})
+		$( ".checkBox:checked" ).each(function() {
+		  itens2[j] = $(this).val();
+		  
+		  j++;
+		});
+
+		if(itens2.length > 0){
+
+			$.ajax({
+				type: 'POST',
+				data:{
+					itens2: itens2,
+					filtro: filtro,
+					pag: pag,
+					op: 'withFieldsFiltro',
+					cnpj: cnpj,
+					razaoSocial: razaoSocial,
+					nomeFantasia: nomeFantasia,
+					bairro: bairro,
+					rua: rua,
+					bandeira: bandeira,
+					cep: cep,
+					cidade: cidade,
+					uf: uf,
+					numero: numero
+				},
+				url: 'mod_operacional/ajax/carregaListaLojasGerencial.php',
+				success: function (data){
+					$('#listaLojas').empty();
+
+					//Carrega lista em div
+					$('#listaLojas').append(data);
+				}
+			})
+		} else {
+			$.ajax({
+				type: 'POST',
+				data:{
+					filtro: filtro,
+					pag: pag,
+					op: 'filtro',
+					cnpj: cnpj,
+					razaoSocial: razaoSocial,
+					nomeFantasia: nomeFantasia,
+					bairro: bairro,
+					rua: rua,
+					bandeira: bandeira,
+					cep: cep,
+					cidade: cidade,
+					uf: uf,
+					numero: numero
+				},
+				url: 'mod_operacional/ajax/carregaListaLojasGerencial.php',
+				success: function (data){
+					$('#listaLojas').empty();
+
+					//Carrega lista em div
+					$('#listaLojas').append(data);
+				}
+			})
+		}
 	})
 
-	//Função para carrega página e manter filtro
+	//Função para carregar página e manter filtro
 	function carregaComFiltro(){
 		var filtro = $('#checkFiltro').val();
 
