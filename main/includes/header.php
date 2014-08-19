@@ -101,23 +101,28 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Operacional <b class="caret"></b></a>
 					<ul class="dropdown-menu bigMenu">
-						<div class="onLeft">
-							<?php if(acessos(21) == true or acessos(22) == true or acessos(23) == true){echo'<li role="presentation" class="dropdown-header"><u> Lojas </u></li>';} ?>
-								<?php if(acessos(21) == true){echo'<li><a href="#" id="cadLojaOpe"> Cadastrar loja </a></li>';} ?>
-								<?php if(acessos(22) == true){echo'<li><a href="#" id="gerLojaOpe"> Gerenciar lojas </a></li>	';} ?>
-								<?php if(acessos(23) == true){echo'<li><a href="#" id="listLojas"> Consultar lojas </a></li>	';} ?>											
-								
-							<!--<li class="divider"></li>-->
-							<!--<li role="presentation" class="dropdown-header"><u> Lorem Ipsum </u></li>								
-							<li><a href="#" id=""> Lorem Ipsum </a></li>
-							<li><a href="#" id=""> Lorem Ipsum </a></li>
-							<li><a href="#" id=""> Lorem Ipsum </a></li>-->
-						</div>
-						<div class="onRight">
-							<li role="presentation" class="dropdown-header"><u> Cartas de apresentação </u></li>								
-							<li><a href="#" id=""> Gerenciar modelos de cartas </a></li>
-							<li><a href="#" id="cadRoteiroOpe"> Criar roteiro </a></li>
-						</div>
+						<?php 
+							if(acessos(21) == true or acessos(22) == true or acessos(23) == true){
+								echo "<div class='onLeft'>";
+									echo'<li role="presentation" class="dropdown-header"><u> Lojas </u></li>';
+							}
+							
+									if(acessos(21) == true){echo'<li><a href="#" id="cadLojaOpe"> Cadastrar loja </a></li>';} 
+									if(acessos(22) == true){echo'<li><a href="#" id="gerLojaOpe"> Gerenciar lojas </a></li>';} 
+									if(acessos(23) == true){echo'<li><a href="#" id="listLojas"> Consultar lojas </a></li>';} 
+
+																
+							if(acessos(21) == true or acessos(22) == true or acessos(23) == true){ echo '</div>'; } 
+
+							if(acessos(27) == true or acessos(28) == true){
+									echo'<div class="onRight">';
+										echo '<li role="presentation" class="dropdown-header"><u> Cartas de apresentação </u></li>';
+							} 							
+										if(acessos(27) == true){echo'<li><a href="#" id=""> Gerenciar Modelos de Cartas </a></li>';} 
+										if(acessos(28) == true){echo'<li><a href="#" id="cadRoteiroOpe"> Criar Roteiro </a></li>';} 
+							
+							if(acessos(27) == true or acessos(28) == true){ echo '</div>'; }
+						?>
 					</ul>
 				</li>
 			<?php	} ?>

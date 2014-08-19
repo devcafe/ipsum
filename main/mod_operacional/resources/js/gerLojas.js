@@ -286,6 +286,7 @@ $(document).ready(function(){
 			},
 			url: 'mod_operacional/ajax/carregaDadosLojaReceita.php',
 			success: function (data){
+
 				var json = $.parseJSON(data);
 
 				$('#estabReceitaRazaoSocial').val(json.estabReceitaRazaoSocial);

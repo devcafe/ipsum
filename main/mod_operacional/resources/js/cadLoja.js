@@ -85,12 +85,15 @@ $(document).ready(function(){
 
 	//Cadastrar loja
 	$('#cadLojaBtn').on('click', function(){
+
 		//Dados do formulário
 		var dados = $('#formCadLoja').serialize();
 
 		$('#formCadLoja input').each( function() {
 			dados = dados + '&' + $(this).attr('name') + '=' + $(this).val();
 		});
+
+		console.log(dados);
 
 		//Envia formulário
 		$.ajax({
@@ -101,6 +104,8 @@ $(document).ready(function(){
 			},
 			success: function (data){
 				console.log(data);
+				$('#formCadLoja')[0].reset();
+
 			}
 		})
 	})
@@ -134,6 +139,13 @@ $(document).ready(function(){
 	$('#searchBandeiraBtn').on('click', function(){
 		carregaBandeiras();
 	})
+
+	/*$("#bandeiraSearch").keypress(function(event) {
+	    if (event.which == 13) {
+	    		carregaBandeiras();
+	    		console.log("ok");
+		    }
+	})*/
 
 
 

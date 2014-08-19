@@ -56,7 +56,7 @@
 			</tr>
 			<tr>
 				<td class = "cepTD"> <input  type = "text" name = "cep" id = "cep"> </td>
-				<td> <input  type = "text" name = "bairro" id = "bairro"> </td>
+				<td> <input  type = "text" name = "bairro" id = "bairro" maxlength="60"> </td>
 			</tr>
 
 			<tr class = "fakeRow"> </tr>
@@ -72,11 +72,11 @@
 				<td> <label for = "uf"> UF: </label> </td>
 			</tr>
 			<tr>
-				<td class = "ruaTD"> <input  type = "text" name = "rua" id = "rua"> </td>
-				<td class = "numeroTD"> <input  type = "text" name = "numero" id = "numero"> </td>
+				<td class = "ruaTD"> <input  type = "text" name = "rua" id = "rua" maxlength="60"> </td>
+				<td class = "numeroTD"> <input  type = "text" step ="9" name = "numero" id = "numero" maxlength="6"> </td>
 				<td class = "complementoTD"> <input  type = "text" name = "complemento" id = "complemento"> </td>
 				<td class = "cidadeTD"> <input  type = "text" name = "cidade" id = "cidade"> </td>
-				<td> <input  type = "text" name = "uf" id = "uf"> </td>
+				<td> <input  type = "text" name = "uf" id = "uf" maxlength="2" > </td>
 			</tr>
 		</table>
 
@@ -129,10 +129,10 @@
 				</tr>
 				<tr>
 					<td class = "ruaTD"> <input  type = "text" name = "estabReceitaEndereco" id = "estabReceitaEndereco"> </td>
-					<td class = "numeroTD"> <input  type = "text" name = "estabReceitaNumero" id = "estabReceitaNumero"> </td>
+					<td class = "numeroTD"> <input  type = "text" name = "estabReceitaNumero" id = "estabReceitaNumero" maxlength="6"> </td>
 					<td class = "complementoTD"> <input  type = "text" name = "estabReceitaComplemento" id = "estabReceitaComplemento"> </td>
 					<td class = "cidadeTD"> <input  type = "text" name = "estabReceitaCidade" id = "estabReceitaCidade"> </td>
-					<td> <input  type = "text" name = "estabReceitaUF" id = "estabReceitaUF"> </td>
+					<td> <input  type = "text" name = "estabReceitaUF" id = "estabReceitaUF" maxlength = "2"> </td>
 				</tr>
 
 				<tr class = "fakeRow"> </tr>
@@ -160,7 +160,14 @@
 				</tr>
 				<tr>
 					<td class = "dataTD"> <input  type = "text" name = "estabReceitaAberturaData" id = "estabReceitaAberturaData"> </td>
-					<td class = "situacaoTD"> <input  type = "text" name = "estabReceitaSituacao" id = "estabReceitaSituacao"> </td>
+					<td class = "situacaoTD">
+						<select name = "estabReceitaSituacao" id = "estabReceitaSituacao"> 
+							<option value="ATIVA">ATIVA</option>
+							<option value="BAIXADA">BAIXADA</option>
+							<option value="SUSPENSA">SUSPENSA</option>
+							<option value="INATIVA">INATIVA</option>
+						</select>			
+					</td>
 					<td class = "dataTD"> <input  type = "text" name = "estabReceitaSituacaoData" id = "estabReceitaSituacaoData"> </td>
 					<td> <input  type = "text" name = "dataFechamento" id = "dataFechamento"> </td>
 				</tr>

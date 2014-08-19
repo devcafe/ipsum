@@ -6,7 +6,7 @@
 
 	parse_str($dados); 		
 
-	print_r($dados);
+	#print_r($dados);
 
 	//Insere chamado
 	$sql = $pdo->prepare("	Insert into `ipsum_operacionallojas` 
@@ -42,6 +42,7 @@
 								(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ");
 
 	$sql->execute(array('', $cnpj, $idBandeiraHidden, $nome, $rua, $numero, $complemento, $bairro, $cidade, $uf, $cep, $estabReceitaAberturaData, $estabReceitaRazaoSocial, $estabReceitaNF, $estabReceitaEndereco, $estabReceitaNumero, $estabReceitaComplemento, $estabReceitaBairro, $estabReceitaCidade, $estabReceitaUF, $estabReceitaCEP, $estabReceitaSituacao, $estabReceitaSituacaoData, $estabTel01, $estabTel02, $dataFechamento, $userAdd));
+	
 	//Fecha conexão
 	$pdo = null;
 
