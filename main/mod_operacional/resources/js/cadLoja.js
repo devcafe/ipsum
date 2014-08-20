@@ -103,7 +103,8 @@ $(document).ready(function(){
 				dados: dados
 			},
 			success: function (data){
-				console.log(data);
+				alert("Loja Cadastrada com sucesso!")
+				$('#cnpj').focus();				
 				$('#formCadLoja')[0].reset();
 
 			}
