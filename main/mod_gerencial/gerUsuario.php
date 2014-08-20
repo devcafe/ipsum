@@ -56,9 +56,9 @@
 		<input type = "text" name = "usuario" id = "usuario">
 
 		<label for = "senha"> Senha: </label>
-		<input type = "text" name = "senha" id = "senha">
+		<input type = "password" name = "senha" id = "senha">
 
-		<label for = "acessos"> Usuario: </label>
+		<label for = "acessos"> Acessos: </label>
 		<input type = "text" name = "acessos" id = "acessos">
 
 		<input type = "button" name = "gravar" value = "Gravar" id = "gravar">		

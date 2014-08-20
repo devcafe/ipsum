@@ -114,7 +114,7 @@ $(document).ready(function(){
 				empresa.val(json.empresa);
 				cnpj.val(json.cnpj);
 				usuario.val(json.usuario);
-				senha.val(json.senha);
+				//senha.val(json.senha);
 				acessos.val(json.acessos);				
 				
 			}
@@ -166,7 +166,7 @@ $(document).ready(function(){
 				//fecha o dialogo
 
 				$('#alterarItemModal').dialog('destroy');
-				console.log(data);
+				alert("Alterações feitas com sucesso");
 			}
 		})
 
