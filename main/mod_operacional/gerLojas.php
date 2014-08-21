@@ -195,6 +195,15 @@
 
 		<table>	
 			<tr>
+				<td> <label for = "estabReceitaNomeEmpresarial"> Nome Empresarial: </label> </td>
+			</tr>
+			<tr>
+				<td> <input disabled type = "text" name = "estabReceitaNomeEmpresarial" id = "estabReceitaNomeEmpresarial"> </td>
+			</tr>
+		</table>
+
+		<table>	
+			<tr>
 				<td> <label for = "estabReceitaNF"> Nome Fantasia: </label> </td>
 			</tr>
 			<tr>

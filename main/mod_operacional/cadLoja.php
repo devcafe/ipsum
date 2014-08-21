@@ -97,6 +97,17 @@
 
 			<table>	
 				<tr>
+					<td> <label for = "estabReceitaNomeEmpresarial"> Nome empresarial: </label> </td>
+				</tr>
+				<tr>
+					<td> <input  type = "text" name = "estabReceitaNomeEmpresarial" id = "estabReceitaNomeEmpresarial"> </td>
+				</tr>
+
+				<tr class = "fakeRow"> </tr>
+			</table>
+
+			<table>	
+				<tr>
 					<td> <label for = "estabReceitaNF"> Nome fantasia: </label> </td>
 				</tr>
 				<tr>

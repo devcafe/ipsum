@@ -260,8 +260,6 @@ $(document).ready(function(){
 	var k = 0;
 	//Exibe dados da receita
 	$('#dadosVisualizar').on('click', function(){
-		
-
 		if(k == 0){
 			$('.showText').html('<- Dados da loja');
 			$('#lojaDadosReceita').show();
@@ -290,6 +288,7 @@ $(document).ready(function(){
 				var json = $.parseJSON(data);
 
 				$('#estabReceitaRazaoSocial').val(json.estabReceitaRazaoSocial);
+				$('#estabReceitaNomeEmpresarial').val(json.estabReceitaNomeEmpresarial);
 				$('#estabReceitaNF').val(json.estabReceitaNF);
 				$('#estabReceitaEndereco').val(json.estabReceitaEndereco);
 				$('#estabReceitaCEP').val(json.estabReceitaCEP);
