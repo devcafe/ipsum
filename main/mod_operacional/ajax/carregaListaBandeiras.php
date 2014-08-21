@@ -48,7 +48,7 @@
 		}
 
 		$lista .= "<tr>";
-			$lista .= "<td colspan = '3'> <input type = 'button' name = 'addBandeiraToList' id = 'addBandeiraToList' value = 'Adicionar'> </td>";
+			$lista .= "<td colspan = '3'> <input type = 'button' name = 'addBandeiraToList' id = 'addBandeiraToList' value = 'Ok'> </td>";
 		$lista .= "</tr>";
 	$lista .= '</table>';
 
