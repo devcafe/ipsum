@@ -4,6 +4,11 @@ $(document).ready(function(){
 	$('#bandeirasModal').hide();
 	$('#cadBandeirasModal').hide();
 
+	$("#numero").keypress(verificaNumero);
+	$("#estabReceitaNumero").keypress(verificaNumero);
+	$("#uf").keypress(verificaLetra);
+	$("#estabReceitaUF").keypress(verificaLetra);
+
 	//Mascara campos
 	$("#cnpj").mask("99.999.999/9999-99");
 	$("#cep").mask("99999-999");
@@ -22,7 +27,6 @@ $(document).ready(function(){
 		$('#cidade').val('');
 		$('#uf').val('');
 	}
-
 
 	//Função para limpar campos antes da consulta do CEP (dados receita)
 	function cleanFieldsReceita(){
@@ -94,23 +98,41 @@ $(document).ready(function(){
 		});
 		
 
-		//Envia formulário
-		$.ajax({
-			type: 'POST',
-			url: 'mod_operacional/ajax/cadLoja.php',
-			data: {
-				dados: dados
-			},
-			success: function (data){
-				console.log(data);
-				if(data == "Loja Cadastrada com Sucesso"){
-					$('#formCadLoja')[0].reset();
-					$('#cnpj').focus();
-				} else {
-					$('#cnpj').focus();
+		if($('#numero').val() == '' || $('#numero').val() == 'S/N'){
+			var answer = confirm("Atenção! O estabelecimento será cadastrado sem número");
+			if(answer)
+				$('#numero').val('S/N');
+		} else {
+			var answer = true;
+		}
+
+		if($('#estabReceitaNumero').val() == '' || $('#estabReceitaNumero').val() == 'S/N'){
+			var answer2 = confirm("Atenção! O estabelecimento será cadastrado sem número da receita");
+			if(answer2)
+				$('#estabReceitaNumero').val('S/N');
+		} else {
+			var answer2 = true;
+		}
+
+		if(answer && answer2){
+			//Envia formulário
+			$.ajax({
+				type: 'POST',
+				url: 'mod_operacional/ajax/cadLoja.php',
+				data: {
+					dados: dados
+				},
+				success: function (data){
+					if(data == "Loja Cadastrada com Sucesso"){
+						$('#formCadLoja')[0].reset();
+						$('#cnpj').focus();
+					} else {
+						$('#cnpj').focus();
+					}
 				}
-			}
-		})
+			})
+		}
+		
 	})
 
 	//Abre modal para selecionar bandeira
@@ -195,5 +217,41 @@ $(document).ready(function(){
 		//Destroy modal
       	$('#bandeirasModal').dialog("destroy");
 	})
+
+
+	//Tratamento dos campos para não aceitar acentuação
+	$('input[type=text]').on('keypress', function(e,args){
+		if (document.all){ var evt=event.keyCode; } //Caso seja IE
+		else{ var evt = e.charCode; }	//Do contrário deve ser Mozilla
+
+		var valid_chars = '0123456789abcdefghijlmnopqrstuvxzwykABCDEFGHIJLMNOPQRSTUVXZWYK-_'+args; //Lista de teclas permitidas
+
+		var chr= String.fromCharCode(evt);	//Pega a tecla digitada
+
+		if (valid_chars.indexOf(chr)>-1 ){ return true; }	//Verifica se a tecla digitada esta na lista
+
+		//Para permitir teclas como <BACKSPACE>
+		if (valid_chars.indexOf(chr)>-1 || evt < 9){return true;}	//Verifica se a tecla digitada esta na lista
+			return false;	//Caso contrário nega
+	})
+
+	function verificaNumero(e) {
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            return false;
+        }
+    }
+
+	  //só aceita letras
+	function verificaLetra(e){
+	     var tecla = (window.event) ? event.keyCode : e.which;
+
+	     if((tecla > 65 && tecla < 90)
+	         ||(tecla > 97 && tecla < 122))
+	               return true;
+	     else{
+	          if (tecla != 8) return false;
+	          else return true;
+	     }
+	}
 
 })

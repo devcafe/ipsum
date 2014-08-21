@@ -98,7 +98,7 @@ label{
 	margin-right: 30px;	
 }
 
-#cnpj, #bandeira, #nome, #estabReceitaRazaoSocial, #estabReceitaNF{
+#cnpj, #bandeira, #nome, #estabReceitaRazaoSocial, #estabReceitaNF, #estabReceitaNomeEmpresarial{
 	width: 400px;
 }
 
