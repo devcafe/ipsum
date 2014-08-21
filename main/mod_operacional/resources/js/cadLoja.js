@@ -5,6 +5,7 @@ $(document).ready(function(){
 	$('#cadBandeirasModal').hide();
 
 	$("#numero").keypress(verificaNumero);
+	$("#estabReceitaNumero").keypress(verificaNumero);
 
 	//Mascara campos
 	$("#cnpj").mask("99.999.999/9999-99");
