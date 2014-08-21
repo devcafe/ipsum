@@ -202,21 +202,26 @@ $(document).ready(function(){
 	})
 
 	//Exibe dados da loja
-	$('#listaLojas').on('dblclick', '#lojasTable tr:not(:first-child)', function(){
+	$('#listaLojas').on('dblclick', '#lojasTable tr:not(:first-child)', function(event){
+		//$('#dadosLojaReceitaModalForm')[0].reset();
+
+		event.preventDefault();
+		event.stopPropagation();
+
 		//Id da loja que será visualizado os dados
 		var idLoja = $(this).attr('id');
 
 		//Campos a serem populados
-		var cnpjList = $('#cnpjList');
-		var bandeiraList = $('#bandeiraList');
-		var nomeList = $('#nomeList');
-		var nomeFantasiaList = $('#nomeFantasiaList');
-		var cepList = $('#cepList');
-		var ruaList = $('#ruaList');
-		var bairroList = $('#bairroList');
-		var numeroList = $('#numeroList');
-		var cidadeList = $('#cidadeList');
-		var ufList = $('#ufList');
+		var cnpjListGer = $('#cnpjListGer');
+		var bandeiraListGer = $('#bandeiraListGer');
+		var nomeListGer = $('#nomeListGer');
+		var nomeFantasiaListGer = $('#nomeFantasiaListGer');
+		var cepListGer = $('#cepListGer');
+		var ruaListGer = $('#ruaListGer');
+		var bairroListGer = $('#bairroListGer');
+		var numeroListGer = $('#numeroListGer');
+		var cidadeListGer = $('#cidadeListGer');
+		var ufListGer = $('#ufListGer');
 
 		//Abre modal com dados da loja
 		$( "#lojasModalGer" ).dialog({
@@ -240,16 +245,16 @@ $(document).ready(function(){
 				//console.log(data);
 
 				//Popula campos
-				cnpjList.val(json.cnpj);
-				bandeiraList.val(json.bandeira);
-				nomeList.val(json.nome);
-				nomeFantasiaList.val(json.estabReceitaNF);
-				cepList.val(json.cep);
-				ruaList.val(json.rua);
-				bairroList.val(json.bairro);
-				numeroList.val(json.numero);
-				cidadeList.val(json.cidade);
-				ufList.val(json.uf);
+				cnpjListGer.val(json.cnpj);
+				bandeiraListGer.val(json.bandeira);
+				nomeListGer.val(json.nome);
+				nomeFantasiaListGer.val(json.estabReceitaNF);
+				cepListGer.val(json.cep);
+				ruaListGer.val(json.rua);
+				bairroListGer.val(json.bairro);
+				numeroListGer.val(json.numero);
+				cidadeListGer.val(json.cidade);
+				ufListGer.val(json.uf);
 
 				$('#dadosVisualizar').removeClass();
 				$('#dadosVisualizar').addClass(json.idLoja);

@@ -160,7 +160,12 @@ $(document).ready(function(){
 	})
 
 	//Exibe dados da loja
-	$('#listaLojas').on('dblclick', '#lojasTable tr:not(:first-child)', function(){
+	$('#listaLojas').on('dblclick', '#lojasTable tr:not(:first-child)', function(event){
+		$('#dadosLojaModalForm')[0].reset();
+
+		event.preventDefault();
+		event.stopPropagation();
+
 		//Id da loja que será visualizado os dados
 		var idLoja = $(this).attr('id');
 
