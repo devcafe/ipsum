@@ -123,6 +123,7 @@ $(document).ready(function(){
 					dados: dados
 				},
 				success: function (data){
+					alert(data);
 					if(data == "Loja Cadastrada com Sucesso"){
 						$('#formCadLoja')[0].reset();
 						$('#cnpj').focus();
