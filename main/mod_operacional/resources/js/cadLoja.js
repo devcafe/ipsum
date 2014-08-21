@@ -225,7 +225,7 @@ $(document).ready(function(){
 		if (document.all){ var evt=event.keyCode; } //Caso seja IE
 		else{ var evt = e.charCode; }	//Do contrário deve ser Mozilla
 
-		var valid_chars = '0123456789abcdefghijlmnopqrstuvxzwykABCDEFGHIJLMNOPQRSTUVXZWYK-_'+args; //Lista de teclas permitidas
+		var valid_chars = ' 0123456789abcdefghijlmnopqrstuvxzwykABCDEFGHIJLMNOPQRSTUVXZWYK-_'+args; //Lista de teclas permitidas
 
 		var chr= String.fromCharCode(evt);	//Pega a tecla digitada
 
