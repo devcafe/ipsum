@@ -8,6 +8,12 @@
 
 	#print_r($dados);
 
+	if($numero == '')
+		$numero = 'S/N';
+
+	if($estabReceitaNumero == '')
+		$estabReceitaNumero = 'S/N';
+
 	//Insere chamado
 	$sql = $pdo->prepare("	Insert into `ipsum_operacionallojas` 
 								(
