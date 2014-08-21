@@ -1,4 +1,8 @@
 /* Tabelas */
+input[type="text"]{
+	text-transform:uppercase;
+}
+
 #dadosReceita{
 	margin-top:50px;
 }

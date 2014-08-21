@@ -80,7 +80,7 @@ $(document).ready(function(){
 			}
 		});   
 		return false;    
-	})
+	})	
 
 
 	//Cadastrar loja
@@ -102,7 +102,7 @@ $(document).ready(function(){
 				dados: dados
 			},
 			success: function (data){
-				alert(data);
+				console.log(data);
 				if(data == "Loja Cadastrada com Sucesso"){
 					$('#formCadLoja')[0].reset();
 					$('#cnpj').focus();
@@ -112,7 +112,6 @@ $(document).ready(function(){
 			}
 		})
 	})
-
 
 	//Abre modal para selecionar bandeira
 	$('#selectBandeira').on('click', function(){

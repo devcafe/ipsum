@@ -18,7 +18,7 @@
 				<td> <label for = "cnpj"> CNPJ: </label> </td>
 			</tr>
 			<tr>
-				<td> <input  type = "text" name = "cnpj" id = "cnpj"> </td>
+				<td> <input  type = "text" name = "cnpj" id = "cnpj" > </td>
 			</tr>
 
 			<tr class = "fakeRow"> </tr>
