@@ -6,6 +6,8 @@ $(document).ready(function(){
 
 	$("#numero").keypress(verificaNumero);
 	$("#estabReceitaNumero").keypress(verificaNumero);
+	$("#uf").keypress(verificaLetra);
+	$("#estabReceitaUF").keypress(verificaLetra);
 
 	//Mascara campos
 	$("#cnpj").mask("99.999.999/9999-99");
@@ -238,5 +240,18 @@ $(document).ready(function(){
             return false;
         }
     }
+
+	  //só aceita letras
+	function verificaLetra(e){
+	     var tecla = (window.event) ? event.keyCode : e.which;
+
+	     if((tecla > 65 && tecla < 90)
+	         ||(tecla > 97 && tecla < 122))
+	               return true;
+	     else{
+	          if (tecla != 8) return false;
+	          else return true;
+	     }
+	}
 
 })

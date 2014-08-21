@@ -242,7 +242,7 @@ $(document).ready(function(){
 				//Popula campos
 				cnpjList.val(json.cnpj);
 				bandeiraList.val(json.bandeira);
-				nomeList.val(json.nomeList);
+				nomeList.val(json.nome);
 				nomeFantasiaList.val(json.estabReceitaNF);
 				cepList.val(json.cep);
 				ruaList.val(json.rua);
