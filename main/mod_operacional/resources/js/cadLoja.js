@@ -81,7 +81,7 @@ $(document).ready(function(){
 			}
 		});   
 		return false;    
-	})
+	})	
 
 
 	//Cadastrar loja
@@ -94,6 +94,7 @@ $(document).ready(function(){
 			dados = dados + '&' + $(this).attr('name') + '=' + $(this).val();
 		});
 		
+
 		if($('#numero').val() == '' || $('#numero').val() == 'S/N'){
 			var answer = confirm("Atenção! O estabelecimento será cadastrado sem número");
 			if(answer)
@@ -130,7 +131,6 @@ $(document).ready(function(){
 		}
 		
 	})
-
 
 	//Abre modal para selecionar bandeira
 	$('#selectBandeira').on('click', function(){

@@ -6,7 +6,13 @@
 
 	parse_str($dados); 		
 
-	#print_r($dados);
+	//print_r($dados);
+
+	//função para deixar os valores em letra maiuscula
+	function u($str){
+		$str = strtoupper($str);
+		return $str;
+	}
 
 	if($numero == '')
 		$numero = 'S/N';
@@ -47,7 +53,7 @@
 							Values 
 								(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ");
 
-	$sql->execute(array('', $cnpj, $idBandeiraHidden, $nome, $rua, $numero, $complemento, $bairro, $cidade, $uf, $cep, $estabReceitaAberturaData, $estabReceitaRazaoSocial, $estabReceitaNF, $estabReceitaEndereco, $estabReceitaNumero, $estabReceitaComplemento, $estabReceitaBairro, $estabReceitaCidade, $estabReceitaUF, $estabReceitaCEP, $estabReceitaSituacao, $estabReceitaSituacaoData, $estabTel01, $estabTel02, $dataFechamento, $userAdd));
+	$sql->execute(array('', $cnpj, $idBandeiraHidden, u($nome), u($rua), $numero, u($complemento), u($bairro), u($cidade), u($uf), $cep, u($estabReceitaAberturaData), u($estabReceitaRazaoSocial), u($estabReceitaNF), u($estabReceitaEndereco), $estabReceitaNumero, u($estabReceitaComplemento), u($estabReceitaBairro), u($estabReceitaCidade), u($estabReceitaUF), $estabReceitaCEP, u($estabReceitaSituacao), $estabReceitaSituacaoData, $estabTel01, $estabTel02, $dataFechamento, $userAdd));
 	
 	//Fecha conexão
 	$pdo = null;
