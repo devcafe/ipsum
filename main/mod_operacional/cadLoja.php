@@ -12,10 +12,18 @@
 <div class = "formInner">
 	<form method = "post" id = "formCadLoja">
 		<legend> Cadastrar Loja </legend>
+		<table>
+			<tr>
+				<td> Campos marcados com <span class = "obgField"> * </span> são obrigatórios </td>
+			</tr>
 
+			<tr class = "fakeRow"> </tr>
+			<tr class = "fakeRow"> </tr>
+		</table>
+		
 		<table>	
 			<tr>
-				<td> <label for = "cnpj"> CNPJ: </label> </td>
+				<td> <label for = "cnpj">CNPJ:  <span class = "obgField"> *</span></label> </td>
 			</tr>
 			<tr>
 				<td> <input  type = "text" name = "cnpj" id = "cnpj" > </td>
@@ -26,7 +34,7 @@
 
 		<table>	
 			<tr>
-				<td> <label for = "bandeira"> Bandeira: </label> </td>
+				<td> <label for = "bandeira">Bandeira:  <span class = "obgField"> *</span></label> </td>
 			</tr>
 			<tr>
 				<td class = "bandeiraTD"> <input  type = "text" name = "bandeira" id = "bandeira" disabled > </td>
@@ -40,7 +48,7 @@
 
 		<table>	
 			<tr>
-				<td> <label for = "nome"> Nome do estabelecimento: </label> </td>
+				<td> <label for = "nome"> Nome do estabelecimento: <span class = "obgField"> *</span></label> </td>
 			</tr>
 			<tr>
 				<td> <input  type = "text" name = "nome" id = "nome" > </td>
@@ -51,8 +59,8 @@
 
 		<table>	
 			<tr>
-				<td> <label for = "cep"> CEP: </label> </td>
-				<td> <label for = "bairro"> Bairro: </label> </td>
+				<td> <label for = "cep"> CEP: <span class = "obgField"> *</span></label> </td>
+				<td> <label for = "bairro"> Bairro: <span class = "obgField"> *</span></label> </td>
 			</tr>
 			<tr>
 				<td class = "cepTD"> <input  type = "text" name = "cep" id = "cep"> </td>
@@ -65,11 +73,11 @@
 
 		<table>	
 			<tr>
-				<td> <label for = "rua"> Rua: </label> </td>
+				<td> <label for = "rua"> Rua: <span class = "obgField"> *</span></label> </td>
 				<td> <label for = "numero"> Nº: </label> </td>
 				<td> <label for = "complemento"> Complemento: </label> </td>
-				<td> <label for = "complemento"> Cidade: </label> </td>
-				<td> <label for = "uf"> UF: </label> </td>
+				<td> <label for = "complemento"> Cidade: <span class = "obgField"> *</span></label> </td>
+				<td> <label for = "uf"> UF: <span class = "obgField"> *</span></label> </td>
 			</tr>
 			<tr>
 				<td class = "ruaTD"> <input  type = "text" name = "rua" id = "rua" maxlength="60"> </td>
@@ -97,7 +105,7 @@
 
 			<table>	
 				<tr>
-					<td> <label for = "estabReceitaNomeEmpresarial"> Nome empresarial: </label> </td>
+					<td> <label for = "estabReceitaNomeEmpresarial">Nome empresarial:  <span class = "obgField"> *</span></label> </td>
 				</tr>
 				<tr>
 					<td> <input  type = "text" name = "estabReceitaNomeEmpresarial" id = "estabReceitaNomeEmpresarial"> </td>
@@ -119,8 +127,8 @@
 
 			<table>	
 				<tr>
-					<td> <label for = "estabReceitaCEP"> CEP: </label> </td>
-					<td> <label for = "estabReceitaBairro"> Bairro: </label> </td>
+					<td> <label for = "estabReceitaCEP"> CEP: <span class = "obgField"> *</span></label> </td>
+					<td> <label for = "estabReceitaBairro">Bairro:  <span class = "obgField"> *</span></label> </td>
 				</tr>
 				<tr>
 					<td class = "cepTD"> <input  type = "text" name = "estabReceitaCEP" id = "estabReceitaCEP"> </td>
@@ -132,11 +140,11 @@
 
 			<table>	
 				<tr>
-					<td> <label for = "estabReceitaEndereco"> Endereço: </label> </td>
+					<td> <label for = "estabReceitaEndereco"> Endereço: <span class = "obgField"> *</span></label> </td>
 					<td> <label for = "estabReceitaNumero"> Nº: </label> </td>
 					<td> <label for = "estabReceitaComplemento"> Complemento: </label> </td>
-					<td> <label for = "estabReceitaCidade"> Cidade: </label> </td>
-					<td> <label for = "estabReceitaUF"> UF: </label> </td>
+					<td> <label for = "estabReceitaCidade"> Cidade: <span class = "obgField"> *</span></label> </td>
+					<td> <label for = "estabReceitaUF"> UF: <span class = "obgField"> *</span></label> </td>
 				</tr>
 				<tr>
 					<td class = "ruaTD"> <input  type = "text" name = "estabReceitaEndereco" id = "estabReceitaEndereco"> </td>
@@ -164,9 +172,9 @@
 
 			<table>	
 				<tr>
-					<td> <label for = "estabReceitaAberturaData"> Data de abertura: </label> </td>
-					<td> <label for = "estabReceitaSituacao"> Situação: </label> </td>
-					<td> <label for = "estabReceitaSituacaoData"> Situação data: </label> </td>
+					<td> <label for = "estabReceitaAberturaData"> Data de abertura: <span class = "obgField"> *</span></label> </td>
+					<td> <label for = "estabReceitaSituacao"> Situação: <span class = "obgField"> *</span></label> </td>
+					<td> <label for = "estabReceitaSituacaoData"> Situação data: <span class = "obgField"> *</span></label> </td>
 					<td> <label for = "dataFechamento"> Data fechamento </label> </td>
 				</tr>
 				<tr>

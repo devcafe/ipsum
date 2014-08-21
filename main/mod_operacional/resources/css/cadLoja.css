@@ -121,3 +121,8 @@ label{
 input[type=radio]{
 	width:15px;
 }
+
+.obgField{
+	color:red;
+	font-weight: bold;
+}
