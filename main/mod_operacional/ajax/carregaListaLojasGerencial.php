@@ -19,7 +19,9 @@
 		$inicio = $inicio * $total_reg;
 
 		//Busca limitada
+
 		$limite = $pdo->prepare("Select * From ipsum_operacionallojas a Inner Join ipsum_operacionalbandeiras b On (a.idEstabBandeira = b.idBandeira) LIMIT $inicio,$total_reg");
+	
 		$limite->execute();
 
 		$todos = $pdo->prepare("Select * From ipsum_operacionallojas");
@@ -27,8 +29,6 @@
 
 		$tr = $todos->rowCount();
 		$tp = $tr / $total_reg;
-
-		$lastPage = round($tp);
 	} elseif($op == 'withFields') {
 		//Total de registros por pagina
 		$total_reg = "25";	
@@ -49,8 +49,6 @@
 
 		$tr = $todos->rowCount();
 		$tp = $tr / $total_reg;
-
-		$lastPage = round($tp);
 	} elseif($op == 'withFieldsFiltro'){ 
 		//Total de registros por pagina
 		$total_reg = "25";	
@@ -170,6 +168,7 @@
 
 			$lastPage = round($tp);
 		}
+
 	}else {
 		//Total de registros por pagina
 		$total_reg = "25";	
@@ -302,7 +301,7 @@
 		
 		$lista .= '<table id = "lojasTable">';
 			$lista .= '<tr>';
-				$lista .= '<td> ID </td>';
+				$lista .= '<td> Cod. Loja </td>';
 				$lista .= '<td> CNPJ </td>';
 				$lista .= '<td> Bandeira </td>';
 				$lista .= '<td> Nome </td>';
@@ -632,19 +631,17 @@
 
 	$nav = '';
 
-		$nav .= "<div class = 'navLojas'>";
-
-		$nav .= " <a class = 'toPage voltarPag' style = 'margin-right: 10px' href='#' id = '1'> <img src= '../main/resources/images/Operacional/arrowLeft.png' alt=''> <span> Primeira pagina </span> </a>"; 
+	$nav .= "<div class = 'navLojas'>";
 
 		if ($pc>1) { 
 			$nav .= "<a class = 'toPage voltarPag' href='#' id = '$anterior'> <span> Voltar </span> <img src= '../main/resources/images/Operacional/arrowLeft.png' alt=''> </a>"; 
 		} 
 
-		if ($pc<$tp && $pc != $lastPage) { 
-			$nav .= " <a class = 'toPage proximaPag' style = 'margin-right: 10px' href='#' id = '$proximo'> <img src= '../main/resources/images/Operacional/arrowRight.png' alt=''> <span> Proximo </span> </a>"; 
-		}
+		$nav .= "|"; 
 
-		$nav .= " <a class = 'toPage proximaPag' href='#' id = '$lastPage'> <img src= '../main/resources/images/Operacional/arrowRight.png' alt=''> <span> Ultima pagina </span> </a>"; 
+		if ($pc<$tp) { 
+			$nav .= " <a class = 'toPage proximaPag' href='#' id = '$proximo'> <img src= '../main/resources/images/Operacional/arrowRight.png' alt=''> <span> Proximo </span> </a>"; 
+		}
 
 	$nav .= "</div>";
 

@@ -60,8 +60,8 @@
 
 /* ID */
 #lojasTable tr td:nth-child(1){
-	max-width: 50px;
-	min-width: 50px;
+	max-width: 78px;
+	min-width: 78px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;

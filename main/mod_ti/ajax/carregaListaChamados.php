@@ -57,7 +57,7 @@
 				$lista .= '</tr>';
 
 				//Subitens (descrição)
-				$sub = $pdo->prepare("Select a.*, b.* From ipsum_tichamadoshist a Inner Join ipsum_usuarios b On (a.idUsuarioResponsavel = b.id) Where idChamado = ?");
+				$sub = $pdo->prepare("Select a.*, b.* From ipsum_tichamadoshist a Inner Join ipsum_usuarios b On (a.idUsuarioResponsavel = b.id) Where idChamado = ? ORDER BY a.idChamadoHist ASC");
 				$sub->execute(array($chamados->idChamado));
 
 				$lista .= '<tr class = "subContainner sub_'. $chamados->idChamado .'">';
@@ -92,7 +92,7 @@
 				$lista .= '</tr>';
 
 				//Subitens (descrição)
-				$sub = $pdo->prepare("Select a.*, b.* From ipsum_tichamadoshist a Inner Join ipsum_usuarios b On (a.idUsuarioResponsavel = b.id) Where idChamado = ?");
+				$sub = $pdo->prepare("Select a.*, b.* From ipsum_tichamadoshist a Inner Join ipsum_usuarios b On (a.idUsuarioResponsavel = b.id) Where idChamado = ? ORDER BY a.idChamadoHist ASC");
 				$sub->execute(array($chamados->idChamado));
 
 				$lista .= '<tr class = "subContainner sub_'. $chamados->idChamado .'">';

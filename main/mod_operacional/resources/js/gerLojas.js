@@ -11,10 +11,18 @@ $(document).ready(function(){
 	//Esconde modal
 	$('#lojasModalGer').hide();
 
+	// mascara campos
+
+	$("#cnpj").mask("99.999.999/9999-99");
+	$("#cep").mask("99999-999");
+	
+
 	//Lista lojas
+	var count = 0; 
+	var ordemLojas = 0;
+
 	function carregaLojas(){
 		var pag = $('#pagina').val();
-
 		var filtro = $('#checkFiltro').val();
 
 		$.ajax({
@@ -364,5 +372,4 @@ $(document).ready(function(){
 			}
 		})
 	})
-		
 })
