@@ -102,6 +102,7 @@
 
 	$lista .= '<table id = "lojasTable">';
 		$lista .= '<tr>';
+			$lista .= '<td> Cod. Loja </td>';
 			$lista .= '<td> CNPJ </td>';
 			$lista .= '<td> Bandeira </td>';
 			$lista .= '<td> Razão social </td>';
@@ -116,6 +117,7 @@
 		while($res = $limite->fetch(PDO::FETCH_OBJ)){
 			if($i % 2 == 0){
 				$lista .= '<tr class = "par" id = "'. $res->idLoja .'">';
+					$lista .= '<td>'. $res->idLoja .'</td>';
 					$lista .= '<td>'. $res->cnpj .'</td>';
 					$lista .= '<td>'. $res->bandeira .'</td>';
 					$lista .= '<td>'. $res->estabReceitaRazaoSocial .'</td>';
@@ -129,6 +131,7 @@
 				$lista .= '</tr>';	
 			} else {
 				$lista .= '<tr class = "impar" id = "'. $res->idLoja .'">';
+					$lista .= '<td>'. $res->idLoja .'</td>';
 					$lista .= '<td>'. $res->cnpj .'</td>';
 					$lista .= '<td>'. $res->bandeira .'</td>';
 					$lista .= '<td>'. $res->estabReceitaRazaoSocial .'</td>';

@@ -188,7 +188,7 @@
 		
 		$lista .= '<table id = "lojasTable">';
 			$lista .= '<tr>';
-				$lista .= '<td> ID </td>';
+				$lista .= '<td id = "idLojaOrd" class="ordenar_a-z"> Cod. Loja </td>';
 				$lista .= '<td> CNPJ </td>';
 				$lista .= '<td> Bandeira </td>';
 				$lista .= '<td> Nome </td>';

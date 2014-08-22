@@ -360,4 +360,41 @@ $(document).ready(function(){
 		})
 	})
 		
+
+	//ordernar filtro
+	
+	
+	$('#listaLojas').on('click','#idLojaOrd', function(){		
+		
+		var ordemLojas = '';
+
+		if ($(this).hasClass('ordenar_z-a')){
+			$(this).removeClass('ordenar_z-a');
+			$(this).addClass('ordenar_a-z');
+			ordemLojas = 'ordenar_a-z';			
+			
+		} else {
+			$(this).removeClass('ordenar_a-z');
+			$(this).addClass('ordenar_z-a');
+			ordemLojas = 'ordenar_z-a';
+		
+		}
+		
+
+		$.ajax({
+			type: 'POST',
+			url: 'mod_operacional/ajax/ordenaLojas.php',
+			data: {
+				ordemLojas: ordemLojas 
+			}, 
+			success: function(data){
+				
+			}
+			
+
+		})
+		
+// fim do ajax
+
+	})	
 })

@@ -25,6 +25,16 @@
 	text-decoration: none;
 }
 
+
+.ordenar_a-z {
+	background: url('../main/resources/images/Operacional/sortUp.png') no-repeat;
+}
+
+.ordenar_z-a {
+	background: url('resources/images/Operacional/sortDown.png') no-repeat;
+}
+
+
 /* Tabela lista linhas moveis */
 #lojasTable{
 	border: 1px solid #e7e7e7;
@@ -60,8 +70,8 @@
 
 /* ID */
 #lojasTable tr td:nth-child(1){
-	max-width: 50px;
-	min-width: 50px;
+	max-width: 60px;
+	min-width: 60px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
