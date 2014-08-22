@@ -267,7 +267,7 @@ $(document).ready(function(){
 			},
 			success: function (data){
 				//Destroy modal
-      			$('#cadBandeirasModal').dialog("destroy");
+      			//$('#cadBandeirasModal').dialog("destroy");
 
 				alert(data);
 			}

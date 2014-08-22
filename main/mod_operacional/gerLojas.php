@@ -13,6 +13,7 @@
 			<div class = "filtro">
 				<form method = "post" id = "formFiltro">
 					<div class = "filtro01">
+						<input type = "text" name = "idLojaFiltro" id = "idLojaFiltro" placeholder = "ID">
 						<input type = "text" name = "cnpj" id = "cnpj" placeholder = "CNPJ">
 						<input type = "text" name = "razaoSocial" id = "razaoSocial" placeholder = "Razão Social">
 						<input type = "text" name = "nomeFantasia" id = "nomeFantasia" placeholder = "Nome Fantasia">

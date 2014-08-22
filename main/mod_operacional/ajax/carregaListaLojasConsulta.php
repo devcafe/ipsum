@@ -52,50 +52,102 @@
 		$uf = $_POST['uf'];
 		$numero = $_POST['numero'];
 
-		//Consulta para retornar lojas de acordo com o filtro
-		$limite = $pdo->prepare("
-			Select * 
-			From ipsum_operacionallojas a
-			Inner Join ipsum_operacionalbandeiras b On (a.idEstabBandeira = b.idBandeira)
-			Where 
-				a.cnpj like :cnpj 
-			And a.estabReceitaRazaoSocial like :razaoSocial
-			And a.estabReceitaNF like :nomeFantasia
-			And a.bairro like :bairro
-			And a.rua like :rua
-			And b.bandeira like :bandeira
-			And a.cep like :cep
-			And a.cidade like :cidade
-			And a.uf like :uf
-			And a.numero like :numero
-			Limit 
-				$inicio,$total_reg
-		");
+		if($_POST['idLojaFiltro'] != ''){
 
-		$limite->execute(array(":cnpj" => "%" . $cnpj . "%", ":razaoSocial" => "%" . $razaoSocial . "%", ":nomeFantasia" => "%" . $nomeFantasia . "%", ":bairro" => "%" . $bairro . "%", ":rua" => "%" . $rua . "%", ":bandeira" => "%" . $bandeira . "%", ":cep" => "%" . $cep . "%", ":cidade" => "%" . $cidade . "%", ":uf" => "%" . $uf . "%", ":numero" => "%" . $numero . "%"));
+			$idLojaQuery = 'a.idLoja = :idLojaFiltro';
 
-		$todos = $pdo->prepare("
-			Select * 
-			From ipsum_operacionallojas a
-			Inner Join ipsum_operacionalbandeiras b On (a.idEstabBandeira = b.idBandeira)
-			Where 
-				a.cnpj like :cnpj 
-			And a.estabReceitaRazaoSocial like :razaoSocial
-			And a.estabReceitaNF like :nomeFantasia
-			And a.bairro like :bairro
-			And a.rua like :rua
-			And b.bandeira like :bandeira
-			And a.cep like :cep
-			And a.cidade like :cidade
-			And a.uf like :uf
-			And a.numero like :numero
-		");
-		$todos->execute(array(":cnpj" => "%" . $cnpj . "%", ":razaoSocial" => "%" . $razaoSocial . "%", ":nomeFantasia" => "%" . $nomeFantasia . "%", ":bairro" => "%" . $bairro . "%", ":rua" => "%" . $rua . "%", ":bandeira" => "%" . $bandeira . "%", ":cep" => "%" . $cep . "%", ":cidade" => "%" . $cidade . "%", ":uf" => "%" . $uf . "%", ":numero" => "%" . $numero . "%"));
+			//Consulta para retornar lojas de acordo com o filtro
+			$limite = $pdo->prepare("
+				Select * 
+				From ipsum_operacionallojas a
+				Inner Join ipsum_operacionalbandeiras b On (a.idEstabBandeira = b.idBandeira)
+				Where 
+					$idLojaQuery
+				And	a.cnpj like :cnpj 
+				And a.estabReceitaRazaoSocial like :razaoSocial
+				And a.estabReceitaNF like :nomeFantasia
+				And a.bairro like :bairro
+				And a.rua like :rua
+				And b.bandeira like :bandeira
+				And a.cep like :cep
+				And a.cidade like :cidade
+				And a.uf like :uf
+				And a.numero like :numero
+				Limit 
+					$inicio,$total_reg
+			");
 
-		$tr = $todos->rowCount();
-		$tp = $tr / $total_reg;
+			$limite->execute(array(":idLojaFiltro" =>  $_POST['idLojaFiltro'] , ":cnpj" => "%" . $cnpj . "%", ":razaoSocial" => "%" . $razaoSocial . "%", ":nomeFantasia" => "%" . $nomeFantasia . "%", ":bairro" => "%" . $bairro . "%", ":rua" => "%" . $rua . "%", ":bandeira" => "%" . $bandeira . "%", ":cep" => "%" . $cep . "%", ":cidade" => "%" . $cidade . "%", ":uf" => "%" . $uf . "%", ":numero" => "%" . $numero . "%"));
 
-		$lastPage = round($tp);
+			$todos = $pdo->prepare("
+				Select * 
+				From ipsum_operacionallojas a
+				Inner Join ipsum_operacionalbandeiras b On (a.idEstabBandeira = b.idBandeira)
+				Where 
+					$idLojaQuery
+				And	a.cnpj like :cnpj 
+				And a.estabReceitaRazaoSocial like :razaoSocial
+				And a.estabReceitaNF like :nomeFantasia
+				And a.bairro like :bairro
+				And a.rua like :rua
+				And b.bandeira like :bandeira
+				And a.cep like :cep
+				And a.cidade like :cidade
+				And a.uf like :uf
+				And a.numero like :numero
+			");
+			$todos->execute(array(":idLojaFiltro" =>  $_POST['idLojaFiltro'], ":cnpj" => "%" . $cnpj . "%", ":razaoSocial" => "%" . $razaoSocial . "%", ":nomeFantasia" => "%" . $nomeFantasia . "%", ":bairro" => "%" . $bairro . "%", ":rua" => "%" . $rua . "%", ":bandeira" => "%" . $bandeira . "%", ":cep" => "%" . $cep . "%", ":cidade" => "%" . $cidade . "%", ":uf" => "%" . $uf . "%", ":numero" => "%" . $numero . "%"));
+
+			$tr = $todos->rowCount();
+			$tp = $tr / $total_reg;
+
+			$lastPage = round($tp);
+		} else {
+			//Consulta para retornar lojas de acordo com o filtro
+			$limite = $pdo->prepare("
+				Select * 
+				From ipsum_operacionallojas a
+				Inner Join ipsum_operacionalbandeiras b On (a.idEstabBandeira = b.idBandeira)
+				Where 
+					a.cnpj like :cnpj 
+				And a.estabReceitaRazaoSocial like :razaoSocial
+				And a.estabReceitaNF like :nomeFantasia
+				And a.bairro like :bairro
+				And a.rua like :rua
+				And b.bandeira like :bandeira
+				And a.cep like :cep
+				And a.cidade like :cidade
+				And a.uf like :uf
+				And a.numero like :numero
+				Limit 
+					$inicio,$total_reg
+			");
+
+			$limite->execute(array(":cnpj" => "%" . $cnpj . "%", ":razaoSocial" => "%" . $razaoSocial . "%", ":nomeFantasia" => "%" . $nomeFantasia . "%", ":bairro" => "%" . $bairro . "%", ":rua" => "%" . $rua . "%", ":bandeira" => "%" . $bandeira . "%", ":cep" => "%" . $cep . "%", ":cidade" => "%" . $cidade . "%", ":uf" => "%" . $uf . "%", ":numero" => "%" . $numero . "%"));
+
+			$todos = $pdo->prepare("
+				Select * 
+				From ipsum_operacionallojas a
+				Inner Join ipsum_operacionalbandeiras b On (a.idEstabBandeira = b.idBandeira)
+				Where 
+					a.cnpj like :cnpj 
+				And a.estabReceitaRazaoSocial like :razaoSocial
+				And a.estabReceitaNF like :nomeFantasia
+				And a.bairro like :bairro
+				And a.rua like :rua
+				And b.bandeira like :bandeira
+				And a.cep like :cep
+				And a.cidade like :cidade
+				And a.uf like :uf
+				And a.numero like :numero
+			");
+			$todos->execute(array(":cnpj" => "%" . $cnpj . "%", ":razaoSocial" => "%" . $razaoSocial . "%", ":nomeFantasia" => "%" . $nomeFantasia . "%", ":bairro" => "%" . $bairro . "%", ":rua" => "%" . $rua . "%", ":bandeira" => "%" . $bandeira . "%", ":cep" => "%" . $cep . "%", ":cidade" => "%" . $cidade . "%", ":uf" => "%" . $uf . "%", ":numero" => "%" . $numero . "%"));
+
+			$tr = $todos->rowCount();
+			$tp = $tr / $total_reg;
+
+			$lastPage = round($tp);
+		}
 	}
 
 	$lista = '';
@@ -106,6 +158,7 @@
 
 	$lista .= '<table id = "lojasTable">';
 		$lista .= '<tr>';
+			$lista .= '<td> ID </td>';
 			$lista .= '<td> CNPJ </td>';
 			$lista .= '<td> Bandeira </td>';
 			$lista .= '<td> Razão social </td>';
@@ -120,6 +173,7 @@
 		while($res = $limite->fetch(PDO::FETCH_OBJ)){
 			if($i % 2 == 0){
 				$lista .= '<tr class = "par" id = "'. $res->idLoja .'">';
+					$lista .= '<td>'. $res->idLoja .'</td>';
 					$lista .= '<td>'. $res->cnpj .'</td>';
 					$lista .= '<td>'. $res->bandeira .'</td>';
 					$lista .= '<td>'. $res->estabReceitaRazaoSocial .'</td>';
@@ -133,6 +187,7 @@
 				$lista .= '</tr>';	
 			} else {
 				$lista .= '<tr class = "impar" id = "'. $res->idLoja .'">';
+					$lista .= '<td>'. $res->idLoja .'</td>';
 					$lista .= '<td>'. $res->cnpj .'</td>';
 					$lista .= '<td>'. $res->bandeira .'</td>';
 					$lista .= '<td>'. $res->estabReceitaRazaoSocial .'</td>';

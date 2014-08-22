@@ -100,6 +100,7 @@ table tr:not(:first-child):hover{
 
 .filtro02{
 	margin-top:5px;
+	margin-left: -160px;
 }
 
 .blue{
@@ -109,3 +110,4 @@ table tr:not(:first-child):hover{
 .navLojas{
 	float:right;
 }
+

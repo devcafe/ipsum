@@ -47,6 +47,7 @@ $(document).ready(function(){
 		var pag = $('#pagina').val();
 
 		//Recebe dados para filtrar
+		var idLojaFiltro = $('#idLojaFiltro').val();
 		var cnpj = $('#cnpj').val();
 		var razaoSocial = $('#razaoSocial').val();
 		var nomeFantasia = $('#nomeFantasia').val();
@@ -76,6 +77,7 @@ $(document).ready(function(){
 					filtro: filtro,
 					pag: pag,
 					op: 'withFieldsFiltro',
+					idLojaFiltro: idLojaFiltro,
 					cnpj: cnpj,
 					razaoSocial: razaoSocial,
 					nomeFantasia: nomeFantasia,
@@ -102,6 +104,7 @@ $(document).ready(function(){
 					filtro: filtro,
 					pag: pag,
 					op: 'filtro',
+					idLojaFiltro: idLojaFiltro,
 					cnpj: cnpj,
 					razaoSocial: razaoSocial,
 					nomeFantasia: nomeFantasia,
@@ -133,6 +136,7 @@ $(document).ready(function(){
 		var pag = $('#pagina').val();
 
 		//Recebe dados para filtrar
+		var idLojaFiltro = $('#idLojaFiltro').val();
 		var cnpj = $('#cnpj').val();
 		var nome = $('#nome').val();
 		var razaoSocial = $('#razaoSocial').val();
@@ -151,6 +155,7 @@ $(document).ready(function(){
 				filtro: filtro,
 				pag: pag,
 				op: 'filtro',
+				idLojaFiltro: idLojaFiltro,
 				cnpj: cnpj,
 				nome: nome,
 				razaoSocial: razaoSocial,
