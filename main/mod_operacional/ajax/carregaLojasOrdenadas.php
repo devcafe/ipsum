@@ -5,8 +5,6 @@
 	header('Content-Type: text/html; charset=UTF-8');
 
 	$op = $_POST['op'];
-	
-	// ordem da loja 
 
 	$ordemLojas = $_POST['ordemLojas'];
 
@@ -36,6 +34,8 @@
 
 		$tr = $todos->rowCount();
 		$tp = $tr / $total_reg;
+
+		$lastPage = round($tp);
 	} elseif($op == 'withFields') {
 		//Total de registros por pagina
 		$total_reg = "25";	
@@ -56,6 +56,8 @@
 
 		$tr = $todos->rowCount();
 		$tp = $tr / $total_reg;
+
+		$lastPage = round($tp);
 	} elseif($op == 'withFieldsFiltro'){ 
 		//Total de registros por pagina
 		$total_reg = "25";	
@@ -121,6 +123,8 @@
 
 		$tr = $todos->rowCount();
 		$tp = $tr / $total_reg;
+
+		$lastPage = round($tp);
 	}else {
 		//Total de registros por pagina
 		$total_reg = "25";	
@@ -186,6 +190,8 @@
 
 		$tr = $todos->rowCount();
 		$tp = $tr / $total_reg;
+
+		$lastPage = round($tp);
 	}
 
 	if($op != "withFields" && $op != 'withFieldsFiltro'){
@@ -531,17 +537,19 @@
 
 	$nav = '';
 
-	$nav .= "<div class = 'navLojas'>";
+		$nav .= "<div class = 'navLojas'>";
+
+		$nav .= " <a class = 'toPage voltarPag' style = 'margin-right: 10px' href='#' id = '1'> <img src= '../main/resources/images/Operacional/arrowLeft.png' alt=''> <span> Primeira pagina </span> </a>"; 
 
 		if ($pc>1) { 
 			$nav .= "<a class = 'toPage voltarPag' href='#' id = '$anterior'> <span> Voltar </span> <img src= '../main/resources/images/Operacional/arrowLeft.png' alt=''> </a>"; 
 		} 
 
-		$nav .= "|"; 
-
-		if ($pc<$tp) { 
-			$nav .= " <a class = 'toPage proximaPag' href='#' id = '$proximo'> <img src= '../main/resources/images/Operacional/arrowRight.png' alt=''> <span> Proximo </span> </a>"; 
+		if ($pc<$tp && $pc != $lastPage) { 
+			$nav .= " <a class = 'toPage proximaPag' style = 'margin-right: 10px' href='#' id = '$proximo'> <img src= '../main/resources/images/Operacional/arrowRight.png' alt=''> <span> Proximo </span> </a>"; 
 		}
+
+		$nav .= " <a class = 'toPage proximaPag' href='#' id = '$lastPage'> <img src= '../main/resources/images/Operacional/arrowRight.png' alt=''> <span> Ultima pagina </span> </a>"; 
 
 	$nav .= "</div>";
 
