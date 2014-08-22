@@ -39,7 +39,7 @@
 			<tr>
 				<td class = "bandeiraTD"> <input  type = "text" name = "bandeira" id = "bandeira" disabled > </td>
 				<td> <a href = "#" id = "selectBandeira"> Selecionar bandeira </a> </td>
-				<!--<td> <a href = "#" id = "addBandeira"> Cadastrar bandeira </a> </td>-->
+				<td> <a href = "#" id = "addBandeira"> Cadastrar bandeira </a> </td>
 				<input type = "hidden" name = "idBandeiraHidden" id = "idBandeiraHidden">
 			</tr>
 

@@ -255,4 +255,23 @@ $(document).ready(function(){
 	     }
 	}
 
+	//Cadastra bandeira
+	$('#cadBandeiraBtn').on('click', function(){
+		var bandeira = $('#cadBandeiraNome').val();
+
+		$.ajax({
+			type: 'POST',
+			url: 'mod_operacional/ajax/cadBandeiras.php',
+			data: {
+				bandeira: bandeira
+			},
+			success: function (data){
+				//Destroy modal
+      			$('#cadBandeirasModal').dialog("destroy");
+
+				alert(data);
+			}
+		})
+	})
+
 })
