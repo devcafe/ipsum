@@ -17,11 +17,19 @@ $(document).ready(function(){
 	$("#cep").mask("99999-999");
 	
 
-	//Lista lojas
-	var count = 0; 
-	var ordemLojas = 0;
+	//Lista lojas	
+	
 
 	function carregaLojas(){
+
+		var ordemLojas = ""
+
+		if($('#orderLoja').hasClass('order_a-z')){			
+			ordemLojas = 'order_a-z';			
+		}else {			
+			ordemLojas = 'order_z-a';
+		}
+
 		var pag = $('#pagina').val();
 		var filtro = $('#checkFiltro').val();
 
@@ -30,7 +38,8 @@ $(document).ready(function(){
 			data: {
 				op: '', 
 				pag: pag,
-				filtro: filtro
+				filtro: filtro,
+				ordemLojas: ordemLojas,
 			},
 			url: 'mod_operacional/ajax/carregaListaLojasGerencial.php',
 			success: function (data){
@@ -42,11 +51,19 @@ $(document).ready(function(){
 		})
 	}
 
-	//Filtra
-	$('#btnFiltrar').on('click', function(){
-		$('.filtro').toggle();
-	})
-	$('input').on('keyup', function(){
+	//ordenar lojas	
+	$('#listaLojas').on('click', '#idLojaOrder', function(){
+		var ordemLojas = ""
+
+		if($('#orderLoja').hasClass('order_a-z')){
+			$('#orderLoja').removeClass('order_a-z');
+			$('#orderLoja').addClass('order_z-a');
+			ordemLojas = 'order_z-a';						
+		}else {
+			$('#orderLoja').removeClass('order_z-a');
+			$('#orderLoja').addClass('order_a-z');
+			ordemLojas = 'order_a-z';			
+		}
 
 		var filtro = $('#checkFiltro').val();
 
@@ -95,7 +112,84 @@ $(document).ready(function(){
 					cep: cep,
 					cidade: cidade,
 					uf: uf,
-					numero: numero
+					numero: numero,
+					ordemLojas: ordemLojas,
+				},
+				url: 'mod_operacional/ajax/carregaListaLojasGerencial.php',
+				success: function (data){
+					$('#listaLojas').empty();
+
+					//Carrega lista em div
+					$('#listaLojas').append(data);
+				}
+			})
+		} else{		
+			carregaLojas();
+		}
+	})
+
+	//Filtra
+	$('#btnFiltrar').on('click', function(){
+		$('.filtro').toggle();
+	})
+	$('input').on('keyup', function(){
+
+		var ordemLojas = ""
+		if($('#orderLoja').hasClass('order_a-z')){			
+			ordemLojas = 'order_a-z';			
+		}else {			
+			ordemLojas = 'order_z-a';
+		}
+
+		var filtro = $('#checkFiltro').val();
+
+		$('#checkFiltro').val('1');
+
+		var pag = $('#pagina').val();
+
+		//Recebe dados para filtrar
+		var idLojaFiltro = $('#idLojaFiltro').val();
+		var cnpj = $('#cnpj').val();
+		var razaoSocial = $('#razaoSocial').val();
+		var nomeFantasia = $('#nomeFantasia').val();
+		var bairro = $('#bairro').val();
+		var rua = $('#rua').val();
+		var bandeira = $('#bandeira').val();
+		var cep = $('#cep').val();
+		var cidade = $('#cidade').val();
+		var uf = $('#uf').val();
+		var numero = $('#numero').val();
+
+		var itens2 = [];
+		var j = 0;
+
+		$( ".checkBox:checked" ).each(function() {
+		  itens2[j] = $(this).val();
+		  
+		  j++;
+		});
+
+		if(itens2.length > 0){
+
+			$.ajax({
+				type: 'POST',
+				data:{
+					itens2: itens2,
+					filtro: filtro,
+					pag: pag,
+					op: 'withFieldsFiltro',
+					idLojaFiltro: idLojaFiltro,
+					cnpj: cnpj,
+					razaoSocial: razaoSocial,
+					nomeFantasia: nomeFantasia,
+					bairro: bairro,
+					rua: rua,
+					bandeira: bandeira,
+					cep: cep,
+					cidade: cidade,
+					uf: uf,
+					numero: numero,
+					ordemLojas: ordemLojas,
 				},
 				url: 'mod_operacional/ajax/carregaListaLojasGerencial.php',
 				success: function (data){
@@ -122,7 +216,8 @@ $(document).ready(function(){
 					cep: cep,
 					cidade: cidade,
 					uf: uf,
-					numero: numero
+					numero: numero,
+				ordemLojas: ordemLojas,
 				},
 				url: 'mod_operacional/ajax/carregaListaLojasGerencial.php',
 				success: function (data){
@@ -137,6 +232,14 @@ $(document).ready(function(){
 
 	//Função para carregar página e manter filtro
 	function carregaComFiltro(){
+
+		var ordemLojas = ""
+		if($('#orderLoja').hasClass('order_a-z')){			
+			ordemLojas = 'order_a-z';			
+		}else {			
+			ordemLojas = 'order_z-a';
+		}
+
 		var filtro = $('#checkFiltro').val();
 
 		$('#checkFiltro').val('1');
@@ -174,7 +277,8 @@ $(document).ready(function(){
 				cep: cep,
 				cidade: cidade,
 				uf: uf,
-				numero: numero
+				numero: numero,
+				ordemLojas: ordemLojas,
 			},
 			url: 'mod_operacional/ajax/carregaListaLojasGerencial.php',
 			success: function (data){
@@ -329,6 +433,13 @@ $(document).ready(function(){
 
 	//Traz apenas campos selecionados
 	$('#sendFields').on('click', function(){
+		var ordemLojas = "";
+		if($('#orderLoja').hasClass('order_a-z')){			
+			ordemLojas = 'order_a-z';			
+		}else {			
+			ordemLojas = 'order_z-a';
+		}	
+
 		var itens = [];
 		var i = 0;
 
@@ -346,7 +457,9 @@ $(document).ready(function(){
 			data:{
 				op: 'withFields',
 				itens: itens,
-				pag: pag
+				pag: pag,
+				ordemLojas: ordemLojas,
+
 			},
 			url: 'mod_operacional/ajax/carregaListaLojasGerencial.php',
 			success: function (data){
@@ -372,4 +485,17 @@ $(document).ready(function(){
 			}
 		})
 	})
+
+	$('.btnToExcel').on('click', function(){
+		$.ajax({
+			type: 'POST',
+			url: 'mod_operacional/ajax/geraExcelLojas.php',
+			success: function (data){				
+				window.location = "mod_operacional/ajax/geraExcelLojas.php";
+			}
+		})
+	})
+
+
+
 })

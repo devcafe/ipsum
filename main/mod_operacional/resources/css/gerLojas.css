@@ -25,6 +25,14 @@
 	text-decoration: none;
 }
 
+.order_a-z {
+	background: url('../../../resources/images/Operacional/sortDown.png') no-repeat top right;
+	}
+.order_z-a {
+	background: url('../../../resources/images/Operacional/sortUp.png') no-repeat top right;
+	}	
+
+
 /* Tabela lista linhas moveis */
 #lojasTable{
 	border: 1px solid #e7e7e7;
@@ -137,6 +145,10 @@ table tr:not(:first-child):hover{
 	text-align: center;
 }
 
+.filtro01{
+	margin-right: 6px; 
+}
+
 .filtro02{
 	margin-top:5px;
 	margin-left: -160px;
@@ -150,12 +162,16 @@ table tr:not(:first-child):hover{
 	float:right;
 }
 
-.btnSelFields, .btnToCSV{
+.btnSelFields, .btnToCSV, #btnToExcel{
 	cursor:pointer;
 }
 
 .btnToCSV{
 	height: 0px;
+}
+
+#btnToExcel{
+	margin-left: 95px;
 }
 
 input[type="checkbox"]{

@@ -5,6 +5,19 @@
 	header('Content-Type: text/html; charset=UTF-8');
 
 	$op = $_POST['op'];
+	
+	// order lojas por id
+	$ordemLojas = $_POST['ordemLojas'];
+
+	if(empty($ordemLojas)){
+		$ordemLojas = 'order_a-z';
+	}
+
+	if ($ordemLojas == 'order_a-z'){
+		$selectOrder = 'ORDER BY idLoja ASC';
+	}else{
+		$selectOrder = 'ORDER BY idLoja DESC';
+	}
 
 	if($op == ''){
 		
@@ -19,7 +32,7 @@
 		$inicio = $inicio * $total_reg;
 
 		//Busca limitada
-		$limite = $pdo->prepare("Select * From ipsum_operacionallojas a Inner Join ipsum_operacionalbandeiras b On (a.idEstabBandeira = b.idBandeira) LIMIT $inicio,$total_reg");
+		$limite = $pdo->prepare("Select * From ipsum_operacionallojas a Inner Join ipsum_operacionalbandeiras b On (a.idEstabBandeira = b.idBandeira) $selectOrder LIMIT $inicio,$total_reg");
 		$limite->execute();
 
 		$todos = $pdo->prepare("Select * From ipsum_operacionallojas");
@@ -41,10 +54,10 @@
 		$inicio = $inicio * $total_reg;
 
 		//Busca limitada
-		$limite = $pdo->prepare("Select * From ipsum_operacionallojas a Inner Join ipsum_operacionalbandeiras b On (a.idEstabBandeira = b.idBandeira) LIMIT $inicio,$total_reg");
+		$limite = $pdo->prepare("Select * From ipsum_operacionallojas a Inner Join ipsum_operacionalbandeiras b On (a.idEstabBandeira = b.idBandeira) $selectOrder LIMIT $inicio,$total_reg");
 		$limite->execute();
 
-		$todos = $pdo->prepare("Select * From ipsum_operacionallojas a Inner Join ipsum_operacionalbandeiras b On (a.idEstabBandeira = b.idBandeira) ");
+		$todos = $pdo->prepare("Select * From ipsum_operacionallojas a Inner Join ipsum_operacionalbandeiras b On (a.idEstabBandeira = b.idBandeira) $selectOrder ");
 		$todos->execute();
 
 		$tr = $todos->rowCount();
@@ -95,6 +108,7 @@
 				And a.cidade like :cidade
 				And a.uf like :uf
 				And a.numero like :numero
+				$selectOrder
 				Limit 
 					$inicio,$total_reg
 			");
@@ -117,6 +131,7 @@
 				And a.cidade like :cidade
 				And a.uf like :uf
 				And a.numero like :numero
+				$selectOrder
 			");
 			$todos->execute(array(":idLojaFiltro" =>  $_POST['idLojaFiltro'] , ":cnpj" => "%" . $cnpj . "%", ":razaoSocial" => "%" . $razaoSocial . "%", ":nomeFantasia" => "%" . $nomeFantasia . "%", ":bairro" => "%" . $bairro . "%", ":rua" => "%" . $rua . "%", ":bandeira" => "%" . $bandeira . "%", ":cep" => "%" . $cep . "%", ":cidade" => "%" . $cidade . "%", ":uf" => "%" . $uf . "%", ":numero" => "%" . $numero . "%"));
 
@@ -141,6 +156,7 @@
 				And a.cidade like :cidade
 				And a.uf like :uf
 				And a.numero like :numero
+				$selectOrder
 				Limit 
 					$inicio,$total_reg
 			");
@@ -162,6 +178,7 @@
 				And a.cidade like :cidade
 				And a.uf like :uf
 				And a.numero like :numero
+				$selectOrder
 			");
 			$todos->execute(array(":cnpj" => "%" . $cnpj . "%", ":razaoSocial" => "%" . $razaoSocial . "%", ":nomeFantasia" => "%" . $nomeFantasia . "%", ":bairro" => "%" . $bairro . "%", ":rua" => "%" . $rua . "%", ":bandeira" => "%" . $bandeira . "%", ":cep" => "%" . $cep . "%", ":cidade" => "%" . $cidade . "%", ":uf" => "%" . $uf . "%", ":numero" => "%" . $numero . "%"));
 
@@ -214,6 +231,7 @@
 				And a.cidade like :cidade
 				And a.uf like :uf
 				And a.numero like :numero
+				$selectOrder
 				Limit 
 					$inicio,$total_reg
 			");
@@ -236,6 +254,7 @@
 				And a.cidade like :cidade
 				And a.uf like :uf
 				And a.numero like :numero
+				$selectOrder
 			");
 			$todos->execute(array(":idLojaFiltro" =>  $_POST['idLojaFiltro'] , ":cnpj" => "%" . $cnpj . "%", ":razaoSocial" => "%" . $razaoSocial . "%", ":nomeFantasia" => "%" . $nomeFantasia . "%", ":bairro" => "%" . $bairro . "%", ":rua" => "%" . $rua . "%", ":bandeira" => "%" . $bandeira . "%", ":cep" => "%" . $cep . "%", ":cidade" => "%" . $cidade . "%", ":uf" => "%" . $uf . "%", ":numero" => "%" . $numero . "%"));
 
@@ -261,6 +280,7 @@
 				And a.cidade like :cidade
 				And a.uf like :uf
 				And a.numero like :numero
+				$selectOrder
 				Limit 
 					$inicio,$total_reg
 			");
@@ -282,6 +302,7 @@
 				And a.cidade like :cidade
 				And a.uf like :uf
 				And a.numero like :numero
+				$selectOrder
 			");
 
 			$todos->execute(array(":cnpj" => "%" . $cnpj . "%", ":razaoSocial" => "%" . $razaoSocial . "%", ":nomeFantasia" => "%" . $nomeFantasia . "%", ":bairro" => "%" . $bairro . "%", ":rua" => "%" . $rua . "%", ":bandeira" => "%" . $bandeira . "%", ":cep" => "%" . $cep . "%", ":cidade" => "%" . $cidade . "%", ":uf" => "%" . $uf . "%", ":numero" => "%" . $numero . "%"));
@@ -302,7 +323,7 @@
 		
 		$lista .= '<table id = "lojasTable">';
 			$lista .= '<tr>';
-				$lista .= '<td> ID </td>';
+				$lista .= "<td id = 'idLojaOrder' class ='{$ordemLojas}'> ID </td>";
 				$lista .= '<td> CNPJ </td>';
 				$lista .= '<td> Bandeira </td>';
 				$lista .= '<td> Nome </td>';
@@ -403,7 +424,7 @@
 			$lista .= '<tr>';
 			foreach($_POST['itens'] as $res){
 				switch($res){
-					case 1: $lista .= '<td> ID </td>';break;
+					case 1: $lista .= "<td id = 'idLojaOrder' class ='{$ordemLojas}'> ID </td>";break;
 					case 2: $lista .= '<td> CNPJ </td>';break;
 					case 3: $lista .= '<td> Bandeira </td>';break;
 					case 4: $lista .= '<td> Nome </td>';break;
@@ -519,7 +540,7 @@
 			foreach($_POST['itens2'] as $res){
 
 				switch($res){
-					case 1: $lista .= '<td> ID </td>';break;
+					case 1: $lista .= "<td id = 'idLojaOrder' class ='{$ordemLojas}'> ID </td>";break;
 					case 2: $lista .= '<td> CNPJ </td>';break;
 					case 3: $lista .= '<td> Bandeira </td>';break;
 					case 4: $lista .= '<td> Nome </td>';break;

@@ -34,7 +34,7 @@
 					<h5> <b> Campos com dados da loja </b> </h5>
 					<table class = "fieldsToShow">
 						<tr>
-							<td> <input type = "checkbox" class = "checkBox" value = "1" name = "id" id = "id">  <span> ID  </span> </td>
+							<td> <input type = "checkbox" class = "checkBox" value = "1" name = "id" id = "id" >  <span> ID  </span> </td>
 							<td> <input type = "checkbox" class = "checkBox" value = "2" name = "cnpj" id = "cnpj"><span> CNPJ </span> </td>
 							<td> <input type = "checkbox" class = "checkBox" value = "3" name = "bandeira" id = "bandeira"> <span>Bandeira </span> </td>
 							<td> <input type = "checkbox" class = "checkBox" value = "4" name = "nome" id = "nome"> <span>Nome </span> </td>
@@ -81,7 +81,9 @@
 				<div class = "btnFiltrar" id = "btnFiltrar" title = "Filtrar"> <img src = "../main/resources/images/filter.png" width = "20" > </div>
 				<div class = "btnSelFields" id = "btnSelFields" title = "Selecionar campos"> <img src = "../main/resources/images/checkbox.png" width = "18" > </div>
 				<div class = "btnToCSV" id = "btnToCSV" title = "Exportar CSV"> <img src = "../main/resources/images/csv.png" width = "22" > </div>
+				<div class = "btnToExcel" id = "btnToExcel" title = "Exportar Excel"> <img src = "../main/resources/images/excel.png" width = "22" > </div>
 		</div>
+		<div id = "orderLoja" class = "order_a-z"></div>
 		<div id = "listaLojas">
 
 		</div>
