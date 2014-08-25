@@ -158,7 +158,7 @@
 
 	$lista .= '<table id = "lojasTable">';
 		$lista .= '<tr>';
-			$lista .= '<td> Cod. Loja </td>';
+			$lista .= '<td class = "orderByID"> Cod. Loja <img src = "resources/images/asc.png"> </td>';
 			$lista .= '<td> CNPJ </td>';
 			$lista .= '<td> Bandeira </td>';
 			$lista .= '<td> Razão social </td>';

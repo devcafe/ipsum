@@ -11,11 +11,9 @@ $(document).ready(function(){
 	//Esconde modal
 	$('#lojasModalGer').hide();
 
-	// mascara campos
-
+	//Mascara campos
 	$("#cnpj").mask("99.999.999/9999-99");
 	$("#cep").mask("99999-999");
-	
 
 	//Lista lojas	
 	
