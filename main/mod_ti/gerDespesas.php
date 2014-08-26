@@ -19,86 +19,8 @@
             </ul>
 	   </div>
 
-    <table class = "dataTable">
-        <tr>
-            <th> Conta contabil </th>
-            <th> Jan </th>
-            <th> Fev </th>
-            <th> Mar </th>
-            <th> Abr </th>
-            <th> Mai </th>
-            <th> Jun </th>
-            <th> Jul </th>
-            <th> Ago </th>
-            <th> Set </th>
-            <th> Out </th>
-            <th> Nov </th>
-            <th> Dec </th>
-        </tr>
-        <!-- Traz todas as contas contabeis -->
-        <?php
-            //Query para retornar todas as contas contabeis
-            $contaContabil = $pdo->prepare("
-                Select 
-                    *
-                From 
-                    ipsum_ticontacontabil
-            ");
-
-            $contaContabil->execute();
-
-            $lista = '';
-
-            while($resContaContabil = $contaContabil->fetch(PDO::FETCH_OBJ)){
-                $lista .= '<tr>';
-                    $lista .= '<td id = "contabil_'. $resContaContabil->idContaContabil .'"><div class = "expand"> + </div>'. $resContaContabil->contaContabil . '</td>';
-
-                    //Totaliza o valor da conta contabil para cada mes
-                    $despesas = $pdo->prepare("
-                       Select
-                            Sum(replace(jan, 'R$ ', '')) As Jan,
-                            Sum(replace(fev, 'R$ ', '')) As Fev,
-                            Sum(replace(mar, 'R$ ', '')) As Mar,
-                            Sum(replace(abr, 'R$ ', '')) As Abr,
-                            Sum(replace(mai, 'R$ ', '')) As Mai,
-                            Sum(replace(jun, 'R$ ', '')) As Jun,
-                            Sum(replace(jul, 'R$ ', '')) As Jul,
-                            Sum(replace(ago, 'R$ ', '')) As Ago,
-                            Sum(replace(sete, 'R$ ', '')) As Sete,
-                            Sum(replace(outu, 'R$ ', '')) As Outu,
-                            Sum(replace(nov, 'R$ ', '')) As Nov,
-                            Sum(replace(dez, 'R$ ', '')) As Dez
-                        From 
-                            ipsum_tidespesas
-                        Where
-                            idContaContabil = ?
-                    ");
-
-                    $despesas->execute(array($resContaContabil->idContaContabil));
-                    $total = $despesas->fetch(PDO::FETCH_OBJ);
-
-                    $lista .= '<td> R$  '. number_format($total->Jan, 2, ',', '.') .'</td>';
-                    $lista .= '<td> R$  '. number_format($total->Fev, 2, ',', '.') .'</td>';
-                    $lista .= '<td> R$  '. number_format($total->Mar, 2, ',', '.') .'</td>';
-                    $lista .= '<td> R$  '. number_format($total->Abr, 2, ',', '.') .'</td>';
-                    $lista .= '<td> R$  '. number_format($total->Mai, 2, ',', '.') .'</td>';
-                    $lista .= '<td> R$  '. number_format($total->Jun, 2, ',', '.') .'</td>';
-                    $lista .= '<td> R$  '. number_format($total->Jul, 2, ',', '.') .'</td>';
-                    $lista .= '<td> R$  '. number_format($total->Ago, 2, ',', '.') .'</td>';
-                    $lista .= '<td> R$  '. number_format($total->Sete, 2, ',', '.') .'</td>';
-                    $lista .= '<td> R$  '. number_format($total->Outu, 2, ',', '.') .'</td>';
-                    $lista .= '<td> R$  '. number_format($total->Nov, 2, ',', '.') .'</td>';
-                    $lista .= '<td> R$  '. number_format($total->Dez, 2, ',', '.') .'</td>';
-                $lista .= '</tr>';
-                   
-                $lista .= '<tr class = "subitens" id = "subItens_'. $resContaContabil->idContaContabil .'">';
-                   
-                $lista .= '</tr>';
-            }
-
-            echo $lista;
-
-        ?>
+    <table class = "dataTable" id = "initialTable">
+      
     </table>
 
     </form>
