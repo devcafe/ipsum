@@ -126,3 +126,7 @@ input[type=radio]{
 	color:red;
 	font-weight: bold;
 }
+
+.ui-widget-overlay {
+	background: #aaaaaa !important;
+}

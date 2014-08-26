@@ -12,7 +12,6 @@
 	// output the column headings
 	fputcsv($output, array('CodigoPDV', 'NomePDV'), ';', " ");
 
-
 	$rows = $pdo->prepare('Select * From ipsum_operacionallojas');
 	$rows->execute();
 

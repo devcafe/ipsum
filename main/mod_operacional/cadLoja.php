@@ -26,7 +26,7 @@
 				<td> <label for = "cnpj">CNPJ:  <span class = "obgField"> *</span></label> </td>
 			</tr>
 			<tr>
-				<td> <input  type = "text" name = "cnpj" id = "cnpj" > </td>
+				<td> <input  type = "text" name = "cnpj" id = "cnpj" title = "Informe o CNPJ da loja"> </td>
 			</tr>
 
 			<tr class = "fakeRow"> </tr>
@@ -64,7 +64,7 @@
 			</tr>
 			<tr>
 				<td class = "cepTD"> <input  type = "text" name = "cep" id = "cep"> </td>
-				<td> <input  type = "text" name = "bairro" id = "bairro" maxlength="60"> </td>
+				<td> <input  type = "text" name = "bairro" id = "bairro" maxlength="60" > </td>
 			</tr>
 
 			<tr class = "fakeRow"> </tr>
@@ -80,11 +80,11 @@
 				<td> <label for = "uf"> UF: <span class = "obgField"> *</span></label> </td>
 			</tr>
 			<tr>
-				<td class = "ruaTD"> <input  type = "text" name = "rua" id = "rua" maxlength="60"> </td>
-				<td class = "numeroTD"> <input  type = "text" step ="9" name = "numero" id = "numero" maxlength="6"> </td>
+				<td class = "ruaTD"> <input  type = "text" name = "rua" id = "rua" maxlength="100" > </td>
+				<td class = "numeroTD"> <input  type = "text" step ="9" name = "numero" id = "numero" maxlength="6" title = "Este campo aceita apenas números"> </td>
 				<td class = "complementoTD"> <input  type = "text" name = "complemento" id = "complemento"> </td>
 				<td class = "cidadeTD"> <input  type = "text" name = "cidade" id = "cidade"> </td>
-				<td> <input  type = "text" name = "uf" id = "uf" maxlength="2" > </td>
+				<td> <input  type = "text" name = "uf" id = "uf" maxlength="2" title = "Este campos aceita apenas letras"> </td>
 			</tr>
 		</table>
 
@@ -148,10 +148,10 @@
 				</tr>
 				<tr>
 					<td class = "ruaTD"> <input  type = "text" name = "estabReceitaEndereco" id = "estabReceitaEndereco"> </td>
-					<td class = "numeroTD"> <input  type = "text" name = "estabReceitaNumero" id = "estabReceitaNumero" maxlength="6"> </td>
+					<td class = "numeroTD"> <input  type = "text" name = "estabReceitaNumero" id = "estabReceitaNumero" maxlength="6" title = "Este campo aceita apenas numeros"> </td>
 					<td class = "complementoTD"> <input  type = "text" name = "estabReceitaComplemento" id = "estabReceitaComplemento"> </td>
 					<td class = "cidadeTD"> <input  type = "text" name = "estabReceitaCidade" id = "estabReceitaCidade"> </td>
-					<td> <input  type = "text" name = "estabReceitaUF" id = "estabReceitaUF" maxlength = "2"> </td>
+					<td> <input  type = "text" name = "estabReceitaUF" id = "estabReceitaUF" maxlength = "2" title = "Este campo aceita apenas letras"> </td>
 				</tr>
 
 				<tr class = "fakeRow"> </tr>
@@ -235,4 +235,70 @@
 			</tr>
 		</table>
 	</form>
+</div>
+
+
+<!-- Confirmar numero -->
+<div id="numConfirm" title="Numero da loja">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Atenção! O estabelecimento será cadastrado sem número</p>
+</div>
+
+<!-- Confirmar numero da receita -->
+<div id="numConfirmReceita" title="Numero da loja (receita)">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Atenção! O estabelecimento será cadastrado sem número da receita</p>
+</div>
+
+<!-- CNPJ obrigatório -->
+<div id="cnpjObrigatorio" title="CNPJ">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Atenção! O campo CNPJ é obrigatório!</p>
+</div>
+
+<!-- Bandeira obrigatório -->
+<div id="bandeiraObrigatorio" title="Bandeira">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Atenção! O campo bandeira é obrigatório!</p>
+</div>
+
+<!-- Nome obrigatório -->
+<div id="nomeObrigatorio" title="Nome do estabelecimento">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Atenção! O campo nome do estabelecimento é obrigatório!</p>
+</div>
+
+<!-- Endereço obrigatório -->
+<div id="enderecoObrigatorio" title="Endereço">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Atenção! O endereço completo da loja é obrigatório, isto inclui: CEP, Bairro, Rua, Ciade e Estado (UF)</p>
+</div>
+
+<!-- Nome empresarial obrigatório -->
+<div id="nomeEmpresarialObrigatorio" title="Nome empresarial">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Atenção! O Campo Nome empresarial é obrigatório</p>
+</div>
+
+<!-- Endereço receita obrigatório -->
+<div id="enderecoReceitaObrigatorio" title="Endereço receita">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Atenção! O endereço completo da receita federal é obrigatório, isto inclui: Nome Empresarial, CEP, Bairro, Rua, Cidade e Estado (UF)</p>
+</div>
+
+<!-- Situação data obrigatório -->
+<div id="situacaoDataObrigatorio" title="Situação data">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Atenção! O Campo situação data é obrigatório</p>
+</div>
+
+<!-- Data de abertura obrigatório -->
+<div id="dataAberturaObrigatorio" title="Data de abertura">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Atenção! O Campo data de abertura é obrigatório</p>
+</div>
+
+<!-- Loja cadastrada com sucesso -->
+<div id="lojaSucesso" title="Loja cadastrada com sucesso">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Loja cadastrada com sucesso</p>
+</div>
+
+<!-- CNPJ já cadastrado -->
+<div id="cnpjCadastrado" title="CNPJ">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Este CNPJ já foi cadastrado</p>
+</div>
+
+<!-- Nome já cadastrado -->
+<div id="nomeCadastrado" title="Nome cadastrado">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Este nome já foi cadastrado</p>
 </div>

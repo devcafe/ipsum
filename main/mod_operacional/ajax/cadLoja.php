@@ -21,75 +21,90 @@
 
 	if($estabReceitaNumero == '')
 		$estabReceitaNumero = 'S/N';
+
+	//Verifica se ja existe o cnpj cadastrado
+	$cnpjQuery = $pdo->prepare("Select cnpj From ipsum_operacionallojas Where cnpj = ?");
+	$cnpjQuery->execute(array($cnpj));
+	$cnpjCount = $cnpjQuery->rowCount();
+
+	//Verifica se ja existe o nome cadastrado
+	$nomeQuery = $pdo->prepare("Select nome From ipsum_operacionallojas Where nome = ?");
+	$nomeQuery->execute(array($nome));
+	$nomeCount = $nomeQuery->rowCount();
+
 	
-	// Pesquisa no banco de existe nom eou cnpj igual
-	$sql = $pdo->prepare("select cnpj, nome from ipsum_operacionallojas where cnpj = ? or nome = ? ");
-	$sql->execute(array($cnpj, $nome));
-	$validaCNPJ = $sql->rowCount();
-
-	//Valida CNPJ
-	if ($validaCNPJ == 0){	
-
-	// valida se todos os campos estão vazios
-	if($cnpj == ""){
-		$msg = "O campo CNPJ é obrigatório!";
-	}elseif($idBandeiraHidden == ""){
-		$msg = "O Campo Bandeira é obrigatório" ;
-	}elseif($nome == ""){
-		$msg = "O Campo Nome do estabelecimento é obrigatório" ;
-	}elseif($cep == "" or $bairro == "" or $rua =="" or $cidade == "" or $uf == ""){
-		$msg = "O endereço completo da loja é obrigatório, isto inclui: CEP, Bairro, Rua, Ciade e Estado (UF)" ;
-	}elseif($estabReceitaNomeEmpresarial == ""){
-		$msg = "O Campo Nome empresarial é obrigatório" ;
-	}elseif($estabReceitaEndereco == "" or $estabReceitaNumero == "" or $estabReceitaBairro == "" or $estabReceitaCidade == "" or $estabReceitaCEP == "" or $estabReceitaUF == ""){
-		$msg = "O endereço completo na receia federal é obrigatório, insto inclui: Nome Empresarial, CEP, Bairro, Rua, Ciade e Estado (UF)" ;
-	}elseif($estabReceitaSituacaoData == ""){
-		$msg = "O Campo situação data é obrigatório" ;
-	}else{
-		//Insere chamado
-		$sql = $pdo->prepare("	Insert into `ipsum_operacionallojas` 
-									(
-										`idLoja`, 
-										`cnpj`, 
-										`idEstabBandeira`, 
-										`nome`, 
-										`rua`, 
-										`numero`, 
-										`complemento`, 
-										`bairro`, 
-										`cidade`, 
-										`uf`, 
-										`cep`, 
-										`estabReceitaAberturaData`, 
-										`estabReceitaRazaoSocial`,
-										`estabReceitaNomeEmpresarial`,
-										`estabReceitaNF`,
-										`estabReceitaEndereco`, 
-										`estabReceitaNumero`, 
-										`estabReceitaComplemento`, 
-										`estabReceitaBairro`, 
-										`estabReceitaCidade`, 
-										`estabReceitaUF`, 
-										`estabReceitaCEP`, 
-										`estabReceitaSituacao`, 
-										`estabReceitaSituacaoData`, 
-										`estabTel01`, 
-										`estabTel02`, 
-										`dataFechamento`, 
-										`userAdd`)
-								Values 
-									(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ");
+	if($cnpjCount >= 1){
+		//CNPJ já esta cadastrado
+		$msg = 10;
+	} elseif($nomeCount >= 1){
+		//Nome já esta cadastrado
+		$msg = 11;
+	} else {
+		// valida se todos os campos estão vazios
+		if($cnpj == ""){
+			//"O campo CNPJ é obrigatório!";
+			$msg = 1;
+		}elseif($idBandeiraHidden == ""){
+			//"O Campo Bandeira é obrigatório" ;
+			$msg = 2;
+		}elseif($nome == ""){
+			//"O Campo Nome do estabelecimento é obrigatório" ;
+			$msg = 3;
+		}elseif($cep == "" or $bairro == "" or $rua =="" or $cidade == "" or $uf == ""){
+			//"O endereço completo da loja é obrigatório, isto inclui: CEP, Bairro, Rua, Ciade e Estado (UF)" ;
+			$msg = 4;
+		}elseif($estabReceitaNomeEmpresarial == ""){
+			//"O Campo Nome empresarial é obrigatório" ;
+			$msg = 5;
+		}elseif($estabReceitaEndereco == "" or $estabReceitaNumero == "" or $estabReceitaBairro == "" or $estabReceitaCidade == "" or $estabReceitaCEP == "" or $estabReceitaUF == ""){
+			//"O endereço completo na receia federal é obrigatório, insto inclui: Nome Empresarial, CEP, Bairro, Rua, Ciade e Estado (UF)" ;
+			$msg = 6;
+		}elseif($estabReceitaAberturaData == ""){
+			//"O Campo situação data é obrigatório" ;
+			$msg = 7;
+		}elseif($estabReceitaSituacaoData == ""){
+			//"O Campo data de abertura é obrigatório" ;
+			$msg = 8;
+		}else{
+			//Insere chamado
+			$sql = $pdo->prepare("	Insert into `ipsum_operacionallojas` 
+										(
+											`idLoja`, 
+											`cnpj`, 
+											`idEstabBandeira`, 
+											`nome`, 
+											`rua`, 
+											`numero`, 
+											`complemento`, 
+											`bairro`, 
+											`cidade`, 
+											`uf`, 
+											`cep`, 
+											`estabReceitaAberturaData`, 
+											`estabReceitaRazaoSocial`,
+											`estabReceitaNomeEmpresarial`,
+											`estabReceitaNF`,
+											`estabReceitaEndereco`, 
+											`estabReceitaNumero`, 
+											`estabReceitaComplemento`, 
+											`estabReceitaBairro`, 
+											`estabReceitaCidade`, 
+											`estabReceitaUF`, 
+											`estabReceitaCEP`, 
+											`estabReceitaSituacao`, 
+											`estabReceitaSituacaoData`, 
+											`estabTel01`, 
+											`estabTel02`, 
+											`dataFechamento`, 
+											`userAdd`)
+									Values 
+										(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ");
 
 
 			$sql->execute(array('', $cnpj, $idBandeiraHidden, u($nome), u($rua), $numero, u($complemento), u($bairro), u($cidade), u($uf), $cep, u($estabReceitaAberturaData), u($estabReceitaRazaoSocial), u($estabReceitaNomeEmpresarial), u($estabReceitaNF), u($estabReceitaEndereco), $estabReceitaNumero, u($estabReceitaComplemento), u($estabReceitaBairro), u($estabReceitaCidade), u($estabReceitaUF), $estabReceitaCEP, u($estabReceitaSituacao), $estabReceitaSituacaoData, $estabTel01, $estabTel02, $dataFechamento, $userAdd));
-			$msg = "Loja Cadastrada com Sucesso";
-		}
-	}else{		
-		if ($cnpj != ""){
-			$msg = "CNPJ ou nome da loja ja existe, favor fornecer outro!"; 
-		}else{
-			$msg = "O campo CNPJ precisa ser preenchido!";
-		}
+			//"Loja Cadastrada com Sucesso";
+			$msg = 9;
+		}	
 	}
 
 	echo $msg;

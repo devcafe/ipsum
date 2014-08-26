@@ -1,8 +1,29 @@
 $(document).ready(function(){
 
+	//Ativa tooltip
+	$( document ).tooltip({
+      track: true
+    });
+
 	//Esconde modal
 	$('#bandeirasModal').hide();
 	$('#cadBandeirasModal').hide();
+
+	//Validação de campos obrigatórios
+	$('#numConfirm').hide();
+	$('#numConfirmReceita').hide();
+	$('#cnpjObrigatorio').hide();
+	$('#bandeiraObrigatorio').hide();
+	$('#nomeObrigatorio').hide();
+	$('#enderecoObrigatorio').hide();
+	$('#nomeEmpresarialObrigatorio').hide();
+	$('#enderecoReceitaObrigatorio').hide();
+	$('#situacaoDataObrigatorio').hide();
+	$('#dataAberturaObrigatorio').hide();
+	$('#cnpjCadastrado').hide();
+	$('#nomeCadastrado').hide();	
+	$('#lojaSucesso').hide();	
+
 
 	$("#numero").keypress(verificaNumero);
 	$("#estabReceitaNumero").keypress(verificaNumero);
@@ -98,41 +119,197 @@ $(document).ready(function(){
 		});
 		
 
-		if($('#numero').val() == '' || $('#numero').val() == 'S/N'){
-			var answer = confirm("Atenção! O estabelecimento será cadastrado sem número");
-			if(answer)
-				$('#numero').val('S/N');
-		} else {
-			var answer = true;
-		}
+		$( "#numConfirm" ).dialog({
+			resizable: false,
+			height:180,
+			width:500,
+			modal: true,
+			buttons: {
+				"Ok": function() {
+					$( this ).dialog( "close" );
 
-		if($('#estabReceitaNumero').val() == '' || $('#estabReceitaNumero').val() == 'S/N'){
-			var answer2 = confirm("Atenção! O estabelecimento será cadastrado sem número da receita");
-			if(answer2)
-				$('#estabReceitaNumero').val('S/N');
-		} else {
-			var answer2 = true;
-		}
+					$('#numero').val('S/N');
 
-		if(answer && answer2){
-			//Envia formulário
-			$.ajax({
-				type: 'POST',
-				url: 'mod_operacional/ajax/cadLoja.php',
-				data: {
-					dados: dados
+					$( "#numConfirmReceita" ).dialog({
+						resizable: false,
+						height:180,
+						width:500,
+						modal: true,
+						buttons: {
+							"Ok": function() {
+								$( this ).dialog( "close" );
+
+								$('#estabReceitaNumero').val('S/N');
+
+								//Envia formulário
+								$.ajax({
+									type: 'POST',
+									url: 'mod_operacional/ajax/cadLoja.php',
+									data: {
+										dados: dados
+									},
+									success: function (data){
+										console.log(data);
+
+										if(data == 1){
+											$( "#cnpjObrigatorio" ).dialog({
+												resizable: false,
+												height:180,
+												width:500,
+												modal: true,
+												buttons: {
+													"Ok": function() {
+														$( this ).dialog( "close" );
+														$('#cnpj').focus();
+													},
+												}
+											});
+										} else if (data == 2){
+											$( "#bandeiraObrigatorio" ).dialog({
+												resizable: false,
+												height:180,
+												width:500,
+												modal: true,
+												buttons: {
+													"Ok": function() {
+														$( this ).dialog( "close" );
+													},
+												}
+											});
+										} else if(data == 3){
+											$( "#nomeObrigatorio" ).dialog({
+												resizable: false,
+												height:180,
+												width:500,
+												modal: true,
+												buttons: {
+													"Ok": function() {
+														$( this ).dialog( "close" );
+														$('#nome').focus();
+													},
+												}
+											});
+										} else if(data == 4){
+											$( "#enderecoObrigatorio" ).dialog({
+												resizable: false,
+												height:180,
+												width:500,
+												modal: true,
+												buttons: {
+													"Ok": function() {
+														$( this ).dialog( "close" );
+													},
+												}
+											});
+										} else if(data == 5){
+											$( "#nomeEmpresarialObrigatorio" ).dialog({
+												resizable: false,
+												height:180,
+												width:500,
+												modal: true,
+												buttons: {
+													"Ok": function() {
+														$( this ).dialog( "close" );
+														$('#estabReceitaNomeEmpresarial').focus();
+													},
+												}
+											});
+										} else if(data == 6){
+											$( "#enderecoReceitaObrigatorio" ).dialog({
+												resizable: false,
+												height:180,
+												width:500,
+												modal: true,
+												buttons: {
+													"Ok": function() {
+														$( this ).dialog( "close" );
+													},
+												}
+											});
+										} else if(data == 7){
+											$( "#dataAberturaObrigatorio" ).dialog({
+												resizable: false,
+												height:180,
+												width:500,
+												modal: true,
+												buttons: {
+													"Ok": function() {
+														$( this ).dialog( "close" );
+														$('#estabReceitaAberturaData').focus();
+													},
+												}
+											});
+										} else if(data == 8){
+											$( "#situacaoDataObrigatorio" ).dialog({
+												resizable: false,
+												height:180,
+												width:500,
+												modal: true,
+												buttons: {
+													"Ok": function() {
+														$( this ).dialog( "close" );
+														$('#estabReceitaSituacaoData').focus();
+													},
+												}
+											});
+										}else if(data == 10){
+											$( "#cnpjCadastrado" ).dialog({
+												resizable: false,
+												height:180,
+												width:500,
+												modal: true,
+												buttons: {
+													"Ok": function() {
+														$( this ).dialog( "close" );
+														$('#cnpj').focus();
+													},
+												}
+											});
+										}else if(data == 11){
+											$( "#nomeCadastrado" ).dialog({
+												resizable: false,
+												height:180,
+												width:500,
+												modal: true,
+												buttons: {
+													"Ok": function() {
+														$( this ).dialog( "close" );
+														$('#nome').focus();
+													},
+												}
+											});
+										}else{
+											$( "#lojaSucesso" ).dialog({
+												resizable: false,
+												height:180,
+												width:500,
+												modal: true,
+												buttons: {
+													"Ok": function() {
+														$( this ).dialog( "close" );
+														$('#formCadLoja')[0].reset();
+													},
+												}
+											});
+										}
+									}
+								})
+							},
+							Cancelar: function() {
+								$( this ).dialog( "close" );
+							}
+						}
+					});
 				},
-				success: function (data){
-					alert(data);
-					if(data == "Loja Cadastrada com Sucesso"){
-						$('#formCadLoja')[0].reset();
-						$('#cnpj').focus();
-					} else {
-						$('#cnpj').focus();
-					}
+				Cancelar: function() {
+					$( this ).dialog( "close" );
 				}
-			})
-		}
+			}
+		});
+
+			
+
+		
 		
 	})
 
