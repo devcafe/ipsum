@@ -31,6 +31,7 @@
 			</div>
 				<div class = "btnFiltrar" id = "btnFiltrar" title = "Filtrar"> <img src = "../main/resources/images/filter.png" width = "20" > </div>
 		</div>
+		<div id = "orderLoja" class = "order_a-z"></div>
 		<div id = "listaLojas">
 
 		</div>

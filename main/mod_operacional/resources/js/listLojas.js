@@ -14,8 +14,15 @@ $(document).ready(function(){
 
 	//Lista lojas
 	function carregaLojas(){
-		var pag = $('#pagina').val();
+		var ordemLojas = ""
 
+		if($('#orderLoja').hasClass('order_a-z')){			
+			ordemLojas = 'order_a-z';			
+		}else {			
+			ordemLojas = 'order_z-a';
+		}
+
+		var pag = $('#pagina').val();
 		var filtro = $('#checkFiltro').val();
 
 		$.ajax({
@@ -23,7 +30,8 @@ $(document).ready(function(){
 			data: {
 				op: '', 
 				pag: pag,
-				filtro: filtro
+				filtro: filtro,
+				ordemLojas: ordemLojas,
 			},
 			url: 'mod_operacional/ajax/carregaListaLojasConsulta.php',
 			success: function (data){
@@ -35,11 +43,38 @@ $(document).ready(function(){
 		})
 	}
 
+	//ordernar loja	
+	$('#listaLojas').on('click', '#idLojaOrder', function(){
+		var ordemLojas = ""
+
+		if($('#orderLoja').hasClass('order_a-z')){
+			$('#orderLoja').removeClass('order_a-z');
+			$('#orderLoja').addClass('order_z-a');
+			ordemLojas = 'order_z-a';						
+		}else {
+			$('#orderLoja').removeClass('order_z-a');
+			$('#orderLoja').addClass('order_a-z');
+			ordemLojas = 'order_a-z';			
+		}
+
+		carregaLojas();
+
+	})
+
+
+
 	//Filtra
 	$('#btnFiltrar').on('click', function(){
 		$('.filtro').toggle();
 	})
 	$('input').on('keyup', function(){
+
+		var ordemLojas = ""
+		if($('#orderLoja').hasClass('order_a-z')){			
+			ordemLojas = 'order_a-z';			
+		}else {			
+			ordemLojas = 'order_z-a';
+		}
 
 		var filtro = $('#checkFiltro').val();
 
@@ -76,7 +111,8 @@ $(document).ready(function(){
 				cep: cep,
 				cidade: cidade,
 				uf: uf,
-				numero: numero
+				numero: numero,
+				ordemLojas: ordemLojas,
 			},
 			url: 'mod_operacional/ajax/carregaListaLojasConsulta.php',
 			success: function (data){
@@ -90,6 +126,14 @@ $(document).ready(function(){
 
 	//Função para carrega página e manter filtro
 	function carregaComFiltro(){
+		//carrega com filro e ordenado
+		var ordemLojas = ""
+		if($('#orderLoja').hasClass('order_a-z')){			
+			ordemLojas = 'order_a-z';			
+		}else {			
+			ordemLojas = 'order_z-a';
+		}
+
 		var filtro = $('#checkFiltro').val();
 
 		$('#checkFiltro').val('1');
@@ -127,7 +171,8 @@ $(document).ready(function(){
 				cep: cep,
 				cidade: cidade,
 				uf: uf,
-				numero: numero
+				numero: numero,
+				ordemLojas: ordemLojas,
 			},
 			url: 'mod_operacional/ajax/carregaListaLojasConsulta.php',
 			success: function (data){

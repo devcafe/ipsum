@@ -27,6 +27,14 @@
 	text-decoration: none;
 }
 
+.order_a-z {
+	background: url('../../../resources/images/Operacional/sortDown.png') no-repeat top right;
+	}
+.order_z-a {
+	background: url('../../../resources/images/Operacional/sortUp.png') no-repeat top right;
+	}	
+
+
 /* Tabela lista linhas moveis */
 #lojasTable{
 	border: 1px solid #e7e7e7;
@@ -96,6 +104,10 @@ table tr:not(:first-child):hover{
 	margin-top:15px;
 	margin-bottom:5px;
 	text-align: center;
+}
+
+.filtro01{
+	margin-right: 6px; 
 }
 
 .filtro02{

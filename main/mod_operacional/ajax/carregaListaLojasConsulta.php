@@ -6,6 +6,19 @@
 
 	$op = $_POST['op'];
 
+	// order lojas por id
+	$ordemLojas = $_POST['ordemLojas'];
+
+	if(empty($ordemLojas)){
+		$ordemLojas = 'order_a-z';
+	}
+
+	if ($ordemLojas == 'order_a-z'){
+		$selectOrder = 'ORDER BY idLoja ASC';
+	}else{
+		$selectOrder = 'ORDER BY idLoja DESC';
+	}
+
 	if($op == ''){
 		
 		//Total de registros por pagina
@@ -19,10 +32,10 @@
 		$inicio = $inicio * $total_reg;
 
 		//Busca limitada
-		$limite = $pdo->prepare("Select * From ipsum_operacionallojas a Inner Join ipsum_operacionalbandeiras b On (a.idEstabBandeira = b.idBandeira) LIMIT $inicio,$total_reg");
+		$limite = $pdo->prepare("Select * From ipsum_operacionallojas a Inner Join ipsum_operacionalbandeiras b On (a.idEstabBandeira = b.idBandeira) $selectOrder LIMIT $inicio,$total_reg");
 		$limite->execute();
 
-		$todos = $pdo->prepare("Select * From ipsum_operacionallojas");
+		$todos = $pdo->prepare("Select * From ipsum_operacionallojas $selectOrder ");
 		$todos->execute();
 
 		$tr = $todos->rowCount();
@@ -73,6 +86,7 @@
 				And a.cidade like :cidade
 				And a.uf like :uf
 				And a.numero like :numero
+				$selectOrder
 				Limit 
 					$inicio,$total_reg
 			");
@@ -95,6 +109,7 @@
 				And a.cidade like :cidade
 				And a.uf like :uf
 				And a.numero like :numero
+				$selectOrder
 			");
 			$todos->execute(array(":idLojaFiltro" =>  $_POST['idLojaFiltro'], ":cnpj" => "%" . $cnpj . "%", ":razaoSocial" => "%" . $razaoSocial . "%", ":nomeFantasia" => "%" . $nomeFantasia . "%", ":bairro" => "%" . $bairro . "%", ":rua" => "%" . $rua . "%", ":bandeira" => "%" . $bandeira . "%", ":cep" => "%" . $cep . "%", ":cidade" => "%" . $cidade . "%", ":uf" => "%" . $uf . "%", ":numero" => "%" . $numero . "%"));
 
@@ -119,6 +134,7 @@
 				And a.cidade like :cidade
 				And a.uf like :uf
 				And a.numero like :numero
+				$selectOrder
 				Limit 
 					$inicio,$total_reg
 			");
@@ -140,6 +156,7 @@
 				And a.cidade like :cidade
 				And a.uf like :uf
 				And a.numero like :numero
+				$selectOrder
 			");
 			$todos->execute(array(":cnpj" => "%" . $cnpj . "%", ":razaoSocial" => "%" . $razaoSocial . "%", ":nomeFantasia" => "%" . $nomeFantasia . "%", ":bairro" => "%" . $bairro . "%", ":rua" => "%" . $rua . "%", ":bandeira" => "%" . $bandeira . "%", ":cep" => "%" . $cep . "%", ":cidade" => "%" . $cidade . "%", ":uf" => "%" . $uf . "%", ":numero" => "%" . $numero . "%"));
 
@@ -158,7 +175,7 @@
 
 	$lista .= '<table id = "lojasTable">';
 		$lista .= '<tr>';
-			$lista .= '<td class = "orderByID"> Cod. Loja <img src = "resources/images/asc.png"> </td>';
+			$lista .= "<td id = 'idLojaOrder' class ='{$ordemLojas}'> ID </td>";
 			$lista .= '<td> CNPJ </td>';
 			$lista .= '<td> Bandeira </td>';
 			$lista .= '<td> Razão social </td>';
