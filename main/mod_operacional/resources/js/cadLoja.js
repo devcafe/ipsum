@@ -452,4 +452,44 @@ $(document).ready(function(){
 		})
 	})
 
+
+	//verificar cnpj dinamicamente
+	$('#status').hide();
+	$('#status2').hide();
+
+	$('#cnpj').keyup(function(){
+
+		var verificarCnpj = $('#cnpj').val();
+
+		$.ajax({
+			type: 'POST',
+			url: 'mod_operacional/ajax/verificaCnpj.php',
+			data: {
+				verificarCnpj: verificarCnpj
+			},
+			success: function (data){
+				$('#status').show();				
+				if(data == 0){					
+					if($('#status').hasClass('invalido')){
+						$('#status').removeClass('invalido');
+						$('#status').addClass('valido');						
+						}
+						$('#status2').hide();				
+				}else{
+					if($('#status').hasClass('valido')){
+						$('#status').removeClass('valido');
+						$('#status').addClass('invalido');										
+						}
+						$('#status2').empty('html');
+						$('#status2').append(data);
+						
+						$('#status2').show();			
+					
+				}
+				
+			}
+		})
+
+	})
+
 })

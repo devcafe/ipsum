@@ -20,13 +20,16 @@
 			<tr class = "fakeRow"> </tr>
 			<tr class = "fakeRow"> </tr>
 		</table>
+
+
+		
 		
 		<table>	
 			<tr>
 				<td> <label for = "cnpj">CNPJ:  <span class = "obgField"> *</span></label> </td>
 			</tr>
 			<tr>
-				<td> <input  type = "text" name = "cnpj" id = "cnpj" title = "Informe o CNPJ da loja"> </td>
+				<td> <input  type = "text" name = "cnpj" id = "cnpj" title = "Informe o CNPJ da loja"><div id ="status" class="invalido">  </div> <div id ="status2"> </div></td>
 			</tr>
 
 			<tr class = "fakeRow"> </tr>

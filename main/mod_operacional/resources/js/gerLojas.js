@@ -483,6 +483,7 @@ $(document).ready(function(){
 			}
 		})
 	})
+	// gera excell
 
 	$('.btnToExcel').on('click', function(){
 		$.ajax({
@@ -493,6 +494,8 @@ $(document).ready(function(){
 			}
 		})
 	})
+
+	
 
 
 
