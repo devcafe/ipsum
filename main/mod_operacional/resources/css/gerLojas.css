@@ -170,10 +170,6 @@ table tr:not(:first-child):hover{
 	height: 0px;
 }
 
-#btnToExcel{
-	margin-left: 95px;
-}
-
 input[type="checkbox"]{
 	margin-left:10px;
 }
@@ -188,6 +184,13 @@ input[type="checkbox"]{
 
 .btnToCSV img{
 	margin-left:15px;
+}
+
+#btnToExcel {
+	float: left;
+	width: 22px;
+	height: 15px;
+	margin-left: 45px;
 }
 
 .chooseFields{

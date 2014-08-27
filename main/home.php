@@ -22,6 +22,7 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 	</head>
 	<body>
+	<div class = "tudo">
 		<div id = "#mainWrapper">
 			<?php include ("includes/header.php"); ?>
 
@@ -62,7 +63,9 @@
 				</div>
 			</div>
 
-			<!--<?php include ("includes/footer.php"); ?>-->
+			<?php include ("includes/footer.php"); ?>
 		</div>
+
+	</div>
 	</body>
 </html>
