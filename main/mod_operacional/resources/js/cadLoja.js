@@ -541,22 +541,26 @@ $(document).ready(function(){
 				verificarCnpj: verificarCnpj
 			},
 			success: function (data){
-				$('#status').show();				
+				$('#status').show();
+				//console.log(data);				
 				if(data == 0){					
 					if($('#status').hasClass('invalido')){
 						$('#status').removeClass('invalido');
 						$('#status').addClass('valido');						
 						}
 						$('#status2').hide();				
+				}else if(data == 1){
+					$('#status').removeClass('valido');
+					$('#status').addClass('invalido');										
 				}else{
 					if($('#status').hasClass('valido')){
-						$('#status').removeClass('valido');
-						$('#status').addClass('invalido');										
+							$('#status').removeClass('valido');
+							$('#status').addClass('invalido');										
 						}
-						$('#status2').empty('html');
-						$('#status2').append(data);
-						
-						$('#status2').show();			
+					$('#status2').empty('html');
+					$('#status2').append(data);
+					
+					$('#status2').show();			
 					
 				}
 				

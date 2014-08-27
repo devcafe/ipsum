@@ -9,13 +9,11 @@
 
 	$lojas = $sql->fetch(PDO::FETCH_OBJ);
 	
-	
-
-
 	//pega o ultimo caracter e verifica se ele é um inteiro
 	$leg = substr($verificarCnpj,-1);
 
-	if($leg == '_'){		
+	if($leg == '_'){
+		echo 1;		
 	}else {
 		if($res == 0){
 			// diz que o cnpj é valido
