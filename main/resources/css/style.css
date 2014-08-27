@@ -1,6 +1,14 @@
 /*******************************************/
 /* Geral
 /*******************************************/
+.impar{
+	background: #FFF;
+}
+
+.par {
+	background: #E8E8E8;
+}
+
 .tudo{
 	min-height: 100%;
 	min-width:100%;
@@ -251,6 +259,17 @@ footer{
 .tableTitle{
 	text-align: center;
 	font-weight: bold;
+}
+
+/************************
+*	 Changelog		     *
+*************************/
+#changeLog tr:first-child {
+	background: #ADC4DC !important;
+	color: #000;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 20px;
 }
 
 /* CSS para resolução de 1024 x 768 */
