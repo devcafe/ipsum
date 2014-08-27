@@ -21,6 +21,17 @@
 	min-width:140px;
 }
 
+.plus{
+	width:20px;
+	height:12px;
+	background: url('../../../resources/images/plus.png') no-repeat center center;
+}
+.minus{
+	width:20px;
+	height:12px;
+	background: url('../../../resources/images/minus.png') no-repeat center center;
+}
+
  .dataTabletable tr td:nth-child(1){
 	width:230px;
 	max-width:230px;
@@ -46,6 +57,22 @@
 #subItensTable tr td:nth-child(1){
 	padding-left: 40px;
 }
+
+.editableTable { 
+	width:100% 
+} 
+
+.editableTable .cellEditing { 
+	padding: 0; 
+} 
+
+.editableTable .cellEditing input[type=text]{ 
+	width:100%; 
+	border:0; 
+	background-color:rgb(255,253,210); 
+}
+
+
 
 /* Conta Contabil */
 #cadContaContabilForm input{

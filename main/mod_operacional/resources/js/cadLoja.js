@@ -23,19 +23,26 @@ $(document).ready(function(){
 	$('#cnpjCadastrado').hide();
 	$('#nomeCadastrado').hide();	
 	$('#lojaSucesso').hide();	
+	$('#bandeiraCadastrada').hide();
+	$('#bandeiraCadastradaSucesso').hide();
+	$('#bandeiraObrigatorio').hide();
 
 
 	$("#numero").keypress(verificaNumero);
 	$("#estabReceitaNumero").keypress(verificaNumero);
 	$("#uf").keypress(verificaLetra);
+	$("#cidade").keypress(verificaLetra);
+	$("#estabReceitaCidade").keypress(verificaLetra);
 	$("#estabReceitaUF").keypress(verificaLetra);
+	$('#estabTel01').keypress(verificaNumero);
+	$('#estabTel02').keypress(verificaNumero);
 
 	//Mascara campos
 	$("#cnpj").mask("99.999.999/9999-99");
 	$("#cep").mask("99999-999");
 	$('#estabReceitaCEP').mask("99999-999");
-	$('#estabTel01').mask("(99) 9999-9999");
-	$('#estabTel02').mask("(99) 9999-9999");
+	//$('#estabTel01').mask("(99) 9999-9999");
+	//$('#estabTel02').mask("(99) 9999-9999");
 
 	$( "#estabReceitaAberturaData" ).datepicker();
 	$( "#estabReceitaSituacaoData" ).datepicker();
@@ -118,8 +125,8 @@ $(document).ready(function(){
 			dados = dados + '&' + $(this).attr('name') + '=' + $(this).val();
 		});
 		
-
-		if($('#numero').val() == ''){
+		
+		if($('#numero').val() == '' || $('#numero').val() == 'S/N'){
 			$( "#numConfirm" ).dialog({
 				resizable: false,
 				height:180,
@@ -130,13 +137,36 @@ $(document).ready(function(){
 						$( this ).dialog( "close" );
 
 						$('#numero').val('S/N');
+
+						if($('#estabReceitaNumero').val() == '' || $('#estabReceitaNumero').val() == 'S/N'){
+							$( "#numConfirmReceita" ).dialog({
+								resizable: false,
+								height:180,
+								width:500,
+								modal: true,
+								buttons: {
+									"Ok": function() {
+										$( this ).dialog( "close" );
+
+										$('#estabReceitaNumero').val('S/N');
+
+										cadastraLoja();
+
+									},
+									Cancelar: function() {
+										$( this ).dialog( "close" );
+									}
+								}
+							});
+						}
+
 					},
 					Cancelar: function() {
 						$( this ).dialog( "close" );
 					}
 				}
 			});
-		} else if($('#estabReceitaNumero').val() == ''){
+		} else if($('#estabReceitaNumero').val() == '' || $('#estabReceitaNumero').val() == 'S/N'){
 			$( "#numConfirmReceita" ).dialog({
 				resizable: false,
 				height:180,
@@ -147,6 +177,9 @@ $(document).ready(function(){
 						$( this ).dialog( "close" );
 
 						$('#estabReceitaNumero').val('S/N');
+
+						cadastraLoja();
+
 					},
 					Cancelar: function() {
 						$( this ).dialog( "close" );
@@ -154,159 +187,164 @@ $(document).ready(function(){
 				}
 			});
 		} else {
-			//Envia formulário
-			$.ajax({
-				type: 'POST',
-				url: 'mod_operacional/ajax/cadLoja.php',
-				data: {
-					dados: dados
-				},
-				success: function (data){
-					//console.log(data);
+			cadastraLoja();
 
-					if(data == 1){
-						$( "#cnpjObrigatorio" ).dialog({
-							resizable: false,
-							height:180,
-							width:500,
-							modal: true,
-							buttons: {
-								"Ok": function() {
-									$( this ).dialog( "close" );
-									$('#cnpj').focus();
-								},
-							}
-						});
-					} else if (data == 2){
-						$( "#bandeiraObrigatorio" ).dialog({
-							resizable: false,
-							height:180,
-							width:500,
-							modal: true,
-							buttons: {
-								"Ok": function() {
-									$( this ).dialog( "close" );
-								},
-							}
-						});
-					} else if(data == 3){
-						$( "#nomeObrigatorio" ).dialog({
-							resizable: false,
-							height:180,
-							width:500,
-							modal: true,
-							buttons: {
-								"Ok": function() {
-									$( this ).dialog( "close" );
-									$('#nome').focus();
-								},
-							}
-						});
-					} else if(data == 4){
-						$( "#enderecoObrigatorio" ).dialog({
-							resizable: false,
-							height:180,
-							width:500,
-							modal: true,
-							buttons: {
-								"Ok": function() {
-									$( this ).dialog( "close" );
-								},
-							}
-						});
-					} else if(data == 5){
-						$( "#nomeEmpresarialObrigatorio" ).dialog({
-							resizable: false,
-							height:180,
-							width:500,
-							modal: true,
-							buttons: {
-								"Ok": function() {
-									$( this ).dialog( "close" );
-									$('#estabReceitaNomeEmpresarial').focus();
-								},
-							}
-						});
-					} else if(data == 6){
-						$( "#enderecoReceitaObrigatorio" ).dialog({
-							resizable: false,
-							height:180,
-							width:500,
-							modal: true,
-							buttons: {
-								"Ok": function() {
-									$( this ).dialog( "close" );
-								},
-							}
-						});
-					} else if(data == 7){
-						$( "#dataAberturaObrigatorio" ).dialog({
-							resizable: false,
-							height:180,
-							width:500,
-							modal: true,
-							buttons: {
-								"Ok": function() {
-									$( this ).dialog( "close" );
-									$('#estabReceitaAberturaData').focus();
-								},
-							}
-						});
-					} else if(data == 8){
-						$( "#situacaoDataObrigatorio" ).dialog({
-							resizable: false,
-							height:180,
-							width:500,
-							modal: true,
-							buttons: {
-								"Ok": function() {
-									$( this ).dialog( "close" );
-									$('#estabReceitaSituacaoData').focus();
-								},
-							}
-						});
-					}else if(data == 10){
-						$( "#cnpjCadastrado" ).dialog({
-							resizable: false,
-							height:180,
-							width:500,
-							modal: true,
-							buttons: {
-								"Ok": function() {
-									$( this ).dialog( "close" );
-									$('#cnpj').focus();
-								},
-							}
-						});
-					}else if(data == 11){
-						$( "#nomeCadastrado" ).dialog({
-							resizable: false,
-							height:180,
-							width:500,
-							modal: true,
-							buttons: {
-								"Ok": function() {
-									$( this ).dialog( "close" );
-									$('#nome').focus();
-								},
-							}
-						});
-					}else{
-						$( "#lojaSucesso" ).dialog({
-							resizable: false,
-							height:180,
-							width:500,
-							modal: true,
-							buttons: {
-								"Ok": function() {
-									$( this ).dialog( "close" );
-									$('#formCadLoja')[0].reset();
-								},
-							}
-						});
+			function cadastraLoja(){
+				//Envia formulário
+				$.ajax({
+					type: 'POST',
+					url: 'mod_operacional/ajax/cadLoja.php',
+					data: {
+						dados: dados
+					},
+					success: function (data){
+						//console.log(data);
+
+						if(data == 1){
+							$( "#cnpjObrigatorio" ).dialog({
+								resizable: false,
+								height:180,
+								width:500,
+								modal: true,
+								buttons: {
+									"Ok": function() {
+										$( this ).dialog( "close" );
+										$('#cnpj').focus();
+									},
+								}
+							});
+						} else if (data == 2){
+							$( "#bandeiraObrigatorio" ).dialog({
+								resizable: false,
+								height:180,
+								width:500,
+								modal: true,
+								buttons: {
+									"Ok": function() {
+										$( this ).dialog( "close" );
+									},
+								}
+							});
+						} else if(data == 3){
+							$( "#nomeObrigatorio" ).dialog({
+								resizable: false,
+								height:180,
+								width:500,
+								modal: true,
+								buttons: {
+									"Ok": function() {
+										$( this ).dialog( "close" );
+										$('#nome').focus();
+									},
+								}
+							});
+						} else if(data == 4){
+							$( "#enderecoObrigatorio" ).dialog({
+								resizable: false,
+								height:180,
+								width:500,
+								modal: true,
+								buttons: {
+									"Ok": function() {
+										$( this ).dialog( "close" );
+									},
+								}
+							});
+						} else if(data == 5){
+							$( "#nomeEmpresarialObrigatorio" ).dialog({
+								resizable: false,
+								height:180,
+								width:500,
+								modal: true,
+								buttons: {
+									"Ok": function() {
+										$( this ).dialog( "close" );
+										$('#estabReceitaNomeEmpresarial').focus();
+									},
+								}
+							});
+						} else if(data == 6){
+							$( "#enderecoReceitaObrigatorio" ).dialog({
+								resizable: false,
+								height:180,
+								width:500,
+								modal: true,
+								buttons: {
+									"Ok": function() {
+										$( this ).dialog( "close" );
+									},
+								}
+							});
+						} else if(data == 7){
+							$( "#dataAberturaObrigatorio" ).dialog({
+								resizable: false,
+								height:180,
+								width:500,
+								modal: true,
+								buttons: {
+									"Ok": function() {
+										$( this ).dialog( "close" );
+										$('#estabReceitaAberturaData').focus();
+									},
+								}
+							});
+						} else if(data == 8){
+							$( "#situacaoDataObrigatorio" ).dialog({
+								resizable: false,
+								height:180,
+								width:500,
+								modal: true,
+								buttons: {
+									"Ok": function() {
+										$( this ).dialog( "close" );
+										$('#estabReceitaSituacaoData').focus();
+									},
+								}
+							});
+						}else if(data == 10){
+							$( "#cnpjCadastrado" ).dialog({
+								resizable: false,
+								height:180,
+								width:500,
+								modal: true,
+								buttons: {
+									"Ok": function() {
+										$( this ).dialog( "close" );
+										$('#cnpj').focus();
+									},
+								}
+							});
+						}else if(data == 11){
+							$( "#nomeCadastrado" ).dialog({
+								resizable: false,
+								height:180,
+								width:500,
+								modal: true,
+								buttons: {
+									"Ok": function() {
+										$( this ).dialog( "close" );
+										$('#nome').focus();
+									},
+								}
+							});
+						}else{
+							$( "#lojaSucesso" ).dialog({
+								resizable: false,
+								height:180,
+								width:500,
+								modal: true,
+								buttons: {
+									"Ok": function() {
+										$( this ).dialog( "close" );
+										$('#formCadLoja')[0].reset();
+									},
+								}
+							});
+						}
 					}
-				}
-			})
+				})
+			}
+			
 		}
 
 
@@ -340,6 +378,7 @@ $(document).ready(function(){
 
 	//Consulta bandeira
 	$('#searchBandeiraBtn').on('click', function(){
+		$('#pagina').val('1');
 		carregaBandeiras();
 	})
 
@@ -444,10 +483,44 @@ $(document).ready(function(){
 				bandeira: bandeira
 			},
 			success: function (data){
-				//Destroy modal
-      			//$('#cadBandeirasModal').dialog("destroy");
-
-				alert(data);
+				if(data == 1){
+					$( "#bandeiraCadastrada" ).dialog({
+						resizable: false,
+						height:180,
+						width:500,
+						modal: true,
+						buttons: {
+							"Ok": function() {
+								$( this ).dialog( "close" );
+							},
+						}
+					});
+				} else if(data == 2){
+					$( "#bandeiraCadastradaSucesso" ).dialog({
+						resizable: false,
+						height:180,
+						width:500,
+						modal: true,
+						buttons: {
+							"Ok": function() {
+								$( this ).dialog( "close" );
+							},
+						}
+					});
+				} else {
+					$( "#bandeiraObrigatorio" ).dialog({
+						resizable: false,
+						height:180,
+						width:500,
+						modal: true,
+						buttons: {
+							"Ok": function() {
+								$( this ).dialog( "close" );
+							},
+						}
+					});
+				}
+				
 			}
 		})
 	})
