@@ -36,8 +36,8 @@ $(document).ready(function(){
 	$("#cnpj").mask("99.999.999/9999-99");
 	$("#cep").mask("99999-999");
 	$('#estabReceitaCEP').mask("99999-999");
-	$('#estabTel01').mask("(99) 9999-9999");
-	$('#estabTel02').mask("(99) 9999-9999");
+	//$('#estabTel01').mask("(99) 9999-9999");
+	//$('#estabTel02').mask("(99) 9999-9999");
 
 	$( "#estabReceitaAberturaData" ).datepicker();
 	$( "#estabReceitaSituacaoData" ).datepicker();
