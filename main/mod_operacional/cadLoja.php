@@ -302,3 +302,13 @@
 <div id="nomeCadastrado" title="Nome cadastrado">
   <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Este nome já foi cadastrado</p>
 </div>
+
+<!-- Bandeira já cadastrada -->
+<div id="bandeiraCadastrada" title="Bandeira">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Esta bandeira já foi cadastrada</p>
+</div>
+
+<!-- Bandeira cadastrada com sucesso -->
+<div id="bandeiraCadastradaSucesso" title="Bandeira">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Bandeira cadastrada com sucesso</p>
+</div>

@@ -16,14 +16,14 @@
 	$rowCount = $check->rowCount();
 
 	if($bandeira == ''){
-		$msg = 'Favor informar o nome da bandeira.';
+		$msg = 3; //'Favor informar o nome da bandeira.';
 	} elseif($rowCount > 0) {
-		$msg = "Esta bandeira já foi cadastrada";
+		$msg = 1; //"Esta bandeira já foi cadastrada";
 	} else {
 		$sql = $pdo->prepare("Insert Into ipsum_operacionalbandeiras Values (?, ?)");
 		$sql->execute(array('', $bandeira));
 
-		$msg = 'Bandeira cadastrada com sucesso';
+		$msg = 2; //'Bandeira cadastrada com sucesso';
 	}
 
 	echo $msg;

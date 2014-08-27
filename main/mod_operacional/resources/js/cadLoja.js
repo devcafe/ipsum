@@ -23,6 +23,9 @@ $(document).ready(function(){
 	$('#cnpjCadastrado').hide();
 	$('#nomeCadastrado').hide();	
 	$('#lojaSucesso').hide();	
+	$('#bandeiraCadastrada').hide();
+	$('#bandeiraCadastradaSucesso').hide();
+	$('#bandeiraObrigatorio').hide();
 
 
 	$("#numero").keypress(verificaNumero);
@@ -31,6 +34,8 @@ $(document).ready(function(){
 	$("#cidade").keypress(verificaLetra);
 	$("#estabReceitaCidade").keypress(verificaLetra);
 	$("#estabReceitaUF").keypress(verificaLetra);
+	$('#estabTel01').keypress(verificaNumero);
+	$('#estabTel02').keypress(verificaNumero);
 
 	//Mascara campos
 	$("#cnpj").mask("99.999.999/9999-99");
@@ -478,10 +483,44 @@ $(document).ready(function(){
 				bandeira: bandeira
 			},
 			success: function (data){
-				//Destroy modal
-      			//$('#cadBandeirasModal').dialog("destroy");
-
-				alert(data);
+				if(data == 1){
+					$( "#bandeiraCadastrada" ).dialog({
+						resizable: false,
+						height:180,
+						width:500,
+						modal: true,
+						buttons: {
+							"Ok": function() {
+								$( this ).dialog( "close" );
+							},
+						}
+					});
+				} else if(data == 2){
+					$( "#bandeiraCadastradaSucesso" ).dialog({
+						resizable: false,
+						height:180,
+						width:500,
+						modal: true,
+						buttons: {
+							"Ok": function() {
+								$( this ).dialog( "close" );
+							},
+						}
+					});
+				} else {
+					$( "#bandeiraObrigatorio" ).dialog({
+						resizable: false,
+						height:180,
+						width:500,
+						modal: true,
+						buttons: {
+							"Ok": function() {
+								$( this ).dialog( "close" );
+							},
+						}
+					});
+				}
+				
 			}
 		})
 	})
