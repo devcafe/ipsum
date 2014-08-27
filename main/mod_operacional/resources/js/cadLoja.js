@@ -551,11 +551,13 @@ $(document).ready(function(){
 						$('#status2').hide();				
 				}else if(data == 1){
 					$('#status').removeClass('valido');
-					$('#status').addClass('invalido');										
+					$('#status').addClass('invalido');		
+					$('#status2').empty('html');		
+					$('#status2').hide();									
 				}else{
 					if($('#status').hasClass('valido')){
 							$('#status').removeClass('valido');
-							$('#status').addClass('invalido');										
+							$('#status').addClass('invalido');									
 						}
 					$('#status2').empty('html');
 					$('#status2').append(data);
