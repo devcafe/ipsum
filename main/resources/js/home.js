@@ -124,7 +124,7 @@ $(document).ready(function(){
 
 	//Abre página para Gerenciar roteiros
 	$('#gerRoteirosOpe').click(function(){
-		conteudo.load( "mod_operacional/view/gerRoteiro.php" );
+		conteudo.load( "mod_operacional/gerRoteiro.php" );
 	});
 
 })
