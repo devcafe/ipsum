@@ -44,19 +44,19 @@
 					
 					<table id = "changeLog">
 						<tr>
-							<td> <h3> Novidades </h3> </td>
+							<td> <b> Novidades </b> </td>
 						</tr>
 						<tr>
-							<td> 27/08/2014 v1.0 - Disponibilizado modulo de T.I </td>
+							<td class = "par"> 27/08/2014 v1.0 - Disponibilizado modulo de T.I </td>
 						</tr>
 						<tr>
-							<td> 27/08/2014 v1.0 - Disponibilizado cadastro de lojas </td>
+							<td class = "impar"> 27/08/2014 v1.0 - Disponibilizado cadastro de lojas </td>
 						</tr>
 						<tr>
-							<td> 27/08/2014 v1.0 - Disponibilizado consulta de lojas </td>
+							<td class = "par"> 27/08/2014 v1.0 - Disponibilizado consulta de lojas </td>
 						</tr>
 						<tr>
-							<td> 27/08/2014 v1.0 - Disponibilizado gerencia de lojas </td>
+							<td class = "impar"> 27/08/2014 v1.0 - Disponibilizado gerencia de lojas </td>
 						</tr>
 					</table>
 
