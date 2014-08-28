@@ -120,11 +120,6 @@ $(document).ready(function(){
 	//Abre página para gerenciar lojas
 	$('#gerLojaOpe').click(function(){
 		conteudo.load( "mod_operacional/gerLojas.php" );
-	});
-
-	//Abre página para Gerenciar roteiros
-	$('#gerRoteirosOpe').click(function(){
-		conteudo.load( "mod_operacional/view/gerRoteiro.php" );
-	});
+	});	
 
 })

@@ -3,11 +3,11 @@
 
     //Verifica a plataforma e cria a pasta no servidor
     if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-            $path = 'C:\wamp\www\ipsum\main\mod_ftp\files\\';
-            $bar = "\\";
+        $path = 'C:\wamp\www\ipsum\main\mod_ftp\files\\';
+        $bar = "\\";
     } else {
-            $path = '/var/www/html/ipsum/main/mod_ftp/files/';
-            $bar = "/";
+        $path = '/var/www/html/ipsum/main/mod_ftp/files/';
+        $bar = "/";
     }
 
     //Verifica se o usuário selecionou uma pasta ou se é a pasta raiz
