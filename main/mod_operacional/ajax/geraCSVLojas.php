@@ -17,6 +17,6 @@
 
 	// loop over the rows, outputting them
 	while ($row = $rows->fetch(PDO::FETCH_OBJ)) {
-		fputcsv($output, array($row->idLoja, $row->nome . ' ' . $row->rua), ';', " ");
+		fputcsv($output, array($row->idLoja, $row->nome . ' ' . $row->rua . ' ' . $row->numero), ';', " ");
 	}
 ?>
