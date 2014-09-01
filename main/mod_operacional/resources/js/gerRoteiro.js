@@ -38,7 +38,7 @@ $(document).ready(function() {
 
 	$('#consultarColaborador').on('click', function(){
 		var toSearch = $('#toSearch').val();
-		var buscaCampo = $('input[name=buscaCampo]:checked', '#colaboradoresForm').val()
+		var buscaCampo = $('input[name=buscaCampo]:checked', '#colaboradoresForm').val();		
 
 		$.ajax({
 			type: 'POST',
@@ -89,8 +89,10 @@ $(document).ready(function() {
 
 	$('#consultarLoja').on('click', function(){
 		var toSearchLoja = $('#toSearchLoja').val();
-		var buscaCampoLoja = $('input[name=buscaCampoLoja]:checked', '#lojasForm').val();
+		var buscaCampoLoja = $('input[name=buscaCampoLoja]:checked', '#lojasFormToAdd').val();
 		
+		//console.log(buscaCampoLoja);
+
 		$.ajax({
 			type:'POST',
 			data: {
@@ -106,5 +108,53 @@ $(document).ready(function() {
 		})
 	})
 
+
+	// Colocar mascara na pesquisa por loja
+
+	var countLoja = 0;
+
+	$('.radioLoja').change(function(){
+		
+	  	if(countLoja == 0){
+	  		$("#toSearchLoja").mask("99.999.999/9999-99");
+	  		countLoja++;
+	  	}else {
+	  		$("#toSearchLoja").mask("?99999999");
+	  		countLoja--;
+	  	}    
+
+	    });
+
+	var countlojasAdicionadas = 1;
+
+	$('#adicionarLoja').on('click', function(){
+		var itens = [];
+		var i = 0;		
+
+		$("input[type=checkbox]:checked").each(function(){
+			itens[i] = { idLoja: $(this).attr('id'),
+				cnpj: $(this).closest('td').next('td').next('td').html(),
+				nome: $(this).closest('td').next('td').next('td').next('td').html()  
+			};
+
+			//console.log(itens[i]);
+		})		
+		
+
+		$.ajax({
+			type:'POST',
+			data: {
+				itens:itens
+			},
+			url: 'mod_operacional/ajax/geraListaLojas.php',
+			success: function(data){								
+				$('#lojasForm').append(data);
+				countlojasAdicionadas++;				
+			}
+		})
+		
+		$('.contadorLojas').empty();		
+		$('.contadorLojas').append('Lojas adicionadas ' + countlojasAdicionadas);
+	})
 
 }) 

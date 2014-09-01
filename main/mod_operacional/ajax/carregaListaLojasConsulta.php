@@ -177,6 +177,7 @@
 		$lista .= '<tr>';
 			$lista .= "<td id = 'idLojaOrder' class ='{$ordemLojas}'> ID </td>";
 			$lista .= '<td> CNPJ </td>';
+			$lista .= '<td> Nome Estabelecimento </td>';
 			$lista .= '<td> Bandeira </td>';
 			$lista .= '<td> Razão social </td>';
 			$lista .= '<td> Nome fantasia</td>';
@@ -192,6 +193,7 @@
 				$lista .= '<tr class = "par" id = "'. $res->idLoja .'">';
 					$lista .= '<td>'. $res->idLoja .'</td>';
 					$lista .= '<td>'. $res->cnpj .'</td>';
+					$lista .= '<td>'. $res->nome .'</td>';
 					$lista .= '<td>'. $res->bandeira .'</td>';
 					$lista .= '<td>'. $res->estabReceitaRazaoSocial .'</td>';
 					$lista .= '<td>'. $res->estabReceitaNF .'</td>';
@@ -206,6 +208,7 @@
 				$lista .= '<tr class = "impar" id = "'. $res->idLoja .'">';
 					$lista .= '<td>'. $res->idLoja .'</td>';
 					$lista .= '<td>'. $res->cnpj .'</td>';
+					$lista .= '<td>'. $res->nome .'</td>';
 					$lista .= '<td>'. $res->bandeira .'</td>';
 					$lista .= '<td>'. $res->estabReceitaRazaoSocial .'</td>';
 					$lista .= '<td>'. $res->estabReceitaNF .'</td>';
