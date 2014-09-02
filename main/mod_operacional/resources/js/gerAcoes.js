@@ -46,6 +46,26 @@ $(document).ready(function() {
 		})
 	});
 
+	//Adiciona colcaboradores a lista (alterar ação)
+	$('#alterarAcaoForm').on('keyup', '#colaboradoresSearchAlt', function(){
+		var colaboradoresSearch = $('#colaboradoresSearchAlt').val();
+
+		$.ajax({
+			type: 'POST',
+			data: {
+				colaboradoresSearch: colaboradoresSearch
+			},
+			url: 'mod_operacional/ajax/carregaListaColaboradoresAcaoAlt.php',
+			success: function (data){
+				
+				$('.listaColaboradoresAcaoAlt').empty();
+
+				//Carrega lista em div
+				$('.listaColaboradoresAcaoAlt').append(data);
+			}
+		})
+	});
+
 	//Adiciona na lista que será inserida no banco
 	$('.listaColaboradoresAcao').on('click', '.checkBox', function(){
 		var id = $(this).attr('id');
@@ -62,8 +82,29 @@ $(document).ready(function() {
 
 	})
 
+	//Adiciona na lista que será inserida no banco (tela para alterar ação)
+	$('#alterarAcaoForm').on('click', '.listaColaboradoresAcaoAlt .checkBox', function(){
+		var id = $(this).attr('id');
+		var nome = $(this).html();
+
+		if($('.colaboradoresToSaveAlt tr.'+id).length){
+			alert("Este usuário já foi adicionado");
+		} else {
+			$(this).remove();
+
+			$('.colaboradoresToSaveAlt').append('<tr class = '+id+'> <td>'+ nome +'</td> </tr>');
+			$('.colaboradoresToSaveAlt').append('<tr> <td> <input type = "hidden" name = "userId" value = "'+ id +'"> </td> </tr>');
+		}
+
+	})
+
 	//Remove colaboradores da lista para não adicionar
 	$('.colaboradoresToSave').on('click', 'tr', function(){
+		$(this).remove();
+	});
+
+	//Remove colaboradores da lista para não adicionar (tela para alterar ação)
+	$('#alterarAcaoForm').on('click', '.colaboradoresToSaveAlt tr', function(){
 		$(this).remove();
 	});
 
@@ -139,5 +180,34 @@ $(document).ready(function() {
 		})
 		
 	})
+
+	//Envia dados para gravar no banco
+	$('#alterarAcaoForm').on('click', '#alterarAcao', function(){
+		var nomeAcao = $('#nomeAcaoAlt').val();
+
+		var itens = '';
+
+		$('.colaboradoresToSaveAlt input[type=hidden]').each(function(){
+			itens += $(this).val()+',';
+		})
+
+		itens = itens.substring(0, itens.length - 1);
+
+		console.log(itens);
+
+		$.ajax({
+			type: 'POST',
+			data: {
+				itens: itens,
+				nomeAcao: nomeAcao
+			},
+			url: 'mod_operacional/ajax/altAcao.php',
+			success: function (data){
+				//console.log(data);
+
+				//$( "#addAcaoModal" ).dialog( 'destroy' );
+			}
+		})
+	});
 
 });

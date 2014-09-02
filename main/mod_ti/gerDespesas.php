@@ -60,7 +60,7 @@
                             $natureza->execute();
 
                             while($resNatureza = $natureza->fetch(PDO::FETCH_OBJ)){
-                                echo '<option id = "nat_'. $resNatureza->idDespesaNatureza .'">'. $resNatureza->naturezaDespesa .'</option>';
+                                echo '<option id = "'. $resNatureza->idDespesaNatureza .'">'. $resNatureza->naturezaDespesa .'</option>';
                             }
                         ?>
                     </select>
@@ -73,7 +73,7 @@
                             $tipo->execute();
 
                             while($resTipo = $tipo->fetch(PDO::FETCH_OBJ)){
-                                echo '<option id = "tipo_'. $resTipo->idDespesaTipo .'">'. $resTipo->tipoDespesa .'</option>';
+                                echo '<option id = "'. $resTipo->idDespesaTipo .'">'. $resTipo->tipoDespesa .'</option>';
                             }
                         ?>
                     </select>
@@ -124,7 +124,7 @@
                             $contaContabilSelect->execute();
 
                             while($resContaContabilSelect = $contaContabilSelect->fetch(PDO::FETCH_OBJ)){
-                                echo '<option id = "tipo_'. $resContaContabilSelect->idContaContabil .'">'. $resContaContabilSelect->contaContabil .'</option>';
+                                echo '<option id = "'. $resContaContabilSelect->idContaContabil .'">'. $resContaContabilSelect->contaContabil .'</option>';
                             }
                         ?>
                     </select>
@@ -134,15 +134,30 @@
             <tr class = "fakeRow"> </tr>
         </table>
 
+        <table>
+            <tr>
+                <td> <label for = "descricao"> Descrição: </label> </td>
+            </tr>
 
+            <tr>
+                <td> <textarea name = "descricao" id = "descricao"> </textarea> </td>
+            </tr>
+        </table>
 
+         <table>
+            <tr>
+                <td> <label for = "observacao"> Observação: </label> </td>
+            </tr>
 
-        <label for = "descricao"> Descrição: </label>
-        <textarea name = "descricao" id = "descricao"> </textarea>
+            <tr>
+                <td> <textarea name = "observacao" id = "observacao"> </textarea></td>
+            </tr>
+        </table>
 
-        <label for = "observacao"> Observação: </label>
-        <textarea name = "observacao" id = "observacao"> </textarea>
-
-        <input type = "button" id = "addDespesaBtn" name = "addDespesaBtn" value = "Adicionar">
+        <table>
+            <tr>    
+                <td> <input type = "button" id = "addDespesaBtn" name = "addDespesaBtn" value = "Adicionar"></td>
+            </tr>
+        </table>
     </form>    
 </div>
