@@ -10,7 +10,7 @@
 	$output = fopen('php://output', 'w');
 
 	// output the column headings
-	fputcsv($output, array('CodigoPDV', 'CNPJ', 'Bandeira', 'NomePDV', 'UF'), ';', " ");
+	fputcsv($output, array('CodigoPDV', 'CNPJ', 'Bandeira', 'NomePDV', 'Rua', 'Bairro', 'cidade', 'UF'), ';', " ");
 
 
 	$rows = $pdo->prepare('Select * From ipsum_operacionallojas a Inner Join ipsum_operacionalbandeiras b On (a.idEstabBandeira = b.idBandeira)');
@@ -18,6 +18,6 @@
 
 	// loop over the rows, outputting them
 	while ($row = $rows->fetch(PDO::FETCH_OBJ)) {
-		fputcsv($output, array($row->idLoja, $row->cnpj, $row->bandeira, $row->nome, $row->uf), ';', " ");
+		fputcsv($output, array($row->idLoja, $row->cnpj, $row->bandeira, $row->nome, $row->rua, $row->bairro, $row->cidade, $row->uf), ';', " ");
 	}
 ?>

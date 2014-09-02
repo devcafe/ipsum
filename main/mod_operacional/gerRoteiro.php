@@ -7,7 +7,7 @@
 <link rel="stylesheet" href = "mod_operacional/resources/css/gerRoteiro.css">
 
 <div class = "formInner">
-	<form method = "post">
+	<div>
 		<legend> Criar Roteiro </legend>
 		<!--<div class = "painel">
 			<div class = "btnFiltrar" id = "btnFiltrar" title = "Filtrar"> <img src = "../main/resources/images/filter.png" width = "20" > </div>
@@ -32,13 +32,13 @@
 				</table>
 			</div>
 		</div>
-	</form>
+	</div>
 </div>
 
 <!-- Modals -->
 
 <div id ="criarRoteiroModal" class = "criarRoteiroModal" title = "Criar roteiros">
-	<form method = "post" id = "criarRoteiro">
+	<div id = "criarRoteiro">
 	
 	<table>	
 		<tr>
@@ -55,16 +55,30 @@
 		<tr>
 			<td id = 'nomeColaborador'>Selecione um colaborador...</td>
 			<td><a href = "#" id = "selectColaBtn"> <img src = "../main/resources/images/addUser.png" width = "20" disabled></td>
-		</tr>
-		<tr>	
-			<td><label for = "lojasRoteiro"> Lojas do roteiro: </label></td>			
-		</tr>
+		</tr>		
 		<tr>
-			<td>Selecione as lojas para o roteiro</td>
+			<td><label for = "lojasRoteiro"> Lojas do roteiro: </label> </td>
 			<td><a href = "#" id = "selectLojasBtn">  <img src = "../main/resources/images/operacional/addStores.png" width = "20" >  </a></td>
 		</tr>		
-	</table>	
-	</form>
+	</table>
+	<table id = 'lojasForm'>
+		<tr>			
+			<td>ID</td>
+			<td>CNPJ</td>
+			<td>Nome da Loja</td>
+			<td>seg</td>
+			<td>ter</td>
+			<td>qua</td>
+			<td>qui</td>
+			<td>sex</td>
+			<td>sab</td>
+			<td>dom</td>			
+		</tr>	
+		<div class = "addDataLoja">	 
+		</div>
+	</table>
+
+	</div>
 
 
 
@@ -72,12 +86,12 @@
 <!-- Calaboradores modal -->
 
 <div id = "colaboradorModal" class = "modalColaboradores" title = "Colaboradores">
-	<form method = "post" id = "colaboradoresForm">
+	<div id = "colaboradoresForm">
 		<label for = "toSearch"> Buscar: </label> <input type = "text" name = "toSearch" id = "toSearch">
 		<input type="radio" name="buscaCampo" value="matricula" checked="checked">Matricula
 		<input type="radio" name="buscaCampo" value="nome">Nome
 		<input type = "button" name = "consultarColaborador" id = "consultarColaborador" value = "Pesquisar colaborador">
-	</form>
+	</div>
 	<div class = "listaColaboradores">
 
 	</div>
@@ -88,11 +102,11 @@
 <!-- Lojas modal -->
 
 <div id = "lojasModal" class = "lojasModal" title = "lojas Modal">
-	<form method = "post" id = "lojasForm">
+	<div id = "lojasFormToAdd">
 		<!-- Pesquisa loja -->
 		<label for = "toSearchLoja"> Buscar: </label> <input type = "text" name = "toSearchLoja" id = "toSearchLoja">
-		<input type="radio" name="buscaCampoLoja" id ="idRadio" value="id" checked="checked">ID
-		<input type="radio" name="buscaCampoLoja" id = "cnpjRadio" value="cnpj">CNPJ
+		<input type="radio" name="buscaCampoLoja" class = "radioLoja" id ="idRadio" value="idLoja" checked="checked">ID
+		<input type="radio" name="buscaCampoLoja" class = "radioLoja" id = "cnpjRadio" value="cnpj">CNPJ
 		<input type = "button" name = "consultarLoja" id = "consultarLoja" value = "Pesquisar loja">
 		<!-- Pesquisa loja -->
 		<table id = "tableLojas">
@@ -103,10 +117,12 @@
 			 	<td>Nome da Loja</td>
 			</tr>
 		</table>
-	</form>
-	<div class = "listaLoja">
-
 	</div>
+	<div class = "listaLoja">
+	</div>
+
+	<input type = "button" nome = "adicionarLoja" id = "adicionarLoja" value = "Adicionar" >
+	<div class = "contadorLojas"></div>
 
 
 </div>

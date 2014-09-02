@@ -571,4 +571,14 @@ $(document).ready(function(){
 
 	})
 
+	//Gera nome da loja a partir da bandeira bairro e cidade
+	$('#numero').focusout(function(){
+		// pega os valores dos campos
+		var aBandeira = $('#bandeira').val();
+		var aBairro = $('#bairro').val();
+		var aCidade = $('#cidade').val();
+		// apenda os valor no campo da loja
+		$('#nome').val(aBandeira + ' ' + aBairro + ' ' + aCidade);
+	})
+
 })

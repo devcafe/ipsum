@@ -102,12 +102,12 @@ input[name=nomeAcao]{
 
 
 /* Tabela lista linhas moveis */
-#lojasForm{
+#lojasForm, #tableLojas{
 	border: 1px solid #e7e7e7;
 	width:100%;
 }
 
-#lojasForm tr:first-child{
+#lojasForm tr:first-child, #tableLojas{
 	background: #ADC4DC !important;
 	color: #000;
 	font-weight: bold;
@@ -122,3 +122,14 @@ input[name=nomeAcao]{
 #cnpjRadio{
 	margin-left: 50px;
 }
+
+/* tamanho do inputs da ordem da loja*/
+.ordemDiaRoteiro {
+	width: 30%;
+}
+
+.carregaListaLojas tr td:first-child{
+	width: 30px;
+}
+
+#lojasForm tr td:nth-child(1)
