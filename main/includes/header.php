@@ -119,6 +119,7 @@
 										echo '<li role="presentation" class="dropdown-header"><u> Roteiros </u></li>';
 							} 							
 										if(acessos(28) == true){echo'<li><a href="#" id="gerRoteirosOpe"> Gerenciar roteiros </a></li>';} 
+										if(acessos(28) == true){echo'<li><a href="#" id="gerAcoesOpe"> Gerenciar acoes </a></li>';} 
 							
 							if(acessos(27) == true or acessos(28) == true){ echo '</div>'; }
 						?>

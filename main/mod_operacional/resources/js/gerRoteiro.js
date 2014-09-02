@@ -106,5 +106,31 @@ $(document).ready(function() {
 		})
 	})
 
+	//Link para gerar carta de apresentação
+	$('a[name=geraCartaApresentacao]').on('click', function(){		
+		//Variavel com o id da loja
+		var idLoja = 2;
+		
+		//Variavel com a matricula do funcionario
+		var matColaborador = 085761;
+
+		//Modelo da carta
+		var modeloCarta = '01drogariaSP';
+
+		//Caso esteja selecionada, monta o link com o id correspondente
+		if(idLoja != '' && matColaborador != ''){
+
+			//Gera o link passando como parâmetro o id da linha
+			var href = "mod_operacional/cartasApresentacao/"+ modeloCarta +"/" + modeloCarta +".php?idLoja="+ idLoja + "&mat="+matColaborador;			
+
+			//Coloca o link no elemento
+			$(this).attr('href', href);
+		} else {
+			//Caso não seja selecionado nenhum item ao clicar no botão
+			alert("Favor selecionar um item");
+		}
+	
+	})
+
 
 }) 

@@ -27,7 +27,7 @@
 						<td> Responsavel </td>
 					</tr>
 					<table id = "addDataUser">
-
+						<a href = "#"  name = "geraCartaApresentacao"> Gerar carta </a>
 					</table>
 				</table>
 			</div>
@@ -35,7 +35,7 @@
 	</form>
 </div>
 
-<!-- modal -->
+<!-- Modals -->
 
 <div id ="criarRoteiroModal" class = "criarRoteiroModal" title = "Criar roteiros">
 	<form method = "post" id = "criarRoteiro">
