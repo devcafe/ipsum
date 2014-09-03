@@ -112,7 +112,7 @@
         $lista .= '<td><b> R$  '. number_format($totalGeral->Outu, 2, ',', '.') .'</b></td>';
         $lista .= '<td><b> R$  '. number_format($totalGeral->Nov, 2, ',', '.') .'</b></td>';
         $lista .= '<td><b> R$  '. number_format($totalGeral->Dez, 2, ',', '.') .'</b></td>';
-    $lista .= '</tr>';     
+    $lista .= '</tr>';   
 
     echo $lista;
 

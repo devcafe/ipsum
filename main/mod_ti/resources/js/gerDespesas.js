@@ -25,7 +25,7 @@ $(document).ready(function(){
     //Abre modal para adicionar despesa
     $('#addDespesa').on('click', function(){
         $('#cadDespesaForm')[0].reset();
-        
+
         $( "#cadDespesa" ).dialog({
             width: 600,
             show: {
@@ -183,4 +183,6 @@ $(document).ready(function(){
             }
         })
     }
+
+    
 });
