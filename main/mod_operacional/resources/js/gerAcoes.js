@@ -84,7 +84,7 @@ $(document).ready(function() {
 
 	//Adiciona na lista que será inserida no banco (tela para alterar ação)
 	$('#alterarAcaoForm').on('click', '.listaColaboradoresAcaoAlt .checkBox', function(){
-		var id = $(this).attr('id');
+		var id = $(this).attr('id').slice(-1);
 		var nome = $(this).html();
 
 		if($('.colaboradoresToSaveAlt tr.'+id).length){
@@ -198,8 +198,6 @@ $(document).ready(function() {
 		})
 
 		itens = itens.substring(0, itens.length - 1);
-
-		console.log(itens);
 
 		$.ajax({
 			type: 'POST',

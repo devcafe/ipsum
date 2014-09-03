@@ -50,7 +50,7 @@
 
 		$resUsers = explode(',', $resUsers->users);
 
-		if(count($resUsers) > 1){
+		if(count($resUsers) >= 1){
 			foreach($resUsers as $row){
 				$getUserData = $pdo->prepare("Select * From ipsum_usuarios Where id = ?");
 				$getUserData->execute(array($row));
