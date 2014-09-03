@@ -6,8 +6,7 @@
 <!-- CSS -->
 <link rel="stylesheet" href = "mod_operacional/resources/css/gerRoteiro.css">
 
-<div class = "formInner">
-	<div>
+<div class = "formInner">	
 		<legend> Criar Roteiro </legend>
 		<!--<div class = "painel">
 			<div class = "btnFiltrar" id = "btnFiltrar" title = "Filtrar"> <img src = "../main/resources/images/filter.png" width = "20" > </div>
@@ -26,13 +25,12 @@
 						<td> Ação </td>
 						<td> Responsavel </td>
 					</tr>
-					<table id = "addDataUser">
+					<table id = "addDataRoteiro">
 
 					</table>
 				</table>
-			</div>
-		</div>
-	</div>
+			</div>			
+		</div>	
 </div>
 
 <!-- modal -->
@@ -76,7 +74,9 @@
 		</tr>	
 		<div class = "addDataLoja">	 
 		</div>
+
 	</table>
+	<input type = "button" value = "Cadastrar roteiro" id = "cadastrarRoteiro"> 
 
 	</div>
 

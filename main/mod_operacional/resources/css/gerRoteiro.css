@@ -1,8 +1,7 @@
 /* Painel */
 
 /* Modal de colaboradores */
-.ui-dialog{
-	height: 600px !important;
+.ui-dialog{	
 	width: 900px !important;	
 }
 
@@ -99,6 +98,11 @@ input[name=nomeAcao]{
 	overflow: hidden;
 }
 
+#cadastrarRoteiro{
+	width: 100%;
+	margin-top: 250px;
+}
+
 
 
 /* Tabela lista linhas moveis */
@@ -132,4 +136,10 @@ input[name=nomeAcao]{
 	width: 30px;
 }
 
-#lojasForm tr td:nth-child(1)
+#lojasForm tr td:nth-child(3){
+	width: 200px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 200px;
+}
