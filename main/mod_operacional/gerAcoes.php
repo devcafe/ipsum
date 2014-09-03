@@ -9,12 +9,12 @@
 <div class = "formInner">
 	<form method = "post">
 		<legend> Gerenciar ações </legend>
-		
+		<div class = "painel">
+			<div class = "addAcao"> <img src = "../main/resources/images/add.png" width = "22" > </div> 
+			<div class = "delAcao"> <img src = "../main/resources/images/delete.png" width = "22" > </div>
+		</div>
 		<table>
-			<tr>
-				<td> <div class = "addAcao"> <img src = "../main/resources/images/add.png" width = "22" > </div> </td>
-			</tr>
-
+			
 			<tr class = "fakeRow"> </tr>
 
 			<tr class = "acoesList">
