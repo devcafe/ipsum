@@ -14,8 +14,8 @@
         <legend>  Gerenciar despesas </legend>
         <div class = "painel">
             <ul>
-                <li><div class = "addContaContabil" id = "addContaContabil"> Cadastrar conta contabil </div></li>
-                <li><div class = "addDespesa" id = "addDespesa"> Cadastrar despesa </div></li>
+                <li><div class = "addContaContabil" id = "addContaContabil"> <a href = "#"> Cadastrar conta contabil  </a></div></li>
+                <li><div class = "addDespesa" id = "addDespesa"><a href = "#"> Cadastrar despesa </a></div></li>
             </ul>
 	   </div>
 
@@ -105,10 +105,10 @@
                     <label for = "fornecedor"> Fornecedor: </label>
                     <input type = "text" name = "fornecedor" id = "fornecedor">
                 </td>
-                <td>
+                <!--<td>
                     <label for = "nf"> NF: </label>
                     <input type = "text" name = "nf" id = "nf">
-                </td>
+                </td>-->
             </tr>
 
             <tr class = "fakeRow"> </tr>

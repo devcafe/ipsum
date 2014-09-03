@@ -112,7 +112,7 @@ body{
 }
 
 #fornecedor{
-	width:260px;
+	width:360px;
 }
 
 #nf{
@@ -147,4 +147,8 @@ ul{
 	float: left;
 	margin-left: 0;
 	padding-left: 0;
+}
+
+#addDespesaBtn:hover{
+	background: #ADC4DC !important;
 }

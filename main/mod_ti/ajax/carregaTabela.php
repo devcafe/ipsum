@@ -17,7 +17,7 @@
         $lista .= '<th> Set </th>';
         $lista .= '<th> Out </th>';
         $lista .= '<th> Nov </th>';
-        $lista .= '<th> Dec </th>';
+        $lista .= '<th> Dez </th>';
     $lista .= '</tr>';
 
     //Query para retornar todas as contas contabeis

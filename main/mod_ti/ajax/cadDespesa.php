@@ -17,7 +17,6 @@
 				`idContaContabil`,
 				`dataAquisicao`, 
 				`idFornecedor`, 
-				`nf`, 
 				`descricao`, 
 				`observacao`, 
 				`jan`, 
@@ -32,10 +31,10 @@
 				`outu`, 
 				`nov`, 
 				`dez`) 
-		VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )
+		VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )
 	");
 
-	$sql->execute(array('', $despesa, $_POST['selectNatureza'], $_POST['selectTipo'], $qtdeItens, $_POST['contaContabil'], $dataAquisicao, $fornecedor, $nf, $descricao, $observacao, 'R$ 00.00', 'R$ 00.00', 'R$ 00.00', 'R$ 00.00', 'R$ 00.00', 'R$ 00.00', 'R$ 00.00', 'R$ 00.00', 'R$ 00.00', 'R$ 00.00', 'R$ 00.00', 'R$ 00.00'));
+	$sql->execute(array('', $despesa, $_POST['selectNatureza'], $_POST['selectTipo'], $qtdeItens, $_POST['contaContabil'], $dataAquisicao, $fornecedor, $descricao, $observacao, 'R$ 00.00', 'R$ 00.00', 'R$ 00.00', 'R$ 00.00', 'R$ 00.00', 'R$ 00.00', 'R$ 00.00', 'R$ 00.00', 'R$ 00.00', 'R$ 00.00', 'R$ 00.00', 'R$ 00.00'));
 
 	$msg = "Despesa cadastrada com sucesso";
 
