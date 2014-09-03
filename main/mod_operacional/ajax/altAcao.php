@@ -14,4 +14,6 @@
 
 	$msg = "Ação alterada com sucesso";
 
+	echo $msg;
+
 ?>

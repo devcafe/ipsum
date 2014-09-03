@@ -10,7 +10,7 @@
 		<table>
 			<tr>
 				<td> <label for = "nomeAcaoAlt"> Ação: </td>
-				<td> <input type = "text" name = "nomeAcaoAlt" id = "nomeAcaoAlt" value = '. $res->nomeAcao .'> </td>
+				<td> <input type = "text" name = "nomeAcaoAlt" id = "nomeAcaoAlt" value = "'. $res->nomeAcao .'"> </td>
 			</tr>
 
 			<tr class = "fakeRow"> </tr>
@@ -49,8 +49,8 @@
 		$resUsers = $checkUsers->fetch(PDO::FETCH_OBJ);
 
 		$resUsers = explode(',', $resUsers->users);
-
-		if(count($resUsers) >= 1){
+		
+		if($resUsers[0] != ''){
 			foreach($resUsers as $row){
 				$getUserData = $pdo->prepare("Select * From ipsum_usuarios Where id = ?");
 				$getUserData->execute(array($row));
@@ -64,6 +64,7 @@
 				$lista .= '<tr> <td> <input type = "hidden" class = "'. $row .'" name = "userId" value = "' . $row . '"> </td> </tr>';
 			}
 		}
+	
 
 		$lista .= '			
 		</table>

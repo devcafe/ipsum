@@ -84,7 +84,7 @@ $(document).ready(function() {
 
 	//Adiciona na lista que será inserida no banco (tela para alterar ação)
 	$('#alterarAcaoForm').on('click', '.listaColaboradoresAcaoAlt .checkBox', function(){
-		var id = $(this).attr('id').slice(-1);
+		var id = $(this).attr('id');
 		var nome = $(this).html();
 
 		if($('.colaboradoresToSaveAlt tr.'+id).length){
@@ -93,7 +93,7 @@ $(document).ready(function() {
 			$(this).remove();
 
 			$('.colaboradoresToSaveAlt').append('<tr class = '+id+'> <td>'+ nome +'</td> </tr>');
-			$('.colaboradoresToSaveAlt').append('<tr> <td> <input type = "hidden" name = "userId" value = "'+ id +'"> </td> </tr>');
+			$('.colaboradoresToSaveAlt').append('<tr> <td> <input type = "hidden" class = "'+ id.slice(-1) +'" name = "userId" value = "'+ id.slice(-1) +'"> </td> </tr>');
 		}
 
 	})
@@ -104,7 +104,7 @@ $(document).ready(function() {
 	});
 
 	//Remove colaboradores da lista para não adicionar (tela para alterar ação)
-	$('#alterarAcaoForm').on('click', '.colaboradoresToSaveAlt tr', function(){
+	$('#alterarAcaoForm').on('click', '.colaboradoresToSaveAlt tr:not(:first-child)', function(){
 		$(this).remove();
 		var idHidden = $(this).attr('class').slice(-1);
 
@@ -208,9 +208,11 @@ $(document).ready(function() {
 			},
 			url: 'mod_operacional/ajax/altAcao.php',
 			success: function (data){
-				console.log(data);
+				alert(data);
 
-				//$( "#addAcaoModal" ).dialog( 'destroy' );
+				carregaAcoes();
+
+				$( "#alteraAcaoModal" ).dialog( 'destroy' );
 			}
 		})
 	});
