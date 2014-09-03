@@ -1,17 +1,18 @@
 <?php
 	include("../../../conf/conn.php");
 
-	/*$sql = $pdo->prepare("
+	$sql = $pdo->prepare("
 		Update ipsum_operacionalacao
 		Values(
-			:idAcao,
 			:nomeAcao,
 			:users
+		Where
+			idAcao = :idAcao
 		)
 	");
 
-	$sql->execute(array(":idAcao" => '',":nomeAcao" => $_POST['nomeAcao'], ":users" => $_POST['itens'] ));
+	$sql->execute(array(":nomeAcao" => trim($_POST['nomeAcao']), ":users" => $_POST['itens'],":idAcao" => $_POST['idAcaoAlt'] ));
 
-	$msg = "Ação cadastrada com sucesso";*/
-echo $_POST['itens'];
+	$msg = "Ação alterada com sucesso";
+
 ?>

@@ -2,7 +2,7 @@
 	include("../../../conf/conn.php");
 
 	//Total de registros por pagina
-	$total_reg = "25";	
+	$total_reg = "8";	
 
 	//Página atual
 	$pc = $_POST['pag'];
@@ -51,7 +51,7 @@
 		$lista .= '</table>';
 
 	$nav = '';
-
+	
 		$nav .= "<div class = 'navLojas'>";
 
 		$nav .= " <a class = 'toPage voltarPag' style = 'margin-right: 10px' href='#' id = '1'> <img src= '../main/resources/images/Operacional/arrowLeft.png' alt=''> <span> Primeira pagina </span> </a>"; 

@@ -1,17 +1,37 @@
 <?php
 	include("../../../conf/conn.php");
 
-	$sql = $pdo->prepare("
-		Insert into
-			ipsum_operacionalacao
-		Values(
-			:idAcao,
-			:nomeAcao,
-			:users
-		)
-	");
+	if($_POST['nomeAcao'] != ''){
 
-	$sql->execute(array(":idAcao" => '',":nomeAcao" => $_POST['nomeAcao'], ":users" => $_POST['itens'] ));
+		$check = $pdo->prepare("Select nomeAcao From ipsum_operacionalacao Where nomeAcao = ?");
+		$check->execute(array(trim($_POST['nomeAcao'])));
 
-	$msg = "Ação cadastrada com sucesso";
+		$count = $check->rowCount();
+
+		if($count <= 0){
+			$sql = $pdo->prepare("
+				Insert into
+					ipsum_operacionalacao
+				Values(
+					:idAcao,
+					:nomeAcao,
+					:users
+				)
+			");
+
+			$sql->execute(array(":idAcao" => '',":nomeAcao" => $_POST['nomeAcao'], ":users" => $_POST['itens'] ));
+
+			$msg = "Ação cadastrada com sucesso";
+		} else {
+			$msg = "Essa ação já foi cadastrada";
+		}
+
+		
+	} else {
+		$msg = "Favor informar o nome da ação";
+	}
+
+	echo $msg;
+
+	
 ?>

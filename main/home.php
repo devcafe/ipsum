@@ -47,6 +47,9 @@
 							<td> <b> Novidades </b> </td>
 						</tr>
 						<tr>
+							<td class = "impar"> 02/09/2014 v1.0 - Controle de despesas de T.I agora disponivel </td>
+						</tr>
+						<tr>
 							<td class = "par"> 27/08/2014 v1.0 - Disponibilizado modulo de T.I </td>
 						</tr>
 						<tr>

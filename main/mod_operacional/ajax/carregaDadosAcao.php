@@ -50,17 +50,19 @@
 
 		$resUsers = explode(',', $resUsers->users);
 
-		foreach($resUsers as $row){
-			$getUserData = $pdo->prepare("Select * From ipsum_usuarios Where id = ?");
-			$getUserData->execute(array($row));
+		if(count($resUsers) > 1){
+			foreach($resUsers as $row){
+				$getUserData = $pdo->prepare("Select * From ipsum_usuarios Where id = ?");
+				$getUserData->execute(array($row));
 
-			$resUsersData = $getUserData->fetch(PDO::FETCH_OBJ);
+				$resUsersData = $getUserData->fetch(PDO::FETCH_OBJ);
 
-			$lista .= '<tr class = "alt_'. $row .'">';
-				$lista .= '<td colspan = "2"> <div class = "checkBox" name="userToListAlt" id="alt_'. $row .'">'. $resUsersData->nome . ' ' . $resUsersData->sobrenome .'</td>';
-			$lista .= '</tr>';
+				$lista .= '<tr class = "alt_'. $row .'">';
+					$lista .= '<td colspan = "2"> <div class = "checkBox" name="userToListAlt" id="alt_'. $row .'">'. $resUsersData->nome . ' ' . $resUsersData->sobrenome .'</td>';
+				$lista .= '</tr>';
 
-			$lista .= '<tr> <td> <input type = "hidden" name = "userId" value = "' . $row . '"> </td> </tr>';
+				$lista .= '<tr> <td> <input type = "hidden" class = "'. $row .'" name = "userId" value = "' . $row . '"> </td> </tr>';
+			}
 		}
 
 		$lista .= '			
@@ -71,6 +73,7 @@
 
 			<tr>
 				<td> <input type = "button" name = "alterarAcao" id = "alterarAcao" value = "Alterar ação"> </td>
+				<td> <input type = "hidden" name = "idAcaoAlt" id = "idAcaoAlt" value = "'.$_POST['id'].'"> </td>
 			</tr>
 		</table>';
 

@@ -106,6 +106,9 @@ $(document).ready(function() {
 	//Remove colaboradores da lista para não adicionar (tela para alterar ação)
 	$('#alterarAcaoForm').on('click', '.colaboradoresToSaveAlt tr', function(){
 		$(this).remove();
+		var idHidden = $(this).attr('class').slice(-1);
+
+		$('.'+idHidden).remove();
 	});
 
 	//Grava ação no banco
@@ -114,7 +117,7 @@ $(document).ready(function() {
 
 		var itens = '';
 
-		$('input[type=hidden]').each(function(){
+		$('.colaboradoresToSave input[type=hidden]').each(function(){
 			itens += $(this).val()+',';
 		})
 
@@ -131,6 +134,8 @@ $(document).ready(function() {
 				alert(data);
 
 				$( "#addAcaoModal" ).dialog( 'destroy' );
+
+				carregaAcoes();
 			}
 		})
 
@@ -147,6 +152,7 @@ $(document).ready(function() {
 			},
 			url: 'mod_operacional/ajax/carregaAcoes.php',
 			success: function (data){
+				$('.acoesList').empty();
 				$('.acoesList').append(data);
 			}
 		})
@@ -184,7 +190,7 @@ $(document).ready(function() {
 	//Envia dados para gravar no banco
 	$('#alterarAcaoForm').on('click', '#alterarAcao', function(){
 		var nomeAcao = $('#nomeAcaoAlt').val();
-
+		var idAcaoAlt = $('#idAcaoAlt').val();
 		var itens = '';
 
 		$('.colaboradoresToSaveAlt input[type=hidden]').each(function(){
@@ -199,15 +205,30 @@ $(document).ready(function() {
 			type: 'POST',
 			data: {
 				itens: itens,
-				nomeAcao: nomeAcao
+				nomeAcao: nomeAcao,
+				idAcaoAlt: idAcaoAlt
 			},
 			url: 'mod_operacional/ajax/altAcao.php',
 			success: function (data){
-				//console.log(data);
+				console.log(data);
 
 				//$( "#addAcaoModal" ).dialog( 'destroy' );
 			}
 		})
 	});
 
+
+	//Muda de página
+	$('.acoesList').on('click', '.toPage', function(){
+
+		//Verifica o novo id
+		var newPage = $(this).attr('id');
+
+		//Passa o novo id a um elemento hidden
+		$('#pagina').val(newPage);
+
+		//Chama a função para carregar proxima pagina
+		carregaAcoes();
+
+	})
 });
