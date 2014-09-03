@@ -90,10 +90,11 @@ $(document).ready(function() {
 		if($('.colaboradoresToSaveAlt tr.'+id).length){
 			alert("Este usuário já foi adicionado");
 		} else {
+
 			$(this).remove();
 
 			$('.colaboradoresToSaveAlt').append('<tr class = '+id+'> <td>'+ nome +'</td> </tr>');
-			$('.colaboradoresToSaveAlt').append('<tr> <td> <input type = "hidden" class = "'+ id.slice(-1) +'" name = "userId" value = "'+ id.slice(-1) +'"> </td> </tr>');
+			$('.colaboradoresToSaveAlt').append('<tr> <td> <input type = "hidden" class = "'+ id.split("_")[1] +'" name = "userId" value = "'+ id.split("_")[1] +'"> </td> </tr>');
 		}
 
 	})
@@ -106,7 +107,7 @@ $(document).ready(function() {
 	//Remove colaboradores da lista para não adicionar (tela para alterar ação)
 	$('#alterarAcaoForm').on('click', '.colaboradoresToSaveAlt tr:not(:first-child)', function(){
 		$(this).remove();
-		var idHidden = $(this).attr('class').slice(-1);
+		var idHidden = $(this).attr('class').split("_")[1];
 
 		$('.'+idHidden).remove();
 	});

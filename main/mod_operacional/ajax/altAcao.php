@@ -10,8 +10,6 @@
 
 	$sql->execute(array(":nomeAcao" => trim($_POST['nomeAcao']), ":users" => $_POST['itens'],":idAcao" => $_POST['idAcaoAlt'] ));
 
-	echo trim($_POST['idAcaoAlt']);
-
 	$msg = "Ação alterada com sucesso";
 
 	echo $msg;
