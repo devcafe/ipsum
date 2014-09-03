@@ -128,5 +128,9 @@ $(document).ready(function(){
 		conteudo.load( "mod_operacional/gerRoteiro.php" );
 	});
 
+	//Abre página para Gerenciar ações
+	$('#gerAcoesOpe').click(function(){
+		conteudo.load( "mod_operacional/gerAcoes.php" );
+	});
 
 })

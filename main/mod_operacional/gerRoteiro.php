@@ -25,7 +25,8 @@
 						<td> Ação </td>
 						<td> Responsavel </td>
 					</tr>
-					<table id = "addDataRoteiro">
+					<table id = "addDataUser">
+						<a href = "#"  name = "geraCartaApresentacao"> Gerar carta </a>
 
 					</table>
 				</table>
@@ -33,7 +34,7 @@
 		</div>	
 </div>
 
-<!-- modal -->
+<!-- Modals -->
 
 <div id ="criarRoteiroModal" class = "criarRoteiroModal" title = "Criar roteiros">
 	<div id = "criarRoteiro">

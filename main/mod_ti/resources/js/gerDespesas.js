@@ -4,6 +4,8 @@ $(document).ready(function(){
     $( "#cadContaContabil" ).hide();
     $( "#cadDespesa" ).hide();
 
+    $( "#dataAquisicao" ).datepicker();
+
     //Esconde subitens
     $('.subitens').css('display', 'none');
 
@@ -91,8 +93,32 @@ $(document).ready(function(){
     })
 
     //Cadastra despesa
-    $('#addDespesa').on('click', function(){
+    $('#addDespesaBtn').on('click', function(){
+        //Dados do formulário
+        var dados = $('#cadDespesaForm').serialize();
 
+        $('#cadDespesaForm input').each( function() {
+            dados = dados + '&' + $(this).attr('name') + '=' + $(this).val();
+        });
+
+        var contaContabil = $('#selectContaContabil option:selected').attr('id');
+        var selectTipo = $('#selectTipo option:selected').attr('id');
+        var selectNatureza = $('#selectNatureza option:selected').attr('id');
+        
+
+        $.ajax({
+            type: 'POST',
+            url: 'mod_ti/ajax/cadDespesa.php',
+            data: {
+                dados: dados,
+                contaContabil: contaContabil,
+                selectNatureza: selectNatureza,
+                selectTipo: selectTipo
+            },
+            success: function (data){
+                alert(data);
+            }
+        });
     })
 
     $(".dataTable").on('dblclick', 'td', function (event) { 
