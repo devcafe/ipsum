@@ -4,8 +4,8 @@
 
     $lista = '';
 
-    $lista .= '<tr>';
-        $lista .= '<th> Conta contabil </th>';
+    $lista .= '<tr class = "theFirst">';
+        $lista .= '<th style = "width:200px" > Conta contabil </th>';
         $lista .= '<th> Jan </th>';
         $lista .= '<th> Fev </th>';
         $lista .= '<th> Mar </th>';

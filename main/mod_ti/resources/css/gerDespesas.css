@@ -1,6 +1,18 @@
 /* Sobrescreve layout */
-body{
-	overflow: auto;
+.tudo{
+	float:none !important;
+}
+
+.theFirst{
+	background: #ADC4DC !important;
+	color: #000;
+	font-weight: bold;
+	font-size:12px;
+	line-height: 20px;
+}
+
+.editableTable tr:nth-child(2n+1){
+	background: #E8E8E8;
 }
 
 #conteudoInner{
@@ -9,8 +21,14 @@ body{
 	margin-right: -15px !important;
 }
 
+.toFix{
+	position: fixed;
+	background: #E8E8E8;
+	margin-left: -20px;
+}
+
 .formInner {
-	width: 100% !important;
+	width: auto !important;
 	overflow:auto;
 }
 
@@ -137,13 +155,13 @@ body{
     float:left;
 }
 
-ul li{
+.painel ul li{
 	float:left;
 	margin-right:15px;
 	text-align:left;
 }
 
-ul{
+.painel ul{
 	float: left;
 	margin-left: 0;
 	padding-left: 0;

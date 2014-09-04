@@ -18,7 +18,7 @@
 
 	$lista = '';
 
-	$lista .= '<td colspan = "12">';
+	$lista .= '<td colspan = "14">';
 
 		$lista .= '<table class = "dataTable editableTable" id = "subItensTable">';
 			while($resDespesas = $despesas->fetch(PDO::FETCH_OBJ)){
