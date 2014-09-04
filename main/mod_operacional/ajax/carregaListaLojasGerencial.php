@@ -329,7 +329,7 @@
 				$lista .= '<td> Nome </td>';
 				$lista .= '<td> CEP </td>';
 				$lista .= '<td> Bairro </td>';
-				$lista .= '<td> Rua </td>';
+				$lista .= '<td> Endereço </td>';
 				$lista .= '<td> Nº </td>';
 				$lista .= '<td> Complemento </td>';
 				$lista .= '<td> Cidade </td>';
@@ -430,7 +430,7 @@
 					case 4: $lista .= '<td> Nome </td>';break;
 					case 5: $lista .= '<td> CEP </td>';break;
 					case 6: $lista .= '<td> Bairro </td>';break;
-					case 7: $lista .= '<td> Rua </td>';break;
+					case 7: $lista .= '<td> Endereço </td>';break;
 					case 8: $lista .= '<td> Numero </td>';break;
 					case 9: $lista .= '<td> Complemento </td>';break;
 					case 10: $lista .= '<td> Cidade </td>';break;
@@ -546,7 +546,7 @@
 					case 4: $lista .= '<td> Nome </td>';break;
 					case 5: $lista .= '<td> CEP </td>';break;
 					case 6: $lista .= '<td> Bairro </td>';break;
-					case 7: $lista .= '<td> Rua </td>';break;
+					case 7: $lista .= '<td> Endereço </td>';break;
 					case 8: $lista .= '<td> Numero </td>';break;
 					case 9: $lista .= '<td> Complemento </td>';break;
 					case 10: $lista .= '<td> Cidade </td>';break;

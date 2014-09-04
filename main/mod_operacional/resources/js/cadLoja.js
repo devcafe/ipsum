@@ -471,6 +471,22 @@ $(document).ready(function(){
 	          else return true;
 	     }
 	}
+	//verifica se o campo tem zeros por meio de ER
+	$('#complemento').keyup(function(){
+		var valor = $('#numero').val();
+		var er = /^[0]{0,6}$/;
+		if(er.test(valor)){
+			$('#numero').focus();
+		}
+	})
+
+	$('#estabReceitaComplemento').keyup(function(){
+		var valor = $('#estabReceitaNumero').val();
+		var er = /^[0]{0,6}$/;
+		if(er.test(valor)){
+			$('#estabReceitaNumero').focus();
+		}
+	})
 
 	//Cadastra bandeira
 	$('#cadBandeiraBtn').on('click', function(){

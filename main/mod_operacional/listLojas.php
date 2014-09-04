@@ -73,7 +73,7 @@
 
 		<table>	
 			<tr>
-				<td> <label for = "nomeFantasiaList"> Nome Fantasia: </label> </td>
+				<td> <label for = "nomeFantasiaList"> Nome do estabelecimento: </label> </td>
 			</tr>
 			<tr>
 				<td> <input disabled type = "text" name = "nomeFantasiaList" id = "nomeFantasiaList"> </td>

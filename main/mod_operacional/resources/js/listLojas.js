@@ -259,7 +259,7 @@ $(document).ready(function(){
 				cnpjList.val(json.cnpj);
 				bandeiraList.val(json.bandeira);
 				razaoSocialList.val(json.estabReceitaRazaoSocial);
-				nomeFantasiaList.val(json.estabReceitaNF);
+				nomeFantasiaList.val(json.nome);
 				cepList.val(json.cep);
 				ruaList.val(json.rua);
 				bairroList.val(json.bairro);

@@ -25,8 +25,8 @@
 						<td> Ação </td>
 						<td> Responsavel </td>
 					</tr>
-					<table id = "addDataUser">
-						<a href = "#"  name = "geraCartaApresentacao"> Gerar carta </a>
+					<table id = "addDataRoteiro">
+						<!-- <a href = "#"  name = "geraCartaApresentacao"> Gerar carta </a> -->
 
 					</table>
 				</table>
@@ -46,7 +46,10 @@
 		</tr>
 		<tr>	
 			<td><input type = "text" name = "nomeRoteiro" id = "nomeRoteiro"></td>
-			<td><input type = "text" name = "nomeAcao" id = "nomeAcao"></td>
+			<td>				
+				<div id="acaoSelect">
+				</div>				
+			</td>
 		</tr>	
 		<tr> 
 			<td><label for = "nomeColaborador">Colaborador: </label></td>
@@ -109,25 +112,10 @@
 		<input type="radio" name="buscaCampoLoja" class = "radioLoja" id ="idRadio" value="idLoja" checked="checked">ID
 		<input type="radio" name="buscaCampoLoja" class = "radioLoja" id = "cnpjRadio" value="cnpj">CNPJ
 		<input type = "button" name = "consultarLoja" id = "consultarLoja" value = "Pesquisar loja">
-		<!-- Pesquisa loja -->
-		<table id = "tableLojas">
-			<tr>
-				<td></td>
-			 	<td>ID</td>
-			 	<td>CNPJ</td>
-			 	<td>Nome da Loja</td>
-			</tr>
-		</table>
 	</div>
 	<div class = "listaLoja">
 	</div>
-
-	<input type = "button" nome = "adicionarLoja" id = "adicionarLoja" value = "Adicionar" >
-	<div class = "contadorLojas"></div>
-
-
+	<div class = "contadorLojas">
+	</div>
 </div>
-
-
-
 <!-- ./modal -->

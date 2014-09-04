@@ -3,7 +3,7 @@
 	include("../../../actions/security.php");
 
 	$nomeRoteiro = $_POST['nomeRoteiro'];
-	$nomeAcao = 99 ;//$_POST['nomeAcao'];
+	$nomeAcao = $_POST['nomeAcao'];
 	$matricula = $_POST['matricula'];
 	$lojasItens = $_POST['lojasItens'];
 	$dataCadastro = date('d/m/Y');

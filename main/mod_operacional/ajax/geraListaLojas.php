@@ -5,21 +5,17 @@
 	header('Content-Type: text/html; charset=UTF-8');
 
 
-	$itens = $_POST['itens'];
+	$idLojaAdd = $_POST['idLojaAdd'];
+	$cnpjAdd = $_POST['cnpjAdd'];
+	$nomeAdd = $_POST['nomeAdd'];
 
 	$lista = '';
-	$i = 0;
-
-	#foreach ($itens as $res) {
-		$lista .= "<tr class = 'lojasAdicionadas'>";			
-				#foreach ($res as $row) {
-					#$lista .= '<td>'. $row .'</td>';
-			#	
-			$lista .= "<td><input type = 'hidden' value = " . $itens[0]['idLoja'] . " class = 'idLojaSelecionada ". $itens[0]['idLoja'] ."'>" . $itens[0]['idLoja'] . "</td>";
-			$lista .= "<td>" . $itens[0]['cnpj'] . "</td>";
-			$lista .= "<td>" . $itens[0]['nome'] . "</td>";
-
-			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro seg' id = '". $itens[0]['idLoja'] ."_seg''></td>";
+	$i = 0;	
+		$lista .= "<tr id = " . $idLojaAdd . " class = 'lojasAdicionadas'>";				
+			$lista .= "<td><input type = 'hidden' value = " . $idLojaAdd . " class = 'idLojaSelecionada ". $idLojaAdd ."'>" . $idLojaAdd . "</td>";
+			$lista .= "<td>" . $cnpjAdd . "</td>";
+			$lista .= "<td>" . $nomeAdd . "</td>";
+			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro seg' id = '". $idLojaAdd ."_seg''></td>";
 			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro ter' id = 'ter'></td>";
 			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro qua' id = 'qua'></td>";
 			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro qui' id = 'qui'></td>";
@@ -27,9 +23,6 @@
 			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro sab' id = 'sab'></td>";
 			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro dom' id = 'dom'></td>";
 		$lista .= "</tr>";
-	#}
-	
-
 	echo $lista;
 
 ?>

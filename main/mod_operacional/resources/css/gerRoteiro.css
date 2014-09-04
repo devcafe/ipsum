@@ -143,3 +143,11 @@ input[name=nomeAcao]{
 	text-overflow: ellipsis;
 	max-width: 200px;
 }
+
+#tableLojas tr:not(:first-child):hover{
+	cursor:pointer;
+}
+
+#addDataRoteiro tr:nth-child(2n+1) {
+	background:  #e8e8e8;
+}

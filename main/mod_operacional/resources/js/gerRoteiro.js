@@ -8,13 +8,11 @@ $(document).ready(function() {
 	$('#criarRoteiroModal').hide();
 	$('#colaboradorModal').hide();
 	$('#lojasModal').hide();
-	
-
-
+	carregaListaRoteiros();
+	carregaAcaoSelect();
 	/*************************************/
 	/* Funções
 	/*************************************/
-
 	// carrega o modal criar roteiros
 	$('#criarRoteiroBtn').on('click',function(){
 		$('#criarRoteiroModal').dialog({
@@ -25,8 +23,6 @@ $(document).ready(function() {
 			}
 		})
 	})
-
-
 // carrega o modal adicionar colaborador
 	$('#selectColaBtn').on('click', function(){
 		$('#colaboradorModal').dialog({
@@ -36,9 +32,7 @@ $(document).ready(function() {
 				duration:500
 			}
 		})
-
 	})
-
 	// Faz consulta de colaborador
 	$('#consultarColaborador').on('click', function(){
 		var toSearch = $('#toSearch').val();
@@ -59,7 +53,6 @@ $(document).ready(function() {
 			}
 		})
 	})
-
 	// appenda colaborador na lista de colaboradores
 	$('.listaColaboradores').on('click', '#addToList', function(event){
 		event.preventDefault();
@@ -75,9 +68,6 @@ $(document).ready(function() {
 		$('#nomeColaborador').addClass(matriculaColaborador);
 		//fecha o dialogo
 		$('#colaboradorModal').dialog( "destroy" );
-
-
-
 	})
 
 	// abre eo modal loja
@@ -89,8 +79,6 @@ $(document).ready(function() {
 				duration:500
 			}
 		})
-
-
 })
 	// consula a loja no banco de acordo com a pesquisa
 	$('#consultarLoja').on('click', function(){
@@ -110,37 +98,27 @@ $(document).ready(function() {
 				// preeche o campo com as lojas de acordo com a pesquisa		
 				$('.listaLoja').append(data);
 			}
-
 		})
 	})
-
-	//Link para gerar carta de apresentação
-	$('a[name=geraCartaApresentacao]').on('click', function(){		
-		//Variavel com o id da loja
-		var idLoja = 2;
-		
-		//Variavel com a matricula do funcionario
-		var matColaborador = 085761;
-
-		//Modelo da carta
-		var modeloCarta = '01drogariaSP';
-
-		//Caso esteja selecionada, monta o link com o id correspondente
-		if(idLoja != '' && matColaborador != ''){
-
-			//Gera o link passando como parâmetro o id da linha
-			var href = "mod_operacional/cartasApresentacao/"+ modeloCarta +"/" + modeloCarta +".php?idLoja="+ idLoja + "&mat="+matColaborador;			
-
-			//Coloca o link no elemento
-			$(this).attr('href', href);
-		} else {
-			//Caso não seja selecionado nenhum item ao clicar no botão
-			alert("Favor selecionar um item");
-		}
-	
-	})
-
-
+	// //Link para gerar carta de apresentação
+	// $('a[name=geraCartaApresentacao]').on('click', function(){		
+	// 	//Variavel com o id da loja
+	// 	var idLoja = 2;		
+	// 	//Variavel com a matricula do funcionario
+	// 	var matColaborador = 085761;
+	// 	//Modelo da carta
+	// 	var modeloCarta = '01drogariaSP';
+	// 	//Caso esteja selecionada, monta o link com o id correspondente
+	// 	if(idLoja != '' && matColaborador != ''){
+	// 		//Gera o link passando como parâmetro o id da linha
+	// 		var href = "mod_operacional/cartasApresentacao/"+ modeloCarta +"/" + modeloCarta +".php?idLoja="+ idLoja + "&mat="+matColaborador;
+	// 		//Coloca o link no elemento
+	// 		$(this).attr('href', href);
+	// 	} else {
+	// 		//Caso não seja selecionado nenhum item ao clicar no botão
+	// 		alert("Favor selecionar um item");
+	// 	}	
+	// })
 	// Colocar mascara na pesquisa por loja
 	var countLoja = 0;
 	// evento na troca de opção do radios ele executa...
@@ -157,29 +135,23 @@ $(document).ready(function() {
 	  	}    
 
 	    });
-
 	var countlojasAdicionadas = 1;
 	// adiciona a loja a lista
-	$('#adicionarLoja').on('click', function(){
-		var itens = [];
-		var i = 0;
+	$('#lojasModal').on('click', '.carregaListaLojas  tr:not(:first-child)', function(){
+		var idLojaAdd = $(this).attr('id');
+		var cnpjAdd = $(this).find('.cnpjFind').html();
+		var nomeAdd = $(this).find('.nomeFind').html();
 
-		// cria	um array com o idLoja, cnpj e nome
-		$("input[type=checkbox]:checked").each(function(){
-			itens[i] = {
-					idLoja: $(this).attr('id'),
-					cnpj: $(this).closest('td').next('td').next('td').html(),
-					nome: $(this).closest('td').next('td').next('td').next('td').html() 
-			};
-		
-		})
-
-
+		if($('#lojasForm tr#'+idLojaAdd).length){
+			alert("Essa loja já foi adicionado");
+		}else{	
 		//envia via ajax para a loja
 		$.ajax({
 			type:'POST',
 			data: {
-				itens:itens
+				idLojaAdd: idLojaAdd,
+				cnpjAdd: cnpjAdd,
+				nomeAdd: nomeAdd,
 			},
 			url: 'mod_operacional/ajax/geraListaLojas.php',
 			success: function(data){								
@@ -187,25 +159,23 @@ $(document).ready(function() {
 				countlojasAdicionadas++;
 				$('#lojasModal').dialog( "destroy" );							
 			}
-		})
-		
+		})		
 		$('.contadorLojas').empty();		
 		$('.contadorLojas').append('Lojas adicionadas ' + countlojasAdicionadas);
+		}
 	})
 
+	
 	// cadadastrar roteiro no banco
 	$('#cadastrarRoteiro').on('click', function(){
 		//pega os valores dos campos
 		var nomeRoteiro = $('#nomeRoteiro').val();
 		var nomeAcao = $('#nomeAcao').val();
 		var matricula = $('#nomeColaborador').attr('class');
-		var quantLojas = $('.lojasAdicionadas').length;	
-
+		var quantLojas = $('.lojasAdicionadas').length;
 		var i = 0;
 		var lojasItens = [];
-
-		//varre todas as lojas selecionadas		
-
+		//varre todas as lojas selecionadas	
 		$('.lojasAdicionadas').each(function(){			
 				lojasItens[i] = {
 					idLoja: $(this).find('input').val(),
@@ -217,9 +187,6 @@ $(document).ready(function() {
 					sab: $(this).find('.sab').val(),
 					dom: $(this).find('.dom').val(),		
 				}
-
-				
-
 				i++;			
 			})
 
@@ -238,9 +205,7 @@ $(document).ready(function() {
 			}
 		})
 	})
-
 	//carrega lista roteiro
-
 	function carregaListaRoteiros(){
 
 		$.ajax({
@@ -256,6 +221,19 @@ $(document).ready(function() {
 
 	}
 
-	carregaListaRoteiros();
+	// carre select com ações
+	function carregaAcaoSelect(){
+		$.ajax({
+			type:'POST',
+			data: {
+			},
+			url:'mod_operacional/ajax/acaoSelect.php',
+			success:function(data){
+				$('#acaoSelect').append(data);
+			}
+		})
+	}
+
+	
 
 }) 

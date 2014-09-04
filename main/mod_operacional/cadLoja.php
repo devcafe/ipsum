@@ -75,7 +75,7 @@
 			</tr>
 			<tr>
 				<td class = "ruaTD"> <input  type = "text" name = "rua" id = "rua" maxlength="100" > </td>
-				<td class = "numeroTD"> <input  type = "text" step ="9" name = "numero" id = "numero" maxlength="6" title = "Este campo aceita apenas números"> </td>
+				<td class = "numeroTD"> <input  type = "text" step ="9" name = "numero" id = "numero" maxlength="6" title = "Este campo aceita apenas números e não pode ser preenchido com 0"> </td>
 				<td class = "complementoTD"> <input  type = "text" name = "complemento" id = "complemento"> </td>
 				<td class = "cidadeTD"> <input  type = "text" name = "cidade" id = "cidade" > </td>
 				<td> <input  type = "text" name = "uf" id = "uf" maxlength="2" title = "Este campos aceita apenas letras"> </td>
@@ -156,7 +156,7 @@
 				</tr>
 				<tr>
 					<td class = "ruaTD"> <input  type = "text" name = "estabReceitaEndereco" id = "estabReceitaEndereco"> </td>
-					<td class = "numeroTD"> <input  type = "text" name = "estabReceitaNumero" id = "estabReceitaNumero" maxlength="6" title = "Este campo aceita apenas numeros"> </td>
+					<td class = "numeroTD"> <input  type = "text" name = "estabReceitaNumero" id = "estabReceitaNumero" maxlength="6" title = "Este campo aceita apenas numeros e não pode ser preenchido com 0"> </td>
 					<td class = "complementoTD"> <input  type = "text" name = "estabReceitaComplemento" id = "estabReceitaComplemento"> </td>
 					<td class = "cidadeTD"> <input  type = "text" name = "estabReceitaCidade" id = "estabReceitaCidade"> </td>
 					<td> <input  type = "text" name = "estabReceitaUF" id = "estabReceitaUF" maxlength = "2" title = "Este campo aceita apenas letras"> </td>

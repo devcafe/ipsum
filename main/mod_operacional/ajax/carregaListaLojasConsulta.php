@@ -177,13 +177,13 @@
 		$lista .= '<tr>';
 			$lista .= "<td id = 'idLojaOrder' class ='{$ordemLojas}'> ID </td>";
 			$lista .= '<td> CNPJ </td>';
-			$lista .= '<td> Nome Estabelecimento </td>';
+			$lista .= '<td> Nome do estabelecimento </td>';
 			$lista .= '<td> Bandeira </td>';
 			$lista .= '<td> Razão social </td>';
 			$lista .= '<td> Nome fantasia</td>';
 			$lista .= '<td> CEP </td>';
 			$lista .= '<td> Bairro </td>';
-			$lista .= '<td> Rua </td>';
+			$lista .= '<td> Endereço </td>';
 			$lista .= '<td> Nº </td>';
 			$lista .= '<td> Cidade </td>';
 			$lista .= '<td> UF </td>';

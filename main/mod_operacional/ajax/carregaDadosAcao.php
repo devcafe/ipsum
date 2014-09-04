@@ -48,9 +48,7 @@
 
 		$resUsers = $checkUsers->fetch(PDO::FETCH_OBJ);
 
-		$resUsers = explode(',', $resUsers->users);
-
-		var_dump($resUsers);
+		$resUsers = explode(',', $resUsers->users);		
 		
 		if($resUsers[0] != ''){
 			foreach($resUsers as $row){

@@ -17,23 +17,29 @@
 	$lista = "";
 
 
+
 	$i = 0;
-	$lista .='<table class ="carregaListaLojas" >';
+	$lista .='<table class ="carregaListaLojas" id = "tableLojas">';
+		$lista .='<tr>';				
+			$lista .='<td>ID</td>';
+			$lista .='<td>CNPJ</td>';
+			$lista .='<td>Nome da Loja</td>';
+		$lista .='</tr>';
 
 	while($lojas = $sqlLojas->fetch(PDO::FETCH_OBJ)){		
 		if($i % 2 == 0){
 			$lista .= '<tr class = "par" id = "'. $lojas->idLoja .'">';
-					$lista .= '<td> <input type = "checkbox" id = "'. $lojas->idLoja .'" > </td>';
-					$lista .= '<td>' . $lojas->idLoja .'</td>';
-					$lista .= '<td>' . $lojas->cnpj .'</td>';
-					$lista .= '<td>' . $lojas->nome .'</td>';
+					#$lista .= '<td> <input type = "checkbox" id = "'. $lojas->idLoja .'" > </td>';
+					$lista .= '<td class ="idLojaFind" >' . $lojas->idLoja .'</td>';
+					$lista .= '<td class ="cnpjFind">' . $lojas->cnpj .'</td>';
+					$lista .= '<td class ="nomeFind">' . $lojas->nome .'</td>';
 				$lista .= '</tr>';
 		}else {
 			$lista .= '<tr class = "impar" id = "'. $lojas->idLoja .'">';
-					$lista .= '<td> <input type = "checkbox" id = "'. $lojas->idLoja .'" > </td>';
-					$lista .= '<td>' . $lojas->idLoja .'</td>';
-					$lista .= '<td>' . $lojas->cnpj .'</td>';
-					$lista .= '<td>' . $lojas->nome .'</td>';
+					#$lista .= '<td> <input type = "checkbox" id = "'. $lojas->idLoja .'" > </td>';
+					$lista .= '<td class ="idLojaFind">' . $lojas->idLoja .'</td>';
+					$lista .= '<td class ="cnpjFind">' . $lojas->cnpj .'</td>';
+					$lista .= '<td class ="nomeFind">' . $lojas->nome .'</td>';
 				$lista .= '</tr>';
 		}
 		$i++;
