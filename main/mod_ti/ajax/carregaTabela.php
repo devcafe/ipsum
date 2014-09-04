@@ -5,7 +5,7 @@
     $lista = '';
 
     $lista .= '<tr class = "theFirst">';
-        $lista .= '<th class = "toFix" style = "width:200px" > Conta contabil </th>';
+        $lista .= '<th style = "width:200px" > Conta contabil </th>';
         $lista .= '<th> Jan </th>';
         $lista .= '<th> Fev </th>';
         $lista .= '<th> Mar </th>';
@@ -32,7 +32,7 @@
 
     while($resContaContabil = $contaContabil->fetch(PDO::FETCH_OBJ)){
         $lista .= '<tr>';
-            $lista .= '<td class = "toFix" id = "contabil_'. $resContaContabil->idContaContabil .'"><div class = "expand '. $resContaContabil->idContaContabil .' plus"> </div>'. $resContaContabil->contaContabil . '</td>';
+            $lista .= '<td id = "contabil_'. $resContaContabil->idContaContabil .'"><div class = "expand '. $resContaContabil->idContaContabil .' plus"> </div>'. $resContaContabil->contaContabil . '</td>';
 
             //Totaliza o valor da conta contabil para cada mes
             $despesas = $pdo->prepare("
@@ -99,7 +99,7 @@
     $totalGeral = $despesasGeral->fetch(PDO::FETCH_OBJ);
 
     $lista .= '<tr>';
-        $lista .= '<td class = "toFix"> <b> Total </b></td>';
+        $lista .= '<td> <b> Total </b></td>';
         $lista .= '<td><b> R$  '. number_format($totalGeral->Jan, 2, ',', '.') .'</b></td>';
         $lista .= '<td><b> R$  '. number_format($totalGeral->Fev, 2, ',', '.') .'</b></td>';
         $lista .= '<td><b> R$  '. number_format($totalGeral->Mar, 2, ',', '.') .'</b></td>';
@@ -113,22 +113,6 @@
         $lista .= '<td><b> R$  '. number_format($totalGeral->Nov, 2, ',', '.') .'</b></td>';
         $lista .= '<td><b> R$  '. number_format($totalGeral->Dez, 2, ',', '.') .'</b></td>';
     $lista .= '</tr>';   
-
-     $lista .= '<tr style = "visibility:hidden">';
-        $lista .= '<td> <b> Total </b></td>';
-        $lista .= '<td></td>';
-        $lista .= '<td></td>';
-        $lista .= '<td></td>';
-        $lista .= '<td></td>';
-        $lista .= '<td>></td>';
-        $lista .= '<td></td>';
-        $lista .= '<td></td>';
-        $lista .= '<td></td>';
-        $lista .= '<td></td>';
-        $lista .= '<td></td>';
-        $lista .= '<td></td>';
-        $lista .= '<td></td>';
-    $lista .= '</tr>';  
 
     echo $lista;
 
