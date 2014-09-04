@@ -18,12 +18,12 @@
 
 	$lista = '';
 
-	$lista .= '<td colspan = "12">';
+	$lista .= '<td colspan = "14">';
 
 		$lista .= '<table class = "dataTable editableTable" id = "subItensTable">';
 			while($resDespesas = $despesas->fetch(PDO::FETCH_OBJ)){
 				$lista .= '<tr>';
-				 	$lista .= '<td title = "'. $resDespesas->despesa .'" class = "overflow"><b>'. $resDespesas->despesa .'</b></td>';
+				 	$lista .= '<td class = "toFix" title = "'. $resDespesas->despesa .'" class = "overflow"><b>'. $resDespesas->despesa .'</b></td>';
 			        $lista .= '<td class = "jan '. $resDespesas->idDespesa .'">R$ '.number_format(str_replace('R$ ', '', $resDespesas->jan), 2, ',', '.') .'</td>';
 			        $lista .= '<td class = "fev '. $resDespesas->idDespesa .'">R$ '.number_format(str_replace('R$ ', '', $resDespesas->fev), 2, ',', '.') .'</td>';
 			        $lista .= '<td class = "mar '. $resDespesas->idDespesa .'">R$ '.number_format(str_replace('R$ ', '', $resDespesas->mar), 2, ',', '.') .'</td>';
