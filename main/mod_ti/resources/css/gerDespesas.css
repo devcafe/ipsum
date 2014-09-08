@@ -30,6 +30,7 @@
 .formInner {
 	width: auto !important;
 	overflow:auto;
+	min-height: 800px !important;
 }
 
 .fakeRow{
