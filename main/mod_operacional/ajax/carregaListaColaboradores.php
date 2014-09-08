@@ -3,7 +3,7 @@
 
 	$toSearch = strtoupper($_POST['toSearch']);
 	$buscaCampo = $_POST['buscaCampo'];
-
+	$editar = $_POST['editar'];
 	if($buscaCampo == 'matricula'){
 		$criterio = 'RA_MAT = '. $toSearch;
 	} elseif($buscaCampo == 'nome') {
@@ -11,7 +11,6 @@
 	} else {
 		echo "Favor selecione um item para pesquisar";
 	}
-
 	$sql = $protheus->prepare("
 		Select
 			* 
@@ -21,13 +20,9 @@
 			$criterio
 		And RA_MSBLQL = 2
 	");
-
 	$sql->execute();
-
 	$lista = '';
-
 	$i = 0;
-
 	$lista .= '<table class = "userToAddList">';
 		$lista .= '<tr class = "theFirst">';
 			$lista .= '<td> </td>';
@@ -49,13 +44,18 @@
 				$lista .= '</tr>';
 			}
 
+			if($editar == 1){	
+				$dadosColaborador = array('nomeColaborador'=> rtrim($res->RA_NOMECMP), 'matriculaColaborador' => $res->RA_MAT );
+				echo json_encode($dadosColaborador);				
+			}
 			$i++;
 		}
-
 		$lista .= '<tr>';
 			$lista .= '<td colspan = "12"> <input type = "button" name = "addToList" id = "addToList" value = "Adicionar"> </td>'; 
 		$lista .= '</tr>';
 	$lista .= '</table>';
 
-	echo $lista;
+	if($editar == 0){
+		echo $lista;
+	}
 ?>

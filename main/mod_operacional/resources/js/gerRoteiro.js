@@ -43,7 +43,8 @@ $(document).ready(function() {
 			type: 'POST',
 			data: {
 				toSearch: toSearch,
-				buscaCampo: buscaCampo
+				buscaCampo: buscaCampo,
+				editar:'0',
 			},
 			url: 'mod_operacional/ajax/carregaListaColaboradores.php',
 			success: function (data){
@@ -63,6 +64,7 @@ $(document).ready(function() {
 		var nomeColaborador = $('#nome_' + matriculaColaborador).html();
 		// limpa o campo
 		$('#nomeColaborador').empty();
+		$('#nomeColaborador').removeClass();
 		//apenda os valores
 		$('#nomeColaborador').append(matriculaColaborador + ' - ' + nomeColaborador);
 		// adiciona a matricula a class
@@ -252,16 +254,14 @@ $(document).ready(function() {
 				idRoteiro:idRoteiro,
 			},
 			url:'mod_operacional/ajax/carregaListaRoteiroEdicao.php',
-			success: function(data){
+			success: function(data){				
 				var json = $.parseJSON(data);
 				console.log(data);
 				nomeRoteiro.val(json.nomeRoteiro);
+				consultarColaborador(json.idColaborador);
+
 			}
 		})
-
-
-
-
 
 		$('#criarRoteiroModal').dialog({
 			width:600,
@@ -272,6 +272,33 @@ $(document).ready(function() {
 		})
 		
 	})
+
+	// consultar colaborador
+	function consultarColaborador(matricula){
+		var toSearch = matricula
+		var buscaCampo = 'matricula';
+		// envia via ajax os valores dos campos toSearch e Busca campo
+		$.ajax({
+			type: 'POST',
+			data: {
+				toSearch: toSearch,
+				buscaCampo: buscaCampo,
+				editar:'1'
+			},
+			url: 'mod_operacional/ajax/carregaListaColaboradores.php',
+			success: function (data){
+				var jsonC = $.parseJSON(data);			
+			// limpa o campo
+			$('#nomeColaborador').empty();
+			$('#nomeColaborador').removeClass();
+			//apenda os valores
+			$('#nomeColaborador').append(jsonC.matriculaColaborador + ' - ' + jsonC.nomeColaborador);
+			// adiciona a matricula a class
+			$('#nomeColaborador').addClass(jsonC.matriculaColaborador);					
+			}
+		})
+
+	}
 
 
 

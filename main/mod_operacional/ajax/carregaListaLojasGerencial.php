@@ -326,7 +326,7 @@
 				$lista .= "<td id = 'idLojaOrder' class ='{$ordemLojas}'> ID </td>";
 				$lista .= '<td> CNPJ </td>';
 				$lista .= '<td> Bandeira </td>';
-				$lista .= '<td> Nome </td>';
+				$lista .= '<td> Nome do estabelecimento </td>';
 				$lista .= '<td> CEP </td>';
 				$lista .= '<td> Bairro </td>';
 				$lista .= '<td> Endereço </td>';
@@ -427,7 +427,7 @@
 					case 1: $lista .= "<td id = 'idLojaOrder' class ='{$ordemLojas}'> ID </td>";break;
 					case 2: $lista .= '<td> CNPJ </td>';break;
 					case 3: $lista .= '<td> Bandeira </td>';break;
-					case 4: $lista .= '<td> Nome </td>';break;
+					case 4: $lista .= '<td> Nome do estabelecimento </td>';break;
 					case 5: $lista .= '<td> CEP </td>';break;
 					case 6: $lista .= '<td> Bairro </td>';break;
 					case 7: $lista .= '<td> Endereço </td>';break;
@@ -543,7 +543,7 @@
 					case 1: $lista .= "<td id = 'idLojaOrder' class ='{$ordemLojas}'> ID </td>";break;
 					case 2: $lista .= '<td> CNPJ </td>';break;
 					case 3: $lista .= '<td> Bandeira </td>';break;
-					case 4: $lista .= '<td> Nome </td>';break;
+					case 4: $lista .= '<td> Nome do estabelecimento </td>';break;
 					case 5: $lista .= '<td> CEP </td>';break;
 					case 6: $lista .= '<td> Bairro </td>';break;
 					case 7: $lista .= '<td> Endereço </td>';break;

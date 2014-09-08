@@ -123,7 +123,7 @@
 
 			<table>	
 				<tr>
-					<td> <label for = "nomeList"> Nome: </label> </td>
+					<td> <label for = "nomeList"> Nome do estabelecimento: </label> </td>
 				</tr>
 				<tr>
 					<td> <input disabled type = "text" name = "nomeListGer" id = "nomeListGer"> </td>
