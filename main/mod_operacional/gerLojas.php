@@ -40,7 +40,7 @@
 							<td> <input type = "checkbox" class = "checkBox" value = "4" name = "nome" id = "nome"> <span>Nome </span> </td>
 							<td> <input type = "checkbox" class = "checkBox" value = "5" name = "cep" id = "cep"><span> Cep </span> </td>
 							<td> <input type = "checkbox" class = "checkBox" value = "6" name = "bairro" id = "bairro"><span> Bairro </span> </td>
-							<td> <input type = "checkbox" class = "checkBox" value = "7" name = "rua" id = "rua"><span> Rua </span> </td>
+							<td> <input type = "checkbox" class = "checkBox" value = "7" name = "rua" id = "rua"><span> Endereço </span> </td>
 							<td> <input type = "checkbox" class = "checkBox" value = "8" name = "numero" id = "numero"><span> Numero</span> </td>
 							<td> <input type = "checkbox" class = "checkBox" value = "9" name = "complemento" id = "complemento"><span> Complemento </span> </td>
 							<td> <input type = "checkbox" class = "checkBox" value = "10" name = "cidade" id = "cidade"><span> Cidade </span> </td>
@@ -150,7 +150,7 @@
 
 			<table>	
 				<tr>
-					<td> <label for = "ruaListGer"> Rua: </label> </td>
+					<td> <label for = "ruaListGer"> Endereço: </label> </td>
 				</tr>
 				<tr>
 					<td> <input disabled type = "text" name = "ruaListGer" id = "ruaListGer"> </td>

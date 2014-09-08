@@ -8,7 +8,7 @@
 	$lista = "";
 
 	while ($roteiro = $sqlRoteiros->fetch(PDO::FETCH_OBJ)) {
-		$lista .= "<tr>";
+		$lista .= "<tr id = '" . $roteiro->idRoteiro . "'>";
 			$lista .= "<td>" . $roteiro->idRoteiro . "</td>";
 			$lista .= "<td>" . $roteiro->nomeRoteiro . "</td>";
 			$lista .= "<td>" . $roteiro->idAcao . "</td>";

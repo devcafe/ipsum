@@ -8,6 +8,7 @@ $(document).ready(function() {
 	$('#criarRoteiroModal').hide();
 	$('#colaboradorModal').hide();
 	$('#lojasModal').hide();
+	$('#editarRoteiroModal').hide();
 	carregaListaRoteiros();
 	carregaAcaoSelect();
 	/*************************************/
@@ -221,7 +222,7 @@ $(document).ready(function() {
 
 	}
 
-	// carre select com ações
+	// carrega select com ações
 	function carregaAcaoSelect(){
 		$.ajax({
 			type:'POST',
@@ -233,6 +234,62 @@ $(document).ready(function() {
 			}
 		})
 	}
+
+	$('.formInner').on('click','#addDataRoteiro tr', function(){
+
+
+		var idRoteiro = $(this).attr('id');
+		
+		//campos que vão recebe ros valores
+		var nomeRoteiro = $('#nomeRoteiro');
+		var acaoSelect = $('#acaoSelect');
+		var nomeColaborador = $('#nomeColaborador');
+		var lojasForm = $('.addDataLoja');
+
+		$.ajax({
+			type:'POST',
+			data:{
+				idRoteiro:idRoteiro,
+			},
+			url:'mod_operacional/ajax/carregaListaRoteiroEdicao.php',
+			success: function(data){
+				var json = $.parseJSON(data);
+				console.log(data);
+				nomeRoteiro.val(json.nomeRoteiro);
+			}
+		})
+
+
+
+
+
+		$('#criarRoteiroModal').dialog({
+			width:600,
+			show: {
+				effect: "blind",
+				duration:500
+			}
+		})
+		
+	})
+
+
+
+	// //Marca campos como selecionados ao clicar em uma linha
+	// $('#listaUsuarios').on('click', 'table tr:not(:first-child)', function(){
+		
+	// 	if($(this).hasClass('selected')){
+	// 		//Remove classe que marca como selecionado
+	// 		$(this).removeClass('selected');
+	// 	} else {
+	// 		//Adiciona classe que marca como selecionado
+	// 		$(this).addClass('selected');
+	// 	}
+	
+	// })
+
+	
+
 
 	
 

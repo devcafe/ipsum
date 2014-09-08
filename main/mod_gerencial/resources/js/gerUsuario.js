@@ -90,9 +90,7 @@ $(document).ready(function(){
 		var cnpj = $('#cnpj');
 		var usuario = $('#usuario');
 		var senha = $('#senha');
-		var acessos = $('#acessos');
-
-		console.log(departamento)
+		var acessos = $('#acessos');		
 
 		//Carrega dados da linha para edição
 		$.ajax({
