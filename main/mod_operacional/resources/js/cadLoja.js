@@ -124,9 +124,14 @@ $(document).ready(function(){
 		$('#formCadLoja input').each( function() {
 			dados = dados + '&' + $(this).attr('name') + '=' + $(this).val();
 		});
-		
-		
-		if($('#numero').val() == '' || $('#numero').val() == 'S/N'){
+
+		if(validarNumeroZero('#numero') == true){			
+			$('#numero').focus();		
+
+		}else if(validarNumeroZero('#estabReceitaNumero') == true){			
+			$('#estabReceitaNumero').focus();		
+
+		}else if($('#numero').val() == '' || $('#numero').val() == 'S/N'){
 			$( "#numConfirm" ).dialog({
 				resizable: false,
 				height:180,
@@ -470,21 +475,18 @@ $(document).ready(function(){
 	     }
 	}
 	//verifica se o campo tem zeros por meio de ER
-	$('#complemento').keyup(function(){
-		var valor = $('#numero').val();
+	
+	function validarNumeroZero(e){
+		var valor = $(e).val();
 		var er = /^[0]{0,6}$/;
-		if(er.test(valor)){
-			$('#numero').focus();
+		if(valor != ''){
+			if(er.test(valor)){
+				$(e).focus();
+				return true;
+			}
 		}
-	})
-
-	$('#estabReceitaComplemento').keyup(function(){
-		var valor = $('#estabReceitaNumero').val();
-		var er = /^[0]{0,6}$/;
-		if(er.test(valor)){
-			$('#estabReceitaNumero').focus();
-		}
-	})
+	}
+	
 
 	//Cadastra bandeira
 	$('#cadBandeiraBtn').on('click', function(){

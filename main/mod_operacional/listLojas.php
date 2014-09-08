@@ -91,7 +91,7 @@
 
 		<table>	
 			<tr>
-				<td> <label for = "ruaList"> Rua: </label> </td>
+				<td> <label for = "ruaList"> Endereço: </label> </td>
 			</tr>
 			<tr>
 				<td> <input disabled type = "text" name = "ruaList" id = "ruaList"> </td>
