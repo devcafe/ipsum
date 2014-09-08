@@ -187,9 +187,7 @@ $(document).ready(function(){
 				}
 			});
 		} else {
-			cadastraLoja();
-
-			
+			cadastraLoja();		
 		}
 
 					
