@@ -273,7 +273,7 @@
 
 <!-- Endereço obrigatório -->
 <div id="enderecoObrigatorio" title="Endereço">
-  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Atenção! O endereço completo da loja é obrigatório, isto inclui: CEP, Bairro, Rua, Ciade e Estado (UF)</p>
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Atenção! O endereço completo da loja é obrigatório, isto inclui: CEP, Bairro, Rua, Cidade e Estado (UF)</p>
 </div>
 
 <!-- Nome empresarial obrigatório -->
