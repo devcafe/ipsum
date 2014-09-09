@@ -330,7 +330,7 @@ $(document).ready(function() {
 	})
 
 
-	$('#teste tr').on('click', function(){
+	$('#lojasForm').on('click', 'tr', function(){
 		console.log('test');
 	})
 

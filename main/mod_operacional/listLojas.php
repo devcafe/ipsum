@@ -1,4 +1,7 @@
-<?php require("../../conf/conn.php"); ?>
+<?php
+	require("../../conf/conn.php"); 
+	header('Content-Type: text/html; charset=UTF-8');
+?>
 
 <!-- Javascript -->
 <script src="mod_operacional/resources/js/listLojas.js"></script>
