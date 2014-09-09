@@ -37,54 +37,54 @@
 <!-- Modals -->
 
 <div id ="criarRoteiroModal" class = "criarRoteiroModal" title = "Criar roteiros">
-	<div id = "criarRoteiro">
+	<form id = "criarRoteiro">
 	
-	<table>	
-		<tr>
-			<td><label for = "nomeRoteiro"> Nome do Roteiro: </label></td>
-			<td><label for = "nomeAcao"> Nome da Ação: </label></td>
-		</tr>
-		<tr>	
-			<td><input type = "text" name = "nomeRoteiro" id = "nomeRoteiro"></td>
-			<td>				
-				<div id="acaoSelect">
-				</div>				
-			</td>
-		</tr>	
-		<tr> 
-			<td><label for = "nomeColaborador">Colaborador: </label></td>
-		</tr>	
-		<tr>
-			<td id = 'nomeColaborador'>Selecione um colaborador...</td>
-			<td><a href = "#" id = "selectColaBtn"> <img src = "../main/resources/images/addUser.png" width = "20" disabled></td>
-		</tr>		
-		<tr>
-			<td><label for = "lojasRoteiro"> Lojas do roteiro: </label> </td>
-			<td><a href = "#" id = "selectLojasBtn">  <img src = "../main/resources/images/operacional/addStores.png" width = "20" >  </a></td>
-		</tr>		
-	</table>
-	<table id = 'lojasForm'>
-		<tr>			
-			<td>ID</td>
-			<td>CNPJ</td>
-			<td>Nome da Loja</td>
-			<td>seg</td>
-			<td>ter</td>
-			<td>qua</td>
-			<td>qui</td>
-			<td>sex</td>
-			<td>sab</td>
-			<td>dom</td>			
-		</tr>	
-		<div class = "addDataLoja">	 
-		</div>
+		<table id = "teste">	
+			<tr>
+				<td><label for = "nomeRoteiro"> Nome do Roteiro: </label></td>
+				<td><label for = "nomeAcao"> Nome da Ação: </label></td>
+			</tr>
+			<tr>	
+				<td><input type = "text" name = "nomeRoteiro" id = "nomeRoteiro"></td>
+				<td>				
+					<div id="acaoSelect">
+					</div>				
+				</td>
+			</tr>	
+			<tr> 
+				<td><label for = "nomeColaborador">Colaborador: </label></td>
+			</tr>	
+			<tr>
+				<td id = 'nomeColaborador'>Selecione um colaborador...</td>
+				<td><a href = "#" id = "selectColaBtn"> <img src = "../main/resources/images/addUser.png" width = "20" disabled></td>
+			</tr>		
+			<tr>
+				<td><label for = "lojasRoteiro"> Lojas do roteiro: </label> </td>
+				<td><a href = "#" id = "selectLojasBtn">  <img src = "../main/resources/images/operacional/addStores.png" width = "20" >  </a></td>
+			</tr>		
+		</table>
+		<table id = 'lojasForm'>
+			<tr>
+				<td>ID</td>
+				<td>CNPJ</td>
+				<td>Nome da Loja</td>
+				<td>seg</td>
+				<td>ter</td>
+				<td>qua</td>
+				<td>qui</td>
+				<td>sex</td>
+				<td>sab</td>
+				<td>dom</td>			
+			</tr>
+			
+			<div class = "addDataLoja">	 
+			</div>
 
-	</table>
-	<input type = "button" value = "Cadastrar roteiro" id = "cadastrarRoteiro"> 
+		</table>
 
-	</div>
+		<input type = "button" value = "Cadastrar roteiro" id = "cadastrarRoteiro"> 
 
-
+	</form>
 
 </div>
 <!-- Calaboradores modal -->
@@ -119,59 +119,3 @@
 	</div>
 </div>
 <!-- ./modal -->
-
-
-<!-- Modals roteiro ediar -->
-<!-- 
-<div id ="editarRoteiroModal" class = "editarRoteiroModal" title = "editar roteiros">
-	<div id = "editarRoteiro">
-	
-	<table>	
-		<tr>
-			<td><label for = "editarNomeRoteiro"> Nome do Roteiro: </label></td>
-			<td><label for = "nomeAcao"> Nome da Ação: </label></td>
-		</tr>
-		<tr>	
-			<td><input type = "text" name = "editarNomeRoteiro" id = "editarNomeRoteiro"></td>
-			<td>				
-				<div id="editarAcaoSelect">
-				</div>				
-			</td>
-		</tr>	
-		<tr> 
-			<td><label for = "editarNomeColaborador">Colaborador: </label></td>
-		</tr>	
-		<tr>
-			<td id = 'editarNomeColaborador'>Selecione um colaborador...</td>
-			<td><a href = "#" id = "selectColaBtn"> <img src = "../main/resources/images/addUser.png" width = "20" disabled></td>
-		</tr>		
-		<tr>
-			<td><label for = "lojasRoteiro"> Lojas do roteiro: </label> </td>
-			<td><a href = "#" id = "selectLojasBtn">  <img src = "../main/resources/images/operacional/addStores.png" width = "20" >  </a></td>
-		</tr>		
-	</table>
-	<table id = 'lojasForm'>
-		<tr>			
-			<td>ID</td>
-			<td>CNPJ</td>
-			<td>Nome da Loja</td>
-			<td>seg</td>
-			<td>ter</td>
-			<td>qua</td>
-			<td>qui</td>
-			<td>sex</td>
-			<td>sab</td>
-			<td>dom</td>			
-		</tr>	
-		<div class = "addDataLoja">	 
-		</div>
-
-	</table>
-	<input type = "button" value = "Cadastrar roteiro" id = "cadastrarRoteiro"> 
-
-	</div>
-
-
-
-</div>
-<!-- Calaboradores modal --> -->

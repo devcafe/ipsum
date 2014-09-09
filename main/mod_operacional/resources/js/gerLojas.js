@@ -41,7 +41,7 @@ $(document).ready(function(){
 			},
 			url: 'mod_operacional/ajax/carregaListaLojasGerencial.php',
 			success: function (data){
-				$('#listaLojas').empty();
+				$('.addDataLoja').empty();
 
 				//Carrega lista em div
 				$('#listaLojas').append(data);

@@ -16,6 +16,7 @@ $(document).ready(function() {
 	/*************************************/
 	// carrega o modal criar roteiros
 	$('#criarRoteiroBtn').on('click',function(){
+		$('#criarRoteiro')[0].reset();
 		$('#criarRoteiroModal').dialog({
 			width:600,
 			show: {
@@ -82,7 +83,8 @@ $(document).ready(function() {
 				duration:500
 			}
 		})
-})
+	})
+
 	// consula a loja no banco de acordo com a pesquisa
 	$('#consultarLoja').on('click', function(){
 		var toSearchLoja = $('#toSearchLoja').val();
@@ -203,11 +205,32 @@ $(document).ready(function() {
 			},
 			url: 'mod_operacional/ajax/cadRoteiro.php',
 			success:function(data){				
-				$('#criarRoteiro').append(data);
 				$('#criarRoteiroModal').dialog( "destroy" );
+				carregaListaRoteiros();
 			}
 		})
 	})
+	//carrega lista lojas para edição
+
+	function geraListaLojasEdicao(idRoteiro){		
+
+		$.ajax({
+			type:'POST',
+			data: {
+				idLojaAdd: 'null',
+				cnpjAdd: 'null',
+				nomeAdd: 'null',
+				idRoteiro: idRoteiro,
+			},
+			url: 'mod_operacional/ajax/geraListaLojas.php',
+			success: function(data){
+				$('#lojasForm').empty();								
+				$('#lojasForm').append(data);										
+			}
+		})
+	}	
+	
+
 	//carrega lista roteiro
 	function carregaListaRoteiros(){
 
@@ -217,6 +240,7 @@ $(document).ready(function() {
 			},
 			url: 'mod_operacional/ajax/carregaListaRoteiros.php',
 			success:function(data){
+				$('#addDataRoteiro').empty();
 				$('#addDataRoteiro').append(data);
 			} 
 
@@ -225,10 +249,11 @@ $(document).ready(function() {
 	}
 
 	// carrega select com ações
-	function carregaAcaoSelect(){
+	function carregaAcaoSelect(idAcaoSelect){
 		$.ajax({
 			type:'POST',
 			data: {
+				idAcaoSelect:idAcaoSelect
 			},
 			url:'mod_operacional/ajax/acaoSelect.php',
 			success:function(data){
@@ -236,44 +261,7 @@ $(document).ready(function() {
 			}
 		})
 	}
-
-	$('.formInner').on('click','#addDataRoteiro tr', function(){
-
-
-		var idRoteiro = $(this).attr('id');
-		
-		//campos que vão recebe ros valores
-		var nomeRoteiro = $('#nomeRoteiro');
-		var acaoSelect = $('#acaoSelect');
-		var nomeColaborador = $('#nomeColaborador');
-		var lojasForm = $('.addDataLoja');
-
-		$.ajax({
-			type:'POST',
-			data:{
-				idRoteiro:idRoteiro,
-			},
-			url:'mod_operacional/ajax/carregaListaRoteiroEdicao.php',
-			success: function(data){				
-				var json = $.parseJSON(data);
-				console.log(data);
-				nomeRoteiro.val(json.nomeRoteiro);
-				consultarColaborador(json.idColaborador);
-
-			}
-		})
-
-		$('#criarRoteiroModal').dialog({
-			width:600,
-			show: {
-				effect: "blind",
-				duration:500
-			}
-		})
-		
-	})
-
-	// consultar colaborador
+		// consultar colaborador
 	function consultarColaborador(matricula){
 		var toSearch = matricula
 		var buscaCampo = 'matricula';
@@ -300,6 +288,51 @@ $(document).ready(function() {
 
 	}
 
+	$('.formInner').on('click','#addDataRoteiro tr', function(){
+
+
+		var idRoteiro = $(this).attr('id');	
+		
+		//campos que vão recebe ros valores
+		var nomeRoteiro = $('#nomeRoteiro');
+		var acaoSelect = $('#acaoSelect');
+		var nomeColaborador = $('#nomeColaborador');
+		var lojasForm = $('.addDataLoja');
+
+		$.ajax({
+			type:'POST',
+			data:{
+				idRoteiro:idRoteiro,
+			},
+			url:'mod_operacional/ajax/carregaListaRoteiroEdicao.php',
+			success: function(data){
+				//transforma o da em json				
+				var json = $.parseJSON(data);
+				//atribui o valor do banco ao campo nomeRoteiro				
+				nomeRoteiro.val(json.nomeRoteiro);
+				//atribui o valor do banco ao campo Colaborador	
+				consultarColaborador(json.idColaborador);				
+				$('#acaoSelect').empty();
+				carregaAcaoSelect(json.idAcao);
+				// $('#nomeAcao').find("option[value='" + json.idAcao + "']").attr('selected',true);
+				geraListaLojasEdicao(idRoteiro);
+			}
+		})
+
+		$('#criarRoteiroModal').dialog({
+			width:600,
+			show: {
+				effect: "blind",
+				duration:500
+			}
+		})
+		
+	})
+
+
+	$('#teste tr').on('click', function(){
+		console.log('test');
+	})
 
 
 	// //Marca campos como selecionados ao clicar em uma linha
