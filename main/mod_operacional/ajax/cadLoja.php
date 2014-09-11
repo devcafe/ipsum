@@ -1,5 +1,6 @@
 <?php
 	include("../../../conf/conn.php");
+	header('Content-Type: text/html; charset=UTF-8');
 	
 	//Dados do formulário
 	$dados = $_POST['dados'];

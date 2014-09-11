@@ -117,7 +117,6 @@ $(document).ready(function(){
 
 	//Cadastrar loja
 	$('#cadLojaBtn').on('click', function(){
-
 		//Dados do formulário
 		var dados = $('#formCadLoja').serialize();
 
@@ -126,12 +125,12 @@ $(document).ready(function(){
 		});
 
 		if(validarNumeroZero('#numero') == true){			
-			$('#numero').focus();		
+			$('#numero').focus();					
 
 		}else if(validarNumeroZero('#estabReceitaNumero') == true){			
 			$('#estabReceitaNumero').focus();		
 
-		}else if($('#numero').val() == '' || $('#numero').val() != 'S/N'){
+		}else if($('#numero').val() == ''){			
 			$( "#numConfirm" ).dialog({
 				resizable: false,
 				height:180,
@@ -143,7 +142,7 @@ $(document).ready(function(){
 
 						$('#numero').val('S/N');
 
-						if($('#estabReceitaNumero').val() == '' || $('#estabReceitaNumero').val() != 'S/N'){
+						if($('#estabReceitaNumero').val() == ''){
 							$( "#numConfirmReceita" ).dialog({
 								resizable: false,
 								height:180,
@@ -171,7 +170,7 @@ $(document).ready(function(){
 					}
 				}
 			});
-		} else if($('#estabReceitaNumero').val() == '' || $('#estabReceitaNumero').val() != 'S/N'){
+		} else if($('#estabReceitaNumero').val() == ''){
 			$( "#numConfirmReceita" ).dialog({
 				resizable: false,
 				height:180,

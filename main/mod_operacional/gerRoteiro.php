@@ -45,10 +45,10 @@
 			</tr>	
 			<tr> 
 				<td><label for = "nomeColaborador">Colaborador: </label></td>
+				<td><a href = "#" id = "selectColaBtn"> <img src = "../main/resources/images/addUser.png" width = "20" disabled></td>
 			</tr>	
 			<tr>
-				<td id = 'nomeColaborador'>Selecione um colaborador...</td>
-				<td><a href = "#" id = "selectColaBtn"> <img src = "../main/resources/images/addUser.png" width = "20" disabled></td>
+				<td id = 'nomeColaborador'>Selecione um colaborador...</td>				
 			</tr>		
 			<tr>
 				<td><label for = "lojasRoteiro"> Lojas do roteiro: </label> </td>

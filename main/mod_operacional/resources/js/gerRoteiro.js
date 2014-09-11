@@ -21,6 +21,8 @@ $(document).ready(function() {
 		//add o valor null ao campo hidden editar loja para sinalizar que um novo registro vide ajax/cadRoteiro.php 
 		$('#idRoteiroEdicao').val("null");
 		$('.lojasAdicionadas').remove();
+		$('#nomeColaborador').removeClass().empty().append('Selecione um colaborador...');
+
 		$('#criarRoteiroModal').dialog({
 			width:600,
 			show: {
@@ -199,11 +201,15 @@ $(document).ready(function() {
 				i++;			
 			})
 
-
+		// verificação de campo, caso esteje vazio ele da um aviso	
+		if(matricula == ''){
+			var matriculaRes = confirm('O roteiro será cadastrado sem colaborador, você está certo disso?');			
+		} 		
 		if(nomeRoteiro == ''){
 			alert("Faltou preecher o nome da roteiro");
 		} else if (lojasItens == ''){
 			alert("Faltou escolher uma loja ao menos.")
+		} else if (matriculaRes == false){
 		}else {
 
 			$.ajax({
@@ -219,6 +225,7 @@ $(document).ready(function() {
 				success:function(data){				
 					//$('#criarRoteiroModal').dialog( "destroy" );
 					carregaListaRoteiros();
+					console.log(data);
 					
 				}
 			})
@@ -278,37 +285,38 @@ $(document).ready(function() {
 		})
 	}
 		// consultar colaborador
-	function consultarColaborador(matricula){
-		var toSearch = matricula
-		var buscaCampo = 'matricula';
-		// envia via ajax os valores dos campos toSearch e Busca campo
-		$.ajax({
-			type: 'POST',
-			data: {
-				toSearch: toSearch,
-				buscaCampo: buscaCampo,
-				editar:'1'
-			},
-			url: 'mod_operacional/ajax/carregaListaColaboradores.php',
-			success: function (data){
-				var jsonC = $.parseJSON(data);			
-			// limpa o campo
-			$('#nomeColaborador').empty();
-			$('#nomeColaborador').removeClass();
-			//apenda os valores
-			$('#nomeColaborador').append(jsonC.matriculaColaborador + ' - ' + jsonC.nomeColaborador);
-			// adiciona a matricula a class
-			$('#nomeColaborador').addClass(jsonC.matriculaColaborador);					
-			}
-		})
+	function consultarColaborador(matricula){		
+		if(matricula != 0){
+			var toSearch = matricula
+			var buscaCampo = 'matricula';
+			// envia via ajax os valores dos campos toSearch e Busca campo
+			$.ajax({
+				type: 'POST',
+				data: {
+					toSearch: toSearch,
+					buscaCampo: buscaCampo,
+					editar:'1'
+				},
+				url: 'mod_operacional/ajax/carregaListaColaboradores.php',
+				success: function (data){
+					var jsonC = $.parseJSON(data);			
+				// limpa o campo
+				$('#nomeColaborador').empty().removeClass().append(jsonC.matriculaColaborador + ' - ' + jsonC.nomeColaborador).addClass(jsonC.matriculaColaborador);
+				
+				}
+			})
+		}else {
+			// limpa o campo			
+				$('#nomeColaborador').removeClass().empty().append('Selecione um colaborador...');
+				
+
+		}
 
 	}
 
 	$('.formInner').on('dblclick','#addDataRoteiro tr:not(:first-child)', function(){
 
-
-		var idRoteiro = $(this).attr('id');	
-		
+		var idRoteiro = $(this).attr('id');		
 		//campos que vão recebe ros valores
 		var nomeRoteiro = $('#nomeRoteiro');
 		var acaoSelect = $('#acaoSelect');
