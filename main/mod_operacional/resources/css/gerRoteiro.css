@@ -77,7 +77,7 @@
 }
 
 .selected{
-	background: #CCC;
+	background: #CCC !important;
 }
 
 /*start*/
@@ -105,19 +105,8 @@ input[name=nomeAcao]{
 
 
 
-/* Tabela lista linhas moveis */
-#lojasForm, #tableLojas{
-	border: 1px solid #e7e7e7;
-	width:100%;
-}
+/* Tabela  */
 
-#lojasForm tr:first-child, #tableLojas{
-	background: #ADC4DC !important;
-	color: #000;
-	font-weight: bold;
-	font-size:12px;
-	line-height: 20px;
-}
 
 #toSearchLoja {
 	margin-bottom: 30px;
@@ -129,7 +118,12 @@ input[name=nomeAcao]{
 
 /* tamanho do inputs da ordem da loja*/
 .ordemDiaRoteiro {
-	width: 30%;
+	width: 30% ;	
+	border: 0 !important;
+	text-align: center !important;
+	-webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+	-moz-box-shadow:    0px 0px 0px 0px rgba(0, 0, 0, 0);
+	box-shadow:         0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
 
 .carregaListaLojas tr td:first-child{
@@ -137,17 +131,56 @@ input[name=nomeAcao]{
 }
 
 #lojasForm tr td:nth-child(3){
-	width: 200px;
+	width: 370px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	max-width: 200px;
+	max-width: 370px;
 }
 
 #tableLojas tr:not(:first-child):hover{
 	cursor:pointer;
 }
 
-#addDataRoteiro tr:nth-child(2n+1) {
+#addDataRoteiro tr:nth-child(2n+1), #lojasForm tr:nth-child(2n+1) {
 	background:  #e8e8e8;
 }
+
+#tableRoteiros tr:first-child, #lojasForm tr:first-child, #tableLojas tr:first-child{
+	background: #ADC4DC !important;
+	color: #000;
+	font-weight: bold;
+	font-size:12px;
+	line-height: 20px;
+}
+#lojasForm tr td:nth-child(2){
+	width: 178px;
+}
+#lojasForm tr td:nth-child(4){
+	width: 40px;
+}
+#lojasForm tr td:nth-child(5){
+	width: 40px;
+}
+#lojasForm tr td:nth-child(6){
+	width: 40px;
+}
+#lojasForm tr td:nth-child(6){
+	width: 40px;
+}
+#lojasForm tr td:nth-child(7){
+	width: 40px;
+}
+#lojasForm tr td:nth-child(8){
+	width: 40px;
+}
+#lojasForm tr td:nth-child(9){
+	width: 40px;
+}
+#lojasForm tr td:nth-child(10){
+	width: 40px;
+}
+input[type=text]{
+	background: none;
+}
+

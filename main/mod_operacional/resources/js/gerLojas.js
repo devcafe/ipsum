@@ -19,6 +19,7 @@ $(document).ready(function(){
 	
 
 	function carregaLojas(){
+		$('#listaLojas').empty();
 
 		var ordemLojas = ""
 
@@ -496,7 +497,15 @@ $(document).ready(function(){
 	})
 
 	
+	// limpar formulário
 
+	$('#limparFiltro').on('click', function(){
+		$('.filtro .toReset').each(function(){
+			$(this).val('');
+		});				
+
+		carregaLojas();	
+	})
 
 
 })

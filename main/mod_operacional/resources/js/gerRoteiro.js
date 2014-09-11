@@ -16,7 +16,11 @@ $(document).ready(function() {
 	/*************************************/
 	// carrega o modal criar roteiros
 	$('#criarRoteiroBtn').on('click',function(){
+		//limpa os cmapos
 		$('#criarRoteiro')[0].reset();
+		//add o valor null ao campo hidden editar loja para sinalizar que um novo registro vide ajax/cadRoteiro.php 
+		$('#idRoteiroEdicao').val("null");
+		$('.lojasAdicionadas').remove();
 		$('#criarRoteiroModal').dialog({
 			width:600,
 			show: {
@@ -140,12 +144,13 @@ $(document).ready(function() {
 	  	}    
 
 	    });
-	var countlojasAdicionadas = 1;
+	
 	// adiciona a loja a lista
 	$('#lojasModal').on('click', '.carregaListaLojas  tr:not(:first-child)', function(){
 		var idLojaAdd = $(this).attr('id');
 		var cnpjAdd = $(this).find('.cnpjFind').html();
 		var nomeAdd = $(this).find('.nomeFind').html();
+		//var countlojasAdicionadas = $(this).find('.nomeFind').html();
 
 		if($('#lojasForm tr#'+idLojaAdd).length){
 			alert("Essa loja já foi adicionado");
@@ -161,12 +166,11 @@ $(document).ready(function() {
 			url: 'mod_operacional/ajax/geraListaLojas.php',
 			success: function(data){								
 				$('#lojasForm').append(data);
-				countlojasAdicionadas++;
 				$('#lojasModal').dialog( "destroy" );							
 			}
 		})		
 		$('.contadorLojas').empty();		
-		$('.contadorLojas').append('Lojas adicionadas ' + countlojasAdicionadas);
+		//$('.contadorLojas').append('Lojas adicionadas ' + countlojasAdicionadas);
 		}
 	})
 
@@ -174,10 +178,10 @@ $(document).ready(function() {
 	// cadadastrar roteiro no banco
 	$('#cadastrarRoteiro').on('click', function(){
 		//pega os valores dos campos
+		var idRoteiro = $('#idRoteiroEdicao').val();
 		var nomeRoteiro = $('#nomeRoteiro').val();
 		var nomeAcao = $('#nomeAcao').val();
-		var matricula = $('#nomeColaborador').attr('class');
-		var quantLojas = $('.lojasAdicionadas').length;
+		var matricula = $('#nomeColaborador').attr('class');	
 		var i = 0;
 		var lojasItens = [];
 		//varre todas as lojas selecionadas	
@@ -195,20 +199,30 @@ $(document).ready(function() {
 				i++;			
 			})
 
-		$.ajax({
-			type:'POST',
-			data: {
-				nomeRoteiro: nomeRoteiro,
-				nomeAcao: nomeAcao,
-				matricula: matricula,
-				lojasItens : lojasItens,
-			},
-			url: 'mod_operacional/ajax/cadRoteiro.php',
-			success:function(data){				
-				$('#criarRoteiroModal').dialog( "destroy" );
-				carregaListaRoteiros();
-			}
-		})
+
+		if(nomeRoteiro == ''){
+			alert("Faltou preecher o nome da roteiro");
+		} else if (lojasItens == ''){
+			alert("Faltou escolher uma loja ao menos.")
+		}else {
+
+			$.ajax({
+				type:'POST',
+				data: {
+					idRoteiro: idRoteiro,
+					nomeRoteiro: nomeRoteiro,
+					nomeAcao: nomeAcao,
+					matricula: matricula,
+					lojasItens : lojasItens,
+				},
+				url: 'mod_operacional/ajax/cadRoteiro.php',
+				success:function(data){				
+					//$('#criarRoteiroModal').dialog( "destroy" );
+					carregaListaRoteiros();
+					
+				}
+			})
+		}
 	})
 	//carrega lista lojas para edição
 
@@ -233,10 +247,12 @@ $(document).ready(function() {
 
 	//carrega lista roteiro
 	function carregaListaRoteiros(){
+		var pag =  $('#pagina').val();
 
 		$.ajax({
 			type:'POST',
 			data: {
+				pag: pag
 			},
 			url: 'mod_operacional/ajax/carregaListaRoteiros.php',
 			success:function(data){
@@ -288,7 +304,7 @@ $(document).ready(function() {
 
 	}
 
-	$('.formInner').on('click','#addDataRoteiro tr', function(){
+	$('.formInner').on('dblclick','#addDataRoteiro tr:not(:first-child)', function(){
 
 
 		var idRoteiro = $(this).attr('id');	
@@ -298,6 +314,7 @@ $(document).ready(function() {
 		var acaoSelect = $('#acaoSelect');
 		var nomeColaborador = $('#nomeColaborador');
 		var lojasForm = $('.addDataLoja');
+		$('#idRoteiroEdicao').val(idRoteiro);
 
 		$.ajax({
 			type:'POST',
@@ -306,11 +323,9 @@ $(document).ready(function() {
 			},
 			url:'mod_operacional/ajax/carregaListaRoteiroEdicao.php',
 			success: function(data){
-				//transforma o da em json				
-				var json = $.parseJSON(data);
-				//atribui o valor do banco ao campo nomeRoteiro				
-				nomeRoteiro.val(json.nomeRoteiro);
-				//atribui o valor do banco ao campo Colaborador	
+				//transforma os dados em json				
+				var json = $.parseJSON(data);							
+				nomeRoteiro.val(json.nomeRoteiro);				
 				consultarColaborador(json.idColaborador);				
 				$('#acaoSelect').empty();
 				carregaAcaoSelect(json.idAcao);
@@ -328,29 +343,60 @@ $(document).ready(function() {
 		})
 		
 	})
-
-
-	$('#lojasForm').on('click', 'tr', function(){
-		console.log('test');
+	// apaga loja selecionada
+	$('#lojasForm').on('dblclick', 'tr:not(:first-child)', function(){
+		var confirmR = confirm("você realmente deseja excluir essa loja?");
+		if(confirmR == true){
+			$(this).remove();
+		}
 	})
 
+	//Marca campos como selecionados ao clicar em uma 
+	$('.formInner').on('click', '#addDataRoteiro tr:not(:first-child)', function(){
 
-	// //Marca campos como selecionados ao clicar em uma linha
-	// $('#listaUsuarios').on('click', 'table tr:not(:first-child)', function(){
+		if($(this).hasClass('selected')){
+			//Remove classe que marca como selecionado
+			$(this).removeClass('selected');
+		} else {
+			//Adiciona classe que marca como selecionado
+			$(this).addClass('selected');
+		}
 		
-	// 	if($(this).hasClass('selected')){
-	// 		//Remove classe que marca como selecionado
-	// 		$(this).removeClass('selected');
-	// 	} else {
-	// 		//Adiciona classe que marca como selecionado
-	// 		$(this).addClass('selected');
-	// 	}
-	
-	// })
+	});
 
-	
+	// apaga os roteiros selecionaods
 
+	$('#delRoteiro').on('click', function(){
+		var i = 0;
+		var itens = [];
+		$('#addDataRoteiro tr').each(function(){
+			if($(this).hasClass('selected')){
+				itens[i] = $(this).attr('id');
+				i++;
+			}
+		})
 
-	
+		if(itens == ''){
+			alert('Favor selecionar ao mesmo um item para excluir.')
+		} else{
+			//solicita confirmação antes de apagar
+			var apagarResposta = confirm("Tem certeza que deseja apagar o(s) iten(s) selecionado(s)");
+			if(apagarResposta == true){
+				$.ajax({
+					type: 'POST',
+					data: {
+						itens: itens,
+					},
+					url: 'mod_operacional/ajax/deletaRoteiro.php',
+					success: function(data){
+						carregaListaRoteiros();
+						alert(data);
+					}
+				})
+			}
+		}
+
+	})
+
 
 }) 

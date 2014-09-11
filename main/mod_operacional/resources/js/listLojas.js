@@ -14,6 +14,9 @@ $(document).ready(function(){
 
 	//Lista lojas
 	function carregaLojas(){
+		//limpa campo antes de começar
+
+		$('#listaLojas').empty();
 		var ordemLojas = ""
 
 		if($('#orderLoja').hasClass('order_a-z')){			
@@ -268,6 +271,16 @@ $(document).ready(function(){
 				ufList.val(json.uf);
 			}
 		})
+	})
+	
+	// limpar filtro
+
+	$('#limparFiltro').on('click', function(){
+		$('.filtro .toReset').each(function(){
+			$(this).val('');
+		});				
+
+		carregaLojas();	
 	})
 		
 })
