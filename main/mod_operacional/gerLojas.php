@@ -7,27 +7,29 @@
 <link rel="stylesheet" href = "mod_operacional/resources/css/gerLojas.css">
 
 <div class = "formInner">
-	<form method = "post">
+	<form method = "post" id = "formFiltro">
 		<legend> Gerenciar lojas </legend>
 		<div class = "painel">
 			<div class = "filtro">
-				<form method = "post" id = "formFiltro">
+				<!--<form method = "post" id = "formFiltro" class ="formFiltroBase" >-->
 					<div class = "filtro01">
-						<input type = "text" name = "idLojaFiltro" id = "idLojaFiltro" placeholder = "ID">
-						<input type = "text" name = "cnpj" id = "cnpj" placeholder = "CNPJ">
-						<input type = "text" name = "razaoSocial" id = "razaoSocial" placeholder = "Razão Social">
-						<input type = "text" name = "nomeFantasia" id = "nomeFantasia" placeholder = "Nome Fantasia">
-						<input type = "text" name = "bairro" id = "bairro" placeholder = "Bairro">
-						<input type = "text" name = "rua" id = "rua" placeholder = "Rua">
+						<input type = "text" class = "toReset" name = "idLojaFiltro" id = "idLojaFiltro" placeholder = "ID">
+						<input type = "text" class = "toReset"  name = "cnpj" id = "cnpj" placeholder = "CNPJ">
+						<input type = "text" class = "toReset" name = "razaoSocial" id = "razaoSocial" placeholder = "Razão Social">
+						<input type = "text" class = "toReset" name = "nomeFantasia" id = "nomeFantasia" placeholder = "Nome Fantasia">
+						<input type = "text" class = "toReset"  name = "bairro" id = "bairro" placeholder = "Bairro">
+						<input type = "text" class = "toReset"  name = "rua" id = "rua" placeholder = "Rua">
 					</div>
 					<div class = "filtro02">
-						<input type = "text" name = "bandeira" id = "bandeira" placeholder = "Bandeira">
-						<input type = "text" name = "cep" id = "cep" placeholder = "CEP">
-						<input type = "text" name = "cidade" id = "cidade" placeholder = "Cidade">
-						<input type = "text" name = "uf" id = "uf" placeholder = "UF">
-						<input type = "text" name = "numero" id = "numero" placeholder = "Nº">
+						<input type = "text" class = "toReset"  name = "bandeira" id = "bandeira" placeholder = "Bandeira">
+						<input type = "text" class = "toReset"  name = "cep" id = "cep" placeholder = "CEP">
+						<input type = "text" class = "toReset"  name = "cidade" id = "cidade" placeholder = "Cidade">
+						<input type = "text" class = "toReset"  name = "uf" id = "uf" placeholder = "UF">
+						<input type = "text" class = "toReset"  name = "numero" id = "numero" placeholder = "Nº">
+						<input type = "button" name = "limparFiltro" id = "limparFiltro" value = "Limpar filtro">
+
 					</div>
-				</form>
+				<!--</form>-->
 			</div>
 			<div class = "chooseFields">
 				<form method = "post">

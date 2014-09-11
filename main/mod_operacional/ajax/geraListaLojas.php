@@ -18,13 +18,13 @@
 			$lista .= "<td><input type = 'hidden' value = " . $idLojaAdd . " class = 'idLojaSelecionada ". $idLojaAdd ."'>" . $idLojaAdd . "</td>";
 			$lista .= "<td>" . $cnpjAdd . "</td>";
 			$lista .= "<td>" . $nomeAdd . "</td>";
-			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro seg' id = '". $idLojaAdd ."_seg''></td>";
-			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro ter' id = 'ter'></td>";
-			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro qua' id = 'qua'></td>";
-			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro qui' id = 'qui'></td>";
-			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro sex' id = 'sex'></td>";
-			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro sab' id = 'sab'></td>";
-			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro dom' id = 'dom'></td>";
+			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro seg' id = '". $idLojaAdd ."_seg'' maxlength='1'tabindex='1'></td>";
+			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro ter' id = 'ter' maxlength='1' tabindex='2'></td>";
+			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro qua' id = 'qua' maxlength='1' tabindex='3'></td>";
+			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro qui' id = 'qui' maxlength='1' tabindex='4'></td>";
+			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro sex' id = 'sex' maxlength='1' tabindex='5'></td>";
+			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro sab' id = 'sab' maxlength='1' tabindex='6'></td>";
+			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro dom' id = 'dom' maxlength='1'tabindex='7' ></td>";
 		$lista .= "</tr>";
 	if($idLojaAdd != "null") {
 		echo $lista;
@@ -51,13 +51,13 @@
 			$lista .= "<td><input type = 'hidden' value = " . $resLojas->idLoja . " class = 'idLojaSelecionada ". $resLojas->idLoja ."'>" . $resLojas->idLoja . "</td>";
 			$lista .= "<td>" . $resLojas->cnpj . "</td>";
 			$lista .= "<td>" . $resLojas->nome . "</td>";
-			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro seg' id = '". $resLojas->idLoja ."_seg'' value = '". $resLojas->seg ."'></td>";
-			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro ter' id = 'ter' value = '". $resLojas->ter ."'></td>";
-			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro qua' id = 'qua' value = '". $resLojas->qua ."'></td>";
-			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro qui' id = 'qui' value = '". $resLojas->qui ."'></td>";
-			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro sex' id = 'sex' value = '". $resLojas->sex ."'></td>";
-			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro sab' id = 'sab' value = '". $resLojas->sab ."'></td>";
-			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro dom' id = 'dom' value = '". $resLojas->dom ."'></td>";
+			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro seg' id = '". $resLojas->idLoja ."_seg'' value = '". $resLojas->seg ."' maxlength='1' tabindex='1'></td>";
+			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro ter' id = 'ter' value = '". $resLojas->ter ."' maxlength='1' tabindex='2'></td>";
+			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro qua' id = 'qua' value = '". $resLojas->qua ."' maxlength='1' tabindex='3'></td>";
+			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro qui' id = 'qui' value = '". $resLojas->qui ."' maxlength='1' tabindex='4'></td>";
+			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro sex' id = 'sex' value = '". $resLojas->sex ."' maxlength='1' tabindex='5'></td>";
+			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro sab' id = 'sab' value = '". $resLojas->sab ."' maxlength='1' tabindex='6'></td>";
+			$lista .= "<td><input type = 'text' class = 'ordemDiaRoteiro dom' id = 'dom' value = '". $resLojas->dom ."' maxlength='1' tabindex='7'></td>";
 		$lista .= "</tr>";
 	};
 

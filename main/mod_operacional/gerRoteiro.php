@@ -12,23 +12,15 @@
 			<div class = "btnFiltrar" id = "btnFiltrar" title = "Filtrar"> <img src = "../main/resources/images/filter.png" width = "20" > </div>
 		</div>-->
 		<div id = "cadRoteiro">
-			<div id = "selLoja">
-				<!-- <a href = "#" id = ""> <img src = "../main/resources/images/addUser.png" width = "20" > </a> -->
+			<div id = "selRoteiro">
+				<a href = "#" id = "delRoteiro"> <img src = "../main/resources/images/delete.png" width = "20" > </a> 
 				<a href = "#" id = "criarRoteiroBtn">  <img src = "../main/resources/images/operacional/script.png" width = "20" >  </a>
 			</div>
-			<div id = "colaboradorData">
-
-				<table class = "theFirst">
-					<tr>
-						<td class = "idRoteiro"> Id roteiro </td>
-						<td> Nome roteiro </td>
-						<td> Ação </td>
-						<td> Responsavel </td>
-					</tr>
-					<table id = "addDataRoteiro">
+			<div id = "colaboradorData">				
+					<div id = "addDataRoteiro">
 						<!-- <a href = "#"  name = "geraCartaApresentacao"> Gerar carta </a> -->
 
-					</table>
+					</div>
 				</table>
 			</div>			
 		</div>	
@@ -45,7 +37,7 @@
 				<td><label for = "nomeAcao"> Nome da Ação: </label></td>
 			</tr>
 			<tr>	
-				<td><input type = "text" name = "nomeRoteiro" id = "nomeRoteiro"></td>
+				<td><input type = "text" name = "nomeRoteiro" id = "nomeRoteiro"><input type = "hidden" name = "idRoteiroEdicao" id = "idRoteiroEdicao" value = "null"></td>
 				<td>				
 					<div id="acaoSelect">
 					</div>				
@@ -82,7 +74,8 @@
 
 		</table>
 
-		<input type = "button" value = "Cadastrar roteiro" id = "cadastrarRoteiro"> 
+		<input type = "button" value = "Cadastrar roteiro" id = "cadastrarRoteiro">
+		<label id = "excluirLojasLabel">* Para exluir uma loja basta dar um duplo click sobre a loja que deseja excluir </label> 
 
 	</form>
 
