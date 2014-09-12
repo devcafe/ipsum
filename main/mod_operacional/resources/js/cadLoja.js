@@ -62,6 +62,11 @@ $(document).ready(function(){
 		$('#estabReceitaBairro').val('');
 		$('#estabReceitaCidade').val('');
 		$('#estabReceitaUF').val('');
+	}	
+
+	function replaceFields(campo){		
+		var respota = campo.replace(/[´`^~\']/g,'');
+		return respota;
 	}
 
 
@@ -76,13 +81,13 @@ $(document).ready(function(){
 			data: 'cep=' + $('#cep').val(),
 			dataType: 'json',
 			success: function(data){
-				if(data.sucesso == 1){
-					$('#rua').val(data.rua);
-					$('#bairro').val(data.bairro);
-					$('#cidade').val(data.cidade);
-					$('#uf').val(data.estado);
+				if(data.sucesso == 1){										
+					$('#rua').val(replaceFields(data.rua));
+					$('#bairro').val(replaceFields(data.bairro));
+					$('#cidade').val(replaceFields(data.cidade));
+					$('#uf').val(replaceFields(data.estado));
 					$('#numero').focus();
-					console.log(data);
+					
 				}
 			}
 		});   
