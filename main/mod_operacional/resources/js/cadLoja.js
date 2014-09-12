@@ -83,9 +83,9 @@ $(document).ready(function(){
 			success: function(data){
 				if(data.sucesso == 1){										
 					$('#rua').val(data.rua);
-					$('#bairro').val(replaceFields(data.bairro));
-					$('#cidade').val(replaceFields(data.cidade));
-					$('#uf').val(replaceFields(data.estado));
+					$('#bairro').val(data.bairro);
+					$('#cidade').val(data.cidade);
+					$('#uf').val(data.estado);
 					$('#numero').focus();
 					
 				}
