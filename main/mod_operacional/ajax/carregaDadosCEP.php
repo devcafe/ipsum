@@ -11,7 +11,7 @@
 	$dados['cidade']  = preg_replace( '/[`^~\'"]/', null, iconv( 'UTF-8', 'ASCII//TRANSLIT', (string) $reg->cidade ) );
 	$dados['estado']  = (string) $reg->uf;
 
-	
-	 
-	echo json_encode($dados);
+	print_r($dados);
+		 
+	// echo json_encode($dados);
 ?>
