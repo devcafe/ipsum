@@ -4,12 +4,13 @@
 
 	//Verifica a plataforma e cria a pasta no servidor
 	if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-		$path = 'C:\wamp\www\ipsum\main\resources\documentos\\';
+		$path = 'C:\wamp\www\ipsum\main\resources\documentos\\';		
 		$bar = "\\";
 	} else {
 		$path = '/var/www/html/ipsum/main/resources/documentos/';
 		$bar = "/";
 	}
+	$url = 'http://'.$_SERVER['SERVER_ADDR'] .'/ipsum/main/resources/documentos/'
 
 ?>
 
@@ -54,32 +55,55 @@
 							</tr>
 						</tbody>
 					</table>-->
-					
+
+					<legend> Procedimentos </legend>
+				
 					<table id = "procedimentos">
-						<tr>
-							<td> <b> Procedimentos </b> </td>
-						</tr>
+					
+
 						<?php
 							$ignoreList = array('cgi-bin', '.', '..', '._');
 
 							$lista = '';
 
-						 	//Verifica se é um diretório
-					        if(is_dir($path)){
-					            //Se for um diretório, abre o mesmo
-					            if ($dh = opendir($path)) {
+							//Diretório de TI
+							$ti = $path.'TI'.$bar;
+							$financeiro = $path.'Financeiro'.$bar;						
 
-			                        //Percorre arquivos e pastas do diretório
-					                while (($file = readdir($dh)) !== false) {	
-					                	if(substr($file, -3) == 'pdf' && $file != $ignoreList[1] && $file != $ignoreList[2]){
-						                 	$lista .= '<tr>';					
-						                        $lista .= '<td><a href = "#">'. $file .'</a></td>' ;						                        
-					                        $lista .= '</tr>';
-					                	}
+							$lista .= "<tr class = 'dirPdf' >";
+								$lista .= "<td > TI </td>";
+							 	//Exibe procedimentos TI
+						        if(is_dir($ti)){					        	
+						            //Se for um diretório, abre o mesmo
+						            if ($dh = opendir($ti)) {
+				                        //Percorre arquivos e pastas do diretório
+						                while (($file = readdir($dh)) !== false) {					                	
+					                		if(substr($file, -3) == 'pdf' && $file != $ignoreList[1] && $file != $ignoreList[2]){
+							                 	$lista .= '<tr>';					
+							                        $lista .= '<td class = "filePdf"><a href = "'. $url .'TI/'. str_replace(' ', '%20', $file) .'">'. $file .'</a></td>' ;						                        
+						                        $lista .= '</tr>';
+					                		}
+					                    }
+					                }
+					            } 
+					        $lista .= "</tr>";
 
-				                    }
-				                }
-				            }
+					        $lista .= "<tr class = 'dirPdf' >";
+								$lista .= "<td > Financeiro </td>";
+					            if(is_dir($financeiro)){
+					            	//Se for um diretório, abre o mesmo
+						            if ($dh = opendir($financeiro)) {
+				                        //Percorre arquivos e pastas do diretório
+						                while (($file = readdir($dh)) !== false) {					                	
+					                		if(substr($file, -3) == 'pdf' && $file != $ignoreList[1] && $file != $ignoreList[2]){
+							                 	$lista .= '<tr>';					
+							                        $lista .= '<td class = "filePdf"><a href = "'. $url .'Financeiro/'. str_replace(' ', '%20', $file) .'">'. $file .'</a></td>' ;						                        
+						                        $lista .= '</tr>';
+					                		}
+					                    }
+					                }
+					            }
+					        $lista .= "</tr>";
 
 				            echo $lista;
 

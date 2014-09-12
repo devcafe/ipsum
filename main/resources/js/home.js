@@ -132,5 +132,4 @@ $(document).ready(function(){
 	$('#gerAcoesOpe').click(function(){
 		conteudo.load( "mod_operacional/gerAcoes.php" );
 	});
-
 })
