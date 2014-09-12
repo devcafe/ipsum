@@ -10,8 +10,6 @@
 	$dataCadastro = date('d/m/Y');
 	$idUsuarioCad = $_SESSION['idUsuario'];
 
-	echo $matricula;
-
 	if($nomeRoteiro != "" and $matricula != "" and $lojasItens != ""){
 
 		if($idRoteiro == "null"){

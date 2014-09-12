@@ -81,8 +81,8 @@ $(document).ready(function(){
 					$('#bairro').val(data.bairro);
 					$('#cidade').val(data.cidade);
 					$('#uf').val(data.estado);
-
 					$('#numero').focus();
+					console.log(data);
 				}
 			}
 		});   

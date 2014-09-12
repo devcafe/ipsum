@@ -223,10 +223,9 @@ $(document).ready(function() {
 				},
 				url: 'mod_operacional/ajax/cadRoteiro.php',
 				success:function(data){				
-					//$('#criarRoteiroModal').dialog( "destroy" );
+					$('#criarRoteiroModal').dialog( "destroy" );
 					carregaListaRoteiros();
-					console.log(data);
-					
+					alert(data);				
 				}
 			})
 		}
