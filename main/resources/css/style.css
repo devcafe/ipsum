@@ -299,3 +299,11 @@ footer{
 .filePdf{
 	padding-left:50px; 
 }
+.dirPdf {
+	border-bottom: 1px solid;
+	font-weight: bold;
+
+}.procedimentos{
+	
+	width:550px;
+}

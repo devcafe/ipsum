@@ -55,11 +55,9 @@
 							</tr>
 						</tbody>
 					</table>-->
-
-					<legend> Procedimentos </legend>
-				
-					<table id = "procedimentos">
 					
+					<table class = "procedimentos">
+						<legend class = "procedimentos"> Biblioteca </legend>					
 
 						<?php
 							$ignoreList = array('cgi-bin', '.', '..', '._');
@@ -106,11 +104,8 @@
 					        $lista .= "</tr>";
 
 				            echo $lista;
-
 						?>
-					</table>
-
-				</div>
+					</table>				
 			</div>
 
 			<?php include ("includes/footer.php"); ?>
