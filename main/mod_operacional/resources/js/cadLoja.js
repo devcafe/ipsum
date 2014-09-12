@@ -64,11 +64,6 @@ $(document).ready(function(){
 		$('#estabReceitaUF').val('');
 	}	
 
-	function replaceFields(campo){		
-		var respota = campo.replace(/[´`^~\']/g,'');
-		return respota;
-	}
-
 
 	/* Executa a requisição quando o campo CEP perder o foco */
 	$('#cep').focusout(function(){
@@ -82,10 +77,10 @@ $(document).ready(function(){
 			dataType: 'json',
 			success: function(data){
 				if(data.sucesso == 1){										
-					$('#rua').val(replaceFields(data.rua));
-					$('#bairro').val(replaceFields(data.bairro));
-					$('#cidade').val(replaceFields(data.cidade));
-					$('#uf').val(replaceFields(data.estado));
+					$('#rua').val(data.rua);
+					$('#bairro').val(data.bairro);
+					$('#cidade').val(data.cidade);
+					$('#uf').val(data.estado);
 					$('#numero').focus();
 					
 				}
