@@ -82,7 +82,7 @@ $(document).ready(function(){
 			dataType: 'json',
 			success: function(data){
 				if(data.sucesso == 1){										
-					$('#rua').val(replaceFields(data.rua));
+					$('#rua').val(data.rua);
 					$('#bairro').val(replaceFields(data.bairro));
 					$('#cidade').val(replaceFields(data.cidade));
 					$('#uf').val(replaceFields(data.estado));
