@@ -1,5 +1,18 @@
 
-<?php include("../actions/security.php"); ?>
+<?php 
+	include("../actions/security.php"); 
+
+	//Verifica a plataforma e cria a pasta no servidor
+	if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+		$path = 'C:\wamp\www\ipsum\main\resources\documentos\\';
+		$bar = "\\";
+	} else {
+		$path = '/var/www/html/ipsum/main/resources/documentos/';
+		$bar = "/";
+	}
+
+?>
+
 <!DOCTYPE html>
 <html lang = "pt">
 	<head>
@@ -42,25 +55,35 @@
 						</tbody>
 					</table>-->
 					
-					<table id = "changeLog">
+					<table id = "procedimentos">
 						<tr>
-							<td> <b> Novidades </b> </td>
+							<td> <b> Procedimentos </b> </td>
 						</tr>
-						<tr>
-							<td class = "impar"> 02/09/2014 v1.0 - Controle de despesas de T.I agora disponivel </td>
-						</tr>
-						<tr>
-							<td class = "par"> 27/08/2014 v1.0 - Disponibilizado modulo de T.I </td>
-						</tr>
-						<tr>
-							<td class = "impar"> 27/08/2014 v1.0 - Disponibilizado cadastro de lojas </td>
-						</tr>
-						<tr>
-							<td class = "par"> 27/08/2014 v1.0 - Disponibilizado consulta de lojas </td>
-						</tr>
-						<tr>
-							<td class = "impar"> 27/08/2014 v1.0 - Disponibilizado gerencia de lojas </td>
-						</tr>
+						<?php
+							$ignoreList = array('cgi-bin', '.', '..', '._');
+
+							$lista = '';
+
+						 	//Verifica se é um diretório
+					        if(is_dir($path)){
+					            //Se for um diretório, abre o mesmo
+					            if ($dh = opendir($path)) {
+
+			                        //Percorre arquivos e pastas do diretório
+					                while (($file = readdir($dh)) !== false) {	
+					                	if(substr($file, -3) == 'pdf' && $file != $ignoreList[1] && $file != $ignoreList[2]){
+						                 	$lista .= '<tr>';					
+						                        $lista .= '<td><a href = "#">'. $file .'</a></td>' ;						                        
+					                        $lista .= '</tr>';
+					                	}
+
+				                    }
+				                }
+				            }
+
+				            echo $lista;
+
+						?>
 					</table>
 
 				</div>
