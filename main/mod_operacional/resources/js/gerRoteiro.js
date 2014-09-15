@@ -405,5 +405,11 @@ $(document).ready(function() {
 
 	})
 
+	// apagar colaborador
+
+	$('#nomeColaborador').on('dblclick', function(){
+		$('#nomeColaborador').removeClass().empty().append('Selecione um colaborador...');
+	})
+
 
 }) 

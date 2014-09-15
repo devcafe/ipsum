@@ -326,6 +326,7 @@ $(document).ready(function(){
 
 		//Id da loja que será visualizado os dados
 		var idLoja = $(this).attr('id');
+		$('#idListGer').val(idLoja);
 
 		//Campos a serem populados
 		var cnpjListGer = $('#cnpjListGer');
@@ -505,6 +506,27 @@ $(document).ready(function(){
 		});				
 
 		carregaLojas();	
+	})
+
+	// alterar lojas
+
+	$('#btnAlterarLoja').on('click', function(){
+		//pega o id d aloja sleecionada
+		var idLoja = $('#idListGer').val();
+		// altera  a url
+		
+		//grava em uma variavel o selector da div
+		var conteudo = $('#conteudoInner');
+		//limpa a a div conteudo
+		conteudo.empty();
+		//carrega a pagina cadloja do operacional
+		conteudo.load( "mod_operacional/cadLoja.php")
+		
+		$('#mainWrapper').append("<input name = 'idLojaEdicao' id = 'idLojaEdicao' type = 'hidden' value='"+ idLoja +"'");
+
+
+
+
 	})
 
 

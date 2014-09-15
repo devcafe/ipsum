@@ -101,16 +101,18 @@
 		<table>
 			<tr>
 				<td> <a href = "#" id = "dadosVisualizar" name = "dadosVisualizar"> <span class = "showText"> Dados da receita -> </span></a></td>
+				<td> <a href = "#" id = "btnAlterarLoja" name = ="btnAlterarLoja" > Alterar Registo </a></td>
 			</tr>
 		</table>
 
 		<div id = "lojaDados">
 			<table>	
 				<tr>
-					<td> <label for = "cnpjListGer"> CNPJ: </label> </td>
+					<td> <label for = "cnpjListGer"> CNPJ: </label> </td>					
 				</tr>
 				<tr>
-					<td> <input disabled type = "text" name = "cnpjListGer" id = "cnpjListGer"> </td>
+					<td> <input type = "text" name = "cnpjListGer" id = "cnpjListGer"> </td>
+					<td><input  id = "idListGer" type = "hidden" name = "idListGer" ></td>
 				</tr>
 			</table>
 
@@ -119,7 +121,7 @@
 					<td> <label for = "bandeiraListGer"> Bandeira: </label> </td>
 				</tr>
 				<tr>
-					<td> <input disabled type = "text" name = "bandeiraListGer" id = "bandeiraListGer"> </td>
+					<td> <input type = "text" name = "bandeiraListGer" id = "bandeiraListGer"> </td>
 				</tr>
 			</table>
 
@@ -128,25 +130,15 @@
 					<td> <label for = "nomeList"> Nome do estabelecimento: </label> </td>
 				</tr>
 				<tr>
-					<td> <input disabled type = "text" name = "nomeListGer" id = "nomeListGer"> </td>
+					<td> <input type = "text" name = "nomeListGer" id = "nomeListGer"> </td>
 				</tr>
 			</table>
-
-			<!--<table>	
-				<tr>
-					<td> <label for = "nomeFantasiaList"> Nome Fantasia: </label> </td>
-				</tr>
-				<tr>
-					<td> <input disabled type = "text" name = "nomeFantasiaList" id = "nomeFantasiaList"> </td>
-				</tr>
-			</table>-->
-
 			<table>	
 				<tr>
 					<td> <label for = "cepListGer"> CEP: </label> </td>
 				</tr>
 				<tr>
-					<td> <input disabled type = "text" name = "cepListGer" id = "cepListGer"> </td>
+					<td> <input type = "text" name = "cepListGer" id = "cepListGer"> </td>
 				</tr>
 			</table>
 
@@ -155,7 +147,7 @@
 					<td> <label for = "ruaListGer"> Endereço: </label> </td>
 				</tr>
 				<tr>
-					<td> <input disabled type = "text" name = "ruaListGer" id = "ruaListGer"> </td>
+					<td> <input type = "text" name = "ruaListGer" id = "ruaListGer"> </td>
 				</tr>
 			</table>
 
@@ -165,8 +157,8 @@
 					<td> <label for = "numeroListGer"> Nº: </label> </td>
 				</tr>
 				<tr>
-					<td> <input disabled type = "text" name = "bairroListGer" id = "bairroListGer"> </td>
-					<td> <input disabled type = "text" name = "numeroListGer" id = "numeroListGer"> </td>
+					<td> <input type = "text" name = "bairroListGer" id = "bairroListGer"> </td>
+					<td> <input type = "text" name = "numeroListGer" id = "numeroListGer"> </td>
 				</tr>
 			</table>
 
@@ -176,15 +168,15 @@
 					<td> <label for = "ufLisGert"> UF: </label> </td>
 				</tr>
 				<tr>
-					<td> <input disabled type = "text" name = "cidadeListGer" id = "cidadeListGer"> </td>
-					<td> <input disabled type = "text" name = "ufLisGert" id = "ufLisGert"> </td>
+					<td> <input type = "text" name = "cidadeListGer" id = "cidadeListGer"> </td>
+					<td> <input type = "text" name = "ufLisGert" id = "ufLisGert"> </td>
 				</tr>
 
 				<tr class = "fakeRow"> </tr>
 
-				<tr>
-					<!--<td colspan = "12"> <input  id = "alteraLojaBtn" name = "alteraLojaBtn" type = "button" value = "Alterar loja"> </td>-->
-				</tr>
+				<!-- <tr>
+					<td colspan = "12"> <input  id = "alteraLojaBtn" name = "alteraLojaBtn" type = "button" value = "Alterar loja"> </td>
+				</tr> -->
 			</table>
 		</div>
 
@@ -195,7 +187,7 @@
 					<td> <label for = "estabReceitaRazaoSocial"> Razão Social: </label> </td>
 				</tr>
 				<tr>
-					<td> <input disabled type = "text" name = "estabReceitaRazaoSocial" id = "estabReceitaRazaoSocial"> </td>
+					<td> <input type = "text" name = "estabReceitaRazaoSocial" id = "estabReceitaRazaoSocial"> </td>
 				</tr>
 			</table>
 
@@ -204,7 +196,7 @@
 					<td> <label for = "estabReceitaNomeEmpresarial"> Nome Empresarial: </label> </td>
 				</tr>
 				<tr>
-					<td> <input disabled type = "text" name = "estabReceitaNomeEmpresarial" id = "estabReceitaNomeEmpresarial"> </td>
+					<td> <input type = "text" name = "estabReceitaNomeEmpresarial" id = "estabReceitaNomeEmpresarial"> </td>
 				</tr>
 			</table>
 
@@ -213,7 +205,7 @@
 					<td> <label for = "estabReceitaNF"> Nome Fantasia: </label> </td>
 				</tr>
 				<tr>
-					<td> <input disabled type = "text" name = "estabReceitaNF" id = "estabReceitaNF"> </td>
+					<td> <input type = "text" name = "estabReceitaNF" id = "estabReceitaNF"> </td>
 				</tr>
 			</table>
 
@@ -222,7 +214,7 @@
 					<td> <label for = "estabReceitaEndereco"> Endereço: </label> </td>
 				</tr>
 				<tr>
-					<td> <input disabled type = "text" name = "estabReceitaEndereco" id = "estabReceitaEndereco"> </td>
+					<td> <input type = "text" name = "estabReceitaEndereco" id = "estabReceitaEndereco"> </td>
 				</tr>
 			</table>
 
@@ -231,7 +223,7 @@
 					<td> <label for = "estabReceitaCEP"> CEP: </label> </td>
 				</tr>
 				<tr>
-					<td> <input disabled type = "text" name = "estabReceitaCEP" id = "estabReceitaCEP"> </td>
+					<td> <input type = "text" name = "estabReceitaCEP" id = "estabReceitaCEP"> </td>
 				</tr>
 			</table>
 
@@ -240,7 +232,7 @@
 					<td> <label for = "estabReceitaComplemento"> Complemento: </label> </td>
 				</tr>
 				<tr>
-					<td> <input disabled type = "text" name = "estabReceitaComplemento" id = "estabReceitaComplemento"> </td>
+					<td> <input type = "text" name = "estabReceitaComplemento" id = "estabReceitaComplemento"> </td>
 				</tr>
 			</table>
 
@@ -249,7 +241,7 @@
 					<td> <label for = "ruaList"> Rua: </label> </td>
 				</tr>
 				<tr>
-					<td> <input disabled type = "text" name = "ruaList" id = "ruaList"> </td>
+					<td> <input type = "text" name = "ruaList" id = "ruaList"> </td>
 				</tr>
 			</table>-->
 
@@ -259,8 +251,8 @@
 					<td> <label for = "estabReceitaNumero"> Nº: </label> </td>
 				</tr>
 				<tr>
-					<td> <input disabled type = "text" name = "estabReceitaBairro" id = "estabReceitaBairro"> </td>
-					<td> <input disabled type = "text" name = "estabReceitaNumero" id = "estabReceitaNumero"> </td>
+					<td> <input type = "text" name = "estabReceitaBairro" id = "estabReceitaBairro"> </td>
+					<td> <input type = "text" name = "estabReceitaNumero" id = "estabReceitaNumero"> </td>
 				</tr>
 			</table>
 
@@ -270,8 +262,8 @@
 					<td> <label for = "estabReceitaUF"> UF: </label> </td>
 				</tr>
 				<tr>
-					<td> <input disabled type = "text" name = "estabReceitaCidade" id = "estabReceitaCidade"> </td>
-					<td> <input disabled type = "text" name = "estabReceitaUF" id = "estabReceitaUF"> </td>
+					<td> <input type = "text" name = "estabReceitaCidade" id = "estabReceitaCidade"> </td>
+					<td> <input type = "text" name = "estabReceitaUF" id = "estabReceitaUF"> </td>
 				</tr>
 
 				<table>	
@@ -280,16 +272,16 @@
 						<td> <label for = "estabReceitaSituacaoData"> Situacao data: </label> </td>
 					</tr>
 					<tr>
-						<td> <input disabled type = "text" name = "estabReceitaSituacao" id = "estabReceitaSituacao"> </td>
-						<td> <input disabled type = "text" name = "estabReceitaSituacaoData" id = "estabReceitaSituacaoData"> </td>
+						<td> <input type = "text" name = "estabReceitaSituacao" id = "estabReceitaSituacao"> </td>
+						<td> <input type = "text" name = "estabReceitaSituacaoData" id = "estabReceitaSituacaoData"> </td>
 					</tr>
 				</table>
 
 				<tr class = "fakeRow"> </tr>
 
-				<tr>
-					<!--<td colspan = "12"> <input  id = "alteraLojaBtn" name = "alteraLojaBtn" type = "button" value = "Alterar loja"> </td>-->
-				</tr>
+				<!-- <tr>
+					<td colspan = "12"> <input  id = "alteraLojaBtn" name = "alteraLojaBtn" type = "button" value = "Alterar loja"> </td>
+				</tr> -->
 			</table>
 		</div>
 	</form>

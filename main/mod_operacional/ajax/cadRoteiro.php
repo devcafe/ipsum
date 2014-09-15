@@ -5,10 +5,13 @@
 	$idRoteiro = $_POST['idRoteiro'];	
 	$nomeRoteiro = $_POST['nomeRoteiro'];
 	$nomeAcao = $_POST['nomeAcao'];
-	$matricula = isset($_POST['matricula']) ? $_POST['matricula'] : 0;
+	//verifica se há valor
+	$matricula = isset($_POST['matricula']) ? $_POST['matricula'] : "0";
 	$lojasItens = $_POST['lojasItens'];
 	$dataCadastro = date('d/m/Y');
 	$idUsuarioCad = $_SESSION['idUsuario'];
+	//verifica se está vazio
+	$matricula = $matricula == "" ? "0" : $matricula ; 
 
 	if($nomeRoteiro != "" and $matricula != "" and $lojasItens != ""){
 
@@ -36,12 +39,13 @@
 					)'
 				);
 			$sqlInsert->execute(array($idRoteiro, $nomeRoteiro, $nomeAcao, $matricula, $dataCadastro, $idUsuarioCad, $loja['idLoja'], $loja['seg'], $loja['ter'], $loja['qua'], $loja['qui'], $loja['sex'], $loja['sab'], $loja['dom']));		
-		$msg = "Roteiro Cadastrado com sucesso";
+		$msg = "Roteiro cadastrado com sucesso";
 		}
 	}else {
-		$msg = "Ocorreu um erro no cadastro";
+		$msg = "Ocorreu um erro no cadastro, favor contatar o administrador";
 	}
 
+	//exibe a mensagem correta
 	echo $msg;
 
 ?>

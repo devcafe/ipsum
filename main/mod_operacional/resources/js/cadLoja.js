@@ -118,7 +118,7 @@ $(document).ready(function(){
 	//Cadastrar loja
 	$('#cadLojaBtn').on('click', function(){
 		//Dados do formulário
-		var dados = $('#formCadLoja').serialize();
+		var dados = $('#formCadLoja').serialize();		
 
 		$('#formCadLoja input').each( function() {
 			dados = dados + '&' + $(this).attr('name') + '=' + $(this).val();
@@ -138,7 +138,7 @@ $(document).ready(function(){
 				modal: true,
 				buttons: {
 					"Ok": function() {
-						$( this ).dialog( "close" );
+						$(this).dialog( "close" );
 
 						$('#numero').val('S/N');
 
