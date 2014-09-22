@@ -1,38 +1,43 @@
 <?php
 	include("../../../conf/conn.php");
+
+	$dados = $_POST['dados'];
+
+	parse_str($dados);	
 	
 	//Faz update do usuário
 	$sql = $pdo->prepare("
-		Update 
-			ipsum_usuarios
-		Set 
-			`nome` = ?
-			,`sobrenome` = ?
-			,`email` = ?
-			,`departamento` = ?
-			,`empresa` = ?
-			,`cnpj` = ?
-			,`usuario` = ?
-			,`senha` = ?
-			,`acessos` = ?
-		Where	
-			`id` = ?
+		UPDATE `ipsum`.`ipsum_usuarios` 
+			SET 
+				`usuario`=?,
+				`senha`=?,				
+				`nome`=?,
+				`sobrenome`=?,
+				`email`=?,
+				`departamento`=?,
+				`empresa`=?,
+				`cnpj`=?,
+				`acessos`=? 
+			WHERE 
+			`id`=?;
 	");
+	$sql->execute(array(
+		$usuarioMod,
+		sha1($senha),
+		$primeiroNomeMod,
+		$sobrenomeMod,
+		$emailMod,
+		$departamentoMod,
+		$empresaMod,
+		$cnpjMod,
+		$acessosMod,
+		$idMod)
+	);   
 
-	//Recebe dados e atribui valores em array
-	$i = 0;
-
-	foreach($_POST as $res){
-		$dados[$i] = $res;
-		$i++;
-	}
-	var_dump($dados);
-
-	$sql->execute(array($dados[1], $dados[2], $dados[3], $dados[4], $dados[5], $dados[6], $dados[7], sha1($dados[8]), $dados[9], $dados[0]));
-
+	
 	$msg = "Cadastro alterado com sucesso.";
 
-	//Fecha conexão
+	
 	$pdo = null;
 
 ?>

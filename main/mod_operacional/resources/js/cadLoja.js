@@ -26,6 +26,7 @@ $(document).ready(function(){
 	$('#bandeiraCadastrada').hide();
 	$('#bandeiraCadastradaSucesso').hide();
 	$('#bandeiraObrigatorio').hide();
+	$('#alterarLoja').hide();
 
 
 	$("#numero").keypress(verificaNumero);
@@ -117,6 +118,7 @@ $(document).ready(function(){
 
 	//Cadastrar loja
 	$('#cadLojaBtn').on('click', function(){
+		var idLojaEdicao = $('#idLojaEdicao').val();
 		//Dados do formulário
 		var dados = $('#formCadLoja').serialize();		
 
@@ -196,16 +198,15 @@ $(document).ready(function(){
 
 					
 		function cadastraLoja(){
+
 			//Envia formulário
 			$.ajax({
 				type: 'POST',
 				url: 'mod_operacional/ajax/cadLoja.php',
-				data: {
+				data: {					
 					dados: dados
 				},
 				success: function (data){
-					//console.log(data);
-
 					if(data == 1){
 						$( "#cnpjObrigatorio" ).dialog({
 							resizable: false,
@@ -333,6 +334,24 @@ $(document).ready(function(){
 								},
 							}
 						});
+					}else if(data == 12){
+						$( "#alterarLoja" ).dialog({
+							resizable: false,
+							height:180,
+							width:500,
+							modal: true,
+							buttons: {
+								"Ok": function() {
+									$( this ).dialog( "close" );
+									$('#formCadLoja')[0].reset();
+									$('#idLojaEdicao').val('');
+									$('#idBandeiraHidden').val('');
+									$('#legendMenu').empty().append('Cadastrar Loja');
+									$('#cadLojaBtn').val('Cadastrar Loja');
+									$('#cnpj').removeAttr('disabled');
+								},
+							}
+						});
 					}else{
 						$( "#lojaSucesso" ).dialog({
 							resizable: false,
@@ -343,6 +362,8 @@ $(document).ready(function(){
 								"Ok": function() {
 									$( this ).dialog( "close" );
 									$('#formCadLoja')[0].reset();
+									
+									
 								},
 							}
 						});
@@ -588,12 +609,16 @@ $(document).ready(function(){
 
 	//Gera nome da loja a partir da bandeira bairro e cidade
 	$('#numero').focusout(function(){
+
 		// pega os valores dos campos
 		var aBandeira = $('#bandeira').val();
 		var aBairro = $('#bairro').val();
 		var aCidade = $('#cidade').val();
+
 		// apenda os valor no campo da loja
 		$('#nome').val(aBandeira + ' ' + aBairro + ' ' + aCidade);
 	})
 
+
+	
 })

@@ -7,7 +7,7 @@
 	$sql = $pdo->prepare("Select * From ipsum_usuarios");
 	$sql->execute();
 	$lista = '';
-	$lista .= '<table>';
+	$lista .= '<table id = "tableUsers">';
 		$lista .= '<tr>';
 			$lista .= '<td> Nome </td>';
 			$lista .= '<td> Usuário</td>';
@@ -20,24 +20,14 @@
 		$i = 0;
 
 	while($usuarios = $sql->fetch(PDO::FETCH_OBJ)){
-		if($i % 2 == 0){
+		
 			$lista .= '<tr class = "par" id = '. $usuarios->id .'>';
 				$lista .= '<td>'. $usuarios->nome . ' '. $usuarios->sobrenome .'</td>';
 				$lista .= '<td>'. $usuarios->usuario .'</td>';
 				$lista .= '<td>'. $usuarios->departamento .'</td>';
 				$lista .= '<td>'. $usuarios->email .'</td>';
 				$lista .= '<td>'. $usuarios->empresa .'</td>';
-				$lista .= '<td>'. $usuarios->dataCadastro .'</td>';
-		} else {
-			$lista .= '<tr class = "impar" id = '. $usuarios->id .'>';
-				$lista .= '<td>'. $usuarios->nome . ' '. $usuarios->sobrenome .'</td>';
-				$lista .= '<td>'. $usuarios->usuario .'</td>';
-				$lista .= '<td>'. $usuarios->departamento .'</td>';
-				$lista .= '<td>'. $usuarios->email .'</td>';
-				$lista .= '<td>'. $usuarios->empresa .'</td>';
-				$lista .= '<td>'. $usuarios->dataCadastro .'</td>';
-		}
-		$i++;
+				$lista .= '<td>'. $usuarios->dataCadastro .'</td>';		
 	}
 
 	$lista .= '</table>';
