@@ -1,4 +1,7 @@
-<?php require("../../conf/conn.php"); ?>
+<?php 
+	require("../../conf/conn.php"); 
+	require("../../actions/security.php"); 
+?>
 
 <!-- Javascript -->
 <script src="mod_operacional/resources/js/gerRoteiro.js"></script>
@@ -26,6 +29,8 @@
 		</div>	
 </div>
 
+<input type = "hidden" name = "idLoggedUser" name = "idLoggedUser" value = "<?php echo $_SESSION['idUsuario']; ?>">
+
 <!-- Modals -->
 
 <div id ="criarRoteiroModal" class = "criarRoteiroModal" title = "Criar roteiros">
@@ -43,13 +48,20 @@
 					</div>				
 				</td>
 			</tr>	
+
+			<tr class = "fakeRow"> </tr>
+
 			<tr> 
 				<td><label for = "nomeColaborador">Colaborador: </label></td>
-				<td><a href = "#" id = "selectColaBtn"> <img src = "../main/resources/images/addUser.png" width = "20" disabled></td>
 			</tr>	
+
 			<tr>
-				<td id = 'nomeColaborador'>Selecione um colaborador...</td>				
-			</tr>		
+				<td id = 'nomeColaborador'>Selecione um colaborador...</td>	
+				<td><a href = "#" id = "selectColaBtn"> <img src = "../main/resources/images/addUser.png" width = "20" disabled></td>			
+			</tr>	
+			
+			<tr class = "fakeRow"> </tr>
+
 			<tr>
 				<td><label for = "lojasRoteiro"> Lojas do roteiro: </label> </td>
 				<td><a href = "#" id = "selectLojasBtn">  <img src = "../main/resources/images/operacional/addStores.png" width = "20" >  </a></td>

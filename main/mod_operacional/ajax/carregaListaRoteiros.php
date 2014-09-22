@@ -1,7 +1,31 @@
 <?php
 	include("../../../conf/conn.php");
 
-	$sqlRoteiros = $pdo->prepare('select a.idColaborador, a.idRoteiro, a.nomeRoteiro, b.nome, b.sobrenome, c.nomeAcao from ipsum_operacionalroteiros a inner join ipsum_usuarios b on idUsuarioCad = id inner join ipsum_operacionalacao c on a.idAcao = c.idAcao  group by idRoteiro');
+	$usersAcao = $_POST['idLoggedUser'];
+
+	//Pega todas as ações
+	$acoes = $pdo->prepare("Select idAcao From ipsum_operacionalacao Where users like :usersAcao");
+	$acoes->execute(array(":usersAcao" => "%". $usersAcao . "%"));
+
+	$acoesIn = '';
+
+	while($resAcoes = $acoes->fetch(PDO::FETCH_OBJ)){
+		$acoesIn .= $resAcoes->idAcao . ',';
+	}
+
+	$acoesIn = substr($acoesIn, 0, -1);
+
+	$sqlRoteiros = $pdo->prepare('
+		select 
+			a.idColaborador, a.idRoteiro, a.nomeRoteiro, b.nome, b.sobrenome, c.nomeAcao 
+		from 
+			ipsum_operacionalroteiros a 
+			inner join ipsum_usuarios b on idUsuarioCad = id 
+			inner join ipsum_operacionalacao c on a.idAcao = c.idAcao 
+		where
+			a.idAcao in ('.$acoesIn.')	
+		group by 
+			idRoteiro');
 
 	$sqlRoteiros->execute();
 
