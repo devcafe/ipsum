@@ -8,16 +8,9 @@
 	background:#CCC !important;
 }
 
-.par{
-	background: #E8E8E8;
-}
 
-.impar{
-	background: #FFF;
-}
-
-table tr:not(:first-child):hover{
-	background:#CCC;
+#tableUsers tr:not(:first-child):hover{
+	background:#CCC !important;
 }
 
 .painel{
@@ -30,9 +23,29 @@ table tr:not(:first-child):hover{
 	overflow-x: hidden;
 }
 
-#alterarItemModal form label, #alterarItemModal form input, #alterarItemModal form select, #alterarItemModal form textarea	{
-	width:25%;
-	margin-top:10px !important;
-	float:left;
-	margin:0;
+
+#tableUsers tr:nth-child(2n+1) {
+	background:  #e8e8e8 !important; 
+}
+
+#tableUsers tr:not(:first-child):hover{
+	cursor:pointer;
+}
+
+
+#tableUsers tr:first-child{
+	background: #ADC4DC !important;
+	color: #000;
+	font-weight: bold;
+	font-size:12px;
+	line-height: 20px;
+}
+
+#tableformModalEdition {
+	width: 85%
+
+}
+
+#formModelAlterarUsuario > input{
+	width: 100%
 }

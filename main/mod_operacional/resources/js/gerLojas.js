@@ -498,8 +498,7 @@ $(document).ready(function(){
 	})
 
 	
-	// limpar formulário
-
+	//Limpar formulário
 	$('#limparFiltro').on('click', function(){
 		$('.filtro .toReset').each(function(){
 			$(this).val('');
@@ -508,21 +507,84 @@ $(document).ready(function(){
 		carregaLojas();	
 	})
 
-	// alterar lojas
-
+	//Alterar lojas
 	$('#btnAlterarLoja').on('click', function(){
-		//pega o id d aloja sleecionada
+		//Pega o id d aloja sleecionada
 		var idLoja = $('#idListGer').val();
-		// altera  a url
 		
-		//grava em uma variavel o selector da div
+		//Grava em uma variavel o selector da div
 		var conteudo = $('#conteudoInner');
-		//limpa a a div conteudo
+
+		//Limpa a a div conteudo
 		conteudo.empty();
-		//carrega a pagina cadloja do operacional
-		conteudo.load( "mod_operacional/cadLoja.php")
+	
+		$('#lojasModalGer').dialog("destroy");
+
 		
-		$('#mainWrapper').append("<input name = 'idLojaEdicao' id = 'idLojaEdicao' type = 'hidden' value='"+ idLoja +"'");
+		
+
+		$.ajax({
+			type:'POST',
+			url:'mod_operacional/cadLoja.php',
+			data: {
+
+			},
+			success: function (data){
+				$(conteudo).append(data);
+				$('#idLojaEdicao').val(idLoja);
+
+				$.ajax({
+					type:'POST',
+					url:'mod_operacional/ajax/carregaDadosLoja.php',
+					data: {
+						idLoja: idLoja,
+					},
+					success: function (data){
+						//console.log(data);
+						var json = $.parseJSON(data);
+						$('#legendMenu').empty().append('Alterar Loja');
+						$('#cadLojaBtn').val('Alterar loja');
+
+						//Bloqueia input para fazer alterações
+						$('#cnpj').attr('disabled', 'disabled');
+
+						// popula os campos
+						$('#cnpj').val(json.cnpj);
+						$('#bandeira').val(json.bandeira);
+						$('#idBandeiraHidden').val(json.idBandeira);
+						$('#cep').val(json.cep);
+						$('#bairro').val(json.bairro);
+						$('#rua').val(json.rua);
+						$('#numero').val(json.numero);
+						$('#complemento').val(json.complemento);
+						$('#cidade').val(json.cidade);
+						$('#uf').val(json.uf);
+						$('#nome').val(json.nome);
+						$('input[name=estabReceitaRazaoSocial]').val(json.estabReceitaRazaoSocial);
+						$('input[name=estabReceitaNomeEmpresarial]').val(json.estabReceitaNomeEmpresarial);
+						$('input[name=estabReceitaNF]').val(json.estabReceitaNF);
+						$('input[name=estabReceitaCEP]').val(json.estabReceitaCEP);
+						$('input[name=estabReceitaBairro]').val(json.estabReceitaBairro);
+						$('input[name=estabReceitaEndereco]').val(json.estabReceitaEndereco);
+						$('input[name=estabReceitaNumero]').val(json.estabReceitaNumero);
+						$('input[name=estabReceitaComplemento]').val(json.estabReceitaComplemento);
+						$('input[name=estabReceitaCidade]').val(json.estabReceitaCidade);
+						$('input[name=estabReceitaUF]').val(json.estabReceitaUF);
+						$('input[name=estabTel01]').val(json.estabTel01);
+						$('input[name=estabTel02]').val(json.estabTel02);
+						$('input[name=estabReceitaAberturaData]').val(json.estabReceitaAberturaData.substr(0,10));
+						$('select[name=estabReceitaSituacao]').val(json.estabReceitaSituacao);
+						$('input[name=estabReceitaSituacaoData]').val(json.estabReceitaSituacaoData.substr(0,10));
+						$('input[name=dataFechamento]').val(json.dataFechamento.substr(0,10));
+
+												
+					}
+				})
+
+			}
+
+		})
+
 
 
 

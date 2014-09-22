@@ -3,7 +3,8 @@ $(document).ready(function(){
 
 /****************** Escopo global ******************/
 
-
+$('#alterarItemModal').hide();
+carregaUsuarios();
 
 /****************** Escopo global ******************/
 
@@ -21,8 +22,6 @@ $(document).ready(function(){
 			}
 		})
 	}
-
-	carregaUsuarios();
 	
 
 	//Marca campos como selecionados ao clicar em uma linha
@@ -82,15 +81,15 @@ $(document).ready(function(){
 		var id = $(this).attr('id');
 
 		//Campos que receberão dados
-		var primeiroNome = $('#primeiroNome');
-		var sobrenome = $('#sobrenome');
-		var email = $('#email');
-		var departamento = $('#departamento');
-		var empresa = $('#empresa');
-		var cnpj = $('#cnpj');
-		var usuario = $('#usuario');
-		var senha = $('#senha');
-		var acessos = $('#acessos');		
+		var primeiroNomeMod = $('#primeiroNomeMod');
+		var sobrenomeMod = $('#sobrenomeMod');
+		var emailMod = $('#emailMod');
+		var departamentoMod = $('#departamentoMod');
+		var empresaMod = $('#empresaMod');
+		var cnpjMod = $('#cnpjMod');
+		var usuarioMod = $('#usuarioMod');
+		var senhaMod = $('#senhaMod');
+		var acessosMod = $('#acessosMod');		
 
 		//Carrega dados da linha para edição
 		$.ajax({
@@ -99,21 +98,34 @@ $(document).ready(function(){
 			data: {
 				id: id
 			},
-			success: function(data){
-				var json = $.parseJSON(data);
-				
+			success: function(data){				
+				var json = $.parseJSON(data);					
 				//Popula campos
-				$('#id').val(id);
+				$('#idMod').val(id);
+				primeiroNomeMod.val(json.nome);
+				sobrenomeMod.val(json.sobrenome);
+				emailMod.val(json.email);
+				departamentoMod.val(json.departamento);
+				empresaMod.val(json.empresa);
+				cnpjMod.val(json.cnpj);
+				usuarioMod.val(json.usuario);
+				//acessosMod.val(json.acessos);
+				var acessos = json.acessos; 
 
-				primeiroNome.val(json.nome);
-				sobrenome.val(json.sobrenome);
-				email.val(json.email);
-				departamento.val(json.departamento);
-				empresa.val(json.empresa);
-				cnpj.val(json.cnpj);
-				usuario.val(json.usuario);
-				//senha.val(json.senha);
-				acessos.val(json.acessos);				
+				//tratar acessos
+
+				$.ajax({
+					type:'POST',
+					data: {
+						acessos : acessos,
+					},
+					url: 'mod_gerencial/ajax/tratarAcessos.php',
+					success: function (data){
+						console.log(acessos);
+
+						$('#teste').empty().append(data);
+					}
+				})				
 				
 			}
 		});
@@ -129,42 +141,26 @@ $(document).ready(function(){
 	});
 
 	$('#gravar').on('click', function(){
-
-		//pega os valores
-		var id 				= $('#id').val();
-		var nome 			= $('#primeiroNome').val();
-		var sobrenome		= $('#sobrenome').val();
-		var email 			= $('#email').val();
-		var departamento 	= $('#departamento').val;
-		var empresa 		= $('#empresa').val();
-		var cnpj 			= $('#cnpj').val();
-		var usuario 		= $('#usuario').val();
-		var senha 			= $('#senha').val();
-		var acessos 		= $('#acessos').val();
+		var dados = $('#formModelAlterarUsuario').serialize();
+		$('#formModelAlterarUsuario input').each( function() {
+			dados = dados + '&' + $(this).attr('name') + '=' + $(this).val();
+		});
 
 		$.ajax({
 			type: 'POST',
 			url: 'mod_gerencial/ajax/alteraUsuario.php',
 			data:{
-				id: id,
-				nome: nome,
-				sobrenome: sobrenome,
-				email: email,
-				departamento: departamento,
-				empresa: empresa,
-				cnpj: cnpj,
-				usuario: usuario,
-				senha: senha,
-				acessos: acessos
-
+				dados: dados,
 			},
 			success: function(data){
 				//recarrega lista para atualizar dados
 				carregaUsuarios();
 				//fecha o dialogo
+				console.log(data);
 
-				$('#alterarItemModal').dialog('destroy');
-				alert("Alterações feitas com sucesso");
+
+				// $('#alterarItemModal').dialog('destroy');
+				// alert("Alterações feitas com sucesso");
 			}
 		})
 

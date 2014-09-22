@@ -1,6 +1,6 @@
 <?php 
 	require("../../conf/conn.php"); 
-	include("../../actions/security.php"); 
+	include("../../actions/security.php");
 ?>
 
 <!-- Javascript -->
@@ -11,7 +11,8 @@
 
 <div class = "formInner">
 	<form method = "post" id = "formCadLoja">
-		<legend> Cadastrar Loja </legend>
+		<div><input name = "idLojaEdicao"type = "hidden" id = "idLojaEdicao" value="null"></div>
+		<legend id = "legendMenu"> Cadastrar Loja </legend>
 		<table>
 			<tr>
 				<td> Campos marcados com <span class = "obgField"> * </span> são obrigatórios </td>
@@ -26,7 +27,7 @@
 		
 		<table>	
 			<tr>
-				<td> <label for = "cnpj">CNPJ:  <span class = "obgField"> *</span></label> </td>
+				<td> <label for = "cnpj">CNPJ:  <span class = "obgField"> * </span></label> </td>
 			</tr>
 			<tr>
 				<td> <input  type = "text" name = "cnpj" id = "cnpj" title = "Informe o CNPJ da loja"><div id ="status" class="invalido">  </div> <div id ="status2"> </div></td>
@@ -171,8 +172,8 @@
 					<td> <label for = "estabTel02"> Telefone 02: </label> </td>
 				</tr>
 				<tr>
-					<td class = "tel01TD"> <input  type = "text" name = "estabTel01" id = "estabTel01"> </td>
-					<td> <input  type = "text" name = "estabTel02" id = "estabTel02"> </td>
+					<td class = "tel01TD"> <input  type = "text" name = "estabTel01" id = "estabTel01" maxlength = "14"> </td>
+					<td> <input  type = "text" name = "estabTel02" id = "estabTel02" maxlength = "14"> </td>
 				</tr>
 
 				<tr class = "fakeRow"> </tr>
@@ -320,3 +321,9 @@
 <div id="bandeiraCadastradaSucesso" title="Bandeira">
   <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Bandeira cadastrada com sucesso</p>
 </div>
+
+<!-- Loja Alterada com sucesso -->
+<div id="alterarLoja" title="Alterar Loja">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Loja Alterada com sucesso</p>
+</div>
+

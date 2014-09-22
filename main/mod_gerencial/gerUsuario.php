@@ -30,38 +30,64 @@
 	
 </div>
 
+<!-- Modal  -->
 <div id = "alterarItemModal" title = "Alterar Usuario">
-	<form method = "post">
-		<input type = "hidden" id = "id">
+	<form method = "post" id = "formModelAlterarUsuario">
+		<input type = "hidden" id = "idMod" name = "idMod">
 
-		<label for = "primeiroNome"> Primeiro Nome: </label>
-		<input type = "text" name = "primeiroNome" id = "primeiroNome">
+		<table id = "tableformModalEdition">
+
+		<tr>
+			<td><label for = "primeiroNomeMod"> Primeiro Nome: </label> </td>
+			<td><label for = "sobrenomeMod"> Sobrenome: </label> </td>
+		</tr>		
+		<tr>			
+			<td><input type = "text" name = "primeiroNomeMod" id = "primeiroNomeMod"> </td>
+			<td><input type = "text" name = "sobrenomeMod" id = "sobrenomeMod"> </td>
+		</tr>
+
+		<tr>			
+			<td><label for = "departamentoMod"> Departamento: </label> </td>
+			<td><label for = "emailMod"> Email: </label> </td>
+		</tr>
+		<tr>			
+			<td><input type = "text" name = "departamentoMod" id = "departamentoMod"> </td>
+			<td><input type = "text" name = "emailMod" id = "emailMod"> </td>
+		</tr>
+
+		<tr>
+			<td><label for = "empresaMod"> Empresa: </label> </td>
+			<td><label for = "cnpjMod"> CNPJ: </label> </td>
+		</tr>
+		<tr>
+			<td><input type = "text" name = "empresaMod" id = "empresaMod"> </td>			
+			<td><input type = "text" name = "cnpjMod" id = "cnpjMod"> </td>
+		</tr>
+
+		<tr>
+			<td><label for = "usuarioMod"> Usuario: </label> </td>
+			<td><label for = "senhaMod"> Senha: </label> </td>
+		</tr>
+		<tr>
+			<td><input type = "text" name = "usuarioMod" id = "usuarioMod"> </td>			
+			<td><input type = "password" name = "senha" id = "senha"> </td>
+		</tr>
+	</table>
+	<div id = 'teste'>
+<!-- 
 		
-		<label for = "sobrenome"> Sobrenome: </label>
-		<input type = "text" name = "sobrenome" id = "sobrenome">
-
-		<label for = "email"> Email: </label>
-		<input type = "text" name = "email" id = "email">
-
-		<label for = "departamento"> Departamento </label>
-		<input type = "text" name = "departamento" id = "departamento">
-
-		<label for = "empresa"> Empresa: </label>
-		<input type = "text" name = "empresa" id = "empresa">
-
-		<label for = "cnpj"> CNPJ: </label>
-		<input type = "text" name = "cnpj" id = "cnpj">
-
-		<label for = "usuario"> Usuario: </label>
-		<input type = "text" name = "usuario" id = "usuario">
-
-		<label for = "senha"> Senha: </label>
-		<input type = "password" name = "senha" id = "senha">
-
-		<label for = "acessos"> Acessos: </label>
-		<input type = "text" name = "acessos" id = "acessos">
-
-		<input type = "button" name = "gravar" value = "Gravar" id = "gravar">		
+		<label for = "acessosMod"> Acessos: </label> </td>
 		
+		
+		<input type = "text" name = "acessosMod" id = "acessosMod"> </td>
+		
+
+		<table>
+			<td><input type = "button" name = "gravar" value = "Gravar" id = "gravar"> </td>		
+		</table>
+				<div id = "teste"> -->
+
+					
+		</div>
 	</form>
 </div>
