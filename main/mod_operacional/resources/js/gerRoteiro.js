@@ -17,6 +17,8 @@ $(document).ready(function() {
 	/*************************************/
 	// carrega o modal criar roteiros
 	$('#criarRoteiroBtn').on('click',function(){
+		$('#cadastrarRoteiro').val('Cadastrar roteiro');
+
 		//limpa os cmapos
 		$('#criarRoteiro')[0].reset();
 		//add o valor null ao campo hidden editar loja para sinalizar que um novo registro vide ajax/cadRoteiro.php 
@@ -331,6 +333,8 @@ $(document).ready(function() {
 		var nomeColaborador = $('#nomeColaborador');
 		var lojasForm = $('.addDataLoja');
 		$('#idRoteiroEdicao').val(idRoteiro);
+
+		$('#cadastrarRoteiro').val('Alterar roteiro');
 
 		$.ajax({
 			type:'POST',
