@@ -31,7 +31,7 @@
 		<table>
 			<tr>
 				<td> <label for = "nomeAcao"> Ação: </td>
-				<td> <input type = "text" name = "nomeAcao" id = "nomeAcao"> </td>
+				<td> <input type = "text" name = "nomeAcao" id = "nomeAcaoCad"> </td>
 			</tr>
 
 			<tr class = "fakeRow"> </tr>

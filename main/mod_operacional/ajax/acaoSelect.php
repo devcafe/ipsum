@@ -6,7 +6,7 @@
 
 	//Pega todas as ações
 	//$acoes = $pdo->prepare("Select idAcao From ipsum_operacionalacao Where users like :usersAcao");
-	$acoes = $pdo->prepare("Select idAcao From ipsum_operacionalacao Where users In (".$usersAcao.")");
+	$acoes = $pdo->prepare("Select idAcao From ipsum_operacionalacao Where FIND_IN_SET(".$usersAcao.",users)");
 	$acoes->execute();
 	
 	$acoesIn = '';

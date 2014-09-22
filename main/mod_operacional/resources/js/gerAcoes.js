@@ -16,7 +16,7 @@ $(document).ready(function() {
 	//Cadastrar ação
 	$('.addAcao').on('click', function(){
 		//Limpa dados ao abrir modal
-		$('#nomeAcao').val('');
+		$('#nomeAcaoCad').val('');
 		$('#listaColaboradoresAcao').empty();
 		$('.listaColaboradoresAcaoToSave').empty();
 
@@ -120,7 +120,7 @@ $(document).ready(function() {
 	//Grava ação no banco
 	$('#cadastraAcao').on('click', function(){
 
-		var nomeAcao = $('#nomeAcao').val();
+		var nomeAcao = $('#nomeAcaoCad').val();
 
 		var itens = '';
 

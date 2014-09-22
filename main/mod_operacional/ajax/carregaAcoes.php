@@ -2,7 +2,7 @@
 	include("../../../conf/conn.php");
 
 	//Total de registros por pagina
-	$total_reg = "8";	
+	$total_reg = "10";	
 
 	//Página atual
 	$pc = $_POST['pag'];
@@ -21,7 +21,7 @@
 	$tr = $todos->rowCount();
 	$tp = $tr / $total_reg;
 
-	$lastPage = round($tp);
+	$lastPage = ceil($tp);
 
 	$anterior = $pc -1; 
 	$proximo = $pc +1;
