@@ -5,8 +5,9 @@
 	$usersAcao = $_POST['idLoggedUser'];
 
 	//Pega todas as ações
-	$acoes = $pdo->prepare("Select idAcao From ipsum_operacionalacao Where users like :usersAcao");
-	$acoes->execute(array(":usersAcao" => "%". $usersAcao . "%"));
+	//$acoes = $pdo->prepare("Select idAcao From ipsum_operacionalacao Where users like :usersAcao");
+	$acoes = $pdo->prepare("Select idAcao From ipsum_operacionalacao Where users In (".$usersAcao.")");
+	$acoes->execute();
 	
 	$acoesIn = '';
 
