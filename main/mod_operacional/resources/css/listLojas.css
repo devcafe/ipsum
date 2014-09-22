@@ -78,6 +78,7 @@
 
 .formInner{
 	margin-bottom: 50px;
+	width: auto !important;
 }
 
 table tr:not(:first-child):hover{

@@ -11,11 +11,14 @@ $(document).ready(function() {
 	$('#editarRoteiroModal').hide();
 	carregaListaRoteiros();
 	carregaAcaoSelect();
+
 	/*************************************/
 	/* Funções
 	/*************************************/
 	// carrega o modal criar roteiros
 	$('#criarRoteiroBtn').on('click',function(){
+		$('#cadastrarRoteiro').val('Cadastrar roteiro');
+
 		//limpa os cmapos
 		$('#criarRoteiro')[0].reset();
 		//add o valor null ao campo hidden editar loja para sinalizar que um novo registro vide ajax/cadRoteiro.php 
@@ -31,7 +34,8 @@ $(document).ready(function() {
 			}
 		})
 	})
-// carrega o modal adicionar colaborador
+	
+	// carrega o modal adicionar colaborador
 	$('#selectColaBtn').on('click', function(){
 		$('#colaboradorModal').dialog({
 			width:600,
@@ -41,6 +45,7 @@ $(document).ready(function() {
 			}
 		})
 	})
+
 	// Faz consulta de colaborador
 	$('#consultarColaborador').on('click', function(){
 		var toSearch = $('#toSearch').val();
@@ -62,6 +67,7 @@ $(document).ready(function() {
 			}
 		})
 	})
+
 	// appenda colaborador na lista de colaboradores
 	$('.listaColaboradores').on('click', '#addToList', function(event){
 		event.preventDefault();
@@ -130,6 +136,7 @@ $(document).ready(function() {
 	// 		alert("Favor selecionar um item");
 	// 	}	
 	// })
+	
 	// Colocar mascara na pesquisa por loja
 	var countLoja = 0;
 	// evento na troca de opção do radios ele executa...
@@ -145,7 +152,7 @@ $(document).ready(function() {
 	  		countLoja--;
 	  	}    
 
-	    });
+    });
 	
 	// adiciona a loja a lista
 	$('#lojasModal').on('click', '.carregaListaLojas  tr:not(:first-child)', function(){
@@ -230,8 +237,8 @@ $(document).ready(function() {
 			})
 		}
 	})
+	
 	//carrega lista lojas para edição
-
 	function geraListaLojasEdicao(idRoteiro){		
 
 		$.ajax({
@@ -250,15 +257,16 @@ $(document).ready(function() {
 		})
 	}	
 	
-
 	//carrega lista roteiro
 	function carregaListaRoteiros(){
 		var pag =  $('#pagina').val();
+		var idLoggedUser = $('input[name=idLoggedUser]').val();
 
 		$.ajax({
 			type:'POST',
 			data: {
-				pag: pag
+				pag: pag,
+				idLoggedUser: idLoggedUser
 			},
 			url: 'mod_operacional/ajax/carregaListaRoteiros.php',
 			success:function(data){
@@ -272,10 +280,13 @@ $(document).ready(function() {
 
 	// carrega select com ações
 	function carregaAcaoSelect(idAcaoSelect){
+		var idLoggedUser = $('input[name=idLoggedUser]').val();
+
 		$.ajax({
 			type:'POST',
 			data: {
-				idAcaoSelect:idAcaoSelect
+				idAcaoSelect:idAcaoSelect,
+				idLoggedUser: idLoggedUser
 			},
 			url:'mod_operacional/ajax/acaoSelect.php',
 			success:function(data){
@@ -323,6 +334,8 @@ $(document).ready(function() {
 		var lojasForm = $('.addDataLoja');
 		$('#idRoteiroEdicao').val(idRoteiro);
 
+		$('#cadastrarRoteiro').val('Alterar roteiro');
+
 		$.ajax({
 			type:'POST',
 			data:{
@@ -352,7 +365,7 @@ $(document).ready(function() {
 	})
 	// apaga loja selecionada
 	$('#lojasForm').on('dblclick', 'tr:not(:first-child)', function(){
-		var confirmR = confirm("você realmente deseja excluir essa loja?");
+		var confirmR = confirm("Você realmente deseja excluir essa loja?");
 		if(confirmR == true){
 			$(this).remove();
 		}

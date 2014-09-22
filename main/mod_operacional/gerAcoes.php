@@ -63,7 +63,11 @@
 				<td> <b> Colaboradores na ação: </b></td>
 			</tr>
 
-			<tr class = "rowLine"><td colspan = "10"> </td> </tr>			
+			<tr class = "rowLine"><td colspan = "10"> </td> </tr>	
+
+			<tr class = "listaColaboradoresAcaoToSave"> 
+
+			</tr>		
 		</table>
 
 		<table>

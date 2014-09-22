@@ -3,5 +3,4 @@
 
 	$protheus = new PDO("sqlsrv:Server=192.168.0.88\MSSQLSERVER,1433;Database=DADOSP11", "sa", "c@f3@admin#");
 
-
 ?>

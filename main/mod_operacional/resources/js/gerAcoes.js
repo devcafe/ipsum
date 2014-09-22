@@ -15,6 +15,11 @@ $(document).ready(function() {
 	/*************************************/
 	//Cadastrar ação
 	$('.addAcao').on('click', function(){
+		//Limpa dados ao abrir modal
+		$('#nomeAcao').val('');
+		$('#listaColaboradoresAcao').empty();
+		$('.listaColaboradoresAcaoToSave').empty();
+
 		//Abre modal com lojas
 		$( "#addAcaoModal" ).dialog({
 			width: 600,
@@ -71,13 +76,13 @@ $(document).ready(function() {
 		var id = $(this).attr('id');
 		var nome = $(this).html();
 
-		if($('.colaboradoresToSave tr.'+id).length){
+		if($('.listaColaboradoresAcaoToSave tr.'+id).length){
 			alert("Este usuário já foi adicionado");
 		} else {
 			$(this).remove();
 
-			$('.colaboradoresToSave').append('<tr class = '+id+'> <td>'+ nome +'</td> </tr>');
-			$('.colaboradoresToSave').append('<tr> <td> <input type = "hidden" name = "userId" value = '+ id +'> </td> </tr>');
+			$('.listaColaboradoresAcaoToSave').append('<tr class = '+id+'> <td>'+ nome +'</td> </tr>');
+			$('.listaColaboradoresAcaoToSave').append('<tr> <td> <input type = "hidden" name = "userId" value = '+ id +'> </td> </tr>');
 		}
 
 	})
@@ -100,7 +105,7 @@ $(document).ready(function() {
 	})
 
 	//Remove colaboradores da lista para não adicionar
-	$('.colaboradoresToSave').on('click', 'tr', function(){
+	$('.listaColaboradoresAcaoToSave').on('click', 'tr', function(){
 		$(this).remove();
 	});
 
@@ -114,6 +119,7 @@ $(document).ready(function() {
 
 	//Grava ação no banco
 	$('#cadastraAcao').on('click', function(){
+
 		var nomeAcao = $('#nomeAcao').val();
 
 		var itens = '';

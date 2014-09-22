@@ -56,7 +56,7 @@
 						</tbody>
 					</table>-->
 					
-					<table class = "procedimentos">
+					<!--<table class = "procedimentos">
 						<legend class = "procedimentos"> Biblioteca </legend>					
 
 						<?php
@@ -105,7 +105,7 @@
 
 				            echo $lista;
 						?>
-					</table>				
+					</table>-->				
 			</div>
 
 			<?php include ("includes/footer.php"); ?>
