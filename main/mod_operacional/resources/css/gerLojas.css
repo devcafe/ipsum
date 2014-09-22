@@ -142,16 +142,12 @@ table tr:not(:first-child):hover{
 	width: 100%;
 	margin-top:15px;
 	margin-bottom: 25px;
-	text-align: center;
-}
-
-.filtro01{
-	margin-left:-98px; 
+	/*text-align: center;*/
 }
 
 .filtro02{
 	margin-top:5px;
-	margin-left: -160px;
+	/*margin-left: -86px;*/
 }
 
 .blue{

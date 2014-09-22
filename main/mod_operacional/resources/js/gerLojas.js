@@ -13,7 +13,7 @@ $(document).ready(function(){
 
 	//Mascara campos
 	$("#cnpj").mask("99.999.999/9999-99");
-	$("#cep").mask("99999-999");
+	//$("#cep").mask("99999-999");
 
 	//Lista lojas	
 	
