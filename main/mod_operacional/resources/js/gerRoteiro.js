@@ -9,6 +9,7 @@ $(document).ready(function() {
 	$('#colaboradorModal').hide();
 	$('#lojasModal').hide();
 	$('#editarRoteiroModal').hide();
+	$('#printRoteiroModal').hide();
 	carregaListaRoteiros();
 	carregaAcaoSelect();
 
@@ -117,25 +118,8 @@ $(document).ready(function() {
 			}
 		})
 	})
-	// //Link para gerar carta de apresentação
-	// $('a[name=geraCartaApresentacao]').on('click', function(){		
-	// 	//Variavel com o id da loja
-	// 	var idLoja = 2;		
-	// 	//Variavel com a matricula do funcionario
-	// 	var matColaborador = 085761;
-	// 	//Modelo da carta
-	// 	var modeloCarta = '01drogariaSP';
-	// 	//Caso esteja selecionada, monta o link com o id correspondente
-	// 	if(idLoja != '' && matColaborador != ''){
-	// 		//Gera o link passando como parâmetro o id da linha
-	// 		var href = "mod_operacional/cartasApresentacao/"+ modeloCarta +"/" + modeloCarta +".php?idLoja="+ idLoja + "&mat="+matColaborador;
-	// 		//Coloca o link no elemento
-	// 		$(this).attr('href', href);
-	// 	} else {
-	// 		//Caso não seja selecionado nenhum item ao clicar no botão
-	// 		alert("Favor selecionar um item");
-	// 	}	
-	// })
+	
+	
 	
 	// Colocar mascara na pesquisa por loja
 	var countLoja = 0;
@@ -203,7 +187,8 @@ $(document).ready(function() {
 					qui: $(this).find('.qui').val(),
 					sex: $(this).find('.sex').val(),
 					sab: $(this).find('.sab').val(),
-					dom: $(this).find('.dom').val(),		
+					dom: $(this).find('.dom').val(),
+					idCarta: $(this).find('#idCarta').val()
 				}
 				i++;			
 			})
@@ -424,5 +409,138 @@ $(document).ready(function() {
 		$('#nomeColaborador').removeClass().empty().append('Selecione um colaborador...');
 	})
 
+
+		// Abrir modal print	
+		$('#lojasForm').on('click','.openModalPrint', function(){
+			// pega o id da loja e manda para o modal
+
+			var idLojaCarta = $(this).attr('id');			
+			$('#printRoteiroModal').dialog({
+				width:600,
+				shiw: {
+					effect: "blind",
+					duration:500
+				}
+			})
+
+			$.ajax({
+				type:'POST',
+				data: {
+					idLojaCarta: idLojaCarta,
+				},
+				url: 'mod_operacional/ajax/GeraListaCartasPrint.php',
+				success: function(data){
+					$('#addDataPrint').empty().append(data);
+				}
+			})
+		})
+
+
+	// link para gerar carta de apresentação exemplo
+		var countC = 0;
+		$('#addDataPrint').on('click', 'a[name=geraCartaApresentacaoExemplo]',function(){			
+		//contador		
+		if(countC == 0){
+			countC++;
+			var idLoja = 2;		
+			var matColaborador = 085761;
+			var modeloCarta = '01drogariaSP';
+			if(idLoja != '' && matColaborador != ''){
+				var urlCarta = '<iframe width = "1000px" height = "600px" src="mod_operacional/cartasApresentacao/'+ modeloCarta +'/' + modeloCarta +'.php?idLoja='+ idLoja + '&mat='+matColaborador+'/"><p>Your browser does not support iframes.</p></iframe>';
+				$('#gerarModeloExemplo').empty().append(urlCarta);
+			} else {
+				alert("Favor selecionar um item");
+			}
+		}else{
+			countC--;
+			$('#gerarModeloExemplo').empty();
+		}	
+	})
+
+	//Marca campos como selecionados ao clicar em uma 
+	$('#addDataPrint').on('click', '#selectCarta tr:not(:first-child)', function(){
+
+		if($(this).hasClass('selected')){
+			//Remove classe que marca como selecionado
+			$(this).removeClass('selected');
+		} else {
+			//Adiciona classe que marca como selecionado
+			$(this).addClass('selected');
+		}
+		
+	});
+
+		// seleciona uma carta para o reteiro
+	$('#addDataPrint').on('dblclick', '#selectCarta tr:not(:first-child)', function(){
+
+		var idCarta = $.trim($(this).find('td').attr('id'));
+		var idLojaDestinoCarta = $('#idLojaDestinoCarta').val();
+		var nomeCarta = $(this).find('td').next().attr('id');
+
+		$('.lojasAdicionadas').each(function(){			
+			 if($(this).attr('id') == idLojaDestinoCarta){
+			 	$(this).find('#idCarta').val(idCarta);
+			 	$(this).find('.openModalPrint').html(nomeCarta);
+			 	$(this).find("img").attr('src','../main/resources/images/print.png');
+
+			 }
+		})
+		$('#printRoteiroModal').dialog('destroy');		
+	});
+
+
+		//Link para gerar carta de apresentação
+	$('#lojasForm').on('click', '.openPrintCarta',function(){	
+		
+		//Variavel com o id da loja
+		var idLoja = $(this).attr('id');
+			idLoja = idLoja.split('_');
+			idLoja = $.trim(idLoja[1]);	
+
+		//Variavel com a matricula do funcionario
+		var matColaborador = $.trim($('#nomeColaborador').attr('class'));
+		var modeloCarta = '';
+
+		// //Modelo da carta
+		$('.lojasAdicionadas').each(function(){			
+			 if($(this).attr('id') == idLoja){			 	
+			 	modeloCarta = $.trim($(this).find('.openModalPrint').html());
+			 }
+		})		
+
+		if(modeloCarta == "Nenhum"){
+			alert("Favor selecionar uma carta antes de imprimir");
+		}else{
+
+			//Caso esteja selecionada, monta o link com o id correspondente
+			if(idLoja != '' && matColaborador != ''){
+				//Gera o link passando como parâmetro o id da linha
+				var href = "mod_operacional/cartasApresentacao/"+ modeloCarta +"/" + modeloCarta +".php?idLoja="+ idLoja + "&mat="+matColaborador;
+				//Coloca o link no elemento
+				window.open(href);				
+			} else {
+				//Caso não seja selecionado nenhum item ao clicar no botão
+				alert("Favor selecionar um colaborador antes de imprimir");
+			}
+
+		}	
+			
+	})
+
+	//Remove a carta
+	$('#addDataPrint').on('click', 'a[name=nenhumaCarta]', function(){
+
+		var idLojaDestinoCarta = $('#idLojaDestinoCarta').val();
+		$('.lojasAdicionadas').each(function(){			
+				 if($(this).attr('id') == idLojaDestinoCarta){
+				 	$(this).find('#idCarta').val(1);
+				 	$(this).find('.openModalPrint').html("Nenhum");
+				    $(this).find("img").attr('src','../main/resources/images/noPrint.png');
+
+				 }
+			})
+		$('#printRoteiroModal').dialog('destroy');
+
+	})
 
 }) 

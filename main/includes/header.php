@@ -35,9 +35,9 @@
 							
 							<?php if(acessos(9) == true){echo'<li><a href="#" id="histLinhaMovel"> Histórico </a></li>';} ?>							
 						</div>
-						<div class="onRight">
+						<!-- <div class="onRight">
 							<?php if(acessos(9) == true ){echo '<li role="presentation" class="dropdown-header"><u> Relatórios </u></li>';}?>																				
-						</div>
+						</div> -->
 					</ul>
 				</li>
 		<?php	} ?>

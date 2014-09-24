@@ -1,4 +1,4 @@
-<?php
+	<?php
 	require("../../../conf/conn.php");
 
 	$acessos = $_POST['acessos'];

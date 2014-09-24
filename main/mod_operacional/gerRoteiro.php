@@ -7,7 +7,7 @@
 <script src="mod_operacional/resources/js/gerRoteiro.js"></script>
 
 <!-- CSS -->
-<link rel="stylesheet" href = "mod_operacional/resources/css/gerRoteiro.css">
+<link rel="stylesheet" href = "mod_operacional/resources/css/gerRoteiro.css?1">
 
 <div class = "formInner">	
 		<legend> Criar Roteiro </legend>
@@ -21,14 +21,13 @@
 			</div>
 			<div id = "colaboradorData">				
 					<div id = "addDataRoteiro">
-						<!-- <a href = "#"  name = "geraCartaApresentacao"> Gerar carta </a> -->
+						
 
 					</div>
 				</table>
 			</div>			
 		</div>	
 </div>
-
 <input type = "hidden" name = "idLoggedUser" name = "idLoggedUser" value = "<?php echo $_SESSION['idUsuario']; ?>">
 
 <!-- Modals -->
@@ -69,6 +68,7 @@
 		</table>
 		<table id = 'lojasForm'>
 			<tr>
+				<td>#</td>
 				<td>ID</td>
 				<td>CNPJ</td>
 				<td>Nome da Loja</td>
@@ -78,7 +78,8 @@
 				<td>qui</td>
 				<td>sex</td>
 				<td>sab</td>
-				<td>dom</td>			
+				<td>dom</td>
+				<td>Carta</td>						
 			</tr>
 			
 			<div class = "addDataLoja">	 
@@ -124,3 +125,13 @@
 	</div>
 </div>
 <!-- ./modal -->
+
+<!-- Lojas modal -->
+<div id = "printRoteiroModal" title = "Imprimir roteiro">
+	<div id = "addDataPrint">
+	</div>
+	<div id = "gerarModeloExemplo">
+	</div>
+</div>
+<!-- ./modal -->
+

@@ -29,16 +29,25 @@
 		
 		//grava no banco 
 		foreach ($lojasItens as $loja) {
-			
+			// trata o id carta que vem no forma cartaId_[idCarta]
+			// if($loja['idCarta'] == 'null'){
+			// 	$idCarta = null;
+				
+			// }else{
+			// 	$idCarta = explode('_', $loja['idCarta']);			
+			// 	$idCarta = $idCarta[1];	
+			// }
+
+
 			 $sqlInsert = $pdo->prepare(
 				'INSERT INTO `ipsum`.`ipsum_operacionalroteiros` 
 					(
-					`idRoteiro`, `nomeRoteiro`, `idAcao`, `idColaborador`, `dataCadastro`, `idUsuarioCad`, `idLoja`, `seg`, `ter`, `qua`, `qui`, `sex`, `sab`, `dom`
+					`idRoteiro`, `nomeRoteiro`, `idAcao`, `idColaborador`, `dataCadastro`, `idUsuarioCad`, `idLoja`, `seg`, `ter`, `qua`, `qui`, `sex`, `sab`, `dom`, `idCarta`
 					) VALUES (
-						?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+						?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
 					)'
-				);
-			$sqlInsert->execute(array($idRoteiro, $nomeRoteiro, $nomeAcao, $matricula, $dataCadastro, $idUsuarioCad, $loja['idLoja'], $loja['seg'], $loja['ter'], $loja['qua'], $loja['qui'], $loja['sex'], $loja['sab'], $loja['dom']));		
+				);			 
+			$sqlInsert->execute(array($idRoteiro, $nomeRoteiro, $nomeAcao, $matricula, $dataCadastro, $idUsuarioCad, $loja['idLoja'], $loja['seg'], $loja['ter'], $loja['qua'], $loja['qui'], $loja['sex'], $loja['sab'], $loja['dom'], $loja['idCarta']));		
 		$msg = "Roteiro cadastrado com sucesso";
 		}
 	}else {

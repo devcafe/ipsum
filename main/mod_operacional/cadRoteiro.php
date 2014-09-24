@@ -4,7 +4,7 @@
 <script src="mod_operacional/resources/js/cadRoteiro.js"></script>
 
 <!-- CSS -->
-<link rel="stylesheet" href = "mod_operacional/resources/css/cadRoteiro.css">
+<link rel="stylesheet" href = "mod_operacional/resources/css/cadRoteiro.css?">
 
 <div class = "formInner">
 	<form method = "post">
